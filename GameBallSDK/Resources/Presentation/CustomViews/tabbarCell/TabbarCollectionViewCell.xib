@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TabbarCollectionViewCell" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="53"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="46" height="53"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-ae-sCW">
+                        <rect key="frame" x="0.0" y="1" width="46" height="52"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Achievements.png" translatesAutoresizingMaskIntoConstraints="NO" id="nek-yi-6fV">
+                                <rect key="frame" x="13" y="15" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="cOp-xA-Nhc"/>
+                                    <constraint firstAttribute="width" constant="20" id="xag-MZ-4Wz"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KjJ-cn-JMM">
+                                <rect key="frame" x="3" y="50" width="40" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1HC-S7-c9i"/>
+                                    <constraint firstAttribute="height" constant="1" id="N7i-rb-rk1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KjJ-cn-JMM" firstAttribute="centerX" secondItem="nek-yi-6fV" secondAttribute="centerX" id="6FN-AT-pxX"/>
+                            <constraint firstItem="KjJ-cn-JMM" firstAttribute="top" secondItem="nek-yi-6fV" secondAttribute="bottom" constant="15" id="ITv-7b-msd"/>
+                            <constraint firstItem="Kud-MS-4GK" firstAttribute="bottom" secondItem="KjJ-cn-JMM" secondAttribute="bottom" constant="1" id="LDx-ic-mqp"/>
+                            <constraint firstItem="nek-yi-6fV" firstAttribute="centerX" secondItem="Kud-MS-4GK" secondAttribute="centerX" id="hTF-pz-fVE"/>
+                            <constraint firstItem="nek-yi-6fV" firstAttribute="top" secondItem="Kud-MS-4GK" secondAttribute="top" constant="15" id="opt-HJ-DqU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kud-MS-4GK"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qGE-ae-sCW" secondAttribute="trailing" id="4aY-ne-aeT"/>
+                <constraint firstItem="qGE-ae-sCW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6XM-Ov-D9W"/>
+                <constraint firstAttribute="bottom" secondItem="qGE-ae-sCW" secondAttribute="bottom" id="Ufn-MO-Jzs"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="46" height="53"/>
+            <connections>
+                <outlet property="cellImageView" destination="nek-yi-6fV" id="RiM-v3-8Ut"/>
+                <outlet property="lineView" destination="KjJ-cn-JMM" id="x1w-oU-weB"/>
+            </connections>
+            <point key="canvasLocation" x="134.40000000000001" y="120.98950524737631"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Achievements.png" width="20" height="20"/>
+    </resources>
+</document>

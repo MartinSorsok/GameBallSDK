@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func showProfile(_ sender: Any) {
+        if let myDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let vc = myDelegate.gameballApp?.launchGameball()
+            self.present(vc!, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
 }
 

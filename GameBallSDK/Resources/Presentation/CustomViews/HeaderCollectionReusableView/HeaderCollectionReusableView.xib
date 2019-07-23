@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCollectionReusableView" id="9jT-Gw-8Ah" customClass="HeaderCollectionReusableView" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SN7-J5-Kws">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68K-6d-rjM">
+                            <rect key="frame" x="25" y="14.5" width="325" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="68K-6d-rjM" firstAttribute="leading" secondItem="SN7-J5-Kws" secondAttribute="leading" constant="25" id="BVo-oJ-FwE"/>
+                        <constraint firstItem="68K-6d-rjM" firstAttribute="centerY" secondItem="SN7-J5-Kws" secondAttribute="centerY" id="IyO-Cs-hUl"/>
+                        <constraint firstItem="68K-6d-rjM" firstAttribute="centerX" secondItem="SN7-J5-Kws" secondAttribute="centerX" id="Rap-AR-YG0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="SN7-J5-Kws" firstAttribute="centerX" secondItem="gMf-JO-FWG" secondAttribute="centerX" id="CKb-UH-05D"/>
+                <constraint firstItem="SN7-J5-Kws" firstAttribute="width" secondItem="9jT-Gw-8Ah" secondAttribute="width" id="KxX-ni-NA3"/>
+                <constraint firstItem="SN7-J5-Kws" firstAttribute="height" secondItem="9jT-Gw-8Ah" secondAttribute="height" id="sLD-Mj-JDN"/>
+                <constraint firstItem="SN7-J5-Kws" firstAttribute="centerY" secondItem="gMf-JO-FWG" secondAttribute="centerY" id="vMW-cL-NMf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="gMf-JO-FWG"/>
+            <connections>
+                <outlet property="titleLabel" destination="68K-6d-rjM" id="JSa-Ka-0RC"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

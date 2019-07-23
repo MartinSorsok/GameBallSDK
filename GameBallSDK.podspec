@@ -7,12 +7,12 @@ Pod::Spec.new do |s|
   #1
   s.platform = :ios
   s.name  = 'GameBallSDK'
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '10.0'
   s.summary = 'Gameball SDK pod.'
   s.requires_arc = true
 
   # 2
-  s.version    = '1.0.1'
+  s.version    = '1.0.2'
 
   #3
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -45,10 +45,10 @@ Pod::Spec.new do |s|
   
   
   #8
-#  s.source_files = 'GameBallSDK/**/*.{swift}'
+  s.source_files = 'GameBallSDK/**/*.{swift}'
 
   # 9
-  s.resources = 'Resources/**/*.{swift,png,jpeg,jpg,storyboard,xib,xcassets,strings,otf,ttf}', 'Resources/GoogleService-InfoGameball.plist'
+  s.resources = 'GameBallSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,strings,otf,ttf}', 'Resources/GoogleService-InfoGameball.plist'
   
   # 10
   s.swift_version = '4.2'
