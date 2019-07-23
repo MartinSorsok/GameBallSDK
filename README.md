@@ -22,7 +22,7 @@ pod 'GameBallSDK'
 
 ## Author
 
-Martin Sorsok, martin.sorsok@vodafone.com
+Martin Sorsok, martin.sorsok@gmail.com
 
 ## License
 
