@@ -1,0 +1,17 @@
+/* 
+  LocalizableArabic.strings
+  Pods
+
+  Created by Martin Sorsok on 5/20/19.
+  
+*/
+"pts" = " نقاط";
+"pointsName" = "نقاط: ";
+"RankPointsName" = "نقاط الترتيب: ";
+"NextLevelText" = "المستوى التالي بعد تجميع"; 
+
+"LeaderboardTitle" = "قائمة المتصدرين" ;
+"AchievementTitle" = "الإنجازات";
+"GameballFooterText" = "مقدم بواسطة";
+"Welcome" =  "مرحباً ";
+"You are on level" = "المستوى الحالي هو";

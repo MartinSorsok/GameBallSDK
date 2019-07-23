@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'GameBallSDK_Example' do
+  pod 'GameBallSDK', :path => '../'
+
+  target 'GameBallSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

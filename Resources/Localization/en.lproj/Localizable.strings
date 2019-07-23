@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by Martin Sorsok on 5/19/19.
+  
+*/
+"pointsName" = "Points: ";
+"pts" = " pts";
+"RankPointsName" = "Frubies: ";
+"NextLevelText" = "Next tier after collecting";
+
+"LeaderboardTitle" = "Leaderboard" ;
+"AchievementTitle" = "Achievements";
+"GameballFooterText" = "we run on";
+
+"Welcome" = "Welcome ";
+"You are on level" = "You are on level";
+
+
+

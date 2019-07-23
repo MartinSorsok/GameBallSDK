@@ -1,0 +1,16 @@
+PODS:
+  - GameBallSDK (0.1.0)
+
+DEPENDENCIES:
+  - GameBallSDK (from `../`)
+
+EXTERNAL SOURCES:
+  GameBallSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GameBallSDK: 95e9838891c9ee75a1f85a335dbeb2cda3d89200
+
+PODFILE CHECKSUM: a873e5e3e5c59c88fc424bc72732f775fc393d87
+
+COCOAPODS: 1.6.1

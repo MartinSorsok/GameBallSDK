@@ -1,0 +1,6 @@
+framework module Pods_GameBallSDK_Example {
+  umbrella header "Pods-GameBallSDK_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
