@@ -23,6 +23,8 @@ open class GameballApp: NSObject {
     
     public init(APIKey: String, playerId: String, categoryId: String = "0") {
         super.init()
+        self.setupFonts()
+
         NetworkManager.shared().registerAPIKey(APIKey: APIKey)
         self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
@@ -33,6 +35,8 @@ open class GameballApp: NSObject {
     
     public init(APIKey: String,language: String = "en") {
         super.init()
+        self.setupFonts()
+
         language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
         self.fetchBotStyle()
     }
@@ -44,7 +48,6 @@ open class GameballApp: NSObject {
             guard let errorModel = error else {
                 if data != nil {
                     GameballApp.clientBotStyle = (data as? GetClientBotStyleResponse)?.response
-                    self.setupFonts()
 
                     completion?(true, nil)
                 }

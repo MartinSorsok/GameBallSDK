@@ -13,7 +13,15 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
             titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
-            titleLabel.font = Fonts.cairoBoldFont16
+            
+            if Localizator.sharedInstance.language == Languages.arabic {
+                titleLabel.font = Fonts.cairoBoldFont16
+
+            } else {
+                titleLabel.font = Fonts.montserratSemiBoldFont16
+
+            }
+            
             titleLabel.textColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
         }
     }

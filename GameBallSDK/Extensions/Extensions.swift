@@ -141,7 +141,7 @@ extension String {
     }
 }
 extension UIFont {
-    static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) -> Bool {
+    static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
         guard let fontURL = bundle.url(forResource: fontName, withExtension: fontExtension) else {
             fatalError("Couldn't find font \(fontName)")
         }
@@ -158,9 +158,9 @@ extension UIFont {
         let success = CTFontManagerRegisterGraphicsFont(font, &error)
         guard success else {
             print("Error registering font: maybe it was already registered.")
-            return false
+            return 
         }
         
-        return true
+//        return true
     }
 }
