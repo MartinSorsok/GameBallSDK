@@ -24,6 +24,8 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.isHidden = true
+
 //        self.collectionView.register(UINib.init(nibName: "TabbarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TabbarCollectionViewCell")
              collectionView.register(UINib(nibName: badgeViewView, bundle: nil), forCellWithReuseIdentifier: badgeViewView)
                     collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCollectionReusableView)
@@ -36,6 +38,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
         getSettings(completion: {
             self.getChallenges(completion: {
                 DispatchQueue.main.async {
+                    
 //                    self.endLoading()
                     
                 }
@@ -57,8 +60,8 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
                 self.quests = self.challengesViewModel.quests
                 
                 completion()
+                    self.collectionView.reloadData()
                 self.delegate?.dataReady(collectionView: self.collectionView)
-//                    self.collectionView.reloadData()
 
                 
             }

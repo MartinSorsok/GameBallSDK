@@ -28,7 +28,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
-    
+    private var collectionViewHeight = CGFloat(0)
     
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
@@ -197,10 +197,9 @@ self.navigationController?.navigationBar.isHidden = true
             let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
             cell.delegate = self
             cell.frame = tableView.bounds;  // cell of myTableView
-            cell.collectionView.reloadData()
-            cell.layoutIfNeeded()
 
-            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height;
+            cell.collectionViewHeight.constant = collectionViewHeight;
+            
             return cell
         }
         return UITableViewCell()
@@ -211,9 +210,15 @@ self.navigationController?.navigationBar.isHidden = true
 extension ParentViewController: TabBarDelegate {
     func dataReady(collectionView: UICollectionView){
         DispatchQueue.main.async {
+            self.collectionViewHeight =  collectionView.collectionViewLayout.collectionViewContentSize.height
             self.mainTableView.reloadData()
 
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+             collectionView.isHidden = false
+            collectionView.reloadData()
+            
+        })
         
     }
     

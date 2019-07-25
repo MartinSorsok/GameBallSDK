@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Zxn-6u-JeA">
-                        <rect key="frame" x="0.0" y="0.0" width="408" height="43.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="408" height="500.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="43.5" id="sRG-2X-m8Y"/>
+                            <constraint firstAttribute="height" constant="500" id="sRG-2X-m8Y"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="12" id="DlE-bf-vai">
                             <size key="itemSize" width="92" height="115"/>
@@ -34,7 +34,7 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Zxn-6u-JeA" secondAttribute="bottom" constant="10" id="C78-2S-uuH"/>
+                    <constraint firstAttribute="bottom" secondItem="Zxn-6u-JeA" secondAttribute="bottom" id="C78-2S-uuH"/>
                     <constraint firstItem="Zxn-6u-JeA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="I8G-TF-qoe"/>
                     <constraint firstItem="Zxn-6u-JeA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NrF-bK-jkp"/>
                     <constraint firstAttribute="trailing" secondItem="Zxn-6u-JeA" secondAttribute="trailing" id="XOA-5y-YNh"/>
