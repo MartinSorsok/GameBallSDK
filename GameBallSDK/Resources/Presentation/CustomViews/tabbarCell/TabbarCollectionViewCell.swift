@@ -10,18 +10,9 @@ import UIKit
 
 class TabbarCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var cellImageView: UIImageView!{
-        didSet{
-            cellImageView.image = cellImageView.image?.withRenderingMode(.alwaysTemplate)
-            cellImageView.tintColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
-        }
-    }
+    @IBOutlet weak var cellImageView: UIImageView!
    
-    @IBOutlet weak var lineView: UIView!{
-        didSet{
-            lineView.backgroundColor =  UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
-        }
-    }
+    @IBOutlet weak var lineView: UIView!
   
     override func awakeFromNib() {
         super.awakeFromNib()

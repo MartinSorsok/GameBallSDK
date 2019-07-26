@@ -11,6 +11,10 @@ import UIKit
 protocol TabBarDelegate: AnyObject {
     func dataReady(collectionView: UICollectionView)
 }
+
+protocol TabIconHeaderDelegate: AnyObject {
+    func cellTapped(feature: Int)
+}
 class ParentViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var mainTableView: UITableView!
@@ -181,6 +185,7 @@ self.navigationController?.navigationBar.isHidden = true
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: tabIconsHeader) as! TabIconsHeader
+        headerView.delegate = self
         
         return headerView
 
@@ -220,6 +225,16 @@ extension ParentViewController: TabBarDelegate {
             
         })
         
+    }
+    
+    
+    
+}
+
+
+extension ParentViewController: TabIconHeaderDelegate{
+    func cellTapped(feature: Int) {
+        print(feature)
     }
     
     
