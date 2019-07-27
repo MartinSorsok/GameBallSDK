@@ -15,10 +15,12 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     private let headerCollectionReusableView = "HeaderCollectionReusableView"
 
     private let challengesViewModel = ChallengesViewModel()
-    
+     var  currentFeature = 0
+
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
     weak var delegate:TabBarDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -29,7 +31,6 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 //        self.collectionView.register(UINib.init(nibName: "TabbarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TabbarCollectionViewCell")
              collectionView.register(UINib(nibName: badgeViewView, bundle: nil), forCellWithReuseIdentifier: badgeViewView)
                     collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCollectionReusableView)
-        
         fetchData()
     }
     
@@ -60,7 +61,10 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
                 self.quests = self.challengesViewModel.quests
                 
                 completion()
+                DispatchQueue.main.async {
+
                     self.collectionView.reloadData()
+                }
                 self.delegate?.dataReady(collectionView: self.collectionView)
 
                 
@@ -146,11 +150,13 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
         switch kind {
 
         case UICollectionView.elementKindSectionHeader:
+            
+
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath)
 
             headerView.backgroundColor = UIColor.blue
             return headerView
-
+            
 
 
         default:
@@ -159,6 +165,8 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
        return  UICollectionReusableView()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+
         return CGSize(width: collectionView.frame.width, height: 58.0)
     }
 
@@ -205,3 +213,6 @@ protocol AchievementCellImageLoaderDelegate {
     // should take the index path
     func didDownloadImage(fromModel: Challenge, index: Int, image: UIImage)
 }
+
+
+

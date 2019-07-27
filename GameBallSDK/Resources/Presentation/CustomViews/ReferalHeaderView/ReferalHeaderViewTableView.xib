@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ReferalHeaderViewTableView" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="265"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="623-TY-58x">
+                    <rect key="frame" x="0.0" y="0.0" width="417" height="265"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We Value Friendship!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5e-LE-u5P">
+                            <rect key="frame" x="134" y="19" width="161" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Refer a friend to us and get reward once they signup. Share the below link with your friends." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lhu-Sb-l6q">
+                            <rect key="frame" x="37" y="52" width="355" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.gameball.com/sfgG3e56Hs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kRR-k7-R7f">
+                            <rect key="frame" x="25" y="208" width="302" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="8Js-4F-Y2E"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0i-ut-2O8">
+                            <rect key="frame" x="327" y="208" width="65" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="mMt-BL-HLH"/>
+                            </constraints>
+                            <state key="normal" title="Copy"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="kRR-k7-R7f" firstAttribute="top" secondItem="lhu-Sb-l6q" secondAttribute="bottom" constant="20" id="1VG-YI-KCM"/>
+                        <constraint firstItem="lhu-Sb-l6q" firstAttribute="leading" secondItem="623-TY-58x" secondAttribute="leading" constant="37" id="ETB-F0-RWj"/>
+                        <constraint firstItem="f0i-ut-2O8" firstAttribute="height" secondItem="kRR-k7-R7f" secondAttribute="height" id="L1b-4R-qMd"/>
+                        <constraint firstAttribute="bottom" secondItem="kRR-k7-R7f" secondAttribute="bottom" constant="25" id="OF7-BX-mXm"/>
+                        <constraint firstItem="m5e-LE-u5P" firstAttribute="top" secondItem="623-TY-58x" secondAttribute="top" constant="19" id="SeO-w0-Y9G"/>
+                        <constraint firstItem="kRR-k7-R7f" firstAttribute="leading" secondItem="623-TY-58x" secondAttribute="leading" constant="25" id="Vgx-hx-sP4"/>
+                        <constraint firstItem="f0i-ut-2O8" firstAttribute="leading" secondItem="kRR-k7-R7f" secondAttribute="trailing" id="cb9-Xn-Sxm"/>
+                        <constraint firstItem="f0i-ut-2O8" firstAttribute="centerY" secondItem="kRR-k7-R7f" secondAttribute="centerY" id="fYk-KR-cmg"/>
+                        <constraint firstItem="lhu-Sb-l6q" firstAttribute="top" secondItem="m5e-LE-u5P" secondAttribute="bottom" constant="12" id="gfD-qH-U1V"/>
+                        <constraint firstAttribute="trailing" secondItem="f0i-ut-2O8" secondAttribute="trailing" constant="25" id="kCr-is-hIE"/>
+                        <constraint firstItem="lhu-Sb-l6q" firstAttribute="centerX" secondItem="m5e-LE-u5P" secondAttribute="centerX" id="sEb-nn-Cie"/>
+                        <constraint firstAttribute="trailing" secondItem="lhu-Sb-l6q" secondAttribute="trailing" constant="25" id="yhB-ht-mro"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="623-TY-58x" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" id="2Ob-3R-046"/>
+                <constraint firstItem="623-TY-58x" firstAttribute="width" secondItem="U6b-Vx-4bR" secondAttribute="width" id="3gl-HK-vUi"/>
+                <constraint firstItem="623-TY-58x" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="8OL-aV-bmM"/>
+                <constraint firstItem="623-TY-58x" firstAttribute="centerY" secondItem="VXr-Tz-HHm" secondAttribute="centerY" id="aXK-Uw-1j4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="copyBtn" destination="f0i-ut-2O8" id="004-Yp-GJO"/>
+                <outlet property="describtionLabel" destination="lhu-Sb-l6q" id="P5W-lB-7ua"/>
+                <outlet property="textField" destination="kRR-k7-R7f" id="4Dz-D4-AYf"/>
+                <outlet property="titleLabel" destination="m5e-LE-u5P" id="QCU-eO-Qse"/>
+            </connections>
+            <point key="canvasLocation" x="215.19999999999999" y="235.23238380809596"/>
+        </collectionReusableView>
+    </objects>
+</document>

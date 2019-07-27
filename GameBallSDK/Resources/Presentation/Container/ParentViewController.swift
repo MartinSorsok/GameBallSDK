@@ -10,6 +10,8 @@ import UIKit
 
 protocol TabBarDelegate: AnyObject {
     func dataReady(collectionView: UICollectionView)
+    func dataReady(tableview: UITableView)
+
 }
 
 protocol TabIconHeaderDelegate: AnyObject {
@@ -26,14 +28,15 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private let mainTableViewCell = "MainTableViewCell"
     private let badgesCollectionViewinCell = "BadgesCollectionViewinCell"
     private let tabIconsHeader = "TabIconsHeader"
-
-
+    private let challengesTableViewInCell = "ChallengesTableViewInCell"
+    private var  currentFeature = 0
     private let challengesViewModel = ChallengesViewModel()
     
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
     private var collectionViewHeight = CGFloat(0)
-    
+    private var tableViewHeight = CGFloat(0)
+
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
             weRunOnLabel.text = LocalizationsKeys.General.gameballFooterText.rawValue.localized
@@ -104,7 +107,11 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         
         mainTableView.register(UINib(nibName: mainTableViewCell, bundle: nil), forCellReuseIdentifier: mainTableViewCell)
         mainTableView.register(UINib(nibName: badgesCollectionViewinCell, bundle: nil), forCellReuseIdentifier: badgesCollectionViewinCell)
+         mainTableView.register(UINib(nibName: challengesTableViewInCell, bundle: nil), forCellReuseIdentifier: challengesTableViewInCell)
+        
+        
         mainTableView.register(UINib(nibName: tabIconsHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: tabIconsHeader)
+
         mainTableView.rowHeight = UITableView.automaticDimension
         mainTableView.estimatedRowHeight = 600
         mainTableView.tableFooterView = UIView()
@@ -199,12 +206,24 @@ self.navigationController?.navigationBar.isHidden = true
             return cell
         } else if indexPath.section == 1{
 
+            if currentFeature == Features.FriendReferal.rawValue {
+                let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
+                cell.delegate = self
+                cell.frame = tableView.bounds;  // cell of myTableView
+                cell.currentFeature = self.currentFeature
+                cell.tableView.layoutIfNeeded()
+
+                cell.tableViewHeightConstraint.constant =  cell.tableView.contentSize.height
+                cell.tableView.reloadData()
+
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
             cell.delegate = self
             cell.frame = tableView.bounds;  // cell of myTableView
-
+            cell.currentFeature = self.currentFeature
             cell.collectionViewHeight.constant = collectionViewHeight;
-            
+            cell.collectionView.reloadData()
             return cell
         }
         return UITableViewCell()
@@ -213,6 +232,22 @@ self.navigationController?.navigationBar.isHidden = true
 
 
 extension ParentViewController: TabBarDelegate {
+    func dataReady(tableview: UITableView) {
+        DispatchQueue.main.async {
+
+            self.mainTableView.reloadData()
+            self.mainTableView.layoutIfNeeded()
+
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+
+        
+    })
+
+//
+    }
+    
     func dataReady(collectionView: UICollectionView){
         DispatchQueue.main.async {
             self.collectionViewHeight =  collectionView.collectionViewLayout.collectionViewContentSize.height
@@ -235,6 +270,9 @@ extension ParentViewController: TabBarDelegate {
 extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
         print(feature)
+        
+        self.currentFeature = feature
+        self.mainTableView.reloadData()
     }
     
     

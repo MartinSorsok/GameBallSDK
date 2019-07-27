@@ -40,6 +40,8 @@ struct Colors {
     static let appGray239 = UIColor(white: 239 / 255, alpha: 1)
     static let curvedViewColor = UIColor(red: 239/256, green: 239/256, blue: 239/256, alpha: 1)
      static let appGray153 = UIColor(red: 153/256, green: 153/256, blue: 153/256, alpha: 1)
+    
+      static let appGray128 = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 1)
      static let appGray242 = UIColor(red: 242/256, green: 242/256, blue: 242/256, alpha: 1)
         static let appGray225 = UIColor(red: 225/256, green: 225/256, blue: 225/256, alpha: 1)
 //    static let curvedViewColor = UIColor(displayP3Red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
