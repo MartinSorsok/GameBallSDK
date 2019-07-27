@@ -78,9 +78,16 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             copyBtn.backgroundColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
         }
     }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    @IBAction func copyBtnAction(_ sender: Any) {
+        
+        
+    }
 }

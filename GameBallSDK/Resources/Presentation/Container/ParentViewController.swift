@@ -11,6 +11,7 @@ import UIKit
 protocol TabBarDelegate: AnyObject {
     func dataReady(collectionView: UICollectionView)
     func dataReady(tableview: UITableView)
+    func shareText(text: String)
 
 }
 
@@ -211,11 +212,6 @@ self.navigationController?.navigationBar.isHidden = true
                 cell.delegate = self
                 cell.frame = tableView.bounds;  // cell of myTableView
                 cell.currentFeature = self.currentFeature
-                cell.tableView.layoutIfNeeded()
-
-                cell.tableViewHeightConstraint.constant =  cell.tableView.contentSize.height
-                cell.tableView.reloadData()
-
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
@@ -232,6 +228,13 @@ self.navigationController?.navigationBar.isHidden = true
 
 
 extension ParentViewController: TabBarDelegate {
+    func shareText(text: String) {
+
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     func dataReady(tableview: UITableView) {
         DispatchQueue.main.async {
 
@@ -240,12 +243,6 @@ extension ParentViewController: TabBarDelegate {
 
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-
-        
-    })
-
-//
     }
     
     func dataReady(collectionView: UICollectionView){

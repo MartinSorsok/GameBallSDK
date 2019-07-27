@@ -56,9 +56,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var progressView: ProgressView!{
         didSet{
-            let percentageFilled = Float(0.8)
-            let color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
-            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
+
         }
         
     }
@@ -74,6 +72,12 @@ class ReferalFriendTableViewCell: UITableViewCell {
             }
             
             rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) Score | \(challenge?.rewardPoints ?? 0) points"
+            
+            
+            let percentageFilled = Float((challenge?.actionsAndAmountCompletedPercentage ?? 0) / 100 )
+            
+            let color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
         }
     }
 

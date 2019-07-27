@@ -12,7 +12,7 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
 
     var referalHeaderViewTableView = "ReferalHeaderViewTableView"
     var referalFriendTableViewCell = "ReferalFriendTableViewCell"
-    
+    var sharingCodeText = ""
     private var challenges: [Challenge] = []
     weak var delegate:TabBarDelegate?
     private let challengesViewModel = ChallengesViewModel()
@@ -62,7 +62,9 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
                 completion()
                 DispatchQueue.main.async {
                 self.tableView.reloadData()
+                    
                     self.tableView.layoutIfNeeded()
+                    self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
                     self.delegate?.dataReady(tableview: self.tableView)
 
                 }
@@ -97,7 +99,8 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: referalHeaderViewTableView) as! ReferalHeaderViewTableView
-        
+        headerView.copyBtn.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
+        self.sharingCodeText = headerView.textField.text ?? ""
         return  headerView
     }
     
@@ -105,5 +108,11 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         return 162
     }
     
+    @objc func copyAction(sender: UIButton!) {
+
+        print(sharingCodeText)
+        
+        self.delegate?.shareText(text: sharingCodeText)
+    }
     
 }
