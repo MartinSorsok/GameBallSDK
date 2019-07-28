@@ -10,7 +10,7 @@ import Foundation
 
 struct ClientBotStyle: Codable {
     let clientID: Int
-    let botMainColor, buttonBackgroundColor, buttonFlagColor, buttonSariColor: String
+    let botMainColor, buttonBackgroundColor, buttonFlagColor, referralSignUpLink, referralHeadLine, referralText, buttonSariColor: String
     let shape, direction, offlineStatemessage, button, buttonLink: String?
     let enableLeaderboard: Bool?
     enum CodingKeys: String, CodingKey {
@@ -25,5 +25,8 @@ struct ClientBotStyle: Codable {
         case button = "Button"
         case buttonLink = "ButtonLink"
         case enableLeaderboard = "EnableLeaderboard"
+        case referralSignUpLink = "ReferralSignUpLink"
+        case referralHeadLine = "ReferralHeadLine"
+        case referralText = "ReferralText"
     }
 }

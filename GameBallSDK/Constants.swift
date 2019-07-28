@@ -71,10 +71,12 @@ struct Fonts {
     static let cairoRegularFont14 =  UIFont(name: "Cairo-Regular", size: 14.0)
     static let cairoRegularFont16 =  UIFont(name: "Cairo-Regular", size: 16.0)
 
+    static let cairoBoldFont8 =  UIFont(name: "Cairo-Bold", size: 8.0)
     static let cairoBoldFont12 =  UIFont(name: "Cairo-Bold", size: 12.0)
     static let cairoBoldFont14 =  UIFont(name: "Cairo-Bold", size: 14.0)
     static let cairoBoldFont16 =  UIFont(name: "Cairo-Bold", size: 16.0)
     
+    static let montserratSemiBoldFont8 =  UIFont(name: "Montserrat-SemiBold", size: 8.0)
     static let montserratSemiBoldFont10 =  UIFont(name: "Montserrat-SemiBold", size: 10.0)
     static let montserratSemiBoldFont12 =  UIFont(name: "Montserrat-SemiBold", size: 12.0)
 
@@ -99,3 +101,4 @@ enum UserDefaultsKeys: String {
 }
 
 let transactionkey = "5sdfd2dvvd-9mnvhu25d6c3d"
+let nc = NotificationCenter.default

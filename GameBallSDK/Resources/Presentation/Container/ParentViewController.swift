@@ -207,21 +207,27 @@ self.navigationController?.navigationBar.isHidden = true
             return cell
         } else if indexPath.section == 1{
 
-            if currentFeature == Features.FriendReferal.rawValue {
-                let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
+            if currentFeature == Features.Profile.rawValue {
+                let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
                 cell.delegate = self
                 cell.frame = tableView.bounds;  // cell of myTableView
                 cell.currentFeature = self.currentFeature
+                cell.collectionViewHeight.constant = collectionViewHeight;
+                cell.collectionView.reloadData()
                 return cell
-            }
-            let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
+
+            } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
             cell.delegate = self
             cell.frame = tableView.bounds;  // cell of myTableView
             cell.currentFeature = self.currentFeature
-            cell.collectionViewHeight.constant = collectionViewHeight;
-            cell.collectionView.reloadData()
+//            cell.tableViewHeightConstraint.constant = tableViewHeight
+            cell.tableView.reloadData()
             return cell
+            }
         }
+        
         return UITableViewCell()
     }
 }
@@ -267,10 +273,12 @@ extension ParentViewController: TabBarDelegate {
 extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
         print(feature)
-        
+        nc.post(name: Notification.Name("tabBarTapped"), object: feature)
         self.currentFeature = feature
+
         self.mainTableView.reloadData()
     }
+    
     
     
     

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sOK-z6-meE" customClass="LeaderBoardHeaderView" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="265"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkT-t2-dw5">
+                    <rect key="frame" x="0.0" y="0.0" width="417" height="265"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wE-PL-fU6">
+                            <rect key="frame" x="25" y="19" width="98" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Rank is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbg-MI-Uba">
+                            <rect key="frame" x="25" y="61" width="94" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="137/12,321" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-aP-Ecn">
+                            <rect key="frame" x="122" y="61" width="81" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="0wE-PL-fU6" firstAttribute="top" secondItem="qkT-t2-dw5" secondAttribute="top" constant="19" id="8hK-5Q-mNY"/>
+                        <constraint firstItem="0wE-PL-fU6" firstAttribute="leading" secondItem="qkT-t2-dw5" secondAttribute="leading" constant="25" id="EZ1-6j-TgN"/>
+                        <constraint firstItem="0d5-aP-Ecn" firstAttribute="leading" secondItem="rbg-MI-Uba" secondAttribute="trailing" constant="3" id="KKy-Kr-RlF"/>
+                        <constraint firstItem="rbg-MI-Uba" firstAttribute="leading" secondItem="0wE-PL-fU6" secondAttribute="leading" id="kvA-Yz-1et"/>
+                        <constraint firstItem="0d5-aP-Ecn" firstAttribute="centerY" secondItem="rbg-MI-Uba" secondAttribute="centerY" id="pSw-il-iiD"/>
+                        <constraint firstItem="rbg-MI-Uba" firstAttribute="top" secondItem="0wE-PL-fU6" secondAttribute="bottom" constant="21" id="qqx-4f-EoL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qkT-t2-dw5" firstAttribute="height" secondItem="sOK-z6-meE" secondAttribute="height" id="7PU-bM-dk4"/>
+                <constraint firstItem="qkT-t2-dw5" firstAttribute="centerX" secondItem="u0X-Ga-HmP" secondAttribute="centerX" id="YoY-r8-9Xq"/>
+                <constraint firstItem="qkT-t2-dw5" firstAttribute="centerY" secondItem="u0X-Ga-HmP" secondAttribute="centerY" id="Zg1-DT-CG2"/>
+                <constraint firstItem="qkT-t2-dw5" firstAttribute="width" secondItem="sOK-z6-meE" secondAttribute="width" id="dEw-Vf-sx2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="u0X-Ga-HmP"/>
+            <connections>
+                <outlet property="titleLabel" destination="0wE-PL-fU6" id="KMx-10-6Ob"/>
+                <outlet property="yourRankLabel" destination="rbg-MI-Uba" id="UqM-H2-Mu9"/>
+                <outlet property="yourRankValue" destination="0d5-aP-Ecn" id="dhY-8a-ri8"/>
+            </connections>
+            <point key="canvasLocation" x="215.19999999999999" y="235.23238380809596"/>
+        </collectionReusableView>
+    </objects>
+</document>

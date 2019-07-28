@@ -10,7 +10,7 @@ import UIKit
 class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-           // titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            titleLabel.text =  GameballApp.clientBotStyle?.referralHeadLine
             
             if Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
@@ -23,7 +23,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     }
     @IBOutlet weak var describtionLabel: UILabel!{
         didSet {
-         //   describtionLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            describtionLabel.text =  GameballApp.clientBotStyle?.referralText
             
             if Localizator.sharedInstance.language == Languages.arabic {
                 describtionLabel.font = Fonts.cairoRegularFont12
@@ -37,6 +37,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     @IBOutlet weak var textField: UITextField!{
         didSet{
             
+            textField.text = GameballApp.clientBotStyle?.referralSignUpLink
             if Localizator.sharedInstance.language == Languages.arabic {
                 textField.font = Fonts.cairoRegularFont10
                 
@@ -52,7 +53,12 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 11, height: textField.frame.height))
             textField.leftViewMode = .always
             if #available(iOS 11.0, *) {
-                textField.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
+                if Localizator.sharedInstance.language == Languages.arabic {
+                    textField.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
+
+                } else {
+                    textField.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
+                }
             } else {
                 // Fallback on earlier versions
             }
@@ -62,10 +68,18 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     @IBOutlet weak var copyBtn: UIButton!{
         didSet{
             if #available(iOS 11.0, *) {
-                copyBtn.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
+                if Localizator.sharedInstance.language == Languages.arabic {
+                    copyBtn.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
+
+                } else {
+                    copyBtn.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
+
+                }
             } else {
                 // Fallback on earlier versions
             }
+            
+            copyBtn.setTitle(LocalizationsKeys.FriendReferalScreen.copy.rawValue.localized, for: .normal)
             if Localizator.sharedInstance.language == Languages.arabic {
                 copyBtn.titleLabel?.font = Fonts.cairoBoldFont12
                 

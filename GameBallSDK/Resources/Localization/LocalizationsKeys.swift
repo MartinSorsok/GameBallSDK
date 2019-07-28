@@ -29,8 +29,14 @@ class LocalizationsKeys: NSObject {
     
     enum LeaderBoardScreen :String{
         case  leaderboardTitle = "LeaderboardTitle"
+        case  yourRank = "Your rank"
+        case score = "Score"
+    }
+    enum FriendReferalScreen :String{
+        case  copy = "Copy"
      
     }
+    
     
     
 }

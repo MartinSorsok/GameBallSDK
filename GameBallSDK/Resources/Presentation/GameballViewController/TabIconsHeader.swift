@@ -43,7 +43,7 @@ extension TabIconsHeader: UICollectionViewDelegate,UICollectionViewDataSource{
             cell.lineView.backgroundColor =  mainAppColor
         } else {
             cell.tintColor = UIColor.black
-            cell.lineView.backgroundColor =  UIColor.black
+            cell.lineView.isHidden = true
         }
      
         return cell
@@ -56,6 +56,7 @@ extension TabIconsHeader: UICollectionViewDelegate,UICollectionViewDataSource{
         
         cell.cellImageView.image = cell.cellImageView?.image?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = mainAppColor
+        cell.lineView.isHidden = false
         cell.lineView.backgroundColor = mainAppColor
 
         delegate?.cellTapped(feature: featuresArray[indexPath.item])
@@ -66,7 +67,7 @@ extension TabIconsHeader: UICollectionViewDelegate,UICollectionViewDataSource{
 
         cell.cellImageView.image = cell.cellImageView?.image?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = UIColor.black
-        cell.lineView.backgroundColor =  UIColor.black
+        cell.lineView.isHidden = true
     }
     
     
