@@ -17,7 +17,6 @@ class NetworkManager:NSObject {
     let baseURL: String
     let connectionScheme: String
     let host: String
-    let port: Int
     var APIKey: String
     var currentLanguage: Languages
     var referalCode = ""
@@ -34,25 +33,22 @@ class NetworkManager:NSObject {
         }
         let urlSession = URLSession(configuration: sessionConfiguration)
         let baseURL = APIEndPoints.base_URL
-        let scheme = "http"
-//        let host = "ec2-3-17-74-152.us-east-2.compute.amazonaws.com"
-        let host = APIEndPoints.base_test_URL
-//        let port = 8092
-        let port = APIEndPoints.appPort
+        let scheme = "https"
+        let host = APIEndPoints.base_URL
+//        let port = APIEndPoints.appPort
         let APIKey = ""
         let playerId = ""
         let categoryId = ""
         let currentLanguage = Languages.english
-        let networkManager = NetworkManager.init(urlSession: urlSession, connectionScheme: scheme, host: host, port: port, APIKey: APIKey, playerId: playerId, categoryId: categoryId,currentLanguage: currentLanguage)
+        let networkManager = NetworkManager.init(urlSession: urlSession, connectionScheme: scheme, host: host, APIKey: APIKey, playerId: playerId, categoryId: categoryId,currentLanguage: currentLanguage)
         return networkManager
     }()
     
     
-    private init(urlSession: URLSession, connectionScheme: String, host: String, port: Int, APIKey: String, playerId: String, categoryId: String , currentLanguage: Languages) {
+    private init(urlSession: URLSession, connectionScheme: String, host: String, APIKey: String, playerId: String, categoryId: String , currentLanguage: Languages) {
         self.urlSession = urlSession
         self.connectionScheme = connectionScheme
         self.host = host
-        self.port = port
         self.baseURL = ""
         self.APIKey = APIKey
         self.playerId = playerId
@@ -852,7 +848,7 @@ extension URL {
         var components = URLComponents()
         components.scheme = NetworkManager.shared().connectionScheme
         components.host = NetworkManager.shared().host
-        components.port = NetworkManager.shared().port
+//        components.port = NetworkManager.shared().port
         components.path += path
         if params.count > 0 {
             switch method {
@@ -878,6 +874,7 @@ extension URLRequest {
         case .POST, .PUT:
             httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
             setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         default:
             break
         }

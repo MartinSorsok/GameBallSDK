@@ -17,9 +17,9 @@ struct GetLeaderboardResponse: Codable {
     
     enum CodingKeys: String, CodingKey {
         case leaderboard = "response"
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }
 

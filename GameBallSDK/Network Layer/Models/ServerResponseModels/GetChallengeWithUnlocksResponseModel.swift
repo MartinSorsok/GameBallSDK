@@ -31,9 +31,9 @@ struct GetChallengeWithUnlocksResponseModel: Codable {
     
     enum CodingKeys: String, CodingKey {
         case response
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }
 
@@ -42,7 +42,7 @@ struct ChallengeWithUnlocksResponseData: Codable {
     let challenges: [Challenge]?
     
     enum CodingKeys: String, CodingKey {
-        case quests = "Quests"
-        case challenges = "Challenges"
+        case quests = "quests"
+        case challenges = "challenges"
     }
 }

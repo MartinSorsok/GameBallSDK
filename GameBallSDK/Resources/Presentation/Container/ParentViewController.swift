@@ -166,6 +166,14 @@ self.navigationController?.navigationBar.isHidden = true
 //            }
 //        }
     
+    @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
+        //
+//        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
+            if let url = NSURL(string: "https://www.gameball.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+        
+    }
     @IBAction func dismissAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

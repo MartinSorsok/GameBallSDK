@@ -15,10 +15,10 @@ struct GetPlayerInfoResponse: Codable {
     let errorCode: Int?
     
     enum CodingKeys: String, CodingKey {
-        case response
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case response = "response"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }
 
@@ -27,7 +27,7 @@ struct GetPlayerInfoResponseObject: Codable {
     let nextLevel: Level?
     
     enum CodingKeys: String, CodingKey {
-        case playerInfo = "PlayerInfo"
-        case nextLevel = "NextLevel"
+        case playerInfo = "playerInfo"
+        case nextLevel = "nextLevel"
     }
 }

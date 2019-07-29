@@ -65,7 +65,7 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet private weak var frubiesTitleLabel: UILabel! {
         didSet {
-            frubiesTitleLabel.text = LocalizationsKeys.GameballScreen.rankPointsName.rawValue.localized
+            frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
 //            frubiesTitleLabel.textColor = Colors.appGray173
             
             if Localizator.sharedInstance.language == Languages.arabic {
@@ -92,7 +92,7 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet private weak var pointsTitleLabel: UILabel! {
         didSet {
-            pointsTitleLabel.text = LocalizationsKeys.GameballScreen.pointsName.rawValue.localized
+            pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
 //            pointsTitleLabel.textColor = Colors.appGray173
             
             if Localizator.sharedInstance.language == Languages.arabic {

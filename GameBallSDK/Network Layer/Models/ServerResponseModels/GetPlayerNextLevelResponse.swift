@@ -17,8 +17,8 @@ struct GetPlayerNextLevelResponse: Codable {
     
     enum CodingKeys: String, CodingKey {
         case playerNextLevel = "response"
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }

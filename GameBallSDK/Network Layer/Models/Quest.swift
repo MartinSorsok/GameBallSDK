@@ -16,13 +16,13 @@ struct Quest: Codable {
     let questChallenges: [Challenge]?
     
     enum CodingKeys: String, CodingKey {
-        case questName = "QuestName"
-        case questID = "QuestId"
-        case description = "Description"
-        case isActive = "IsActive"
-        case isReferral = "IsReferral"
-        case rewardFrubies = "RewardFrubies"
-        case rewardPoints = "RewardPoints"
-        case questChallenges = "QuestChallenges"
+        case questName = "questName"
+        case questID = "questId"
+        case description = "description"
+        case isActive = "isActive"
+        case isReferral = "isReferral"
+        case rewardFrubies = "rewardFrubies"
+        case rewardPoints = "rewardPoints"
+        case questChallenges = "questChallenges"
     }
 }

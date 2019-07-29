@@ -16,10 +16,10 @@ struct GetClientBotStyleResponse: Codable {
     let errorCode: Int
     
     enum CodingKeys: String, CodingKey {
-        case response
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case response = "response"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }
 

@@ -20,19 +20,19 @@ struct Profile: Codable {
     let level: Level?
     
     enum CodingKeys: String, CodingKey {
-        case name = "Name"
-        case email = "Email"
-        case displayName = "DisplayName"
-        case gender = "Gender"
-        case age = "Age"
-        case dateOfBirth = "DateOfBirth"
-        case playerCategoryID = "PlayerCategoryID"
-        case externalID = "ExternalID"
-        case currentLevel = "CurrentLevel"
-        case accFrubies = "AccFrubies"
-        case accPoints = "AccPoints"
-        case statusID = "StatusId"
-        case level = "Level"
+        case name = "name"
+        case email = "email"
+        case displayName = "displayName"
+        case gender = "gender"
+        case age = "age"
+        case dateOfBirth = "dateOfBirth"
+        case playerCategoryID = "playerCategoryID"
+        case externalID = "externalID"
+        case currentLevel = "currentLevel"
+        case accFrubies = "accFrubies"
+        case accPoints = "accPoints"
+        case statusID = "statusId"
+        case level = "level"
     }
 }
 

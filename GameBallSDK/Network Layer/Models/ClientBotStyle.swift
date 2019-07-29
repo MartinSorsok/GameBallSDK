@@ -9,24 +9,28 @@
 import Foundation
 
 struct ClientBotStyle: Codable {
-    let clientID: Int
+//    let clientID: Int
     let botMainColor, buttonBackgroundColor, buttonFlagColor, referralSignUpLink, referralHeadLine, referralText, buttonSariColor: String
-    let shape, direction, offlineStatemessage, button, buttonLink: String?
+    let buttonShape, buttonDirection, offlineStatemessage, button, buttonLink: String?
     let enableLeaderboard: Bool?
+    let rankPointsName: String?
+    let walletPointsName: String?
     enum CodingKeys: String, CodingKey {
-        case clientID = "ClientId"
-        case botMainColor = "BotMainColor"
-        case buttonBackgroundColor = "ButtonBackgroundColor"
-        case buttonFlagColor = "ButtonFlagColor"
-        case buttonSariColor = "ButtonSariColor"
-        case shape = "Shape"
-        case direction = "Direction"
-        case offlineStatemessage = "OfflineStatemessage"
-        case button = "Button"
-        case buttonLink = "ButtonLink"
-        case enableLeaderboard = "EnableLeaderboard"
-        case referralSignUpLink = "ReferralSignUpLink"
-        case referralHeadLine = "ReferralHeadLine"
-        case referralText = "ReferralText"
+//        case clientID = "clientId"
+        case botMainColor = "botMainColor"
+        case buttonBackgroundColor = "buttonBackgroundColor"
+        case buttonFlagColor = "buttonFlagColor"
+        case buttonSariColor = "buttonSariColor"
+        case buttonShape = "buttonShape"
+        case buttonDirection = "buttonDirection"
+        case offlineStatemessage = "offlineStatemessage"
+        case button = "button"
+        case buttonLink = "buttonLink"
+        case enableLeaderboard = "enableLeaderboard"
+        case referralSignUpLink = "referralSignUpLink"
+        case referralHeadLine = "referralHeadLine"
+        case referralText = "referralText"
+        case rankPointsName = "rankPointsName"
+        case walletPointsName = "walletPointsName"
     }
 }

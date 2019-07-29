@@ -10,19 +10,19 @@ import Foundation
 
 
 struct Icon: Codable {
-    let id : Int?
-    let name: String?
+//    let id : Int?
+//    let name: String?
     let fileName: String?
-    let iconTypeID: Int?
-    let creationDate, lastUpdate: String?
+//    let iconTypeID: Int?
+//    let creationDate, lastUpdate: String?
     
     enum CodingKeys: String, CodingKey {
-        case id = "Id"
-        case name = "Name"
-        case fileName = "FileName"
-        case iconTypeID = "IconTypeId"
-        case creationDate = "CreationDate"
-        case lastUpdate = "LastUpdate"
+//        case id = "id"
+//        case name = "name"
+        case fileName = "fileName"
+//        case iconTypeID = "iconTypeId"
+//        case creationDate = "creationDate"
+//        case lastUpdate = "lastUpdate"
     }
 }
 

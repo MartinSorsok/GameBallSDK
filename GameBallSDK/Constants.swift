@@ -10,15 +10,21 @@ import Foundation
 import UIKit
 
 struct APIEndPoints {
-    static let base_URL = "http://18.188.207.253:8092"
-    static let base_test_URL = "3.17.74.152"
+    static let base_URL = "gb-api.azurewebsites.net"
+//    static let base_test_URL = "3.17.74.152"
     static let appPort = 8092
-    static let getBotStyle = "/api/Bots/GetClientBotSettings"
-    static let getChallengesWithUnlocks = "/api/Bots/GetWithUnlocks"
-    static let getLeaderboards = "/api/Bots/GetLeaderboard"
+    
+    static let getBotStyle = "/api/v1.0/Bots/BotSettings"
+    static let getChallengesWithUnlocks = "/api/v1.0/Bots/challenges"
+    static let getLeaderboards = "/api/v1.0/Bots/leaderboard"
+    static let getPlayerInfo = "/api/v1.0/Bots/PlayerInfo"
+
+    
+    
+    static let friendReferral = "/api/integration/referral"
+
     static let getPlayerNextLevel = "/api/Bots/GetNextLevel"
     static let getPlayerDetails = "/api/Bots/GetPlayerDetails"
-    static let getPlayerInfo = "/api/Bots/GetPlayerInfo"
     static let postAction = "/api/Integration/Action"
     static let registerPlayer = "/api/integration/RegisterPlayerDevice"
     static let generateOTP = "/api/Integration/OTP"
@@ -27,7 +33,6 @@ struct APIEndPoints {
     static let redeemPoints = "/api/Integration/Transaction/Redeem"
     static let reversePoints = "/api/Integration/Transaction/Hold"
     static let getPlayerBalance = "/api/Integration/Transaction/Balance"
-    static let friendReferral = "/api/integration/referral"
 
 
 }

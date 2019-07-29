@@ -15,29 +15,36 @@ struct PlayerInfo: Codable {
     let mobileNumber: String?
     let dateOfBirth: String?
     let joinDate: String?
-    let playerCategoryID: Int?
+    let playerCategoryID, playerId: Int?
     let externalID: String?
-    let currentLevel, accFrubies, accPoints, statusID: Int?
+    let currentLevel, accFrubies, accPoints: Int?
     let level: Level?
     let referralCode, referredByID: String?
-    
+    let isActive: Bool?
+    let dynamicLink, dynamicPreviewLink : String?
+
     enum CodingKeys: String, CodingKey {
-        case displayName = "DisplayName"
-        case firstName = "FirstName"
-        case lastName = "LastName"
-        case email = "Email"
-        case gender = "Gender"
-        case mobileNumber = "MobileNumber"
-        case dateOfBirth = "DateOfBirth"
-        case joinDate = "JoinDate"
-        case playerCategoryID = "PlayerCategoryID"
-        case externalID = "ExternalID"
-        case currentLevel = "CurrentLevel"
-        case accFrubies = "AccFrubies"
-        case accPoints = "AccPoints"
-        case statusID = "StatusId"
-        case level = "Level"
-        case referralCode = "ReferralCode"
-        case referredByID = "ReferredById"
+        
+        case playerId = "playerId"
+        case displayName = "displayName"
+        case firstName = "firstName"
+        case lastName = "lastName"
+        case email = "email"
+        case gender = "gender"
+        case mobileNumber = "mobileNumber"
+        case dateOfBirth = "dateOfBirth"
+        case joinDate = "joinDate"
+        case playerCategoryID = "playerCategoryID"
+        case externalID = "externalID"
+        case currentLevel = "currentLevel"
+        case accFrubies = "accFrubies"
+        case accPoints = "accPoints"
+        case isActive = "isActive"
+//        case statusID = "statusId"
+        case level = "level"
+        case referralCode = "referralCode"
+        case referredByID = "referredById"
+        case dynamicLink = "dynamicLink"
+        case dynamicPreviewLink = "dynamicPreviewLink"
     }
 }

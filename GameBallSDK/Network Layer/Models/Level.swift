@@ -9,29 +9,26 @@
 import Foundation
 
 struct Level: Codable {
-    let id, clientID: Int?
-    let isAchivedNotificationsOn: Bool?
-    let iconID, name: String?
+    let id: Int?
+    let name: String?
     let description: String?
     let rewardFrubies, rewardPoints, levelFrubies, levelOrder: Int?
-    let iconEnabled, isDeleted, isDefault, isActive: Bool?
-    let playerCategoryID: Int?
     let icon: Icon?
     
     enum CodingKeys: String, CodingKey {
-        case id = "Id"
-        case clientID = "ClientID"
-        case isAchivedNotificationsOn = "IsAchivedNotificationsOn"
-        case iconID = "IconID"
-        case name = "Name"
-        case description = "Description"
-        case rewardFrubies = "RewardFrubies"
-        case rewardPoints = "RewardPoints"
-        case levelFrubies = "LevelFrubies"
-        case levelOrder = "LevelOrder"
-        case iconEnabled = "IconEnabled"
-        case isDeleted, isDefault, isActive
-        case playerCategoryID = "PlayerCategoryID"
-        case icon = "Icon"
+        case id = "id"
+        case name = "name"
+        case description = "description"
+        case rewardFrubies = "rewardFrubies"
+        case rewardPoints = "rewardPoints"
+        case levelFrubies = "levelFrubies"
+        case levelOrder = "levelOrder"
+        case icon = "icon"
+
+//        case iconEnabled = "iconEnabled"
+//        case isDeleted, isDefault, isActive
+//        case playerCategoryID = "playerCategoryID"
+//        case isAchivedNotificationsOn = "isAchivedNotificationsOn"
+//        case iconID = "iconID"
     }
 }

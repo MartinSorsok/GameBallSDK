@@ -70,6 +70,7 @@
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="SXD-kb-a4r" firstAttribute="centerY" secondItem="Vjf-yG-95X" secondAttribute="centerY" id="89e-Bk-RHH"/>
                         <constraint firstItem="Vjf-yG-95X" firstAttribute="leading" secondItem="tlI-rL-wIK" secondAttribute="trailing" constant="8" id="I2R-EA-3oA"/>
@@ -80,8 +81,11 @@
                         <constraint firstItem="Vjf-yG-95X" firstAttribute="centerY" secondItem="Dpb-CI-aC6" secondAttribute="centerY" id="vaC-5B-wP4"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="Dpb-CI-aC6"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="JB5-pj-mEE" appends="YES" id="WVk-bQ-Kpy"/>
+                    </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Vx-2Z6" customClass="ProfileHeaderView" customModule="gameballSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Vx-2Z6" customClass="ProfileHeaderView" customModule="GameBallSDK" customModuleProvider="target">
                     <rect key="frame" x="67" y="269" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,6 +112,11 @@
             </variation>
             <point key="canvasLocation" x="-233" y="57"/>
         </view>
+        <tapGestureRecognizer id="JB5-pj-mEE">
+            <connections>
+                <action selector="gameBallTapped:" destination="-1" id="rIh-Mf-10f"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="gameballIcon.png" width="18" height="18"/>
