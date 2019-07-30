@@ -14,6 +14,10 @@ protocol TabBarDelegate: AnyObject {
     func shareText(text: String)
 
 }
+protocol ProfileHeaderViewDelegate: AnyObject {
+    func dataReady(view: UIView)
+}
+
 
 protocol TabIconHeaderDelegate: AnyObject {
     func cellTapped(feature: Int)
@@ -24,8 +28,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     @IBOutlet private weak var profileHeaderView: ProfileHeaderView!
 
     //    let color = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
-    let unselectedIconColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F") ?? UIColor.orange
-   let userCache = UserProfileCache.get()
+    let userCache = UserProfileCache.get()
     private let mainTableViewCell = "MainTableViewCell"
     private let badgesCollectionViewinCell = "BadgesCollectionViewinCell"
     private let tabIconsHeader = "TabIconsHeader"
@@ -67,16 +70,12 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     public init() {
         let b = Bundle.init(for: type(of: self))
         super.init(nibName: "ParentViewController", bundle: Bundle.init(for: type(of: self)))
-//        self.buttonBarItemSpec = ButtonBarItemSpec.nibFile(nibName: "TabbarCollectionViewCell", bundle: b, width: { _ in
-//            return 55.0
-//        })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let purpleInspireColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
     
     override func viewDidLoad() {
 //        // change selected bar color
@@ -103,6 +102,9 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 //        }
 
         super.viewDidLoad()
+        
+        
+        profileHeaderView.delegate = self
         mainTableView.dataSource = self
         mainTableView.delegate = self
         
@@ -117,23 +119,25 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         mainTableView.estimatedRowHeight = 600
         mainTableView.tableFooterView = UIView()
 self.navigationController?.navigationBar.isHidden = true
+        
+        self.startLoading()
     }
 
     
 
-    private func getSettings(completion: @escaping () -> Void) {
-        let settingsViewModel = ClientBotSettingsViewModel()
-        settingsViewModel.getClientBotStyle(completion: {
-            error in
-            if error != nil {
-                // handle error
-            }
-            else {
-                GameballApp.clientBotStyle = settingsViewModel.botStyle
-                completion()
-            }
-        })
-    }
+//    private func getSettings(completion: @escaping () -> Void) {
+//        let settingsViewModel = ClientBotSettingsViewModel()
+//        settingsViewModel.getClientBotStyle(completion: {
+//            error in
+//            if error != nil {
+//                // handle error
+//            }
+//            else {
+//                GameballApp.clientBotStyle = settingsViewModel.botStyle
+//                completion()
+//            }
+//        })
+//    }
     
 
 //    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -250,6 +254,8 @@ extension ParentViewController: TabBarDelegate {
     }
     
     func dataReady(tableview: UITableView) {
+        self.endLoading()
+
         DispatchQueue.main.async {
 
             self.mainTableView.reloadData()
@@ -260,6 +266,8 @@ extension ParentViewController: TabBarDelegate {
     }
     
     func dataReady(collectionView: UICollectionView){
+        self.endLoading()
+
         DispatchQueue.main.async {
             self.collectionViewHeight =  collectionView.collectionViewLayout.collectionViewContentSize.height
             self.mainTableView.reloadData()
@@ -281,6 +289,8 @@ extension ParentViewController: TabBarDelegate {
 extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
         print(feature)
+        self.startLoading()
+
         nc.post(name: Notification.Name("tabBarTapped"), object: feature)
         self.currentFeature = feature
 
@@ -288,6 +298,15 @@ extension ParentViewController: TabIconHeaderDelegate{
     }
     
     
+    
+    
+}
+
+
+extension ParentViewController: ProfileHeaderViewDelegate{
+    func dataReady(view: UIView) {
+
+    }
     
     
 }

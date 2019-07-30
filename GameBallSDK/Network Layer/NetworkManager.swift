@@ -22,7 +22,7 @@ class NetworkManager:NSObject {
     var referalCode = ""
     var playerId: String
     var categoryId: String
-    
+    var clientBotSettings: Bool?
     
     private static var sharedManager:NetworkManager = {
         let sessionConfiguration = URLSessionConfiguration.default
@@ -64,6 +64,10 @@ class NetworkManager:NSObject {
     
     func isAPIKeySet() -> Bool {
         return (self.APIKey.count > 0) ? true : false
+    }
+    
+    func isBotSettingsSet() -> Bool {
+        return clientBotSettings ?? false
     }
     func isDynamicSet() -> Bool {
         return (self.referalCode.count > 0) ? true : false

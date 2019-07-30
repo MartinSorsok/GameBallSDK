@@ -35,7 +35,6 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     }
     
     private func fetchData(completion: (()->())? = nil) {
-//        startLoading()
         getSettings(completion: {
             self.getChallenges(completion: {
                 DispatchQueue.main.async {

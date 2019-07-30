@@ -24,11 +24,11 @@ open class GameballApp: NSObject {
     public init(APIKey: String, playerId: String, categoryId: String = "0") {
         super.init()
         self.setupFonts()
+        self.fetchBotStyle()
 
         NetworkManager.shared().registerAPIKey(APIKey: APIKey)
         self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
-        self.fetchBotStyle()
 
     }
     
@@ -36,9 +36,9 @@ open class GameballApp: NSObject {
     public init(APIKey: String,language: String = "en") {
         super.init()
         self.setupFonts()
+        self.fetchBotStyle()
 
         language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
-        self.fetchBotStyle()
     }
     
 
@@ -48,13 +48,15 @@ open class GameballApp: NSObject {
             guard let errorModel = error else {
                 if data != nil {
                     GameballApp.clientBotStyle = (data as? GetClientBotStyleResponse)?.response
-
+                    NetworkManager.shared().clientBotSettings = true
                     completion?(true, nil)
                 }
                 return
             }
             // ToDo: return the error model
             print("Could not get client bot settings")
+            NetworkManager.shared().clientBotSettings = false
+            self.fetchBotStyle()
             completion?(false, errorModel.description)
         }
     }
@@ -68,13 +70,18 @@ open class GameballApp: NSObject {
     }
     public func launchGameball() -> UIViewController? {
         if NetworkManager.shared().isAPIKeySet() {
-            if NetworkManager.shared().isPlayerIdSet() {
-                let vc = ParentViewController()
-                let nc = UINavigationController(rootViewController: vc)
-                return nc
-            }
-            else {
-                print("Gameball Player Id is not set...")
+            if NetworkManager.shared().isBotSettingsSet() {
+                if NetworkManager.shared().isPlayerIdSet() {
+                    let vc = ParentViewController()
+                    let nc = UINavigationController(rootViewController: vc)
+                    return nc
+                }
+                else {
+                    print("Gameball Player Id is not set...")
+                    return nil
+                }
+            } else {
+                print("Gameball BotSettings is not set...")
                 return nil
             }
         }
@@ -82,6 +89,8 @@ open class GameballApp: NSObject {
             print("Gameball API Key is not set...")
             return nil
         }
+        
+        
     }
     
     public func luanchTest() -> UIViewController? {

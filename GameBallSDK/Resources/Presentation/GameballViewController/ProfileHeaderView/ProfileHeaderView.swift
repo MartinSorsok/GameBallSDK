@@ -13,11 +13,15 @@ class ProfileHeaderView: UIView {
     var viewModel: PlayerDetailsViewModel = PlayerDetailsViewModel()
     var playerInfoViewModel: PlayerInfoViewModel = PlayerInfoViewModel()
     
-    @IBOutlet var view: UIView!
+    @IBOutlet var view: UIView!{
+        didSet {
+            view.isHidden = true
+        }
+    }
     
     @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var progressView: ProgressView!
-    
+    weak var delegate: ProfileHeaderViewDelegate?
     @IBOutlet weak var youAreOnLevelLabel: UILabel!{
         didSet{
             youAreOnLevelLabel.text = LocalizationsKeys.GameballScreen.youAreOnLevelText.rawValue.localized
@@ -220,7 +224,12 @@ class ProfileHeaderView: UIView {
 //        progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: 0.5)
 //        setupViews()
         fetchData(completion: {
-            print("done")
+            self.delegate?.dataReady(view: self.view)
+            DispatchQueue.main.async {
+                self.view.isHidden = false
+
+            }
+            print("done fetchPlayerInfo ")
         })
     }
     
