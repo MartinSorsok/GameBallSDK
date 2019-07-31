@@ -170,10 +170,12 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     }
 
 
-//    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let challenge = challenges[indexPath.row]
+
+        delegate?.challengeTapped(with: challenge)
 //        if indexPath.section == 0 {
 //            // ToDo: init vc based on challenge
-//            let challenge = challenges[indexPath.row]
 //            if challenge.challengeType == .Highscore {
 //                let vc = AchivementHighscoreViewController()
 //                vc.challenge = challenge
@@ -198,7 +200,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 //                push(vc, animated: true)
 //            }
 //        }
-//    }
+    }
     
 }
 

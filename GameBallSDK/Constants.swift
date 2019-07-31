@@ -45,7 +45,8 @@ struct Colors {
     static let appGray239 = UIColor(white: 239 / 255, alpha: 1)
     static let curvedViewColor = UIColor(red: 239/256, green: 239/256, blue: 239/256, alpha: 1)
      static let appGray153 = UIColor(red: 153/256, green: 153/256, blue: 153/256, alpha: 1)
-    
+    static let appBlack26 = UIColor(red: 26/256, green: 26/256, blue: 26/256, alpha: 1)
+
       static let appGray128 = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 1)
      static let appGray242 = UIColor(red: 242/256, green: 242/256, blue: 242/256, alpha: 1)
         static let appGray225 = UIColor(red: 225/256, green: 225/256, blue: 225/256, alpha: 1)
@@ -71,7 +72,6 @@ struct Fonts {
     static let badgeNameFont =  UIFont(name: "Poppins-Black", size: UIFont.labelFontSize)
     
     static let cairoRegularFont10 =  UIFont(name: "Cairo-Regular", size: 10.0)
-
     static let cairoRegularFont12 =  UIFont(name: "Cairo-Regular", size: 12.0)
     static let cairoRegularFont14 =  UIFont(name: "Cairo-Regular", size: 14.0)
     static let cairoRegularFont16 =  UIFont(name: "Cairo-Regular", size: 16.0)
@@ -80,16 +80,16 @@ struct Fonts {
     static let cairoBoldFont12 =  UIFont(name: "Cairo-Bold", size: 12.0)
     static let cairoBoldFont14 =  UIFont(name: "Cairo-Bold", size: 14.0)
     static let cairoBoldFont16 =  UIFont(name: "Cairo-Bold", size: 16.0)
-    
+    static let cairoBoldFont20 =  UIFont(name: "Cairo-Bold", size: 20.0)
+
     static let montserratSemiBoldFont8 =  UIFont(name: "Montserrat-SemiBold", size: 8.0)
     static let montserratSemiBoldFont10 =  UIFont(name: "Montserrat-SemiBold", size: 10.0)
     static let montserratSemiBoldFont12 =  UIFont(name: "Montserrat-SemiBold", size: 12.0)
-
     static let montserratSemiBoldFont14 =  UIFont(name: "Montserrat-SemiBold", size: 14.0)
     static let montserratSemiBoldFont16 =  UIFont(name: "Montserrat-SemiBold", size: 16.0)
+    static let montserratSemiBoldFont20 =  UIFont(name: "Montserrat-SemiBold", size: 20.0)
 
     static let montserratLightFont10 =  UIFont(name: "Montserrat-Light", size: 10.0)
-
     static let montserratLightFont12 =  UIFont(name: "Montserrat-Light", size: 12.0)
     static let montserratLightFont14 =  UIFont(name: "Montserrat-Light", size: 14.0)
     static let montserratLightFont16 =  UIFont(name: "Montserrat-Light", size: 16.0)

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="ChallengeDetailsHeaderCell" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="427" height="299.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="479-xm-HcP">
+                        <rect key="frame" x="0.0" y="0.0" width="427" height="300"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MaskedImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Du-ng-8oX">
+                                <rect key="frame" x="0.0" y="262.5" width="427" height="37.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37.399999999999999" id="iL3-Wq-7jk"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t94-pZ-7Lk">
+                                <rect key="frame" x="152.5" y="26" width="122" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="6Qe-FC-Shs"/>
+                                    <constraint firstAttribute="width" secondItem="t94-pZ-7Lk" secondAttribute="height" multiplier="1:1" id="p5m-0x-JFL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yw-lj-fJe">
+                                <rect key="frame" x="192.5" y="173" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-Vl-3Ni">
+                                <rect key="frame" x="25" y="201" width="377" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giftNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="ueM-GA-hag">
+                                <rect key="frame" x="174.5" y="233" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ueM-GA-hag" secondAttribute="height" multiplier="1:1" id="FbV-GP-x7F"/>
+                                    <constraint firstAttribute="height" constant="14" id="ulL-8a-wbf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCP-Ss-Ica">
+                                <rect key="frame" x="192.5" y="229.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hCP-Ss-Ica" firstAttribute="leading" secondItem="ueM-GA-hag" secondAttribute="trailing" constant="4" id="3H3-0i-qGI"/>
+                            <constraint firstItem="t94-pZ-7Lk" firstAttribute="top" secondItem="479-xm-HcP" secondAttribute="top" constant="26" id="4Xi-2y-Jwp"/>
+                            <constraint firstItem="6yw-lj-fJe" firstAttribute="centerX" secondItem="t94-pZ-7Lk" secondAttribute="centerX" id="BE1-AK-f57"/>
+                            <constraint firstAttribute="height" constant="300" id="Dgc-IA-8jv"/>
+                            <constraint firstItem="t94-pZ-7Lk" firstAttribute="centerX" secondItem="479-xm-HcP" secondAttribute="centerX" id="ETq-1l-2nn"/>
+                            <constraint firstAttribute="trailing" secondItem="3Du-ng-8oX" secondAttribute="trailing" id="O4A-IT-ejO"/>
+                            <constraint firstItem="wF3-Vl-3Ni" firstAttribute="leading" secondItem="479-xm-HcP" secondAttribute="leading" constant="25" id="Ojl-NK-sGq"/>
+                            <constraint firstAttribute="bottom" secondItem="3Du-ng-8oX" secondAttribute="bottom" id="T0Y-Y2-Qop"/>
+                            <constraint firstItem="wF3-Vl-3Ni" firstAttribute="top" secondItem="6yw-lj-fJe" secondAttribute="bottom" constant="7" id="TAy-26-cCz"/>
+                            <constraint firstItem="hCP-Ss-Ica" firstAttribute="top" secondItem="wF3-Vl-3Ni" secondAttribute="bottom" constant="8" id="Xbr-Uk-rJv"/>
+                            <constraint firstItem="ueM-GA-hag" firstAttribute="width" secondItem="ueM-GA-hag" secondAttribute="height" multiplier="1:1" id="iGB-Zx-JdZ"/>
+                            <constraint firstItem="6yw-lj-fJe" firstAttribute="top" secondItem="t94-pZ-7Lk" secondAttribute="bottom" constant="25" id="j9G-0Q-zDA"/>
+                            <constraint firstAttribute="trailing" secondItem="wF3-Vl-3Ni" secondAttribute="trailing" constant="25" id="kuu-9H-UA4"/>
+                            <constraint firstItem="3Du-ng-8oX" firstAttribute="leading" secondItem="479-xm-HcP" secondAttribute="leading" id="mK2-zA-5N3"/>
+                            <constraint firstItem="hCP-Ss-Ica" firstAttribute="centerX" secondItem="wF3-Vl-3Ni" secondAttribute="centerX" id="rRl-qa-gjQ"/>
+                            <constraint firstItem="hCP-Ss-Ica" firstAttribute="centerY" secondItem="ueM-GA-hag" secondAttribute="centerY" id="yA5-oL-sJZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="479-xm-HcP" secondAttribute="trailing" id="1BM-fC-WbA"/>
+                    <constraint firstItem="479-xm-HcP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CPE-Cd-JIZ"/>
+                    <constraint firstAttribute="bottom" secondItem="479-xm-HcP" secondAttribute="bottom" constant="-85.5" id="Kgt-k5-Xof"/>
+                    <constraint firstItem="479-xm-HcP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ycb-hq-djp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="challengeDescription" destination="wF3-Vl-3Ni" id="gPW-An-tsm"/>
+                <outlet property="challengeImage" destination="t94-pZ-7Lk" id="FYY-GL-wfu"/>
+                <outlet property="challengeName" destination="6yw-lj-fJe" id="eUa-Hr-wt3"/>
+                <outlet property="challengeScore" destination="hCP-Ss-Ica" id="kXx-99-g63"/>
+                <outlet property="containerCellMainView" destination="479-xm-HcP" id="vDx-6Z-pMR"/>
+            </connections>
+            <point key="canvasLocation" x="-161" y="54"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="MaskedImage.png" width="1672" height="183"/>
+        <image name="giftNew.png" width="14" height="13"/>
+    </resources>
+</document>

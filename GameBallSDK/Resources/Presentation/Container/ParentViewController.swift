@@ -12,6 +12,7 @@ protocol TabBarDelegate: AnyObject {
     func dataReady(collectionView: UICollectionView)
     func dataReady(tableview: UITableView)
     func shareText(text: String)
+    func challengeTapped(with challenge: Challenge)
 
 }
 protocol ProfileHeaderViewDelegate: AnyObject {
@@ -246,6 +247,34 @@ self.navigationController?.navigationBar.isHidden = true
 
 
 extension ParentViewController: TabBarDelegate {
+    func challengeTapped(with challenge: Challenge) {
+            // ToDo: init vc based on challenge
+        
+                        let vc = ChallengeDetailsViewController()
+                        vc.challenge = challenge
+                        push(vc, animated: true)
+        
+//            if challenge.challengeType == .Highscore {
+//                let vc = AchivementHighscoreViewController()
+//                vc.challenge = challenge
+//                push(vc, animated: true)
+//            }
+//            else {
+//                if challenge.milestones?.count ?? 0 > 0 {
+//                    let vc = ActionBasedViewController();
+//                    vc.challenge = challenge
+//                    push(vc, animated: true)
+//                }
+//                else {
+//                    let vc = ActionBasedWithoutMilestonesViewController();
+//                    vc.challenge = challenge
+//                    push(vc, animated: true)
+//                }
+//            }
+//
+        
+    }
+    
     func shareText(text: String) {
 
         let textToShare = [ text ]
