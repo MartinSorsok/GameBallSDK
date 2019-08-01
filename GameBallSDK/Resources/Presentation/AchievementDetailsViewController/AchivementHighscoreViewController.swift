@@ -40,7 +40,7 @@ class AchivementHighscoreViewController: UIViewController {
                 }
             }
             setChallengeImage(from: viewChallenge)
-            self.highscoreLabel.text = viewChallenge.highScoreAmount ?? "No Amount"
+         //   self.highscoreLabel.text = viewChallenge.highScoreAmount ?? "No Amount"
         }
     }
 

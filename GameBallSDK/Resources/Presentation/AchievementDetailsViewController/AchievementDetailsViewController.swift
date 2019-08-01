@@ -712,7 +712,7 @@ class AchievementDetailsViewController: BaseViewController {
     func setActionBasedData() {
         if challenge.actionsCompletedPercentage != nil {
             DispatchQueue.main.async {
-                self.achievemntActionsCompletedProgressBar.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((self.challenge.actionsCompletedPercentage ?? 0)/100.0))
+               // self.achievemntActionsCompletedProgressBar.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((self.challenge.actionsCompletedPercentage ?? 0)/100.0))
             }
         }
     }
@@ -721,7 +721,7 @@ class AchievementDetailsViewController: BaseViewController {
     func setAmountBasedData() {
         if challenge.amountCompletedPercentage != nil {
             DispatchQueue.main.async {
-                self.achievemntAmountCompletedProgressBar.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((self.challenge.amountCompletedPercentage ?? 0)/100.0))
+             //   self.achievemntAmountCompletedProgressBar.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((self.challenge.amountCompletedPercentage ?? 0)/100.0))
             }
         }
     }
@@ -729,8 +729,8 @@ class AchievementDetailsViewController: BaseViewController {
     
     func setHighscoreData() {
         DispatchQueue.main.async {
-            let text = self.challenge.highScoreAmount ?? "No Value"
-            self.highscoreDescriptionLabel.text = text
+     //       let text = self.challenge.highScoreAmount ?? "No Value"
+        //    self.highscoreDescriptionLabel.text = text
         }
     }
     

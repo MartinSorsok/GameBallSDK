@@ -30,7 +30,7 @@ struct GetChallengeWithUnlocksResponseModel: Codable {
     let errorCode: Int?
     
     enum CodingKeys: String, CodingKey {
-        case response
+        case response = "response"
         case success = "success"
         case errorMsg = "errorMsg"
         case errorCode = "errorCode"

@@ -21,4 +21,13 @@
 "Score" = "Frubies";
 "Copy" = "Copy";
 
+"Status" = "Status";
+"Times" = "time(s)";
+
+"Locked" = "Locked";
+"Achieved" = "Achieved";
+"Keep going" = "Keep going";
+"You need to be on" = "You need to be on";
+"to unlock this challenge" = "to unlock this challenge";
+
 

@@ -104,12 +104,12 @@ class ActionBasedWithoutMilestonesViewController: BaseViewController {
         if let challenge = self.challenge {
             if challenge.actionsCompletedPercentage != nil {
                 DispatchQueue.main.async {
-                    self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((challenge.actionsCompletedPercentage ?? 0)/100.0))
+             //       self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((challenge.actionsCompletedPercentage ?? 0)/100.0))
                 }
             }
             if challenge.amountCompletedPercentage != nil {
                 DispatchQueue.main.async {
-                    self.amountProgressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((challenge.amountCompletedPercentage ?? 0)/100.0))
+            //        self.amountProgressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((challenge.amountCompletedPercentage ?? 0)/100.0))
                 }
             }
         }
@@ -119,7 +119,7 @@ class ActionBasedWithoutMilestonesViewController: BaseViewController {
         if let challenge = self.challenge {
             if challenge.actionsCompletedPercentage != nil {
                 DispatchQueue.main.async {
-                    self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((challenge.actionsCompletedPercentage ?? 0)/100.0))
+              //      self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: Float((challenge.actionsCompletedPercentage ?? 0)/100.0))
                 }
             }
             self.amountProgressView.isHidden = true
@@ -132,7 +132,7 @@ class ActionBasedWithoutMilestonesViewController: BaseViewController {
         if let challenge = self.challenge {
             if challenge.amountCompletedPercentage != nil {
                 DispatchQueue.main.async {
-                    self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((challenge.amountCompletedPercentage ?? 0)/100.0))
+                 //   self.actionProgressBarView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled:Float((challenge.amountCompletedPercentage ?? 0)/100.0))
                 }
             }
             self.amountProgressView.isHidden = true

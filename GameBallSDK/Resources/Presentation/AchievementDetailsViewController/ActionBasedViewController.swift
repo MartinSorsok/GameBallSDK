@@ -115,14 +115,14 @@ extension ActionBasedViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.challenge?.milestones?.count ?? 0
+        return  0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! MilestoneTableViewCell
-        if let milestone = self.challenge?.milestones?[indexPath.row] {
-            cell.setData(milestone: milestone)
-        }
+//        if let milestone = self.challenge?.milestones?[indexPath.row] {
+//            cell.setData(milestone: milestone)
+//        }
         // set cell data
         return cell
 

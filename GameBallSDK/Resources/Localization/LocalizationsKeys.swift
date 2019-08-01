@@ -37,6 +37,15 @@ class LocalizationsKeys: NSObject {
      
     }
     
-    
+    enum ChallengeDetails :String{
+        case  status = "Status"
+        case  times = "Times"
+        case  locked = "Locked"
+        case  achieved = "Achieved"
+        case  keepGoing = "Keep going"
+        case  YouNeed = "You need to be on"
+        case  toUnlock = "to unlock this challenge"
+        
+    }
     
 }

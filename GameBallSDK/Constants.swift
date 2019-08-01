@@ -46,6 +46,7 @@ struct Colors {
     static let curvedViewColor = UIColor(red: 239/256, green: 239/256, blue: 239/256, alpha: 1)
      static let appGray153 = UIColor(red: 153/256, green: 153/256, blue: 153/256, alpha: 1)
     static let appBlack26 = UIColor(red: 26/256, green: 26/256, blue: 26/256, alpha: 1)
+    static let appGray170 = UIColor(red: 170/256, green: 170/256, blue: 170/256, alpha: 1)
 
       static let appGray128 = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 1)
      static let appGray242 = UIColor(red: 242/256, green: 242/256, blue: 242/256, alpha: 1)
@@ -55,6 +56,9 @@ struct Colors {
     static let appGray130 = UIColor(white: 130 / 255, alpha: 1)
     static let appCustomDarkGray = UIColor(red: 68 / 255, green: 76 / 255, blue: 82 / 255, alpha: 1.0)
     static let appOrange = UIColor(red: 240 / 255, green: 90 / 255, blue: 42 / 255, alpha: 1.0)
+    static let appMainColor = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+
+    
 }
 
 struct Fonts {

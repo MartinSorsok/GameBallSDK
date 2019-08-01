@@ -3,7 +3,7 @@
 //  gameball_SDK
 //
 //  Created by Ahmed Abodeif on 2/6/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import Foundation
@@ -15,18 +15,27 @@ class Challenge: Codable {
     let description: String?
     let isUnlocked: Bool?
     let activationCriteriaTypeID: Int?
-    let activationFrubes, activationLevel: Int?
+    let activationFrubes: Int?
+    let activationLevel: Int?
     let levelName: String?
     let behaviorTypeID: Int?
     let behaviorType: String?
-    let targetActionsCount, targetAmount, rewardPoints: Int?
+    let targetActionsCount: Int?
+    let targetAmount: Int?
+    let rewardPoints: Int?
     let rewardFrubies: Int?
     let highScore: Int?
-    let highScoreAmount: String?
+    let highScoreAmount: Int?
     let amountUnit: String?
-    let actionsCompletedPercentage, amountCompletedPercentage, actionsAndAmountCompletedPercentage: Float?
-    let isRepeatable, isReferral: Bool?
-    let achievedCount, achievedActionsCount, currentAmount: Int?
+    let actionsCompletedPercentage: Int?
+    let amountCompletedPercentage: Int?
+    let completionPercentage:Int?
+    let actionsAndAmountCompletedPercentage: Int?
+    let isRepeatable : Bool?
+    let isReferral: Bool?
+    let achievedCount: Int?
+    let achievedActionsCount: Int?
+    let currentAmount: Int?
     let userMessage: String?
     let milestones: [Milestone]?
     
@@ -48,11 +57,11 @@ class Challenge: Codable {
     var statusDescription: String {
         switch status {
         case .locked:
-            return "Locked! You need to be on level “Level Name Here” to unlock this badge"
+            return LocalizationsKeys.ChallengeDetails.locked.rawValue.localized
         case .inProgress:
-            return "Keep going! Earn this badge and claim your prize "
+            return LocalizationsKeys.ChallengeDetails.keepGoing.rawValue.localized
         case .achieved:
-            return "Achieved (1)"
+            return LocalizationsKeys.ChallengeDetails.achieved.rawValue.localized
         }
     }
     
@@ -96,6 +105,7 @@ class Challenge: Codable {
         case actionsCompletedPercentage = "actionsCompletedPercentage"
         case amountCompletedPercentage = "amountCompletedPercentage"
         case actionsAndAmountCompletedPercentage = "actionsAndAmountCompletedPercentage"
+        case completionPercentage = "completionPercentage"
         case isRepeatable = "isRepeatable"
         case isReferral = "isReferral"
         case achievedCount = "achievedCount"
@@ -104,6 +114,7 @@ class Challenge: Codable {
         case userMessage = "userMessage"
         case milestones = "milestones"
     }
+    
 }
 
 enum ChallengeStatus {

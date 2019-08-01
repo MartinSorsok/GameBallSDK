@@ -14,7 +14,6 @@ typealias JSON = [String: Any]
 class NetworkManager:NSObject {
     
     let urlSession: URLSession
-    let baseURL: String
     let connectionScheme: String
     let host: String
     var APIKey: String
@@ -49,7 +48,6 @@ class NetworkManager:NSObject {
         self.urlSession = urlSession
         self.connectionScheme = connectionScheme
         self.host = host
-        self.baseURL = ""
         self.APIKey = APIKey
         self.playerId = playerId
         self.categoryId = categoryId
@@ -132,6 +130,17 @@ class NetworkManager:NSObject {
                 switch httpResponse.statusCode {
                 case (200..<300):
                     // Parsing incoming data
+//                    guard let data = data else { return }
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        let gitData = try decoder.decode(modelType.self, from: data)
+//                        print(gitData)
+//                        object = gitData
+//                        completion(object, nil)
+//
+//                    } catch let err {
+//                        print("Err", err)
+//                    }
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(modelType.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
@@ -760,7 +769,7 @@ class NetworkManager:NSObject {
     func adaptRequest(urlRequest: inout URLRequest) {
         if NetworkManager.shared().APIKey.count > 0 {
             urlRequest.addValue(NetworkManager.shared().APIKey, forHTTPHeaderField: "APIKey")
-            urlRequest.addValue("ar", forHTTPHeaderField: "lang")
+            urlRequest.addValue("en", forHTTPHeaderField: "lang")
 
         }
     }
