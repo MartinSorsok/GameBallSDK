@@ -13,7 +13,7 @@ protocol TabBarDelegate: AnyObject {
     func dataReady(tableview: UITableView)
     func shareText(text: String)
     func challengeTapped(with challenge: Challenge)
-
+    
 }
 protocol ProfileHeaderViewDelegate: AnyObject {
     func dataReady(view: UIView)
@@ -24,11 +24,26 @@ protocol TabIconHeaderDelegate: AnyObject {
     func cellTapped(feature: Int)
 }
 class ParentViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate {
-
-    @IBOutlet weak var mainTableView: UITableView!
+    
+    @IBOutlet weak var mainTableView: UITableView!{
+        didSet {
+            mainTableView.dataSource = self
+            mainTableView.delegate = self
+            
+            mainTableView.register(UINib(nibName: mainTableViewCell, bundle: nil), forCellReuseIdentifier: mainTableViewCell)
+            mainTableView.register(UINib(nibName: badgesCollectionViewinCell, bundle: nil), forCellReuseIdentifier: badgesCollectionViewinCell)
+            mainTableView.register(UINib(nibName: challengesTableViewInCell, bundle: nil), forCellReuseIdentifier: challengesTableViewInCell)
+            
+            
+            mainTableView.register(UINib(nibName: tabIconsHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: tabIconsHeader)
+            
+            mainTableView.rowHeight = UITableView.automaticDimension
+            mainTableView.estimatedRowHeight = 600
+            mainTableView.tableFooterView = UIView()
+        }
+    }
     @IBOutlet private weak var profileHeaderView: ProfileHeaderView!
-
-    //    let color = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+    
     let userCache = UserProfileCache.get()
     private let mainTableViewCell = "MainTableViewCell"
     private let badgesCollectionViewinCell = "BadgesCollectionViewinCell"
@@ -41,7 +56,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private var quests: [Quest] = []
     private var collectionViewHeight = CGFloat(0)
     private var tableViewHeight = CGFloat(0)
-
+    
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
             weRunOnLabel.text = LocalizationsKeys.General.gameballFooterText.rawValue.localized
@@ -69,7 +84,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     
     public init() {
-        let b = Bundle.init(for: type(of: self))
+        _ = Bundle.init(for: type(of: self))
         super.init(nibName: "ParentViewController", bundle: Bundle.init(for: type(of: self)))
     }
     
@@ -79,102 +94,17 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     
     override func viewDidLoad() {
-//        // change selected bar color
-//        settings.style.buttonBarBackgroundColor = .white
-////        self.gameballBannerView.backgroundColor = unselectedIconColor
-//
-////        settings.style.buttonBarItemBackgroundColor = .white
-//        settings.style.selectedBarBackgroundColor = unselectedIconColor
-//        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-//        settings.style.selectedBarHeight = 3.0
-//        settings.style.buttonBarMinimumLineSpacing = 0
-//        settings.style.buttonBarItemsShouldFillAvailableWidth = false
-////        settings.style.buttonBarLeftContentInset = 10
-//        settings.style.buttonBarItemLeftRightMargin = 40
-//        settings.style.buttonBarHeight = 10
-//        settings.style.buttonBarRightContentInset = 0
-//
-//        changeCurrentIndexProgressive = { [weak self] (oldCell: TabbarCollectionViewCell?, newCell: TabbarCollectionViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-//            guard changeCurrentIndex == true else { return }
-//            oldCell?.cellImageView.contentMode = .scaleAspectFit
-//            oldCell?.cellImageView.tintColor = UIColor.black
-//            newCell?.cellImageView.contentMode = .scaleAspectFit
-//            newCell?.cellImageView.tintColor = self?.unselectedIconColor
-//        }
-
         super.viewDidLoad()
-        
-        
         profileHeaderView.delegate = self
-        mainTableView.dataSource = self
-        mainTableView.delegate = self
-        
-        mainTableView.register(UINib(nibName: mainTableViewCell, bundle: nil), forCellReuseIdentifier: mainTableViewCell)
-        mainTableView.register(UINib(nibName: badgesCollectionViewinCell, bundle: nil), forCellReuseIdentifier: badgesCollectionViewinCell)
-         mainTableView.register(UINib(nibName: challengesTableViewInCell, bundle: nil), forCellReuseIdentifier: challengesTableViewInCell)
-        
-        
-        mainTableView.register(UINib(nibName: tabIconsHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: tabIconsHeader)
-
-        mainTableView.rowHeight = UITableView.automaticDimension
-        mainTableView.estimatedRowHeight = 600
-        mainTableView.tableFooterView = UIView()
-self.navigationController?.navigationBar.isHidden = true
-        
+        self.navigationController?.navigationBar.isHidden = true
         self.startLoading()
     }
-
     
-
-//    private func getSettings(completion: @escaping () -> Void) {
-//        let settingsViewModel = ClientBotSettingsViewModel()
-//        settingsViewModel.getClientBotStyle(completion: {
-//            error in
-//            if error != nil {
-//                // handle error
-//            }
-//            else {
-//                GameballApp.clientBotStyle = settingsViewModel.botStyle
-//                completion()
-//            }
-//        })
-//    }
-    
-
-//    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-//
-//
-//        let child_1 = GameballViewController()
-//        let child_2 = LeaderboardViewController()
-//
-//        if GameballApp.clientBotStyle?.enableLeaderboard ?? false{
-//
-//            return [child_1, child_2]
-//        } else {
-//            return [child_1]
-//        }
-//        }
-//
-    
-//    override func configure(cell: TabbarCollectionViewCell, for indicatorInfo: IndicatorInfo) {
-//        cell.cellImageView.image = indicatorInfo.image?.withRenderingMode(.alwaysTemplate)
-//    }
-//
-//        override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
-//            super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
-//            if indexWasChanged && toIndex > -1 && toIndex < viewControllers.count {
-//                let child = viewControllers[toIndex] as! IndicatorInfoProvider // swiftlint:disable:this force_cast
-//                UIView.performWithoutAnimation({ [weak self] () -> Void in
-//                    guard let me = self else { return }
-//                    me.navigationItem.leftBarButtonItem?.title =  child.indicatorInfo(for: me).title
-//                })
-//            }
-//        }
     
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
-//        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
-            if let url = NSURL(string: "https://www.gameball.co"){
+        //        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
+        if let url = NSURL(string: "https://www.gameball.co"){
             UIApplication.shared.openURL(url as URL)
         }
         
@@ -187,7 +117,7 @@ self.navigationController?.navigationBar.isHidden = true
         if section == 0 {
             return 1
         } else {
-        return 1
+            return 1
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -196,10 +126,10 @@ self.navigationController?.navigationBar.isHidden = true
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0.0
-
+            
         } else {
-
-        return 50.0
+            
+            return 50.0
         }
     }
     
@@ -209,17 +139,17 @@ self.navigationController?.navigationBar.isHidden = true
         headerView.delegate = self
         
         return headerView
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell) as! MainTableViewCell
             return cell
         } else if indexPath.section == 1{
-
+            
             if currentFeature == Features.Profile.rawValue {
                 let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
                 cell.delegate = self
@@ -228,16 +158,16 @@ self.navigationController?.navigationBar.isHidden = true
                 cell.collectionViewHeight.constant = collectionViewHeight;
                 cell.collectionView.reloadData()
                 return cell
-
+                
             } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
-            cell.delegate = self
-            cell.frame = tableView.bounds;  // cell of myTableView
-            cell.currentFeature = self.currentFeature
-//            cell.tableViewHeightConstraint.constant = tableViewHeight
-            cell.tableView.reloadData()
-            return cell
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
+                cell.delegate = self
+                cell.frame = tableView.bounds;  // cell of myTableView
+                cell.currentFeature = self.currentFeature
+                //            cell.tableViewHeightConstraint.constant = tableViewHeight
+                cell.tableView.reloadData()
+                return cell
             }
         }
         
@@ -248,35 +178,14 @@ self.navigationController?.navigationBar.isHidden = true
 
 extension ParentViewController: TabBarDelegate {
     func challengeTapped(with challenge: Challenge) {
-            // ToDo: init vc based on challenge
-        
-                        let vc = ChallengeDetailsViewController()
-                        vc.challenge = challenge
-                        push(vc, animated: true)
-        
-//            if challenge.challengeType == .Highscore {
-//                let vc = AchivementHighscoreViewController()
-//                vc.challenge = challenge
-//                push(vc, animated: true)
-//            }
-//            else {
-//                if challenge.milestones?.count ?? 0 > 0 {
-//                    let vc = ActionBasedViewController();
-//                    vc.challenge = challenge
-//                    push(vc, animated: true)
-//                }
-//                else {
-//                    let vc = ActionBasedWithoutMilestonesViewController();
-//                    vc.challenge = challenge
-//                    push(vc, animated: true)
-//                }
-//            }
-//
+        let vc = ChallengeDetailsViewController()
+        vc.challenge = challenge
+        push(vc, animated: true)
         
     }
     
     func shareText(text: String) {
-
+        
         let textToShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
@@ -284,26 +193,26 @@ extension ParentViewController: TabBarDelegate {
     
     func dataReady(tableview: UITableView) {
         self.endLoading()
-
+        
         DispatchQueue.main.async {
-
+            
             self.mainTableView.reloadData()
             self.mainTableView.layoutIfNeeded()
-
+            
         }
         
     }
     
     func dataReady(collectionView: UICollectionView){
         self.endLoading()
-
+        
         DispatchQueue.main.async {
             self.collectionViewHeight =  collectionView.collectionViewLayout.collectionViewContentSize.height
             self.mainTableView.reloadData()
-
+            
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
-             collectionView.isHidden = false
+            collectionView.isHidden = false
             collectionView.reloadData()
             
         })
@@ -319,10 +228,10 @@ extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
         print(feature)
         self.startLoading()
-
+        
         nc.post(name: Notification.Name("tabBarTapped"), object: feature)
         self.currentFeature = feature
-
+        
         self.mainTableView.reloadData()
     }
     
@@ -334,8 +243,6 @@ extension ParentViewController: TabIconHeaderDelegate{
 
 extension ParentViewController: ProfileHeaderViewDelegate{
     func dataReady(view: UIView) {
-
+        
     }
-    
-    
 }

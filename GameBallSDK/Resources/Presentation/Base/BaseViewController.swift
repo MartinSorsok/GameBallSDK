@@ -10,13 +10,6 @@ import UIKit
 
 public class BaseViewController: UIViewController {
     
-//    private let activityIndicator: UIActivityIndicatorView = {
-//        let indicator = UIActivityIndicatorView(style: .whiteLarge)
-//        indicator.translatesAutoresizingMaskIntoConstraints = false
-//        indicator.color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F") 
-//        return indicator
-//    }()
-    
     private var activityIndicator: NVActivityIndicatorView!
     
     
@@ -26,13 +19,11 @@ public class BaseViewController: UIViewController {
         let x = view.bounds.midX - ( 100 * 0.5)
         let y = view.bounds.midY - ( 100 * 0.5 )
         
-        //        , y:
         let frame = CGRect(x: x, y: y, width: 100, height: 100)
         let activityIndicatorView = NVActivityIndicatorView(frame: frame,
                                                             type: NVActivityIndicatorType.ballClipRotatePulse)
         let animationTypeLabel = UILabel(frame: frame)
         
-        //        animationTypeLabel.text = String(index)
         animationTypeLabel.sizeToFit()
         animationTypeLabel.textColor = UIColor.black
         animationTypeLabel.frame.origin.x += 5
@@ -42,29 +33,6 @@ public class BaseViewController: UIViewController {
         activityIndicatorView.color = Colors.appMainColor ?? .black
         self.activityIndicator =  activityIndicatorView
         view.addSubview(activityIndicator)
-        
-//        if #available(iOS 11.0, *) {
-//            activityIndicatorNew2.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//
-//        if #available(iOS 11.0, *) {
-//            activityIndicatorNew2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        if #available(iOS 11.0, *) {
-//            activityIndicatorNew2.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        if #available(iOS 11.0, *) {
-//            activityIndicatorNew2.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
-        
         activityIndicator.startAnimating()
     }
     
@@ -95,22 +63,7 @@ public class BaseViewController: UIViewController {
             
         }
     }
-    
- 
-//    func startLoading(with loadingView: UIView) {
-//        self.loadingView = loadingView
-//        self.view.addSubview(loadingView)
-//        loadingView.frame = view.bounds
-//
-//
-//    }
-//
-//    func stopLoading() {
-//        self.loadingView?.removeFromSuperview()
-//        self.loadingView = nil
-//    }
-    
-    
+
 }
 
 extension BaseViewController: BaseCoordinatorDelegate {
