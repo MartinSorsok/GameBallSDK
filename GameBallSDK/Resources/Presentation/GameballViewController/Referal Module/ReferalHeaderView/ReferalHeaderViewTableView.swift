@@ -18,7 +18,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             } else {
                 titleLabel.font = Fonts.montserratSemiBoldFont16
             }
-            titleLabel.textColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            titleLabel.textColor = Colors.appMainColor ?? .black
         }
     }
     @IBOutlet weak var describtionLabel: UILabel!{
@@ -89,7 +89,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             copyBtn.setTitleColor(.white, for: .normal)
             copyBtn.layer.cornerRadius = 15
             copyBtn.clipsToBounds = true
-            copyBtn.backgroundColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            copyBtn.backgroundColor = Colors.appMainColor ?? .black
         }
     }
     

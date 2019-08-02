@@ -90,7 +90,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
             } else {
                 scoreValueLabel.font = Fonts.montserratSemiBoldFont12
             }
-            scoreValueLabel.textColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            scoreValueLabel.textColor = Colors.appMainColor ?? .black
         }
     }
     
@@ -127,7 +127,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
         rankingNumberLabel.text = "\(rankNumber)"
         
         if rankNumber == 1 || rankNumber == 2 || rankNumber == 3 {
-            numbersView.backgroundColor =  UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            numbersView.backgroundColor =  Colors.appMainColor ?? .black
         }
         
         scoreValueLabel.text = "\(profile.accFrubies ?? 0)"

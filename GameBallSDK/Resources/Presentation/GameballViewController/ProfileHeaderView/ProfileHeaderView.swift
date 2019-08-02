@@ -361,8 +361,8 @@ class ProfileHeaderView: UIView {
         if let currentFrubies = playerInfo.accFrubies, let targetFrubies = nextlevel.levelFrubies {
 //            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
             let percentageFilled = Float(0.8)
-            let color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
-            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
+            let color = Colors.appMainColor ?? .black
+            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
             nextTierValueLabel.text = "\(targetFrubies ?? 0) F"
         }
 //        if let currentFrubies = playerDetails?.accFrubies, let targetFrubies = playerNextLevel.levelFrubies {

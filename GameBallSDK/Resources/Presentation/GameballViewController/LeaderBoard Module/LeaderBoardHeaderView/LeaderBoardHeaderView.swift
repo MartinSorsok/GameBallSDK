@@ -21,7 +21,7 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
             } else {
                 titleLabel.font = Fonts.montserratSemiBoldFont16
             }
-            titleLabel.textColor = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            titleLabel.textColor = Colors.appMainColor ?? .black
         }
     }
     

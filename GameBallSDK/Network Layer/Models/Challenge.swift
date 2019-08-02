@@ -2,7 +2,7 @@
 //  Challenge.swift
 //  gameball_SDK
 //
-//  Created by Ahmed Abodeif on 2/6/19.
+//  Created by Martin Sorsok on 1/8/19.
 //  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
@@ -27,10 +27,10 @@ class Challenge: Codable {
     let highScore: Int?
     let highScoreAmount: Int?
     let amountUnit: String?
-    let actionsCompletedPercentage: Int?
-    let amountCompletedPercentage: Int?
-    let completionPercentage:Int?
-    let actionsAndAmountCompletedPercentage: Int?
+    let actionsCompletedPercentage: Float?
+    let amountCompletedPercentage: Float?
+    let completionPercentage:Float?
+    let actionsAndAmountCompletedPercentage: Float?
     let isRepeatable : Bool?
     let isReferral: Bool?
     let achievedCount: Int?
@@ -67,17 +67,23 @@ class Challenge: Codable {
     
     var challengeType: ChallengeType {
         let behaviour = behaviorTypeID ?? 0
+
         switch behaviour {
         case 0:
             return .unkown
-        case 1:
-            return .AmountBased
-        case 2:
-            return .ActionBased
-        case 3:
-            return .ActionAndAmountBased
+        case 9:
+            if isReferral ?? false {
+                return .FriendReferal
+            }
+            return .EventBased
+        case 5:
+            return .SignUP
+        case 7:
+            return .Birthday
         case 4:
             return .Highscore
+        case 8:
+            return .Anniversary
         default:
             return .unkown
         }
@@ -124,9 +130,12 @@ enum ChallengeStatus {
 }
 
 enum ChallengeType {
-    case AmountBased
-    case ActionBased
-    case ActionAndAmountBased
+    case SignUP
+    case EventBased
     case Highscore
+    case Anniversary
+    case Birthday
+    case FriendReferal
+
     case unkown
 }

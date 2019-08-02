@@ -77,7 +77,7 @@ struct ProgressViewProperties {
         
         self.backgroundColor = backgroundColor
         self.filledColor = filledColor
-        self.percentageFilled = percentageFilled < 1.0 ? percentageFilled : 0
+        self.percentageFilled = percentageFilled < 1.1 ? percentageFilled : 0
     }
     
     let backgroundColor: UIColor

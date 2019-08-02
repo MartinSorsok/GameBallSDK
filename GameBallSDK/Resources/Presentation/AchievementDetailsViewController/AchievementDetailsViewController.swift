@@ -681,23 +681,23 @@ class AchievementDetailsViewController: BaseViewController {
         if challenge.status == .inProgress || challenge.status == .achieved {
             
             
-            switch challenge.challengeType {
-            case .ActionAndAmountBased:
-                setActionBasedData()
-                setAmountBasedData()
-                break
-            case .ActionBased:
-                setActionBasedData()
-                break
-            case .AmountBased:
-                setAmountBasedData()
-                break
-            case .Highscore:
-                setHighscoreData()
-                break
-            default:
-                break
-            }
+//            switch challenge.challengeType {
+//            case .ActionAndAmountBased:
+//                setActionBasedData()
+//                setAmountBasedData()
+//                break
+//            case .ActionBased:
+//                setActionBasedData()
+//                break
+//            case .AmountBased:
+//                setAmountBasedData()
+//                break
+//            case .Highscore:
+//                setHighscoreData()
+//                break
+//            default:
+//                break
+//            }
         }
         else {
             progessViewHeightConstraint?.constant = 0

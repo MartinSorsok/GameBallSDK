@@ -39,7 +39,7 @@ public class BaseViewController: UIViewController {
         animationTypeLabel.frame.origin.y += CGFloat(100) - animationTypeLabel.frame.size.height
         
         activityIndicatorView.padding = 20
-        activityIndicatorView.color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F") ?? .black
+        activityIndicatorView.color = Colors.appMainColor ?? .black
         self.activityIndicator =  activityIndicatorView
         view.addSubview(activityIndicator)
         

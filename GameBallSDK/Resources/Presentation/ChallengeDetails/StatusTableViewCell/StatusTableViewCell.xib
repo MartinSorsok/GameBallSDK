@@ -35,8 +35,8 @@
                                     <constraint firstAttribute="width" secondItem="20W-fh-iZR" secondAttribute="height" multiplier="1:1" id="H6i-Mr-Dx9"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpg-E4-gv3">
-                                <rect key="frame" x="139" y="262.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpg-E4-gv3">
+                                <rect key="frame" x="60" y="262.5" width="200" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xpg-E4-gv3" firstAttribute="leading" secondItem="INV-c2-hfw" secondAttribute="leading" constant="60" id="307-lq-Ktw"/>
                             <constraint firstItem="Wju-3T-xvr" firstAttribute="centerX" secondItem="xpg-E4-gv3" secondAttribute="centerX" id="3Ck-bH-hG2"/>
                             <constraint firstItem="xpg-E4-gv3" firstAttribute="centerX" secondItem="20W-fh-iZR" secondAttribute="centerX" id="4SE-gp-Lem"/>
                             <constraint firstItem="Wju-3T-xvr" firstAttribute="top" secondItem="xpg-E4-gv3" secondAttribute="bottom" constant="5" id="FxH-7K-IpF"/>
@@ -60,6 +61,7 @@
                             <constraint firstItem="20W-fh-iZR" firstAttribute="top" secondItem="MKy-Cm-cWe" secondAttribute="bottom" constant="25" id="XPq-Z4-0Pu"/>
                             <constraint firstItem="20W-fh-iZR" firstAttribute="centerX" secondItem="INV-c2-hfw" secondAttribute="centerX" id="eQO-t2-ous"/>
                             <constraint firstItem="MKy-Cm-cWe" firstAttribute="leading" secondItem="INV-c2-hfw" secondAttribute="leading" constant="25" id="uxi-aX-ZjU"/>
+                            <constraint firstAttribute="trailing" secondItem="xpg-E4-gv3" secondAttribute="trailing" constant="60" id="w2t-8Q-oAp"/>
                             <constraint firstItem="MKy-Cm-cWe" firstAttribute="top" secondItem="INV-c2-hfw" secondAttribute="top" constant="25" id="z87-SD-1fD"/>
                         </constraints>
                     </view>

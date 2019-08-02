@@ -76,8 +76,8 @@ class ReferalFriendTableViewCell: UITableViewCell {
             
             let percentageFilled = Float((challenge?.actionsAndAmountCompletedPercentage ?? 0) / 100 )
             
-            let color = UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
-            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
+            let color = Colors.appMainColor ?? .black
+            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
         }
     }
 

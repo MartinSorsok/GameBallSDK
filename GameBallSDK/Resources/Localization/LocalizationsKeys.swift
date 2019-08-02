@@ -45,7 +45,16 @@ class LocalizationsKeys: NSObject {
         case  keepGoing = "Keep going"
         case  YouNeed = "You need to be on"
         case  toUnlock = "to unlock this challenge"
+        case  progress = "Progress"
         
-    }
+        case  trackProgress = "Track your progress here"
+        case  highScore = "High Score"
+        case  yourHighScore = "Your high score is"
+        case  breakYourHighScore = "Break your high score and win this badge again!"
+        case  friendsRemaining = "friend(s) remaining to achieve this badge"
+
+
+
+   }
     
 }

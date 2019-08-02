@@ -71,25 +71,25 @@ class ActionBasedWithoutMilestonesViewController: BaseViewController {
             
             if viewChallenge.status == .inProgress || viewChallenge.status == .achieved {
                 
-                
-                switch viewChallenge.challengeType {
-                case .ActionAndAmountBased:
-                    // set progress bars & text
-                    setActionAndAmountBasedData()
-                    break
-                case .ActionBased:
-                    // set progress bars & text
-                    // hide amount based sections
-                    setActionBasedData()
-                    break
-                case .AmountBased:
-                    // hide amount based sections
-                    // use amount section action
-                    setAmountBasedData()
-                    break
-                default:
-                    break
-                }
+//                
+//                switch viewChallenge.challengeType {
+//                case .ActionAndAmountBased:
+//                    // set progress bars & text
+//                    setActionAndAmountBasedData()
+//                    break
+//                case .ActionBased:
+//                    // set progress bars & text
+//                    // hide amount based sections
+//                    setActionBasedData()
+//                    break
+//                case .AmountBased:
+//                    // hide amount based sections
+//                    // use amount section action
+//                    setAmountBasedData()
+//                    break
+//                default:
+//                    break
+//                }
             }
             else {
                 self.progressContainerViewHeightConstraint.constant = 0

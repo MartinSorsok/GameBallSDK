@@ -81,6 +81,8 @@ struct Fonts {
     static let cairoRegularFont16 =  UIFont(name: "Cairo-Regular", size: 16.0)
 
     static let cairoBoldFont8 =  UIFont(name: "Cairo-Bold", size: 8.0)
+    static let cairoBoldFont10 =  UIFont(name: "Cairo-Bold", size: 10.0)
+
     static let cairoBoldFont12 =  UIFont(name: "Cairo-Bold", size: 12.0)
     static let cairoBoldFont14 =  UIFont(name: "Cairo-Bold", size: 14.0)
     static let cairoBoldFont16 =  UIFont(name: "Cairo-Bold", size: 16.0)

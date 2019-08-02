@@ -58,22 +58,32 @@ class StatusTableViewCell: UITableViewCell {
         didSet {
             if challenge?.status == .inProgress {
                 statusImage?.image = UIImage(named: "innerchallengeInProgress@2x.png")
-                
+                numberOfTimesLabel.text = ""
+                if challenge?.challengeType == .Birthday || challenge?.challengeType == .Anniversary {
+                    ststusTitleLabel.text =  challenge?.description
+
+                }else {
+                    ststusTitleLabel.text =  challenge?.statusDescription
+
+                }
             } else if challenge?.status == .achieved {
                 statusImage?.image = UIImage(named: "innerchallengeAchieved@2x.png")
                 numberOfTimesLabel.text = "\(challenge?.achievedCount ?? 0)" + " " + LocalizationsKeys.ChallengeDetails.times.rawValue.localized
+                ststusTitleLabel.text =  challenge?.statusDescription
+
                 
             } else if challenge?.status == .locked  {
                 statusLabel.isHidden = true
                 numberOfTimesLabel.text = LocalizationsKeys.ChallengeDetails.YouNeed.rawValue.localized + " " + "\(challenge?.levelName ?? "")" + " " + LocalizationsKeys.ChallengeDetails.toUnlock.rawValue.localized
                 statusImage?.image = UIImage(named: "innerchallengeLocked@2x.png")
+                ststusTitleLabel.text =  challenge?.statusDescription
+
             }
             
             statusImage.alpha = 0
             UIView.animate(withDuration: 1.0) {
                 self.statusImage.alpha = 1.0
             }
-            ststusTitleLabel.text =  challenge?.statusDescription
 
         }
     }

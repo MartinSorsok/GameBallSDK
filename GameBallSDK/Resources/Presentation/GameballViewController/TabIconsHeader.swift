@@ -14,7 +14,7 @@ class TabIconsHeader: UITableViewHeaderFooterView {
     
     weak var delegate: TabIconHeaderDelegate?
     private let tabbarCollectionViewCell = "TabbarCollectionViewCell"
-   var mainAppColor =  UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+ 
     private var featuresArray = [Features.Profile.rawValue, Features.LeaderBoard.rawValue , Features.FriendReferal.rawValue]
     var featuresArrayIcons = ["Achievements.png","Leaderboard.png","Referral.png"]
     override func awakeFromNib() {
@@ -39,8 +39,8 @@ extension TabIconsHeader: UICollectionViewDelegate,UICollectionViewDataSource{
         cell.cellImageView.image = cell.cellImageView?.image?.withRenderingMode(.alwaysTemplate)
         
         if indexPath.row == 0 {
-            cell.tintColor = mainAppColor
-            cell.lineView.backgroundColor =  mainAppColor
+            cell.tintColor = Colors.appMainColor ?? .black
+            cell.lineView.backgroundColor =  Colors.appMainColor ?? .black
         } else {
             cell.tintColor = UIColor.black
             cell.lineView.isHidden = true
@@ -55,9 +55,9 @@ extension TabIconsHeader: UICollectionViewDelegate,UICollectionViewDataSource{
        let cell =  collectionView.cellForItem(at: indexPath) as! TabbarCollectionViewCell
         
         cell.cellImageView.image = cell.cellImageView?.image?.withRenderingMode(.alwaysTemplate)
-        cell.tintColor = mainAppColor
+        cell.tintColor = Colors.appMainColor ?? .black
         cell.lineView.isHidden = false
-        cell.lineView.backgroundColor = mainAppColor
+        cell.lineView.backgroundColor = Colors.appMainColor ?? .black
 
         delegate?.cellTapped(feature: featuresArray[indexPath.item])
     }
