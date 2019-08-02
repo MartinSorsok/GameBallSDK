@@ -75,6 +75,8 @@ class HighScoreTableViewCell: UITableViewCell {
     var challenge: Challenge?{
         didSet{
             highScoreValueLabel.text = "\(challenge?.highScoreAmount ?? 0)" + " " + (challenge?.amountUnit ?? "")
+            
+
         }
     }
     override func awakeFromNib() {

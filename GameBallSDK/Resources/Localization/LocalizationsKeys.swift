@@ -52,6 +52,7 @@ class LocalizationsKeys: NSObject {
         case  yourHighScore = "Your high score is"
         case  breakYourHighScore = "Break your high score and win this badge again!"
         case  friendsRemaining = "friend(s) remaining to achieve this badge"
+        case  exceedMaximum = "You need to exceed the minimum record,"
 
 
 

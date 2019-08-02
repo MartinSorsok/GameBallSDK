@@ -61,11 +61,14 @@ class StatusTableViewCell: UITableViewCell {
                 numberOfTimesLabel.text = ""
                 if challenge?.challengeType == .Birthday || challenge?.challengeType == .Anniversary {
                     ststusTitleLabel.text =  challenge?.description
-
                 }else {
                     ststusTitleLabel.text =  challenge?.statusDescription
-
                 }
+                
+                guard let highScore = challenge?.highScore else {return}
+                
+                numberOfTimesLabel.text = "\(LocalizationsKeys.ChallengeDetails.exceedMaximum.rawValue.localized) \(highScore) \(challenge?.amountUnit ?? "")"
+                
             } else if challenge?.status == .achieved {
                 statusImage?.image = UIImage(named: "innerchallengeAchieved@2x.png")
                 numberOfTimesLabel.text = "\(challenge?.achievedCount ?? 0)" + " " + LocalizationsKeys.ChallengeDetails.times.rawValue.localized
