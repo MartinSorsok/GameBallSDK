@@ -93,10 +93,6 @@ open class GameballApp: NSObject {
         
     }
     
-    public func luanchTest() -> UIViewController? {
-        let vc = ActionBasedViewController()
-        return vc
-    }
     
     public func notificationPopUP(notification: UNNotification) -> UIViewController{
         

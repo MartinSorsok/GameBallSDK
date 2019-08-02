@@ -2,8 +2,8 @@
 //  LockView.swift
 //  gameball_SDK
 //
-//  Created by Omar Ali on 2/16/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 2/16/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import UIKit
