@@ -31,16 +31,18 @@ Pod::Spec.new do |s|
 
 
   # 7
-  s.framework = "UIKit"
+  s.framework = 'UIKit'
   s.static_framework = true
   s.dependency 'Firebase'
   s.dependency 'Firebase/Core'
   s.dependency 'Firebase/Messaging'
+  s.dependency 'Firebase/Analytics'
+
   s.pod_target_xcconfig = {
     
     "ENABLE_BITCODE" => 'NO',
     
-    "OTHER_LDFLAGS" => '$(inherited) -framework "gameballSDK"'
+    "OTHER_LDFLAGS" => '$(inherited) -framework "GameBallSDK"'
   }
   
   
@@ -48,7 +50,7 @@ Pod::Spec.new do |s|
   s.source_files = 'GameBallSDK/**/*.{swift}'
 
   # 9
-  s.resources = 'GameBallSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,strings,otf,ttf}', 'Resources/GoogleService-InfoGameball.plist'
+  s.resources = 'GameBallSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,strings,otf,ttf}', 'Resources/GoogleService-Info.plist'
   
   # 10
   s.swift_version = '4.2'

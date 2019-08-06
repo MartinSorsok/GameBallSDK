@@ -7,11 +7,7 @@
 //
 
 import UIKit
-//import FirebaseCore
-//import Firebase
 import UserNotifications
-
-
 open class GameballApp: NSObject {
     
     // ToDo: fetch bot style won gameball init insetead of fetching VC
@@ -23,21 +19,23 @@ open class GameballApp: NSObject {
     
     public init(APIKey: String, playerId: String, categoryId: String = "0") {
         super.init()
+
         self.setupFonts()
         self.fetchBotStyle()
 
         NetworkManager.shared().registerAPIKey(APIKey: APIKey)
         self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
+        
 
     }
     
     
     public init(APIKey: String,language: String = "en") {
         super.init()
+
         self.setupFonts()
         self.fetchBotStyle()
-
         language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
     }
     
@@ -143,61 +141,41 @@ open class GameballApp: NSObject {
         NetworkManager.shared().registerDevice(withToken: withToken)
     }
 
-    //Consumer must provide one of the following  ChallengeAPIID, ChallengeAPIIDs  or QuestAPIID
+
     
-    // Send action with ChallengeAPIID
-    public func sendAction(challengeAPIId: String,  playerCategroyId: Int = 0, amount: Int = 0, completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+    
+    // Send action withMeta Data events
+    public func sendActionWithMetaData(events: [String : [String : Any]] , completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
         
-        NetworkManager.shared().sendAction(challengeAPIId: challengeAPIId, playerCategroyId: playerCategroyId, amount: amount) { (responseObject, error) in
+        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
-                print("done ....")
+                print("done ..sendAction..")
                 print(responseObject ?? "")
-                completion(true, nil)
+                completion(responseObject?.status?.message, nil)
             }
             else {
-                print("failed")
-                completion(false, error?.description)
+                print("failed sendAction")
+                completion(responseObject?.status?.message, error?.description)
             }
         }
     }
     
-    //Consumer must provide one of the following  ChallengeAPIID, ChallengeAPIIDs  or QuestAPIID
-    
-    // Send action with ChallengeAPIIDs
-    public func sendAction(challengeAPIIds: [String],playerCategroyId: Int = 0, amount: Int = 0, completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+    public func sendActionWithOutMetaData(events: [String : Any] , completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
         
-        NetworkManager.shared().sendAction(challengeAPIIDs: challengeAPIIds, playerCategroyId: playerCategroyId, amount: amount) { (responseObject, error) in
+        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
-                print("done ....")
+                print("done ..sendAction..")
                 print(responseObject ?? "")
-                completion(true, nil)
+                completion(responseObject?.status?.message, nil)
             }
             else {
-                print("failed")
-                completion(false, error?.description)
+                print("failed sendAction")
+                completion(responseObject?.status?.message, error?.description)
             }
         }
     }
     
-    
-    //Consumer must provide one of the following  ChallengeAPIID, ChallengeAPIIDs  or QuestAPIID
-    
-    // Send action with QuestAPIID
-    
-    public func sendAction(questAPIID: String,playerCategroyId: Int = 0, amount: Int = 0, completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        
-        NetworkManager.shared().sendAction(questAPIID: questAPIID, playerCategroyId: playerCategroyId, amount: amount) { (responseObject, error) in
-            if error == nil {
-                print("done ....")
-                print(responseObject ?? "")
-                completion(true, nil)
-            }
-            else {
-                print("failed")
-                completion(false, error?.description)
-            }
-        }
-    }
+
     
     //4.2    Generate OTP
     public func generateOTP(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
@@ -294,13 +272,15 @@ open class GameballApp: NSObject {
         }
     }
 //    public func configureFireBase() {
-//        if let filePath = Bundle.init(for: type(of: self)).path(forResource: "GoogleService-InfoGameball", ofType: "plist") {
-//            let manualOptions = FirebaseOptions.init(googleAppID: "1:252563989296:ios:070bea370ad08516", gcmSenderID: "252563989296")
-//            manualOptions.bundleID = "gameballSDK_FirebaseApp"
-//            manualOptions.apiKey = "AIzaSyDjZELOKJKl3RLUe4SmaxiaraevCjvoSP0"
-//            manualOptions.projectID = "gameball-70d23"
-//            manualOptions.clientID = "252563989296-ldf2tn2hp97vklt576kl4ao109bf7js8.apps.googleusercontent.com"
-//            FirebaseApp.configure(name: "gameballSDK_FirebaseApp", options: manualOptions)
+//        if let filePath = Bundle.init(for: type(of: self)).path(forResource: "GameBallSDK-Info", ofType: "plist") {
+//
+//
+//            let manualOptions = FirebaseOptions.init(googleAppID: "1:252563989296:ios:070bea370ad08516", gcmSenderID: "550082315977")
+//            manualOptions.bundleID = "org.cocoapods.GameBallSDK"
+//            manualOptions.apiKey = "AIzaSyBuUTVn-JHAPOBk7SJla8V0lqdbFcBdv0Q"
+//            manualOptions.projectID = "gameballsdk"
+////            manualOptions.clientID = "252563989296-ldf2tn2hp97vklt576kl4ao109bf7js8.apps.googleusercontent.com"
+//            FirebaseApp.configure(name: "GameballSDK", options: manualOptions)
 //        }
 //    }
     
@@ -321,3 +301,11 @@ open class GameballApp: NSObject {
     
 }
 
+
+extension GameballApp: UIApplicationDelegate {
+    
+    public func applicationDidFinishLaunching(_ application: UIApplication) {
+
+
+    }
+}

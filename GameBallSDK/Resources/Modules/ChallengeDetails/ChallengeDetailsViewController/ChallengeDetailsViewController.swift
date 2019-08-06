@@ -125,7 +125,6 @@ extension ChallengeDetailsViewController: UITableViewDataSource {
             
         }
         
-        return UITableViewCell()
     }
     
     

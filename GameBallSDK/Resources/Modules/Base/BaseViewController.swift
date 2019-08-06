@@ -12,10 +12,12 @@ public class BaseViewController: UIViewController {
     
     private var activityIndicator: NVActivityIndicatorView!
     
-    
+    private var isLoading = false
 
     
     func startLoading() {
+        if !isLoading {
+        isLoading = true
         let x = view.bounds.midX - ( 100 * 0.5)
         let y = view.bounds.midY - ( 100 * 0.5 )
         
@@ -34,12 +36,13 @@ public class BaseViewController: UIViewController {
         self.activityIndicator =  activityIndicatorView
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        }
     }
     
     func endLoading() {
+        isLoading = false
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
-
             self.activityIndicator.removeFromSuperview()
         }
     

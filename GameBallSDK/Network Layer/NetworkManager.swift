@@ -226,7 +226,7 @@ class NetworkManager:NSObject {
 
     
     // Get playerCategoryId from shared preferences
-    func sendAction(challengeAPIId: String = "",questAPIID: String = "",challengeAPIIDs: [String] = [], playerCategroyId: Int = 0, amount: Int = 0, isPostive: Bool = true, completion: @escaping ((_ response: PostActionResponse?, _ error: ServiceError?)->())) {
+    func sendAction(events: [String : Any], completion: @escaping ((_ response: PostActionResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
             completion(nil, ServiceError.noInternetConnection)
@@ -234,13 +234,15 @@ class NetworkManager:NSObject {
         }
         
         var params: JSON = [:]
-        params["ChallengeAPIIDs"] = challengeAPIIDs
-        params["QuestAPIID"] = questAPIID
-        params["ChallengeAPIID"] = challengeAPIId
+//        params["ChallengeAPIIDs"] = challengeAPIIDs
+//        params["QuestAPIID"] = questAPIID
+        params["events"] = events
+        
+        
         params["PlayerUniqueID"] = self.playerId
-        params["PlayerCategoryID"] = playerCategroyId
-        params["Amount"] = amount
-        params["isPositive"] = isPostive
+//        params["PlayerCategoryID"] = self.pla
+//        params["Amount"] = amount
+//        params["isPositive"] = isPostive
         
         print(params)
         
@@ -276,7 +278,7 @@ class NetworkManager:NSObject {
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
-                        completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
+                        completion(nil, ServiceError.custom(tempObject.methodName ?? ""))
                     }
                 default:
                     print("default")

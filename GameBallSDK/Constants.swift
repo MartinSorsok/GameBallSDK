@@ -18,15 +18,15 @@ struct APIEndPoints {
     static let getChallengesWithUnlocks = "/api/v1.0/Bots/challenges"
     static let getLeaderboards = "/api/v1.0/Bots/leaderboard"
     static let getPlayerInfo = "/api/v1.0/Bots/PlayerInfo"
+    static let postAction = "/api/v1.0/Integrations/Action"
 
-    
+    static let registerPlayer = "/api/v1.0/Integrations/InitializePlayer"
+
     
     static let friendReferral = "/api/integration/referral"
 
     static let getPlayerNextLevel = "/api/Bots/GetNextLevel"
     static let getPlayerDetails = "/api/Bots/GetPlayerDetails"
-    static let postAction = "/api/Integration/Action"
-    static let registerPlayer = "/api/integration/RegisterPlayerDevice"
     static let generateOTP = "/api/Integration/OTP"
     static let rewardPoints = "/api/Integration/Transaction/Reward"
     static let holdPoints = "/api/Integration/Transaction/Hold"

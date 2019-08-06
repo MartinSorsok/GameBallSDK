@@ -10,18 +10,31 @@ import Foundation
 
 
 struct PostActionResponse: Codable {
-    let actionResult: ActionResult?
-    let success: Bool?
-    let errorMsg: String?
-    let errorCode: Int?
+//    let actionResult: ActionResult?
+    let isSucceeded: Bool?
+    let methodName: String?
+    let status: StatusResponse?
     
     enum CodingKeys: String, CodingKey {
-        case actionResult = "ActionResult"
-        case success = "Success"
-        case errorMsg = "ErrorMsg"
-        case errorCode = "ErrorCode"
+        case status = "status"
+        case isSucceeded = "isSucceeded"
+        case methodName = "methodName"
+//        case errorCode = "ErrorCode"
     }
 }
+
+
+struct StatusResponse: Codable {
+    let code: Int?
+    let message: String?
+ 
+    
+    enum CodingKeys: String, CodingKey {
+        case code = "code"
+        case message = "message"
+    }
+}
+
 
 struct ActionResult: Codable {
     let id, challengeID: Int?
