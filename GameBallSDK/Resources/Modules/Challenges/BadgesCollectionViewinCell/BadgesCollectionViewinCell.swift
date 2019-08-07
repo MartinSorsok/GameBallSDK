@@ -57,7 +57,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
             else {
                 // ToDo: stop animation
                 self.challenges = self.challengesViewModel.challenges
-                self.quests = self.challengesViewModel.quests
+                //self.quests = self.challengesViewModel.quests
                 
                 completion()
                 DispatchQueue.main.async {

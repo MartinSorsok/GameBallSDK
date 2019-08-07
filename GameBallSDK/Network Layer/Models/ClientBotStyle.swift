@@ -10,7 +10,7 @@ import Foundation
 
 struct ClientBotStyle: Codable {
 //    let clientID: Int
-    let botMainColor, buttonBackgroundColor, buttonFlagColor, referralSignUpLink, referralHeadLine, referralText, buttonSariColor: String
+    let botMainColor, buttonBackgroundColor, buttonFlagColor, referralSignUpLink, referralHeadLine, referralText, buttonSariColor: String?
     let buttonShape, buttonDirection, offlineStatemessage, button, buttonLink: String?
     let enableLeaderboard: Bool?
     let rankPointsName: String?
