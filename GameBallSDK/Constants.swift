@@ -19,6 +19,7 @@ struct APIEndPoints {
     static let getLeaderboards = "/api/v1.0/Bots/leaderboard"
     static let getPlayerInfo = "/api/v1.0/Bots/PlayerInfo"
     static let postAction = "/api/v1.0/Integrations/Action"
+    static let getNotifications = "/api/v1.0/Bots/notifications"
 
     static let registerPlayer = "/api/v1.0/Integrations/InitializePlayer"
 

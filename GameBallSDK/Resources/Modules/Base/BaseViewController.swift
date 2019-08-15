@@ -74,3 +74,18 @@ extension BaseViewController: BaseCoordinatorDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+
+extension String {
+     func getFormattedDate(string: String) -> String{
+        let dateFormatter = DateFormatter()
+        
+        //"2019-08-08T19:47:42.007"
+        dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss +zzzz" // This formate is input formated .
+        
+        let formateDate = dateFormatter.date(from:string)
+        dateFormatter.dateFormat = "dd-MM" // Output Formated
+        
+        return dateFormatter.string(from: formateDate ?? Date())
+    }
+}

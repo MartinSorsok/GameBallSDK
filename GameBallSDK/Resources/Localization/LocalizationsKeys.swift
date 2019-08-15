@@ -54,8 +54,10 @@ class LocalizationsKeys: NSObject {
         case  friendsRemaining = "friend(s) remaining to achieve this badge"
         case  exceedMaximum = "You need to exceed the minimum record,"
 
-
-
    }
-    
+    enum NotificationsScreen :String{
+        case  notifications = "Notifications"
+
+        
+    }
 }

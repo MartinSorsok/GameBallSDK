@@ -54,6 +54,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
+    var leaderboardProfiles: [Profile] = []
+
+    private var notifications: [NotificationGB] = []
+
     private var collectionViewHeight = CGFloat(0)
     private var tableViewHeight = CGFloat(0)
     
@@ -98,8 +102,52 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         profileHeaderView.delegate = self
         self.navigationController?.navigationBar.isHidden = true
         self.startLoading()
+        fetchNotificationsData()
+        getChallenges()
+        fetchLeaderBoardDate()
     }
     
+    private func fetchNotificationsData() {
+        //        startLoading()
+        let viewModel = NotificationsViewModel()
+        viewModel.getNotifications(completion: {
+            [weak self] error in
+            if error != nil {
+                // handle error
+                //                self?.endLoading()
+                return
+            }
+            
+            self?.notifications = viewModel.notifications
+
+        })
+    }
+    private func getChallenges() {
+    
+        challengesViewModel.getAllChallenges { (error) in
+            if error != nil {
+                print(error?.description as Any)
+            }
+            else {
+                // ToDo: stop animation
+                self.challenges = self.challengesViewModel.challenges.filter {
+                    $0.isReferral ?? false
+                }
+            }
+        }
+        
+    }
+    
+    private func fetchLeaderBoardDate() {
+        let viewModel = LeaderboardViewModel()
+        viewModel.getLeaderboard(completion: {
+            [weak self] error in
+            if error != nil {
+                return
+            }
+            self?.leaderboardProfiles = viewModel.leaderboard
+        })
+    }
     
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
@@ -126,9 +174,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0.0
-            
         } else {
-            
             return 50.0
         }
     }
@@ -157,22 +203,38 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 cell.currentFeature = self.currentFeature
                 cell.collectionViewHeight.constant = collectionViewHeight;
                 cell.collectionView.reloadData()
+
                 return cell
                 
-            } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue {
+            } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue || currentFeature == Features.Notifications.rawValue{
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
                 cell.delegate = self
-                cell.frame = tableView.bounds;  // cell of myTableView
                 cell.currentFeature = self.currentFeature
-                //            cell.tableViewHeightConstraint.constant = tableViewHeight
-                cell.tableView.reloadData()
+                cell.notifications = self.notifications
+                cell.challenges = self.challenges
+                cell.leaderboardProfiles = self.leaderboardProfiles
+                cell.frame = tableView.bounds;  // cell of myTableView
+             
+                    cell.tableView.reloadData()
+                    cell.layoutIfNeeded()
+                cell.tableView.layoutIfNeeded()
+
+                cell.tableView.isHidden = false
+                cell.layoutIfNeeded()
+                cell.tableViewHeightConstraint.constant = cell.tableView.contentSize.height
+                cell.layoutIfNeeded()
+
+
+                self.endLoading()
                 return cell
             }
         }
         
         return UITableViewCell()
     }
+    
+
 }
 
 
@@ -194,12 +256,17 @@ extension ParentViewController: TabBarDelegate {
     func dataReady(tableview: UITableView) {
         self.endLoading()
         
-        DispatchQueue.main.async {
-            
+//        DispatchQueue.main.async {
+//            self.tableViewHeight = tableview.contentSize.height
+//        tableview.isHidden = false
+
             self.mainTableView.reloadData()
-            self.mainTableView.layoutIfNeeded()
             
-        }
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+//
+//
+//        })
         
     }
     
@@ -228,16 +295,12 @@ extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
         print(feature)
         self.startLoading()
-        
         nc.post(name: Notification.Name("tabBarTapped"), object: feature)
         self.currentFeature = feature
-        
         self.mainTableView.reloadData()
+
+        
     }
-    
-    
-    
-    
 }
 
 
