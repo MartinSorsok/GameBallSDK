@@ -41,7 +41,14 @@ class ChallengeDetailsViewController: BaseViewController {
     @IBOutlet weak var mainTableView: UITableView!
     
 
-
+    @IBOutlet weak var backBtn: UIButton!{
+        didSet {
+            if Localizator.sharedInstance.language == Languages.arabic {
+                self.backBtn.transform = CGAffineTransform(scaleX: -1, y: 1)
+            }
+        }
+    }
+    
     var challenge: Challenge? {
         didSet {
             //mainTableView.reloadData()

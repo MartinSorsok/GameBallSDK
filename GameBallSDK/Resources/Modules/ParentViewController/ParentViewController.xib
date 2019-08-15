@@ -85,6 +85,10 @@
                         <outletCollection property="gestureRecognizers" destination="JB5-pj-mEE" appends="YES" id="WVk-bQ-Kpy"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abd-pP-ZeP">
+                    <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                    <color key="backgroundColor" red="0.96079725027084351" green="0.96076112985610962" blue="0.96078556776046753" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Vx-2Z6" customClass="ProfileHeaderView" customModule="GameBallSDK" customModuleProvider="target">
                     <rect key="frame" x="67" y="269" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -97,7 +101,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uPd-Tt-sam" secondAttribute="bottom" id="8TL-gR-R8v"/>
                 <constraint firstItem="uPd-Tt-sam" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gy4-9c-qdE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DaK-eK-trC" secondAttribute="trailing" id="Hp6-AG-isN"/>
+                <constraint firstItem="Abd-pP-ZeP" firstAttribute="width" secondItem="uPd-Tt-sam" secondAttribute="width" id="JEO-MZ-hOJ"/>
+                <constraint firstItem="Abd-pP-ZeP" firstAttribute="centerX" secondItem="uPd-Tt-sam" secondAttribute="centerX" id="QLv-gY-PmX"/>
+                <constraint firstItem="Abd-pP-ZeP" firstAttribute="top" secondItem="uPd-Tt-sam" secondAttribute="bottom" id="Spt-Ou-v1o"/>
                 <constraint firstItem="DaK-eK-trC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UJO-d7-icH"/>
+                <constraint firstItem="Abd-pP-ZeP" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="aSq-k9-8uw"/>
                 <constraint firstItem="dIK-jr-PFm" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aco-Xn-Ytr"/>
                 <constraint firstItem="dIK-jr-PFm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ezS-NM-QfI"/>
                 <constraint firstItem="uPd-Tt-sam" firstAttribute="top" secondItem="dIK-jr-PFm" secondAttribute="bottom" id="if6-bD-ibg"/>
@@ -110,7 +118,7 @@
                     <exclude reference="QWx-Vx-2Z6"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-233" y="57"/>
+            <point key="canvasLocation" x="-233.33333333333334" y="56.919642857142854"/>
         </view>
         <tapGestureRecognizer id="JB5-pj-mEE">
             <connections>

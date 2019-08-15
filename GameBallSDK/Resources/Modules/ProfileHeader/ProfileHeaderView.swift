@@ -69,15 +69,10 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet private weak var frubiesTitleLabel: UILabel! {
         didSet {
-            frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-//            frubiesTitleLabel.textColor = Colors.appGray173
-            
             if Localizator.sharedInstance.language == Languages.arabic {
                 frubiesTitleLabel.font = Fonts.cairoRegularFont12
-
             } else {
                 frubiesTitleLabel.font = Fonts.montserratLightFont12
-
             }
         }
     }
@@ -90,21 +85,15 @@ class ProfileHeaderView: UIView {
 
             } else {
                 frubiesValueLabel.font = Fonts.montserratSemiBoldFont12
-
             }
         }
     }
     @IBOutlet private weak var pointsTitleLabel: UILabel! {
         didSet {
-            pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
-//            pointsTitleLabel.textColor = Colors.appGray173
-            
             if Localizator.sharedInstance.language == Languages.arabic {
                 pointsTitleLabel.font = Fonts.cairoRegularFont12
-
             } else {
                 pointsTitleLabel.font = Fonts.montserratLightFont12
-
             }
         }
     }
@@ -221,8 +210,10 @@ class ProfileHeaderView: UIView {
     }
     
     private func commonInit() {
-//        progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: Colors.appOrange, percentageFilled: 0.5)
 //        setupViews()
+        frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+        pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+
         fetchData(completion: {
             self.delegate?.dataReady(view: self.view)
             DispatchQueue.main.async {
@@ -359,8 +350,8 @@ class ProfileHeaderView: UIView {
     private func setupPlayerNextLevel(playerInfo: PlayerInfo, nextlevel: Level) {
         
         if let currentFrubies = playerInfo.accFrubies, let targetFrubies = nextlevel.levelFrubies {
-//            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
-            let percentageFilled = Float(0.8)
+            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
+//            let percentageFilled = Float(0.8)
             let color = Colors.appMainColor ?? .black
             progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
             nextTierValueLabel.text = "\(targetFrubies ?? 0) F"

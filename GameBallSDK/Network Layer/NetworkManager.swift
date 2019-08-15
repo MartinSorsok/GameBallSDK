@@ -771,7 +771,13 @@ class NetworkManager:NSObject {
     func adaptRequest(urlRequest: inout URLRequest) {
         if NetworkManager.shared().APIKey.count > 0 {
             urlRequest.addValue(NetworkManager.shared().APIKey, forHTTPHeaderField: "APIKey")
-            urlRequest.addValue("en", forHTTPHeaderField: "lang")
+            if Localizator.sharedInstance.language == Languages.arabic {
+                urlRequest.addValue("ar", forHTTPHeaderField: "lang")
+
+            } else {
+                urlRequest.addValue("en", forHTTPHeaderField: "lang")
+
+            }
 
         }
     }
