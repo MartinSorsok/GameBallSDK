@@ -5,7 +5,7 @@
   },
   "summary": "Gameball SDK pod.",
   "requires_arc": true,
-  "version": "1.0.1",
+  "version": "1.0.3",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/MartinSorsok/GameBallSDK",
   "source": {
     "git": "https://github.com/MartinSorsok/GameBallSDK.git",
-    "tag": "1.0.1"
+    "tag": "1.0.3"
   },
   "frameworks": "UIKit",
   "static_framework": true,
@@ -29,16 +29,20 @@
     ],
     "Firebase/Messaging": [
 
+    ],
+    "Firebase/Analytics": [
+
     ]
   },
   "pod_target_xcconfig": {
     "ENABLE_BITCODE": "NO",
-    "OTHER_LDFLAGS": "$(inherited) -framework \"gameballSDK\""
+    "OTHER_LDFLAGS": "$(inherited) -framework \"GameBallSDK\""
   },
   "source_files": "GameBallSDK/**/*.{swift}",
   "resources": [
     "GameBallSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,strings,otf,ttf}",
-    "Resources/GoogleService-InfoGameball.plist"
+    "Resources/GoogleService-Info.plist"
   ],
+  "swift_versions": "4.2",
   "swift_version": "4.2"
 }

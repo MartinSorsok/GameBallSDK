@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let gameball = GameballApp.init(APIKey: "3041824d7b3c469a81744ccac39dfd92" , language: "ar")
+        let gameball = GameballApp.init(APIKey: "8fdfd2dffd-9mnvhu25d6c3d")
         self.gameballApp = gameball
-        self.gameballApp?.registerPlayer(withPlayerId: "omar")
+        self.gameballApp?.registerPlayer(withPlayerId: "Matrix")
 
         return true
     }

@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     }
     @IBAction func showProfile(_ sender: Any) {
         if let myDelegate = UIApplication.shared.delegate as? AppDelegate {
-            let vc = myDelegate.gameballApp?.launchGameball()
-            self.present(vc!, animated: true, completion: nil)
+            guard let vc = myDelegate.gameballApp?.launchGameball() else {return}
+            self.present(vc, animated: true, completion: nil)
         }
         
         
