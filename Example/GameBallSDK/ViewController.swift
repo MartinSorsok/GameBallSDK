@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import GameBallSDK
 
 class ViewController: UIViewController {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var gameballApp: GameballApp?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gameball = GameballApp.init(APIKey: "8fdfd2dffd-9mnvhu25d6c3d")
+        self.gameballApp = gameball
+        self.gameballApp?.registerPlayer(withPlayerId: "Matrix")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,12 +25,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func showProfile(_ sender: Any) {
-        if let myDelegate = UIApplication.shared.delegate as? AppDelegate {
-            guard let vc = myDelegate.gameballApp?.launchGameball() else {return}
+            guard let vc = self.gameballApp?.launchGameball() else {return}
             self.present(vc, animated: true, completion: nil)
-        }
-        
-        
     }
     
 }

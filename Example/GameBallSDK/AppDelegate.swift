@@ -7,21 +7,17 @@
 //
 
 import UIKit
-import GameBallSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var gameballApp: GameballApp?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let gameball = GameballApp.init(APIKey: "8fdfd2dffd-9mnvhu25d6c3d")
-        self.gameballApp = gameball
-        self.gameballApp?.registerPlayer(withPlayerId: "Matrix")
+
 
         return true
     }
