@@ -67,7 +67,14 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
             challengeName.text = challenge?.gameName
             challengeDescription.text = challenge?.description
             setImage(withURL: challenge?.icon ?? "https://assets.gameball.co/sample/4.png" )
-            challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+          
+            
+            if challenge?.rewardPoints == 0 {
+                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+            } else {
+                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }
+
                 
                 
                 

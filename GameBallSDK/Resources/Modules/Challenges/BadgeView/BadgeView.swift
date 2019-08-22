@@ -84,9 +84,16 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
         else {
             achievementImageView.alpha = 0.5
         }
-        let amount = challenge.rewardPoints ?? 5
-        let label = String(amount) + LocalizationsKeys.GameballScreen.pts.rawValue.localized
-        challengePointsUILabel.text = label
+        
+        if challenge.rewardPoints == 0 {
+            challengePointsUILabel.text = ""
+
+        } else {
+            let amount = challenge.rewardPoints ?? 5
+            let label = String(amount) + LocalizationsKeys.GameballScreen.pts.rawValue.localized
+            challengePointsUILabel.text = label
+        }
+
 
         lockView.isHidden = challenge.isUnlocked ?? false
         self.setChallengeName(with: challenge)

@@ -354,7 +354,7 @@ class ProfileHeaderView: UIView {
 //            let percentageFilled = Float(0.8)
             let color = Colors.appMainColor ?? .black
             progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
-            nextTierValueLabel.text = "\(targetFrubies ?? 0) F"
+            nextTierValueLabel.text = "\(targetFrubies)"
         }
 //        if let currentFrubies = playerDetails?.accFrubies, let targetFrubies = playerNextLevel.levelFrubies {
 //            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
