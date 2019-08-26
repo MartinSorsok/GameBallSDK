@@ -131,7 +131,7 @@ open class GameballApp: NSObject {
     // register without client provided player id
     public func registerPlayer(withCategroyId: String = "") {
         let uuid = NSUUID().uuidString.lowercased()
-        NetworkManager.shared().registerPlayer(playerId: uuid, categoryId: withCategroyId)
+       // NetworkManager.shared().registerPlayer(playerId: uuid, categoryId: withCategroyId)
     }
     
     

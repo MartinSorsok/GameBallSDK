@@ -25,7 +25,7 @@ struct PlayerInfo: Codable {
 
     enum CodingKeys: String, CodingKey {
         
-        case playerId = "playerId"
+        case playerId = "id"
         case displayName = "displayName"
         case firstName = "firstName"
         case lastName = "lastName"
@@ -34,8 +34,8 @@ struct PlayerInfo: Codable {
         case mobileNumber = "mobileNumber"
         case dateOfBirth = "dateOfBirth"
         case joinDate = "joinDate"
-        case playerCategoryID = "playerCategoryID"
-        case externalID = "externalID"
+        case playerCategoryID = "playerCategoryId"
+        case externalID = "externalId"
         case currentLevel = "currentLevel"
         case accFrubies = "accFrubies"
         case accPoints = "accPoints"

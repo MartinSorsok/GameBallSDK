@@ -35,6 +35,8 @@ class NotificationPopUPViewController: BaseViewController {
     func setupUI(){
         mainView.layer.cornerRadius = 15
         
+        
+        
         if let title = notificationData?.request.content.userInfo[AnyHashable("title")] as? String{
             notificationTitle.text = title
         }
@@ -59,7 +61,7 @@ class NotificationPopUPViewController: BaseViewController {
         }
         
         
-        let origImage = UIImage(named: "icons8-delete-20.png")
+        let origImage = UIImage(named: "iclose_new@2x.png")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         closeBtn.setImage(tintedImage, for: .normal)
         closeBtn.tintColor = UIColor.init(hex: "CECECE")

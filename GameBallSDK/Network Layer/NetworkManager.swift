@@ -130,6 +130,8 @@ class NetworkManager:NSObject {
                 switch httpResponse.statusCode {
                 case (200..<300):
                     // Parsing incoming data
+                    //            var object: T? = nil
+
 //                    guard let data = data else { return }
 //                    do {
 //                        let decoder = JSONDecoder()
@@ -667,21 +669,25 @@ class NetworkManager:NSObject {
         }
         
         var params: JSON = [:]
-        params["PlayerUniqueID"] = playerUniqueId
-        params["PlayerCategoryID"] = playerCategroyId
+        params["playerUniqueId"] = playerUniqueId
+   //     params["playerCategoryId"] = playerCategroyId
         // ToDo: generate firebase token
         
-        params["DeviceToken"] = deviceToken
-        params["OSType"] = "iPhone/iPad"
+        params["deviceToken"] = deviceToken
+        params["osType"] = "iPhone/iPad"
         
         var request = URLRequest(path: APIEndPoints.registerPlayer, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
-        
+
         let task = self.urlSession.dataTask(with: request) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
                 switch httpResponse.statusCode {
                 case (200..<300):
                     // Parsing incoming data
+                    
+                    
+                    
+
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(RegisterPlayerResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
@@ -689,10 +695,10 @@ class NetworkManager:NSObject {
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
-                        
+
 //                        let data = NSKeyedArchiver.archivedData(withRootObject: tempObject.response)
 //                        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.PlayerInfo.rawValue)
-                        
+
                         UserProfileCache.save(tempObject.response)
                         completion(tempObject, nil)
 
@@ -810,7 +816,7 @@ class NetworkManager:NSObject {
                 print("failed to register user because \(error!.description)")
             }
             else {
-                print("Player registered using uuid")
+                print("Player registered using  \(response)")
             }
         }
     }
@@ -835,10 +841,10 @@ class NetworkManager:NSObject {
         self.registerPlayerRequest(playerUniqueId: playerId, playerCategroyId: categoryId, deviceToken: withToken) { (response, error) in
             if error != nil {
                 // do something
-                print("failed to register user because \(error!.description)")
+                print("failed to registerDevice user because \(error!.description)")
             }
             else {
-                print("Player registered using uuid")
+                print("registerDevice \(response)")
             }
         }
     }

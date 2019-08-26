@@ -10,8 +10,12 @@ import Foundation
 import UIKit
 
 struct APIEndPoints {
-    static let base_URL = "gb-api.azurewebsites.net"
-//    static let base_test_URL = "3.17.74.152"
+//    static let base_URL = "gb-api.azurewebsites.net"
+
+    
+    //PRODUCTION
+    static let base_URL = "api.gameball.co"
+
     static let appPort = 8092
     
     static let getBotStyle = "/api/v1.0/Bots/BotSettings"
