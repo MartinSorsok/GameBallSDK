@@ -25,6 +25,8 @@ protocol TabIconHeaderDelegate: AnyObject {
 }
 class ParentViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
+    @IBOutlet weak var closeButton: UIButton!
+    var isEmbedType = false
     @IBOutlet weak var mainTableView: UITableView!{
         didSet {
             mainTableView.dataSource = self
@@ -105,6 +107,12 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         fetchNotificationsData()
         getChallenges()
         fetchLeaderBoardDate()
+        
+        if isEmbedType {
+            closeButton.isHidden = true
+        } else {
+            closeButton.isHidden = false
+        }
     }
     
     private func fetchNotificationsData() {
@@ -241,6 +249,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 extension ParentViewController: TabBarDelegate {
     func challengeTapped(with challenge: Challenge) {
         let vc = ChallengeDetailsViewController()
+        vc.isTypeEmbed = isEmbedType
         vc.challenge = challenge
         push(vc, animated: true)
         

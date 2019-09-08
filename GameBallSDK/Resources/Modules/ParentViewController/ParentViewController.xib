@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParentViewController" customModule="GameBallSDK" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="rlP-K2-L3v" id="Xld-ED-6wb"/>
                 <outlet property="gameBallLabel" destination="SXD-kb-a4r" id="isk-Mz-NNL"/>
                 <outlet property="mainTableView" destination="dIK-jr-PFm" id="OEn-pr-eU3"/>
                 <outlet property="profileHeaderView" destination="QWx-Vx-2Z6" id="lig-33-XdE"/>

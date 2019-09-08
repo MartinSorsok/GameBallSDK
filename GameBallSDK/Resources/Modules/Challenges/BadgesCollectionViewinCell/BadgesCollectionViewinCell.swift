@@ -16,7 +16,6 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
     private let challengesViewModel = ChallengesViewModel()
      var  currentFeature = 0
-
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
     weak var delegate:TabBarDelegate?
@@ -172,34 +171,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let challenge = challenges[indexPath.row]
-
         delegate?.challengeTapped(with: challenge)
-//        if indexPath.section == 0 {
-//            // ToDo: init vc based on challenge
-//            if challenge.challengeType == .Highscore {
-//                let vc = AchivementHighscoreViewController()
-//                vc.challenge = challenge
-//                push(vc, animated: true)
-//            }
-//            else {
-//                if challenge.milestones?.count ?? 0 > 0 {
-//                    let vc = ActionBasedViewController();
-//                    vc.challenge = challenge
-//                    push(vc, animated: true)
-//                }
-//                else {
-//                    let vc = ActionBasedWithoutMilestonesViewController();
-//                    vc.challenge = challenge
-//                    push(vc, animated: true)
-//                }
-//            }
-//        }
-//        else {
-//            if let challenge = quests[indexPath.section-1].questChallenges?[indexPath.row] {
-//                let vc = AchievementDetailsViewController(challenge: challenge)
-//                push(vc, animated: true)
-//            }
-//        }
     }
     
 }

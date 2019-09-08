@@ -9,6 +9,10 @@ import UIKit
 
 class ChallengeDetailsViewController: BaseViewController {
 
+    var isTypeEmbed = false
+    
+    
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
             weRunOnLabel.text = LocalizationsKeys.General.gameballFooterText.rawValue.localized
@@ -64,6 +68,11 @@ class ChallengeDetailsViewController: BaseViewController {
     func setupUI() {
 
         self.navigationController?.navigationBar.isHidden = true
+        if isTypeEmbed {
+            closeButton.isHidden = true
+        } else {
+            closeButton.isHidden = false
+        }
     }
     
     func setupTableView() {

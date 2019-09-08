@@ -66,11 +66,12 @@ open class GameballApp: NSObject {
         UIFont.registerFont(bundle: Bundle.main, fontName: "Montserrat-Light", fontExtension: ".otf")
         
     }
-    public func launchGameball() -> UIViewController? {
+    public func launchGameball(isEmbed: Bool = false ) -> UIViewController? {
         if NetworkManager.shared().isAPIKeySet() {
             if NetworkManager.shared().isBotSettingsSet() {
                 if NetworkManager.shared().isPlayerIdSet() {
                     let vc = ParentViewController()
+                    vc.isEmbedType = isEmbed
                     let nc = UINavigationController(rootViewController: vc)
                     return nc
                 }

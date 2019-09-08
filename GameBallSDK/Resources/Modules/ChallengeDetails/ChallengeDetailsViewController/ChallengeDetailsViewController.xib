@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChallengeDetailsViewController" customModule="GameBallSDK" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="uvO-Qj-mdA" id="4iO-16-u7U"/>
+                <outlet property="closeButton" destination="iSU-nB-A1Y" id="4gQ-VW-6Xf"/>
                 <outlet property="gameBallLabel" destination="3xA-Vd-RpO" id="mqI-7d-SM6"/>
                 <outlet property="mainTableView" destination="2Pe-xZ-d3e" id="dJ9-qX-nXZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
