@@ -24,7 +24,7 @@ open class GameballApp: NSObject {
         self.fetchBotStyle()
 
         NetworkManager.shared().registerAPIKey(APIKey: APIKey)
-        self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
+//        self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
         
 
@@ -124,8 +124,8 @@ open class GameballApp: NSObject {
     }
     
     // register with client provided player id
-    public func registerPlayer(withPlayerId: String, withCategroyId: String = "") {
-        NetworkManager.shared().registerPlayer(playerId: withPlayerId, categoryId: withCategroyId)
+    public func registerPlayer(withPlayerUniqueId: String, withPlayerCategoryId: String = "",withPlayerInfo: [String: Any] = [:], withDeviceToken: String = "") {
+        NetworkManager.shared().registerPlayer(playerId: withPlayerUniqueId, categoryId: withPlayerCategoryId , playerInfo: withPlayerInfo)
     }
     
     

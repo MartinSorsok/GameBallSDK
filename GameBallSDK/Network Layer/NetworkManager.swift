@@ -662,7 +662,7 @@ class NetworkManager:NSObject {
         
         task.resume()
     }
-    func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "", completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
+    func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "",playerInfo: [String:Any] = [:], completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
             completion(nil, ServiceError.noInternetConnection)
             return
@@ -671,8 +671,7 @@ class NetworkManager:NSObject {
         var params: JSON = [:]
         params["playerUniqueId"] = playerUniqueId
    //     params["playerCategoryId"] = playerCategroyId
-        // ToDo: generate firebase token
-        
+        params["playerInfo"] = playerInfo
         params["deviceToken"] = deviceToken
         params["osType"] = "iPhone/iPad"
         
@@ -805,12 +804,12 @@ class NetworkManager:NSObject {
         UserDefaults.standard.set(language.rawValue, forKey: UserDefaultsKeys.LanguageKey.rawValue)
     }
     
-    func registerPlayer(playerId: String, categoryId: String) {
+    func registerPlayer(playerId: String, categoryId: String , playerInfo: [String:Any]) {
         NetworkManager.shared().playerId = playerId
         NetworkManager.shared().categoryId = categoryId
         UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
         UserDefaults.standard.set(playerId, forKey: UserDefaultsKeys.playerId.rawValue)
-        self.registerPlayerRequest(playerUniqueId: playerId, playerCategroyId: categoryId) { (response, error) in
+        self.registerPlayerRequest(playerUniqueId: playerId, playerCategroyId: categoryId,playerInfo: playerInfo ) { (response, error) in
             if error != nil {
                 // do something
                 print("failed to register user because \(error!.description)")
