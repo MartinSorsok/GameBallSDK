@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 struct APIEndPoints {
-    static let base_URL = "gb-api.azurewebsites.net"
+//    static let base_URL = "gb-api.azurewebsites.net"
 
     
     //PRODUCTION
-//    static let base_URL = "api.gameball.co"
+    static let base_URL = "api.gameball.co"
 
     static let appPort = 8092
     
