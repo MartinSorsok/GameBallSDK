@@ -22,12 +22,12 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     
     
     
-    
+     var filteredString = ""
     var sharingCodeText = ""
     var challenges: [Challenge] = []
     var leaderboardProfiles: [Profile] = []
     var notifications: [NotificationGB] = []
-    
+    var playerRank: LeaderboardPlayerRank?
     weak var delegate:TabBarDelegate?
     private let challengesViewModel = ChallengesViewModel()
     var  currentFeature = 1
@@ -145,7 +145,9 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         
         if currentFeature == Features.LeaderBoard.rawValue {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: leaderBoardHeaderView) as! LeaderBoardHeaderView
-            
+            headerView.filterByLabel.text = filteredString
+            headerView.yourRankValue.text = "\(playerRank?.rowOrder ?? 0)/\(playerRank?.playersCount ?? 0)"
+            headerView.filterBtn.addTarget(self, action: #selector(tappedLeaderBoardFilter), for: .touchUpInside)
             return  headerView
         } else  if currentFeature == Features.Notifications.rawValue {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: notificationHeaderView) as! NotificationHeaderView
@@ -177,6 +179,13 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         print(sharingCodeText)
         
         self.delegate?.shareText(text: sharingCodeText)
+    }
+    
+    @objc func tappedLeaderBoardFilter(sender: UIButton!) {
+        
+        print(sharingCodeText)
+        
+        self.delegate?.tappedLeaderBoardFilter()
     }
     
 }

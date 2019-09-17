@@ -37,15 +37,42 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-zg-8gN">
+                            <rect key="frame" x="298" y="61" width="80" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckmarkNew.png" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-lg-xGR">
+                            <rect key="frame" x="382" y="66.5" width="10" height="10"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="Bke-4s-CvU"/>
+                                <constraint firstAttribute="width" secondItem="D0t-lg-xGR" secondAttribute="height" multiplier="1:1" id="CgR-sd-ibm"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCx-4f-B84">
+                            <rect key="frame" x="211" y="56.5" width="201" height="30"/>
+                            <connections>
+                                <action selector="tapAction:" destination="-2" eventType="touchUpInside" id="rQT-p6-Tuv"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
                     <constraints>
+                        <constraint firstItem="iCx-4f-B84" firstAttribute="centerY" secondItem="0d5-aP-Ecn" secondAttribute="centerY" id="3Qe-pc-Zoc"/>
                         <constraint firstItem="0wE-PL-fU6" firstAttribute="top" secondItem="qkT-t2-dw5" secondAttribute="top" constant="19" id="8hK-5Q-mNY"/>
                         <constraint firstItem="0wE-PL-fU6" firstAttribute="leading" secondItem="qkT-t2-dw5" secondAttribute="leading" constant="25" id="EZ1-6j-TgN"/>
+                        <constraint firstItem="D0t-lg-xGR" firstAttribute="leading" secondItem="0Ad-zg-8gN" secondAttribute="trailing" constant="4" id="Iey-cT-UtR"/>
+                        <constraint firstItem="D0t-lg-xGR" firstAttribute="centerY" secondItem="0d5-aP-Ecn" secondAttribute="centerY" id="JAr-Dn-Ajz"/>
                         <constraint firstItem="0d5-aP-Ecn" firstAttribute="leading" secondItem="rbg-MI-Uba" secondAttribute="trailing" constant="3" id="KKy-Kr-RlF"/>
+                        <constraint firstItem="iCx-4f-B84" firstAttribute="leading" secondItem="0d5-aP-Ecn" secondAttribute="trailing" constant="8" id="TqI-c4-0Lm"/>
+                        <constraint firstAttribute="trailing" secondItem="iCx-4f-B84" secondAttribute="trailing" constant="5" id="a8p-47-LXS"/>
+                        <constraint firstItem="0Ad-zg-8gN" firstAttribute="centerY" secondItem="D0t-lg-xGR" secondAttribute="centerY" id="h8O-om-kPu"/>
                         <constraint firstItem="rbg-MI-Uba" firstAttribute="leading" secondItem="0wE-PL-fU6" secondAttribute="leading" id="kvA-Yz-1et"/>
                         <constraint firstItem="0d5-aP-Ecn" firstAttribute="centerY" secondItem="rbg-MI-Uba" secondAttribute="centerY" id="pSw-il-iiD"/>
                         <constraint firstItem="rbg-MI-Uba" firstAttribute="top" secondItem="0wE-PL-fU6" secondAttribute="bottom" constant="21" id="qqx-4f-EoL"/>
+                        <constraint firstAttribute="trailing" secondItem="D0t-lg-xGR" secondAttribute="trailing" constant="25" id="rL4-Cc-O5V"/>
                     </constraints>
                 </view>
             </subviews>
@@ -57,6 +84,8 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="u0X-Ga-HmP"/>
             <connections>
+                <outlet property="filterBtn" destination="iCx-4f-B84" id="oRR-vz-6PW"/>
+                <outlet property="filterByLabel" destination="0Ad-zg-8gN" id="EHO-cB-shr"/>
                 <outlet property="titleLabel" destination="0wE-PL-fU6" id="KMx-10-6Ob"/>
                 <outlet property="yourRankLabel" destination="rbg-MI-Uba" id="UqM-H2-Mu9"/>
                 <outlet property="yourRankValue" destination="0d5-aP-Ecn" id="dhY-8a-ri8"/>
@@ -64,4 +93,7 @@
             <point key="canvasLocation" x="215.19999999999999" y="235.23238380809596"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="CheckmarkNew.png" width="20" height="20"/>
+    </resources>
 </document>

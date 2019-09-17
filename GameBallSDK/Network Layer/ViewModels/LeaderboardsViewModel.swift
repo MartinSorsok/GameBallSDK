@@ -12,16 +12,21 @@ import Foundation
 class LeaderboardViewModel {
     
 //    var botStyle: ClientBotStyle?
-    var leaderboard: [Profile] = []
+    var leaderboardPlayerBot: LeaderboardPlayerBot?
     var networkRequestInProgess = false
     
-    func getLeaderboard(completion: @escaping ((_ error: ServiceError?)->())) {
+    func getLeaderboard(withLimit: Int ,completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getLeaderboards, method: .GET, params: [:], modelType: GetLeaderboardResponse.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getLeaderboards, method: .GET, params: [
+            "limit":withLimit,
+            "playerId": UserProfileCache.get()?.playerId ?? 0
+            
+        ], modelType: GetLeaderboardResponse.self) { (data, error) in
 
+            print(data)
             guard let errorModel = error else {
                 if data != nil {
-                    self.leaderboard = (data as? GetLeaderboardResponse)?.leaderboard ?? []
+                    self.leaderboardPlayerBot = (data as? GetLeaderboardResponse)?.response
                 }
                 self.networkRequestInProgess = false
                 completion(nil)

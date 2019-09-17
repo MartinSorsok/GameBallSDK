@@ -10,6 +10,7 @@ import UIKit
 class LeaderBoardHeaderView: UITableViewHeaderFooterView {
 
 
+    @IBOutlet weak var filterBtn: UIButton!
     
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
@@ -54,5 +55,19 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    @IBOutlet weak var filterByLabel: UILabel!{
+        didSet {
+            // titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            
+            if Localizator.sharedInstance.language == Languages.arabic {
+                filterByLabel.font = Fonts.cairoBoldFont12
+                
+            } else {
+                filterByLabel.font = Fonts.montserratSemiBoldFont12
+            }
+            filterByLabel.textColor = .black
+        }
+    }
+
     
 }

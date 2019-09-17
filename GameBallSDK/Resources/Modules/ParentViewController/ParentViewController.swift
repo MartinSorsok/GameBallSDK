@@ -13,6 +13,8 @@ protocol TabBarDelegate: AnyObject {
     func dataReady(tableview: UITableView)
     func shareText(text: String)
     func challengeTapped(with challenge: Challenge)
+    func tappedLeaderBoardFilter()
+
     
 }
 protocol ProfileHeaderViewDelegate: AnyObject {
@@ -57,11 +59,18 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private var challenges: [Challenge] = []
     private var quests: [Quest] = []
     var leaderboardProfiles: [Profile] = []
+    private var playerRank: LeaderboardPlayerRank?
 
     private var notifications: [NotificationGB] = []
-
+    private var filteredString = "All"
     private var collectionViewHeight = CGFloat(0)
     private var tableViewHeight = CGFloat(0)
+    
+    var choices = ["Today","Yesterday","This Week","Last Week","This Month","Last Month","This Year","All"]
+    var pickerView = UIPickerView()
+    var typeValue = String()
+    
+    
     
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
@@ -106,7 +115,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         self.startLoading()
         fetchNotificationsData()
         getChallenges()
-        fetchLeaderBoardDate()
+        fetchLeaderBoardDate(withLimit: 8)
         
         if isEmbedType {
             closeButton.isHidden = true
@@ -146,14 +155,20 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         
     }
     
-    private func fetchLeaderBoardDate() {
+    private func fetchLeaderBoardDate(withLimit: Int) {
         let viewModel = LeaderboardViewModel()
-        viewModel.getLeaderboard(completion: {
+        viewModel.getLeaderboard(withLimit: withLimit, completion: {
             [weak self] error in
             if error != nil {
                 return
             }
-            self?.leaderboardProfiles = viewModel.leaderboard
+            self?.leaderboardProfiles = viewModel.leaderboardPlayerBot?.playerBot ?? []
+            self?.playerRank = viewModel.leaderboardPlayerBot?.playerRank
+            DispatchQueue.main.async {
+                self?.mainTableView.reloadData()
+            }
+
+            
         })
     }
     
@@ -222,6 +237,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 cell.notifications = self.notifications
                 cell.challenges = self.challenges
                 cell.leaderboardProfiles = self.leaderboardProfiles
+                cell.playerRank = self.playerRank
+                cell.filteredString = self.filteredString
                 cell.frame = tableView.bounds;  // cell of myTableView
              
                     cell.tableView.reloadData()
@@ -246,7 +263,55 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 }
 
 
-extension ParentViewController: TabBarDelegate {
+extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return choices.count
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return choices[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+
+        self.typeValue = choices[row]
+        
+        print(choices[row])
+    }
+ 
+    
+    func tappedLeaderBoardFilter() {
+        let alert = UIAlertController(title: "Filter Choices", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        alert.isModalInPopover = true
+        
+        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        
+        alert.view.addSubview(pickerFrame)
+        pickerFrame.dataSource = self
+        pickerFrame.delegate = self
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            
+            if self.typeValue == "" {
+                self.typeValue = "Today"
+            }
+            self.filteredString = self.typeValue
+            print("You selected " + self.typeValue )
+            print((self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
+            
+            self.fetchLeaderBoardDate(withLimit: (self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
+
+            
+        }))
+        self.present(alert,animated: true, completion: nil )
+    }
+    
     func challengeTapped(with challenge: Challenge) {
         let vc = ChallengeDetailsViewController()
         vc.isTypeEmbed = isEmbedType

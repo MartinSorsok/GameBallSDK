@@ -10,24 +10,23 @@ import Foundation
 import UIKit
 
 struct APIEndPoints {
-//    static let base_URL = "gb-api.azurewebsites.net"
+    static let base_URL = "gb-api.azurewebsites.net"
 
     
     //PRODUCTION
-    static let base_URL = "api.gameball.co"
+//    static let base_URL = "api.gameball.co"
 
     static let appPort = 8092
     
     static let getBotStyle = "/api/v1.0/Bots/BotSettings"
     static let getChallengesWithUnlocks = "/api/v1.0/Bots/challenges"
-    static let getLeaderboards = "/api/v1.0/Bots/leaderboard"
+    static let getLeaderboards = "/api/v1.0/Bots/LeaderboardWithRank"
     static let getPlayerInfo = "/api/v1.0/Bots/PlayerInfo"
     static let postAction = "/api/v1.0/Integrations/Action"
     static let getNotifications = "/api/v1.0/Bots/notifications"
 
     static let registerPlayer = "/api/v1.0/Integrations/InitializePlayer"
 
-    
     static let friendReferral = "/api/integration/referral"
 
     static let getPlayerNextLevel = "/api/Bots/GetNextLevel"
