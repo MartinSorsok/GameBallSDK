@@ -18,7 +18,7 @@ class ChallengesViewModel {
     
     func getAllChallenges( completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getChallengesWithUnlocks, method: .GET, params: ["externalId":NetworkManager.shared().playerId], modelType: GetChallengeWithUnlocksResponseModel.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getChallengesWithUnlocks, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: GetChallengeWithUnlocksResponseModel.self) { (data, error) in
             if let errorModel = error {
                 print(errorModel.description)
                 completion(errorModel)

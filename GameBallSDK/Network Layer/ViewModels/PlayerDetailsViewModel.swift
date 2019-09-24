@@ -16,7 +16,7 @@ class PlayerDetailsViewModel {
     
     func getPlayerDetails(completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getPlayerDetails, method: .GET, params: ["externalId":NetworkManager.shared().playerId], modelType: GetPlayerDetailsResponse.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getPlayerDetails, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: GetPlayerDetailsResponse.self) { (data, error) in
             
             guard let errorModel = error else {
                 if data != nil {

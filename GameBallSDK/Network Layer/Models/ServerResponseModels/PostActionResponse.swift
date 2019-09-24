@@ -39,7 +39,7 @@ struct StatusResponse: Codable {
 struct ActionResult: Codable {
     let id, challengeID: Int?
     let affectedAchievementID: String?
-    let playerID: String?
+    let playerUniqueId: String?
     let actionTypeID, actionResultPlayerCategoryID: Int?
     let source: String?
     let used, isPositive: Bool?
@@ -47,15 +47,15 @@ struct ActionResult: Codable {
     let creationDate, challengeAPIID: String?
     let playerUniqueID: String?
     let clientID: Int?
-    let playerCategoryID: String?
+    let playerTypeId: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "Id"
         case challengeID = "ChallengeID"
         case affectedAchievementID = "AffectedAchievementId"
-        case playerID = "PlayerID"
+        case playerUniqueId = "playerUniqueId"
         case actionTypeID = "ActionTypeId"
-        case actionResultPlayerCategoryID = "PlayerCategoryId"
+        case actionResultPlayerCategoryID = "playerTypeId"
         case source = "Source"
         case used = "Used"
         case isPositive
@@ -65,6 +65,6 @@ struct ActionResult: Codable {
         case challengeAPIID = "ChallengeAPIID"
         case playerUniqueID = "PlayerUniqueID"
         case clientID = "ClientID"
-        case playerCategoryID = "PlayerCategoryID"
+        case playerTypeId = "PlayerTypeId"
     }
 }

@@ -16,7 +16,7 @@ struct PlayerNextLevel: Codable {
     let description: String?
     let rewardFrubies, rewardPoints, levelFrubies, levelOrder: Int?
     let iconEnabled, isDeleted, isDefault, isActive: Bool?
-    let playerCategoryID: Int?
+    let playerTypeId: Int?
     let icon: Icon?
     
     enum CodingKeys: String, CodingKey {
@@ -31,7 +31,7 @@ struct PlayerNextLevel: Codable {
         case levelOrder = "levelOrder"
         case iconEnabled = "iconEnabled"
         case isDeleted, isDefault, isActive
-        case playerCategoryID = "playerCategoryID"
+        case playerTypeId = "playerTypeId"
         case icon = "icon"
     }
 }

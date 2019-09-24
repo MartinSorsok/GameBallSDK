@@ -12,12 +12,12 @@ open class GameballApp: NSObject {
     
     // ToDo: fetch bot style won gameball init insetead of fetching VC
     static var clientBotStyle: ClientBotStyle?
-    var playerId: String?
+    var playerUniqueId: String?
     var APIKey: String?
     var holdReference: String?
 
     
-    public init(APIKey: String, playerId: String, categoryId: String = "0") {
+    public init(APIKey: String, playerUniqueId: String, categoryId: String = "0") {
         super.init()
 
         self.setupFonts()
@@ -124,8 +124,8 @@ open class GameballApp: NSObject {
     }
     
     // register with client provided player id
-    public func registerPlayer(withPlayerUniqueId: String, withPlayerCategoryId: String = "",withPlayerInfo: [String: Any] = [:], withDeviceToken: String = "") {
-        NetworkManager.shared().registerPlayer(playerId: withPlayerUniqueId, categoryId: withPlayerCategoryId , playerInfo: withPlayerInfo)
+    public func registerPlayer(withPlayerUniqueId: String, withPlayerTypeId: String = "",withPlayerAttributes: [String: Any] = [:], withDeviceToken: String = "") {
+        NetworkManager.shared().registerPlayer(playerUniqueId: withPlayerUniqueId, categoryId: withPlayerTypeId , playerAttributes: withPlayerAttributes)
     }
     
     

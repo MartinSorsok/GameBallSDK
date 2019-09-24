@@ -17,7 +17,7 @@ class PlayerNextLevelViewModel {
     
     func getLeaderboard(completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getPlayerNextLevel, method: .GET, params: ["externalId":NetworkManager.shared().playerId], modelType: GetPlayerNextLevelResponse.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getPlayerNextLevel, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: GetPlayerNextLevelResponse.self) { (data, error) in
             
             guard let errorModel = error else {
                 if data != nil {

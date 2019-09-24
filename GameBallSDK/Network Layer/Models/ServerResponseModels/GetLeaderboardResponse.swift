@@ -38,13 +38,13 @@ struct LeaderboardPlayerBot: Codable {
 struct LeaderboardPlayerRank: Codable {
     let rowOrder: Int?
     let frubies: Int?
-    let playerId: Int?
+    let playerUniqueId: Int?
     let playersCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case rowOrder = "rowOrder"
         case frubies = "frubies"
-        case playerId = "playerId"
+        case playerUniqueId = "playerUniqueId"
         case playersCount = "playersCount"
     }
 }

@@ -19,7 +19,7 @@ class NetworkManager:NSObject {
     var APIKey: String
     var currentLanguage: Languages
     var referalCode = ""
-    var playerId: String
+    var playerUniqueId: String
     var categoryId: String
     var clientBotSettings: Bool?
     
@@ -36,20 +36,20 @@ class NetworkManager:NSObject {
         let host = APIEndPoints.base_URL
 //        let port = APIEndPoints.appPort
         let APIKey = ""
-        let playerId = ""
+        let playerUniqueId = ""
         let categoryId = ""
         let currentLanguage = Languages.english
-        let networkManager = NetworkManager.init(urlSession: urlSession, connectionScheme: scheme, host: host, APIKey: APIKey, playerId: playerId, categoryId: categoryId,currentLanguage: currentLanguage)
+        let networkManager = NetworkManager.init(urlSession: urlSession, connectionScheme: scheme, host: host, APIKey: APIKey, playerUniqueId: playerUniqueId, categoryId: categoryId,currentLanguage: currentLanguage)
         return networkManager
     }()
     
     
-    private init(urlSession: URLSession, connectionScheme: String, host: String, APIKey: String, playerId: String, categoryId: String , currentLanguage: Languages) {
+    private init(urlSession: URLSession, connectionScheme: String, host: String, APIKey: String, playerUniqueId: String, categoryId: String , currentLanguage: Languages) {
         self.urlSession = urlSession
         self.connectionScheme = connectionScheme
         self.host = host
         self.APIKey = APIKey
-        self.playerId = playerId
+        self.playerUniqueId = playerUniqueId
         self.categoryId = categoryId
         self.currentLanguage = currentLanguage
     }
@@ -72,7 +72,7 @@ class NetworkManager:NSObject {
     }
     
     func isPlayerIdSet() -> Bool {
-        return (self.playerId.count > 0) ? true : false
+        return (self.playerUniqueId.count > 0) ? true : false
     }
 
     func loadDebug<T>(path: String, method: RequestMethod, params: JSON, modelType: T.Type, completion: @escaping (Any?, ServiceError?) -> ()) where T:Codable {
@@ -241,7 +241,7 @@ class NetworkManager:NSObject {
         params["events"] = events
         
         
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
 //        params["PlayerCategoryID"] = self.pla
 //        params["Amount"] = amount
 //        params["isPositive"] = isPostive
@@ -303,9 +303,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
      
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: "")
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
         
         print(params)
         
@@ -365,8 +365,8 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         
-        params["PlayerUniqueID"] = self.playerId
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: "")
+        params["PlayerUniqueID"] = self.playerUniqueId
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
         print(params)
         
         var request = URLRequest(path: APIEndPoints.getPlayerBalance, method: .POST, params: params)
@@ -423,9 +423,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: String(amount))
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: String(amount))
         params["TransactionOnClientSystemId"] = transactionOnClientSystemId
         params["Amount"] = amount
 
@@ -486,9 +486,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: String(amount))
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: String(amount))
         params["OTP"] = OTP
         params["Amount"] = amount
         
@@ -549,9 +549,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: String(amount))
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: String(amount))
         params["TransactionOnClientSystemId"] = transactionOnClientSystemId
         params["Amount"] = amount
         params["HoldReference"] = holdReference
@@ -612,9 +612,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         
-        params["PlayerUniqueID"] = self.playerId
+        params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
-        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerId, amount: "")
+        params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
         params["HoldReference"] = holdReference
         
         print(params)
@@ -662,7 +662,7 @@ class NetworkManager:NSObject {
         
         task.resume()
     }
-    func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "",playerInfo: [String:Any] = [:], completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
+    func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "",playerAttributes: [String:Any] = [:], completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
             completion(nil, ServiceError.noInternetConnection)
             return
@@ -671,7 +671,7 @@ class NetworkManager:NSObject {
         var params: JSON = [:]
         params["playerUniqueId"] = playerUniqueId
    //     params["playerCategoryId"] = playerCategroyId
-        params["playerInfo"] = playerInfo
+        params["playerAttributes"] = playerAttributes
         params["deviceToken"] = deviceToken
         params["osType"] = "iPhone/iPad"
         
@@ -804,12 +804,12 @@ class NetworkManager:NSObject {
         UserDefaults.standard.set(language.rawValue, forKey: UserDefaultsKeys.LanguageKey.rawValue)
     }
     
-    func registerPlayer(playerId: String, categoryId: String , playerInfo: [String:Any]) {
-        NetworkManager.shared().playerId = playerId
+    func registerPlayer(playerUniqueId: String, categoryId: String , playerAttributes: [String:Any]) {
+        NetworkManager.shared().playerUniqueId = playerUniqueId
         NetworkManager.shared().categoryId = categoryId
         UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
-        UserDefaults.standard.set(playerId, forKey: UserDefaultsKeys.playerId.rawValue)
-        self.registerPlayerRequest(playerUniqueId: playerId, playerCategroyId: categoryId,playerInfo: playerInfo ) { (response, error) in
+        UserDefaults.standard.set(playerUniqueId, forKey: UserDefaultsKeys.playerUniqueId.rawValue)
+        self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId,playerAttributes: playerAttributes ) { (response, error) in
             if error != nil {
                 // do something
                 print("failed to register user because \(error!.description)")
@@ -823,7 +823,7 @@ class NetworkManager:NSObject {
     
     func friendReferral(withCategroyId: Int = 0) {
         if isDynamicSet(){
-        self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerId, playerCategroyId: withCategroyId) { (response, error) in
+        self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId, playerCategroyId: withCategroyId) { (response, error) in
             if error != nil {
                 // do something
                 print("failed to register user because \(error!.description)")
@@ -837,7 +837,7 @@ class NetworkManager:NSObject {
     
     func registerDevice(withToken: String) {
 
-        self.registerPlayerRequest(playerUniqueId: playerId, playerCategroyId: categoryId, deviceToken: withToken) { (response, error) in
+        self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId, deviceToken: withToken) { (response, error) in
             if error != nil {
                 // do something
                 print("failed to registerDevice user because \(error!.description)")
@@ -848,18 +848,18 @@ class NetworkManager:NSObject {
         }
     }
     
-    func setPlayer(playerId: String, categoryId: String) {
-        NetworkManager.shared().playerId = playerId
+    func setPlayer(playerUniqueId: String, categoryId: String) {
+        NetworkManager.shared().playerUniqueId = playerUniqueId
         NetworkManager.shared().categoryId = categoryId
         UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
-        UserDefaults.standard.set(playerId, forKey: UserDefaultsKeys.playerId.rawValue)
+        UserDefaults.standard.set(playerUniqueId, forKey: UserDefaultsKeys.playerUniqueId.rawValue)
     }
     
     
     func deRegisterPlayer() {
-        NetworkManager.shared().playerId = ""
+        NetworkManager.shared().playerUniqueId = ""
         NetworkManager.shared().categoryId = ""
-        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.playerId.rawValue)
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.playerUniqueId.rawValue)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.playerCategoryId.rawValue)
     }
     

@@ -14,8 +14,8 @@ struct Profile: Codable {
     let email, gender: String?
     let age: Int?
     let dateOfBirth: String?
-    let playerCategoryID: Int?
-    let externalID: String?
+    let playerTypeId: Int?
+    let playerUniqueId: String?
     let currentLevel, accFrubies, accPoints, statusID: Int?
     let level: Level?
     
@@ -26,8 +26,8 @@ struct Profile: Codable {
         case gender = "gender"
         case age = "age"
         case dateOfBirth = "dateOfBirth"
-        case playerCategoryID = "playerCategoryID"
-        case externalID = "externalID"
+        case playerTypeId = "playerTypeId"
+        case playerUniqueId = "playerUniqueId"
         case currentLevel = "currentLevel"
         case accFrubies = "accFrubies"
         case accPoints = "accPoints"

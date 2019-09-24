@@ -10,17 +10,17 @@ import UIKit
 
 class PlayerInfoViewModel: NSObject {
 
-    var playerInfo: PlayerInfo?
+    var playerAttributes: PlayerInfo?
     var nextLevel: Level?
     var networkRequestInProgess = false
     
     func getPlayerInfo(completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getPlayerInfo, method: .GET, params: ["externalId":NetworkManager.shared().playerId], modelType: GetPlayerInfoResponse.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getPlayerInfo, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: GetPlayerInfoResponse.self) { (data, error) in
             
             guard let errorModel = error else {
                 if data != nil {
-                    self.playerInfo = (data as? GetPlayerInfoResponse)?.response?.playerInfo
+                    self.playerAttributes = (data as? GetPlayerInfoResponse)?.response?.playerInfo
                     self.nextLevel = (data as? GetPlayerInfoResponse)?.response?.nextLevel
                 }
                 self.networkRequestInProgess = false

@@ -107,11 +107,11 @@ struct Fonts {
 }
 
 enum UserDefaultsKeys: String {
-    case playerId = "gameballSDKPlayerID"
+    case playerUniqueId = "gameballSDKPlayerID"
     case playerCategoryId = "gameballSDKPlayerCategoryID"
     case APIKey = "gameballSDKAPIKey"
     case LanguageKey = "languageKey"
-    case PlayerInfo = "PlayerInfoKey"
+    case PlayerAttributes = "PlayerAttributesKey"
 
 }
 

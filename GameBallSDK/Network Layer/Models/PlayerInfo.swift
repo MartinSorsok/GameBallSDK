@@ -15,7 +15,7 @@ struct PlayerInfo: Codable {
     let mobileNumber: String?
     let dateOfBirth: String?
     let joinDate: String?
-    let playerCategoryID, playerId: Int?
+    let playerTypeId, playerUniqueId: Int?
     let externalID: String?
     let currentLevel, accFrubies, accPoints: Int?
     let level: Level?
@@ -25,7 +25,7 @@ struct PlayerInfo: Codable {
 
     enum CodingKeys: String, CodingKey {
         
-        case playerId = "id"
+        case playerUniqueId = "id"
         case displayName = "displayName"
         case firstName = "firstName"
         case lastName = "lastName"
@@ -34,8 +34,8 @@ struct PlayerInfo: Codable {
         case mobileNumber = "mobileNumber"
         case dateOfBirth = "dateOfBirth"
         case joinDate = "joinDate"
-        case playerCategoryID = "playerCategoryId"
-        case externalID = "externalId"
+        case playerTypeId = "playerTypeId"
+        case externalID = "externalID"
         case currentLevel = "currentLevel"
         case accFrubies = "accFrubies"
         case accPoints = "accPoints"

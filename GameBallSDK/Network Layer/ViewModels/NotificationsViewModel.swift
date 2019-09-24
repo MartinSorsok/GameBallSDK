@@ -17,7 +17,7 @@ class NotificationsViewModel {
     
     func getNotifications(completion: @escaping ((_ error: ServiceError?)->())) {
         self.networkRequestInProgess = true
-        NetworkManager.shared().load(path: APIEndPoints.getNotifications, method: .GET, params: ["externalId":NetworkManager.shared().playerId], modelType: NotificationsResponse.self) { (data, error) in
+        NetworkManager.shared().load(path: APIEndPoints.getNotifications, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: NotificationsResponse.self) { (data, error) in
             
             guard let errorModel = error else {
                 if data != nil {

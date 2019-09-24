@@ -171,11 +171,11 @@ class ProfileHeaderView: UIView {
 //        }
 //    }
     
-    private var playerInfo: PlayerInfo? {
+    private var playerAttributes: PlayerInfo? {
         didSet {
-            guard let playerInfo = playerInfo else { return }
+            guard let playerAttributes = playerAttributes else { return }
             DispatchQueue.main.async {
-                self.setupView(with: playerInfo)
+                self.setupView(with: playerAttributes)
             }
         }
     }
@@ -183,10 +183,10 @@ class ProfileHeaderView: UIView {
     private var playerNextLevel: Level? {
         didSet {
             guard let playerNextLevel = playerNextLevel else { return }
-            if let playerInfo = self.playerInfo {
-                if let level = playerInfo.level {
+            if let playerAttributes = self.playerAttributes {
+                if let level = playerAttributes.level {
                     DispatchQueue.main.async {
-                        self.setupPlayerNextLevel(playerInfo: playerInfo, nextlevel: playerNextLevel)
+                        self.setupPlayerNextLevel(playerAttributes: playerAttributes, nextlevel: playerNextLevel)
                     }
                 }
             }
@@ -239,8 +239,8 @@ class ProfileHeaderView: UIView {
             }
             else {
                 // set header view vars
-                if let playerInfo = self.playerInfoViewModel.playerInfo {
-                    self.playerInfo = playerInfo
+                if let playerAttributes = self.playerInfoViewModel.playerAttributes {
+                    self.playerAttributes = playerAttributes
                 }
                 if let nextLevel = self.playerInfoViewModel.nextLevel {
                     self.playerNextLevel = nextLevel
@@ -347,9 +347,9 @@ class ProfileHeaderView: UIView {
     }
 
     
-    private func setupPlayerNextLevel(playerInfo: PlayerInfo, nextlevel: Level) {
+    private func setupPlayerNextLevel(playerAttributes: PlayerInfo, nextlevel: Level) {
         
-        if let currentFrubies = playerInfo.accFrubies, let targetFrubies = nextlevel.levelFrubies {
+        if let currentFrubies = playerAttributes.accFrubies, let targetFrubies = nextlevel.levelFrubies {
             let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
 //            let percentageFilled = Float(0.8)
             let color = Colors.appMainColor ?? .black
