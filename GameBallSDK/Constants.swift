@@ -27,7 +27,7 @@ struct APIEndPoints {
 
     static let registerPlayer = "/api/v1.0/Integrations/InitializePlayer"
 
-    static let friendReferral = "/api/integration/referral"
+    static let friendReferral = "/api/v1.0/Integrations/Referral"
 
     static let getPlayerNextLevel = "/api/Bots/GetNextLevel"
     static let getPlayerDetails = "/api/Bots/GetPlayerDetails"

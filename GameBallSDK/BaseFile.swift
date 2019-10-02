@@ -111,16 +111,16 @@ open class GameballApp: NSObject {
     public func recievedDynamicLink(url: URL){
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else { return }
         for queryItem in queryItems{
-            //print("Parameter \(queryItem.name) has value of \(queryItem.value ?? "")")
-            NetworkManager.shared().referalCode = "0E2K5ILF50CU0fsjGASFmw=="
+            print("Parameter \(queryItem.name) has value of \(queryItem.value ?? "")")
+            NetworkManager.shared().referalCode = (queryItem.value ?? "")
 
         }
     }
 
     
     // Friend Referral
-    public func friendReferral(withCategroyId: Int = 0) {
-        NetworkManager.shared().friendReferral(withCategroyId: withCategroyId)
+    public func friendReferral() {
+        NetworkManager.shared().friendReferral()
     }
     
     // register with client provided player id

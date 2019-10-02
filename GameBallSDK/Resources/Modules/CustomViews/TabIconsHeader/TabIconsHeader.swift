@@ -42,8 +42,8 @@ class TabIconsHeader: UITableViewHeaderFooterView {
         if Int(screenWidth/42) == 9 {
             //will put 8 items
             featuresArray = [Features.Profile.rawValue,
-                             Features.LeaderBoard.rawValue,
                              Features.FriendReferal.rawValue,
+                             Features.LeaderBoard.rawValue,
                              Features.None.rawValue,
                              Features.None.rawValue,
                              Features.None.rawValue,
@@ -51,8 +51,8 @@ class TabIconsHeader: UITableViewHeaderFooterView {
                              Features.Notifications.rawValue]
             
              featuresArrayIcons = ["Achievements.png",
-                                      "Leaderboard.png",
-                                      "Referral.png",
+                                   "Referral.png",
+                                    "Leaderboard.png",
                                       "",
                                       "",
                                       "",
@@ -62,16 +62,17 @@ class TabIconsHeader: UITableViewHeaderFooterView {
             //8 
            // will put 7 items
             featuresArray = [Features.Profile.rawValue,
+                            Features.FriendReferal.rawValue,
                              Features.LeaderBoard.rawValue,
-                             Features.FriendReferal.rawValue,
                              Features.None.rawValue,
                              Features.None.rawValue,
                              Features.None.rawValue,
                              Features.Notifications.rawValue]
             
              featuresArrayIcons = ["Achievements.png",
+                                    "Referral.png",
                                       "Leaderboard.png",
-                                      "Referral.png",
+  
                                       "",
                                       "",
                                       "",

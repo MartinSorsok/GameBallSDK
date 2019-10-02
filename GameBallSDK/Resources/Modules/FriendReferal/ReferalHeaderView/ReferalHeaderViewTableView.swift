@@ -8,6 +8,8 @@
 import UIKit
 
 class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
+    let userCache = UserProfileCache.get()
+
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
             titleLabel.text =  GameballApp.clientBotStyle?.referralHeadLine
@@ -37,7 +39,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     @IBOutlet weak var textField: UITextField!{
         didSet{
             
-            textField.text = GameballApp.clientBotStyle?.referralSignUpLink
+            textField.text = userCache?.dynamicLink
             if Localizator.sharedInstance.language == Languages.arabic {
                 textField.font = Fonts.cairoRegularFont10
                 

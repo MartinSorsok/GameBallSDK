@@ -9,17 +9,14 @@ import Foundation
 
 
 struct FriendReferralResponse: Codable {
-    let response: PlayerInfo?
     let success: Bool?
-    let errorMsg: String?
-    let errorCode: Int?
+    let status: StatusResponse?
     
     enum CodingKeys: String, CodingKey {
-        case response
-        case success = "success"
-        case errorMsg = "errorMsg"
-        case errorCode = "errorCode"
+        case success = "isSucceeded"
+        case status = "status"
     }
 }
+
 
 

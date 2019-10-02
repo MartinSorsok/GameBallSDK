@@ -12,7 +12,8 @@ import UIKit
 typealias JSON = [String: Any]
 
 class NetworkManager:NSObject {
-    
+    let userCache = UserProfileCache.get()
+
     let urlSession: URLSession
     let connectionScheme: String
     let host: String
@@ -683,10 +684,6 @@ class NetworkManager:NSObject {
                 switch httpResponse.statusCode {
                 case (200..<300):
                     // Parsing incoming data
-                    
-                    
-                    
-
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(RegisterPlayerResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
@@ -721,16 +718,16 @@ class NetworkManager:NSObject {
 
 
     }
-    func friendReferralRequest(withReferralCode: String,playerUniqueId: String, playerCategroyId: Int = 0, completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
+    func friendReferralRequest(withReferralCode: String,playerUniqueId: String, completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
             completion(nil, ServiceError.noInternetConnection)
             return
         }
         
         var params: JSON = [:]
-        params["PlayerCode"] = withReferralCode
-        params["NewPlayerCategoryID"] = playerCategroyId
-        params["NewPlayerUniqueID"] = playerUniqueId
+        params["playerCode"] = withReferralCode
+        params["NewPlayerCategoryID"] = userCache?.playerTypeId
+        params["playerUniqueId"] = playerUniqueId
         
         var request = URLRequest(path: APIEndPoints.friendReferral, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -821,15 +818,15 @@ class NetworkManager:NSObject {
     }
     
     
-    func friendReferral(withCategroyId: Int = 0) {
+    func friendReferral() {
         if isDynamicSet(){
-        self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId, playerCategroyId: withCategroyId) { (response, error) in
+        self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId) { (response, error) in
             if error != nil {
                 // do something
-                print("failed to register user because \(error!.description)")
+                print("Failed to Refer a friend  because \(error!.description)")
             }
             else {
-                print(response?.errorMsg ?? "")
+                print("Failed to Refer a friend  because \(response?.status?.message ?? "")")
             }
         }
         }
