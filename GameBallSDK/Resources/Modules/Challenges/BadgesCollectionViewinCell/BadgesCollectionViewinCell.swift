@@ -30,6 +30,8 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 //        self.collectionView.register(UINib.init(nibName: "TabbarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TabbarCollectionViewCell")
              collectionView.register(UINib(nibName: badgeViewView, bundle: nil), forCellWithReuseIdentifier: badgeViewView)
                     collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCollectionReusableView)
+        collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: headerCollectionReusableView)
+
         fetchData()
     }
     
@@ -150,13 +152,20 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
         case UICollectionView.elementKindSectionHeader:
             
 
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath)
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath) as? HeaderCollectionReusableView
 
-            headerView.backgroundColor = UIColor.blue
-            return headerView
+            headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            return headerView ?? UICollectionReusableView()
             
 
+        case UICollectionView.elementKindSectionFooter:
+              
 
+              let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath)  as? HeaderCollectionReusableView
+
+              headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.missionsTitle.rawValue.localized
+              return headerView ?? UICollectionReusableView()
+              
         default:
             assert(false, "Unexpected element kind")
         }
@@ -167,7 +176,11 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
         return CGSize(width: collectionView.frame.width, height: 58.0)
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+         
 
+         return CGSize(width: collectionView.frame.width, height: 58.0)
+     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let challenge = challenges[indexPath.row]

@@ -29,6 +29,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var closeButton: UIButton!
     var isEmbedType = false
+    private var dateCellExpanded: Bool = false
+
     @IBOutlet weak var mainTableView: UITableView!{
         didSet {
             mainTableView.dataSource = self
@@ -37,7 +39,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             mainTableView.register(UINib(nibName: mainTableViewCell, bundle: nil), forCellReuseIdentifier: mainTableViewCell)
             mainTableView.register(UINib(nibName: badgesCollectionViewinCell, bundle: nil), forCellReuseIdentifier: badgesCollectionViewinCell)
             mainTableView.register(UINib(nibName: challengesTableViewInCell, bundle: nil), forCellReuseIdentifier: challengesTableViewInCell)
-            
+            mainTableView.register(UINib(nibName: missionsTableViewCell, bundle: nil), forCellReuseIdentifier: missionsTableViewCell)
+
             
             mainTableView.register(UINib(nibName: tabIconsHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: tabIconsHeader)
             
@@ -53,6 +56,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private let badgesCollectionViewinCell = "BadgesCollectionViewinCell"
     private let tabIconsHeader = "TabIconsHeader"
     private let challengesTableViewInCell = "ChallengesTableViewInCell"
+    private let missionsTableViewCell = "GB_MissionsTableViewCell"
+
     private var  currentFeature = 0
     private let challengesViewModel = ChallengesViewModel()
     
@@ -146,10 +151,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 print(error?.description as Any)
             }
             else {
-                // ToDo: stop animation
                 self.challenges = self.challengesViewModel.challenges.filter {
                     $0.isReferral ?? false
                 }
+                self.quests = self.challengesViewModel.quests
             }
         }
         
@@ -187,6 +192,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
+        } else if section == 1 && quests.count > 0 && currentFeature == Features.Profile.rawValue {
+            return quests.count + 1
         } else {
             return 1
         }
@@ -216,19 +223,31 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell) as! MainTableViewCell
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.section == 1{
             
             if currentFeature == Features.Profile.rawValue {
+                if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
                 cell.delegate = self
                 cell.frame = tableView.bounds;  // cell of myTableView
                 cell.currentFeature = self.currentFeature
                 cell.collectionViewHeight.constant = collectionViewHeight;
                 cell.collectionView.reloadData()
+                    cell.selectionStyle = .none
 
                 return cell
-                
+                } else if  quests.count > 1 {
+                    
+                    let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
+
+                    cell.selectionStyle = .none
+
+                    cell.quest = quests[indexPath.row - 1]
+                    return cell
+                    
+                }
             } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue || currentFeature == Features.Notifications.rawValue{
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: challengesTableViewInCell) as! ChallengesTableViewInCell
@@ -250,6 +269,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 cell.tableViewHeightConstraint.constant = cell.tableView.contentSize.height
                 cell.layoutIfNeeded()
 
+                cell.selectionStyle = .none
 
                 self.endLoading()
                 return cell
@@ -257,6 +277,32 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? GB_MissionsTableViewCell {
+
+            let noOfChallenges = quests[indexPath.row - 1].questChallenges?.count ?? 0
+            
+            if dateCellExpanded {
+                    dateCellExpanded = false
+                cell.challengesTableViewHeightConstraint.constant -= CGFloat(55 * noOfChallenges)
+
+                } else {
+                    dateCellExpanded = true
+                cell.challengesTableViewHeightConstraint.constant += CGFloat(55 * noOfChallenges)
+
+
+                }
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            
+        }
+
+        
+
     }
     
 

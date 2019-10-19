@@ -27,10 +27,10 @@ class ChallengesViewModel {
             }
             if data != nil {
                 self.challenges = (data as! GetChallengeWithUnlocksResponseModel).response?.challenges ?? []
-//                self.quests = (data as! GetChallengeWithUnlocksResponseModel).response?.quests ?? []
-                let quests = (data as! GetChallengeWithUnlocksResponseModel).response?.quests ?? []
-                let questsWithChalleneges = quests.filter({ $0.questChallenges?.count ?? 0 > 0})
-                self.quests = questsWithChalleneges
+                self.quests = (data as! GetChallengeWithUnlocksResponseModel).response?.quests ?? []
+//                let quests = (data as! GetChallengeWithUnlocksResponseModel).response?.quests ?? []
+//                let questsWithChalleneges = quests.filter({ $0.questChallenges?.count ?? 0 > 0})
+//                self.quests = questsWithChalleneges
                 self.networkRequestInProgess = false
                 completion(nil)
             }

@@ -17,6 +17,7 @@ class LocalizationsKeys: NSObject {
     
     enum GameballScreen :String{
         case achievementTitle = "AchievementTitle"
+        case missionsTitle =  "MissionsTitle"
         case  pts = "pts"
         case  pointsName = "pointsName"
         case  rankPointsName = "RankPointsName"

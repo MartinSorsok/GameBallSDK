@@ -12,6 +12,8 @@
 
 "LeaderboardTitle" = "قائمة المتصدرين" ;
 "AchievementTitle" = "الإنجازات";
+"MissionsTitle" = "مهمات";
+
 "GameballFooterText" = "مقدم بواسطة";
 "Welcome" =  "مرحباً ";
 "You are on level" = "المستوى الحالي هو";

@@ -85,12 +85,6 @@ class ReferalFriendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         numberOfAchievedLabel.isHidden = true
-        
-        
-        
-        
-
-    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

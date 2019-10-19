@@ -12,8 +12,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-            titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
-            
+      
             if Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
 

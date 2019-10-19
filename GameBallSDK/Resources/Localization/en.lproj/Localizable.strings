@@ -12,6 +12,9 @@
 
 "LeaderboardTitle" = "Leaderboard" ;
 "AchievementTitle" = "Achievements";
+"MissionsTitle" = "Missions";
+
+
 "GameballFooterText" = "we run on";
 
 "Welcome" = "Welcome ";
