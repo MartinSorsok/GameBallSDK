@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    @IBOutlet weak var rankPointsImage: UIImageView!
+    @IBOutlet weak var walletPointsImage: UIImageView!
+    @IBOutlet weak var greyBarHeightConstant: NSLayoutConstraint!
     var viewModel: PlayerDetailsViewModel = PlayerDetailsViewModel()
     var playerInfoViewModel: PlayerInfoViewModel = PlayerInfoViewModel()
     
@@ -211,8 +214,36 @@ class ProfileHeaderView: UIView {
     
     private func commonInit() {
 //        setupViews()
-        frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-        pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+        
+      
+        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+            frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+
+        } else {
+            frubiesTitleLabel.isHidden = true
+            frubiesValueLabel.isHidden = true
+            rankPointsImage.isHidden = true
+        }
+        
+        if GameballApp.clientBotStyle?.isWalletPointsVisible ?? false {
+            pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+
+        } else {
+            pointsTitleLabel.isHidden = true
+            walletPointsImage.isHidden = true
+            pointsValueLabel.isHidden = true
+        }
+            
+      if (!(GameballApp.clientBotStyle?.isRankPointsVisible ?? false) && !(GameballApp.clientBotStyle?.isWalletPointsVisible ?? false)){
+            greyBarHeightConstant.constant = 0
+            frubiesTitleLabel.isHidden = true
+            rankPointsImage.isHidden = true
+            walletPointsImage.isHidden = true
+
+                       frubiesValueLabel.isHidden = true
+            pointsTitleLabel.isHidden = true
+                      pointsValueLabel.isHidden = true
+        }
 
         fetchData(completion: {
             self.delegate?.dataReady(view: self.view)

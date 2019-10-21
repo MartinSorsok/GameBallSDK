@@ -9,7 +9,7 @@ import UIKit
 
 class GB_MissionsTableViewCell: UITableViewCell {
 
-    
+    var cellExpanded = false
     private let challengeInMissionTableViewCell = "GB_ChallengeInMissionTableViewCell"
 
     @IBOutlet weak var cellHeightConstraint: NSLayoutConstraint!
@@ -160,6 +160,7 @@ extension  GB_MissionsTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: challengeInMissionTableViewCell) as! GB_ChallengeInMissionTableViewCell
         cell.selectionStyle = .none
+        print("******** \(indexPath.row)")
         cell.challenge = quest?.questChallenges?[indexPath.row]
         if indexPath.row == ((quest?.questChallenges?.count ?? 0) - 1)  {
             cell.nextChallengeArrowImage.isHidden = true

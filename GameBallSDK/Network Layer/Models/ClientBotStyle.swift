@@ -12,11 +12,19 @@ struct ClientBotStyle: Codable {
 //    let clientID: Int
     let botMainColor, buttonBackgroundColor, buttonFlagColor, referralSignUpLink, referralHeadLine, referralText, buttonSariColor: String?
     let buttonShape, buttonDirection, offlineStatemessage, button, buttonLink: String?
-    let enableLeaderboard: Bool?
+    let enableLeaderboard, enableNotifications, enableAchievements, isReferralOn, enableUserProfile, isRankPointsVisible, isWalletPointsVisible: Bool?
     let rankPointsName: String?
     let walletPointsName: String?
     enum CodingKeys: String, CodingKey {
 //        case clientID = "clientId"
+        
+        case enableNotifications = "enableNotifications"
+        case enableAchievements = "enableAchievements"
+        case isReferralOn = "isReferralOn"
+        case enableUserProfile = "enableUserProfile"
+        case isRankPointsVisible = "isRankPointsVisible"
+        case isWalletPointsVisible = "isWalletPointsVisible"
+
         case botMainColor = "botMainColor"
         case buttonBackgroundColor = "buttonBackgroundColor"
         case buttonFlagColor = "buttonFlagColor"

@@ -29,7 +29,6 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var closeButton: UIButton!
     var isEmbedType = false
-    private var dateCellExpanded: Bool = false
 
     @IBOutlet weak var mainTableView: UITableView!{
         didSet {
@@ -127,6 +126,29 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         } else {
             closeButton.isHidden = false
         }
+        
+        nc.addObserver(self,selector: #selector(StartCurrentFeature), name: Notification.Name("StartcurrentFeature"), object: nil)
+    }
+         
+       
+
+    
+       
+      
+       @objc func StartCurrentFeature(_ notification:Notification) {
+          // self.delegate?.dataReady(tableview: self.tableView)
+
+           guard let featureNumber = notification.object as? Int else {
+               return
+           }
+        
+         self.startLoading()
+         nc.post(name: Notification.Name("tabBarTapped"), object: featureNumber)
+         self.currentFeature = featureNumber
+         self.mainTableView.reloadData()
+
+         
+        
     }
     
     private func fetchNotificationsData() {
@@ -238,7 +260,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                     cell.selectionStyle = .none
 
                 return cell
-                } else if  quests.count > 1 {
+                } else  {
                     
                     let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
 
@@ -286,16 +308,16 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 
             let noOfChallenges = quests[indexPath.row - 1].questChallenges?.count ?? 0
             
-            if dateCellExpanded {
-                    dateCellExpanded = false
-                cell.challengesTableViewHeightConstraint.constant -= CGFloat(55 * noOfChallenges)
+//            if cell.cellExpanded {
+//                cell.cellExpanded = false
+//                cell.challengesTableViewHeightConstraint.constant -= CGFloat(55 * noOfChallenges)
 
-                } else {
-                    dateCellExpanded = true
-                cell.challengesTableViewHeightConstraint.constant += CGFloat(55 * noOfChallenges)
+//                } else {
+//                cell.cellExpanded = true
+                cell.challengesTableViewHeightConstraint.constant = CGFloat(55 * noOfChallenges)
 
 
-                }
+//                }
                 tableView.beginUpdates()
                 tableView.endUpdates()
             
@@ -303,6 +325,15 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 
         
 
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? GB_MissionsTableViewCell {
+            cell.challengesTableViewHeightConstraint.constant = 0
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
 

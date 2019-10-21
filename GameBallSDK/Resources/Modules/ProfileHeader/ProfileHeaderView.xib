@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,14 +13,17 @@
                 <outlet property="customerTypeLabel" destination="2fO-vB-7zd" id="oU9-cU-suh"/>
                 <outlet property="frubiesTitleLabel" destination="sE8-ZA-b76" id="foZ-iN-YJC"/>
                 <outlet property="frubiesValueLabel" destination="eyg-MY-8RZ" id="9P0-SV-kJJ"/>
+                <outlet property="greyBarHeightConstant" destination="1q0-bI-gij" id="xhg-WL-Ka0"/>
                 <outlet property="nextTierTitleLabel" destination="4kG-yl-cl8" id="Bu5-eM-jkQ"/>
                 <outlet property="nextTierValueLabel" destination="Ztw-xR-5Z6" id="6wS-nO-baY"/>
                 <outlet property="pointsTitleLabel" destination="gp9-9c-ujW" id="i6g-7K-c8o"/>
                 <outlet property="pointsValueLabel" destination="l22-h5-Z3t" id="vma-i9-YAx"/>
                 <outlet property="profileIconImageView" destination="wLd-Fh-yW9" id="wyc-C5-pno"/>
                 <outlet property="progressView" destination="TC7-DI-dEi" id="552-HU-dwq"/>
+                <outlet property="rankPointsImage" destination="yW8-To-ykB" id="yHt-a8-BvU"/>
                 <outlet property="userNameLabel" destination="qVn-9d-p55" id="XtF-b3-X3y"/>
                 <outlet property="view" destination="0EM-RA-WQX" id="8UA-zH-JoR"/>
+                <outlet property="walletPointsImage" destination="U4l-Om-Lx5" id="tmp-KU-wBu"/>
                 <outlet property="welcomeLabel" destination="or3-d6-ax9" id="fBA-IV-oPt"/>
                 <outlet property="youAreOnLevelLabel" destination="FKb-Fu-ks1" id="5mO-Wm-61W"/>
             </connections>
@@ -130,6 +131,7 @@
                             <constraints>
                                 <constraint firstItem="yW8-To-ykB" firstAttribute="centerY" secondItem="j9c-dc-dFD" secondAttribute="centerY" id="07Q-Vc-sz2"/>
                                 <constraint firstAttribute="height" constant="40" id="1q0-bI-gij"/>
+                                <constraint firstItem="U4l-Om-Lx5" firstAttribute="centerY" secondItem="j9c-dc-dFD" secondAttribute="centerY" id="7s7-yz-fyN"/>
                                 <constraint firstItem="U4l-Om-Lx5" firstAttribute="leading" secondItem="86a-Wi-J4S" secondAttribute="trailing" constant="18" id="8Wu-5N-BQa"/>
                                 <constraint firstItem="U4l-Om-Lx5" firstAttribute="centerY" secondItem="eyg-MY-8RZ" secondAttribute="centerY" id="9f9-mI-BiX"/>
                                 <constraint firstItem="86a-Wi-J4S" firstAttribute="centerY" secondItem="j9c-dc-dFD" secondAttribute="centerY" id="E7H-du-i8m"/>
