@@ -48,7 +48,7 @@ class ProgressView: UIView {
     
     private var filledViewWidthConstraint: NSLayoutConstraint?
     private func addFilledView(with percentage: Float) {
-        print(percentage)
+         Helpers().dPrint(percentage)
         addSubview(filledView)
         
         filledView.topAnchor.constraint(equalTo: topAnchor).isActive = true

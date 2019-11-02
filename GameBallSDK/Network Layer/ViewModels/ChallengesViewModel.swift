@@ -20,7 +20,7 @@ class ChallengesViewModel {
         self.networkRequestInProgess = true
         NetworkManager.shared().load(path: APIEndPoints.getChallengesWithUnlocks, method: .GET, params: ["playerUniqueId":NetworkManager.shared().playerUniqueId], modelType: GetChallengeWithUnlocksResponseModel.self) { (data, error) in
             if let errorModel = error {
-                print(errorModel.description)
+                 Helpers().dPrint(errorModel.description)
                 completion(errorModel)
                 self.networkRequestInProgess = false
                 return

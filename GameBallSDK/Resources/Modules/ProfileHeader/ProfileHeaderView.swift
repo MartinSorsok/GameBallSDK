@@ -251,7 +251,7 @@ class ProfileHeaderView: UIView {
                 self.view.isHidden = false
 
             }
-            print("done fetchPlayerInfo ")
+             Helpers().dPrint("done fetchPlayerInfo ")
         })
     }
     
@@ -266,7 +266,7 @@ class ProfileHeaderView: UIView {
         self.playerInfoViewModel.getPlayerInfo { (error) in
             if error != nil {
                 // ToDo: Show message to user
-                print("an error occured")
+                 Helpers().dPrint("an error occured")
             }
             else {
                 // set header view vars
@@ -329,7 +329,7 @@ class ProfileHeaderView: UIView {
         path = "/" + path
         NetworkManager.shared().loadImage(path: path) { (myImage, error) in
             if let errorModel = error {
-                print(errorModel.description)
+                 Helpers().dPrint(errorModel.description)
             }
             else {
             }
@@ -361,7 +361,7 @@ class ProfileHeaderView: UIView {
         let path = model.level?.icon?.fileName ?? "https://assets.gameball.co/sample/4.png"
         NetworkManager.shared().loadImage(path: path.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
             if let errorModel = error {
-                print(errorModel.description)
+                 Helpers().dPrint(errorModel.description)
             }
             else {
             }

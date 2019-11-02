@@ -2,8 +2,8 @@
 //  baseFile.swift
 //  gameball_SDK
 //
-//  Created by Ahmed Abodeif on 2/2/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 2/2/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import UIKit
@@ -15,31 +15,31 @@ open class GameballApp: NSObject {
     var playerUniqueId: String?
     var APIKey: String?
     var holdReference: String?
-
+    
     
     public init(APIKey: String, playerUniqueId: String, categoryId: String = "0") {
         super.init()
-
+        
         self.setupFonts()
         self.fetchBotStyle()
-
+        
         NetworkManager.shared().registerAPIKey(APIKey: APIKey)
-//        self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
+        //        self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
         
-
+        
     }
     
     
     public init(APIKey: String,language: String = "en") {
         super.init()
-
         self.setupFonts()
         self.fetchBotStyle()
+        
         language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
     }
     
-
+    
     
     public func fetchBotStyle(completion:  ((_ success: Bool?, _ errorDescription: String?)->())? = nil) {
         NetworkManager.shared().load(path: APIEndPoints.getBotStyle, method: RequestMethod.GET, params: [:], modelType: GetClientBotStyleResponse.self) { (data, error) in
@@ -52,7 +52,7 @@ open class GameballApp: NSObject {
                 return
             }
             // ToDo: return the error model
-            print("Could not get client bot settings")
+            Helpers().dPrint("Could not get client bot settings")
             NetworkManager.shared().clientBotSettings = false
             self.fetchBotStyle()
             completion?(false, errorModel.description)
@@ -76,16 +76,16 @@ open class GameballApp: NSObject {
                     return nc
                 }
                 else {
-                    print("Gameball Player Id is not set...")
+                    Helpers().dPrint("Gameball Player Id is not set...")
                     return nil
                 }
             } else {
-                print("Gameball BotSettings is not set...")
+                Helpers().dPrint("Gameball BotSettings is not set...")
                 return nil
             }
         }
         else {
-            print("Gameball API Key is not set...")
+            Helpers().dPrint("Gameball API Key is not set...")
             return nil
         }
         
@@ -95,32 +95,35 @@ open class GameballApp: NSObject {
     
     public func notificationPopUP(notification: UNNotification) -> UIViewController{
         
-//        print(notification.request.content.userInfo[AnyHashable("isGB")])
+        //         self.dPrint(notification.request.content.userInfo[AnyHashable("isGB")])
         
-//        if notification.request.content.userInfo[AnyHashable("isGB")] as? Bool ?? false{
+        //        if notification.request.content.userInfo[AnyHashable("isGB")] as? Bool ?? false{
         // Register Nib
         
         let myVC = Bundle.main.loadNibNamed("NotificationPopUPView", owner: self, options: nil)?[0] as? NotificationPopUPViewController
         myVC?.notificationData = notification
         // Present View "Modally"
         return myVC ?? UIViewController()
-//        }
+        //        }
         
     }
     
     public func recievedDynamicLink(url: URL){
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else { return }
         for queryItem in queryItems{
-            print("Parameter \(queryItem.name) has value of \(queryItem.value ?? "")")
-            NetworkManager.shared().referalCode = (queryItem.value ?? "")
-
+            Helpers().dPrint("Parameter \(queryItem.name) has value of \(queryItem.value ?? "")")
+            if queryItem.name == "GBReferral" {
+                NetworkManager.shared().referalCode = (queryItem.value ?? "")
+                
+            }
+            
         }
     }
-
+    
     
     // Friend Referral
-    public func friendReferral() {
-        NetworkManager.shared().friendReferral()
+    public func friendReferral(playerUniqueId: String,playerAttributes: [String:Any] = [:], completion: @escaping (String) -> Void)  {
+        return NetworkManager.shared().friendReferral(playerUniqueId: playerUniqueId,playerAttributes: playerAttributes, completion: completion)
     }
     
     // register with client provided player id
@@ -132,7 +135,7 @@ open class GameballApp: NSObject {
     // register without client provided player id
     public func registerPlayer(withCategroyId: String = "") {
         let uuid = NSUUID().uuidString.lowercased()
-       // NetworkManager.shared().registerPlayer(playerId: uuid, categoryId: withCategroyId)
+        // NetworkManager.shared().registerPlayer(playerId: uuid, categoryId: withCategroyId)
     }
     
     
@@ -141,8 +144,8 @@ open class GameballApp: NSObject {
         // a player should be registered to link token with player
         NetworkManager.shared().registerDevice(withToken: withToken)
     }
-
-
+    
+    
     
     
     // Send action withMeta Data events
@@ -150,12 +153,12 @@ open class GameballApp: NSObject {
         
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
-                print("done ..sendAction..")
-                print(responseObject ?? "")
+                Helpers().dPrint("done ..sendAction..")
+                Helpers().dPrint(responseObject ?? "")
                 completion(responseObject?.status?.message, nil)
             }
             else {
-                print("failed sendAction")
+                Helpers().dPrint("failed sendAction")
                 completion(responseObject?.status?.message, error?.description)
             }
         }
@@ -165,29 +168,29 @@ open class GameballApp: NSObject {
         
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
-                print("done ..sendAction..")
-                print(responseObject ?? "")
+                Helpers().dPrint("done ..sendAction..")
+                Helpers().dPrint(responseObject ?? "")
                 completion(responseObject?.status?.message, nil)
             }
             else {
-                print("failed sendAction")
+                Helpers().dPrint("failed sendAction")
                 completion(responseObject?.status?.message, error?.description)
             }
         }
     }
     
-
+    
     
     //4.2    Generate OTP
     public func generateOTP(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         NetworkManager.shared().generateOTP() { (responseObject, error) in
             if error == nil {
-                print("done ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done ....")
+                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(false, error?.description)
             }
         }
@@ -197,12 +200,12 @@ open class GameballApp: NSObject {
     public func getPlayerBalance(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         NetworkManager.shared().getPlayerBalance() { (responseObject, error) in
             if error == nil {
-                print("done ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done ....")
+                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(false, error?.description)
             }
             
@@ -212,12 +215,12 @@ open class GameballApp: NSObject {
     public func rewardPoints(transactionOnClientSystemId: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         NetworkManager.shared().rewardPoints(transactionOnClientSystemId: transactionOnClientSystemId, amount: amount) { (responseObject, error) in
             if error == nil {
-                print("done ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done ....")
+                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(false, error?.description)
             }
         }
@@ -228,14 +231,14 @@ open class GameballApp: NSObject {
     public func holdPoints(OTP: String ,amount: Int = 0,completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
         NetworkManager.shared().holdPoints(OTP: OTP, amount: amount) { (responseObject, error) in
             if error == nil {
-                print("done holdPoints ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done holdPoints ....")
+                Helpers().dPrint(responseObject ?? "")
                 self.holdReference = responseObject?.response?.holdReference ?? ""
-//                print(responseObject?.response?.holdReference as Any)
+                //                 self.dPrint(responseObject?.response?.holdReference as Any)
                 completion(responseObject?.response?.holdReference ?? "", nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(nil, error?.description)
             }
         }
@@ -246,12 +249,12 @@ open class GameballApp: NSObject {
     public func redeemPoints(transactionOnClientSystemId: String ,holdReference: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         NetworkManager.shared().redeemPoints(transactionOnClientSystemId: transactionOnClientSystemId, holdReference: holdReference, amount: amount) { (responseObject, error) in
             if error == nil {
-                print("done redeemPoints ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done redeemPoints ....")
+                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(nil, error?.description)
             }
         }
@@ -262,51 +265,43 @@ open class GameballApp: NSObject {
     public func reversePoints(holdReference: String,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         NetworkManager.shared().reversePoints( holdReference: holdReference) { (responseObject, error) in
             if error == nil {
-                print("done redeemPoints ....")
-                print(responseObject ?? "")
+                Helpers().dPrint("done redeemPoints ....")
+                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
-                print("failed")
+                Helpers().dPrint("failed")
                 completion(nil, error?.description)
             }
         }
     }
-//    public func configureFireBase() {
-//        if let filePath = Bundle.init(for: type(of: self)).path(forResource: "GameBallSDK-Info", ofType: "plist") {
-//
-//
-//            let manualOptions = FirebaseOptions.init(googleAppID: "1:252563989296:ios:070bea370ad08516", gcmSenderID: "550082315977")
-//            manualOptions.bundleID = "org.cocoapods.GameBallSDK"
-//            manualOptions.apiKey = "AIzaSyBuUTVn-JHAPOBk7SJla8V0lqdbFcBdv0Q"
-//            manualOptions.projectID = "gameballsdk"
-////            manualOptions.clientID = "252563989296-ldf2tn2hp97vklt576kl4ao109bf7js8.apps.googleusercontent.com"
-//            FirebaseApp.configure(name: "GameballSDK", options: manualOptions)
-//        }
-//    }
+    //    public func configureFireBase() {
+    //        if let filePath = Bundle.init(for: type(of: self)).path(forResource: "GameBallSDK-Info", ofType: "plist") {
+    //
+    //
+    //            let manualOptions = FirebaseOptions.init(googleAppID: "1:252563989296:ios:070bea370ad08516", gcmSenderID: "550082315977")
+    //            manualOptions.bundleID = "org.cocoapods.GameBallSDK"
+    //            manualOptions.apiKey = "AIzaSyBuUTVn-JHAPOBk7SJla8V0lqdbFcBdv0Q"
+    //            manualOptions.projectID = "gameballsdk"
+    ////            manualOptions.clientID = "252563989296-ldf2tn2hp97vklt576kl4ao109bf7js8.apps.googleusercontent.com"
+    //            FirebaseApp.configure(name: "GameballSDK", options: manualOptions)
+    //        }
+    //    }
     
-//    public func configureFirebaseTest() {
-//        let manualOptions = FirebaseOptions.init(googleAppID: "1:6155436118:ios:5f6ec0ebbfd46fca", gcmSenderID: "6155436118")
-//        manualOptions.bundleID = "abodeif.gameball"
-//        manualOptions.apiKey = "AIzaSyAckaZGugjHFE5vVpT6fED7yD7JD8MEnYc"
-//        manualOptions.projectID = "gameballios"
-//        FirebaseApp.configure(options: manualOptions)
-//    }
+    //    public func configureFirebaseTest() {
+    //        let manualOptions = FirebaseOptions.init(googleAppID: "1:6155436118:ios:5f6ec0ebbfd46fca", gcmSenderID: "6155436118")
+    //        manualOptions.bundleID = "abodeif.gameball"
+    //        manualOptions.apiKey = "AIzaSyAckaZGugjHFE5vVpT6fED7yD7JD8MEnYc"
+    //        manualOptions.projectID = "gameballios"
+    //        FirebaseApp.configure(options: manualOptions)
+    //    }
     
-//    public func getFirebaseApp() -> [String : FirebaseApp]? {
-//        return FirebaseApp.allApps
-//    }
+    //    public func getFirebaseApp() -> [String : FirebaseApp]? {
+    //        return FirebaseApp.allApps
+    //    }
     
-
+    
     
     
 }
 
-
-extension GameballApp: UIApplicationDelegate {
-    
-    public func applicationDidFinishLaunching(_ application: UIApplication) {
-
-
-    }
-}

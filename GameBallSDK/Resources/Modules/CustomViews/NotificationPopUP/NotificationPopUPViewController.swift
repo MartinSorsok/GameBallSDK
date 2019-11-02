@@ -48,7 +48,7 @@ class NotificationPopUPViewController: BaseViewController {
         if let image = notificationData?.request.content.userInfo[AnyHashable("icon")] as? String{
             NetworkManager.shared().loadImage(path: image.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
                 if let errorModel = error {
-                    print(errorModel.description)
+                     Helpers().dPrint(errorModel.description)
                 }
                 else {
                 }

@@ -99,7 +99,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
         let path = withURL
         NetworkManager.shared().loadImage(path: path.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
             if let errorModel = error {
-                print(errorModel.description)
+                 Helpers().dPrint(errorModel.description)
             }
             else {
             }

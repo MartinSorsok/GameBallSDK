@@ -2,8 +2,8 @@
 //  NetworkManager.swift
 //  gameball_SDK
 //
-//  Created by Ahmed Abodeif on 2/3/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 2/3/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import Foundation
@@ -33,8 +33,13 @@ class NetworkManager:NSObject {
         }
         let urlSession = URLSession(configuration: sessionConfiguration)
         let baseURL = APIEndPoints.base_URL
+//        let baseURL = TestingServer.shared.base_URL
+
         let scheme = "https"
         let host = APIEndPoints.base_URL
+//        let host = TestingServer.shared.base_URL
+
+        
 //        let port = APIEndPoints.appPort
         let APIKey = ""
         let playerUniqueId = ""
@@ -93,7 +98,7 @@ class NetworkManager:NSObject {
                 case (200..<300):
                     if let data = data {
                         let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                        print(JSONString ?? "Could not print Json")
+                         Helpers().dPrint(JSONString ?? "Could not print Json")
                     }
                 case 403:
                     completion(nil, ServiceError.missingAPIKey)
@@ -147,7 +152,7 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(modelType.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                             Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
@@ -180,7 +185,7 @@ class NetworkManager:NSObject {
 //        var request = URLRequest(path: modifiedPath)
         let url = URL(string: modifiedPath)
         guard let myUrl = url else {
-            print("bad image url .......")
+             Helpers().dPrint("bad image url .......")
             return
         }
         var req = URLRequest(url: myUrl);
@@ -247,7 +252,7 @@ class NetworkManager:NSObject {
 //        params["Amount"] = amount
 //        params["isPositive"] = isPostive
         
-        print(params)
+    Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.postAction, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -259,32 +264,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(PostActionResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(PostActionResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.methodName ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -308,7 +313,7 @@ class NetworkManager:NSObject {
         params["TransactionTime"] = Helpers().getTransactionTime()
         params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
         
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.generateOTP, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -320,32 +325,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(GenerateOTPResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(GenerateOTPResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -368,7 +373,7 @@ class NetworkManager:NSObject {
         
         params["PlayerUniqueID"] = self.playerUniqueId
         params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.getPlayerBalance, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -380,32 +385,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(GenerateOTPResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(GenerateOTPResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -430,7 +435,7 @@ class NetworkManager:NSObject {
         params["TransactionOnClientSystemId"] = transactionOnClientSystemId
         params["Amount"] = amount
 
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.rewardPoints, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -442,32 +447,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(RewardPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(RewardPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -493,7 +498,7 @@ class NetworkManager:NSObject {
         params["OTP"] = OTP
         params["Amount"] = amount
         
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.holdPoints, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -505,32 +510,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -557,7 +562,7 @@ class NetworkManager:NSObject {
         params["Amount"] = amount
         params["HoldReference"] = holdReference
 
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.redeemPoints, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -569,32 +574,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -618,7 +623,7 @@ class NetworkManager:NSObject {
         params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
         params["HoldReference"] = holdReference
         
-        print(params)
+        Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.reversePoints, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -630,32 +635,32 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(tempObject, nil)
                     }
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 case 400:
-                    print("400")
+                    Helpers().dPrint("400")
                     
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(HoldPointsResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
                         completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -687,7 +692,7 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(RegisterPlayerResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
@@ -702,13 +707,13 @@ class NetworkManager:NSObject {
                     
 
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -718,7 +723,7 @@ class NetworkManager:NSObject {
 
 
     }
-    func friendReferralRequest(withReferralCode: String,playerUniqueId: String, completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
+    func friendReferralRequest(withReferralCode: String,playerUniqueId: String, playerAttributes: [String:Any], completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
             completion(nil, ServiceError.noInternetConnection)
             return
@@ -726,8 +731,9 @@ class NetworkManager:NSObject {
         
         var params: JSON = [:]
         params["playerCode"] = withReferralCode
-        params["NewPlayerCategoryID"] = userCache?.playerTypeId
         params["playerUniqueId"] = playerUniqueId
+        params["playerAttributes"] = playerAttributes
+
         
         var request = URLRequest(path: APIEndPoints.friendReferral, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -740,7 +746,7 @@ class NetworkManager:NSObject {
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(FriendReferralResponse.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            print(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
@@ -752,13 +758,13 @@ class NetworkManager:NSObject {
                     }
                     
                 case 403:
-                    print("403")
+                    Helpers().dPrint("403")
                     completion(nil, ServiceError.missingAPIKey)
                 case 401:
-                    print("401")
+                    Helpers().dPrint("401")
                     completion(nil, ServiceError.invalidAPIKey)
                 default:
-                    print("default")
+                    Helpers().dPrint("default")
                     completion(nil, ServiceError.serverError)
                 }
             }
@@ -809,24 +815,23 @@ class NetworkManager:NSObject {
         self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId,playerAttributes: playerAttributes ) { (response, error) in
             if error != nil {
                 // do something
-                print("failed to register user because \(error!.description)")
+                Helpers().dPrint("failed to register user because \(error!.description)")
             }
             else {
-                print("Player registered using  \(response)")
+                Helpers().dPrint("Player registered using  \(response)")
             }
         }
     }
     
     
-    func friendReferral() {
+    func friendReferral(playerUniqueId: String,playerAttributes: [String:Any] = [:],completion: @escaping (String) -> Void) {
         if isDynamicSet(){
-        self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId) { (response, error) in
-            if error != nil {
-                // do something
-                print("Failed to Refer a friend  because \(error!.description)")
-            }
-            else {
-                print("Failed to Refer a friend  because \(response?.status?.message ?? "")")
+            self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId, playerAttributes: playerAttributes) { (response, error) in
+            
+            if (response?.success ?? false) {
+                completion("Succeded to Refer a friend")
+            } else {
+                completion("Failed to Refer a friend  because \(response?.errorMsg ?? "")")
             }
         }
         }
@@ -837,10 +842,10 @@ class NetworkManager:NSObject {
         self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId, deviceToken: withToken) { (response, error) in
             if error != nil {
                 // do something
-                print("failed to registerDevice user because \(error!.description)")
+                Helpers().dPrint("failed to registerDevice user because \(error!.description)")
             }
             else {
-                print("registerDevice \(response)")
+                Helpers().dPrint("registerDevice \(response)")
             }
         }
     }
@@ -883,7 +888,7 @@ extension URL {
                 break
             }
         }
-        print(components.url!)
+        Helpers().dPrint(components.url!)
         self = components.url!
     }
 }

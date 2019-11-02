@@ -24,5 +24,8 @@ class Helpers {
         return  (playerUniqueID + ":" + transactionTime + ":" + amount + ":" + transactionkey).sha1()
         
     }
-        
+    func dPrint(_ message:Any) {
+       // print(message)
+    }
+    
 }

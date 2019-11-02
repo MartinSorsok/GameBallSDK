@@ -2,17 +2,35 @@
 //  Constants.swift
 //  gameball_SDK
 //
-//  Created by Ahmed Abodeif on 2/3/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 2/3/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-struct APIEndPoints {
-//    static let base_URL = "gb-api.azurewebsites.net"
+//COMMENT ALL THE CLASS WHEN GO PRODUCTION
+//class TestingServer
+//{
+//    static let shared = TestingServer()
+//
+//    var base_URL = ""
+//    private init()
+//    {
+//           if UserDefaults.standard.bool(forKey: "prod") {
+//
+//             base_URL = "api.gameball.co"
+//           } else {
+//
+//             base_URL = "gb-api.azurewebsites.net"
+//
+//           }
+//    }
+//}
 
-    
+
+class APIEndPoints {
+
     //PRODUCTION
     static let base_URL = "api.gameball.co"
 

@@ -10,11 +10,14 @@ import Foundation
 
 struct FriendReferralResponse: Codable {
     let success: Bool?
-    let status: StatusResponse?
-    
+    let response: Bool?
+    let errorMsg: String?
+    let errorCode: Int?
     enum CodingKeys: String, CodingKey {
-        case success = "isSucceeded"
-        case status = "status"
+        case success
+        case response
+        case errorMsg
+        case errorCode
     }
 }
 

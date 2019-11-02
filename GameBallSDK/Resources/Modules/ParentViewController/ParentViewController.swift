@@ -2,8 +2,8 @@
 //  ParentViewController.swift
 //  gameballSDK
 //
-//  Created by Ahmed Abodeif on 3/17/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 3/17/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import UIKit
@@ -170,7 +170,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
         challengesViewModel.getAllChallenges { (error) in
             if error != nil {
-                print(error?.description as Any)
+                 Helpers().dPrint(error?.description as Any)
             }
             else {
                 self.challenges = self.challengesViewModel.challenges.filter {
@@ -197,8 +197,13 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
 
             
         })
-    }
+        
     
+    }
+    func scrollToFirstRow() {
+          let indexPath = IndexPath(row: 0, section: 0)
+          self.mainTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
         //        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
@@ -307,36 +312,26 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         if let cell = tableView.cellForRow(at: indexPath) as? GB_MissionsTableViewCell {
 
             let noOfChallenges = quests[indexPath.row - 1].questChallenges?.count ?? 0
-            
-//            if cell.cellExpanded {
-//                cell.cellExpanded = false
-//                cell.challengesTableViewHeightConstraint.constant -= CGFloat(55 * noOfChallenges)
 
-//                } else {
-//                cell.cellExpanded = true
+            if cell.cellExpanded {
+                cell.cellExpanded = false
+                cell.challengesTableViewHeightConstraint.constant = 0
+            } else {
+                cell.cellExpanded = true
                 cell.challengesTableViewHeightConstraint.constant = CGFloat(55 * noOfChallenges)
-
-
-//                }
-                tableView.beginUpdates()
-                tableView.endUpdates()
-            
+            }
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
-
-        
-
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
         if let cell = tableView.cellForRow(at: indexPath) as? GB_MissionsTableViewCell {
             cell.challengesTableViewHeightConstraint.constant = 0
             tableView.beginUpdates()
             tableView.endUpdates()
         }
     }
-    
-
 }
 
 
@@ -358,7 +353,7 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
 
         self.typeValue = choices[row]
         
-        print(choices[row])
+         Helpers().dPrint(choices[row])
     }
  
     
@@ -379,8 +374,8 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
                 self.typeValue = "Today"
             }
             self.filteredString = self.typeValue
-            print("You selected " + self.typeValue )
-            print((self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
+            Helpers().dPrint("You selected " + self.typeValue )
+            Helpers().dPrint((self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
             
             self.fetchLeaderBoardDate(withLimit: (self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
 
@@ -436,21 +431,17 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
         })
         
     }
-    
-    
-    
 }
 
 
 extension ParentViewController: TabIconHeaderDelegate{
     func cellTapped(feature: Int) {
-        print(feature)
+        Helpers().dPrint(feature)
         self.startLoading()
         nc.post(name: Notification.Name("tabBarTapped"), object: feature)
         self.currentFeature = feature
         self.mainTableView.reloadData()
-
-        
+        scrollToFirstRow()
     }
 }
 

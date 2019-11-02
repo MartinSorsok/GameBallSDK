@@ -176,14 +176,14 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     
     @objc func copyAction(sender: UIButton!) {
         
-        print(sharingCodeText)
+         Helpers().dPrint(sharingCodeText)
         
         self.delegate?.shareText(text: sharingCodeText)
     }
     
     @objc func tappedLeaderBoardFilter(sender: UIButton!) {
         
-        print(sharingCodeText)
+         Helpers().dPrint(sharingCodeText)
         
         self.delegate?.tappedLeaderBoardFilter()
     }

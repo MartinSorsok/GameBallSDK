@@ -3,7 +3,7 @@
 //  gameball_SDK
 //
 //  Created by Omar Ali on 2/15/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import Foundation
@@ -157,7 +157,7 @@ extension UIFont {
         var error: Unmanaged<CFError>?
         let success = CTFontManagerRegisterGraphicsFont(font, &error)
         guard success else {
-            print("Error registering font: maybe it was already registered.")
+            Helpers().dPrint("Error registering font: maybe it was already registered.")
             return 
         }
         

@@ -53,7 +53,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
         
         challengesViewModel.getAllChallenges { (error) in
             if error != nil {
-                print(error?.description as Any)
+                 Helpers().dPrint(error?.description as Any)
             }
             else {
                 // ToDo: stop animation

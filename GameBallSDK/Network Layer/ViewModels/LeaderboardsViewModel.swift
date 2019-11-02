@@ -23,7 +23,7 @@ class LeaderboardViewModel {
             
         ], modelType: GetLeaderboardResponse.self) { (data, error) in
 
-            print(data)
+             Helpers().dPrint(data)
             guard let errorModel = error else {
                 if data != nil {
                     self.leaderboardPlayerBot = (data as? GetLeaderboardResponse)?.response

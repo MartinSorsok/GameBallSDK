@@ -2,8 +2,8 @@
 //  Reachability.swift
 //  gameball_SDK
 //
-//  Created by Ahmed Abodeif on 2/6/19.
-//  Copyright © 2019 Ahmed Abodeif. All rights reserved.
+//  Created by Martin Sorsok on 2/6/19.
+//  Copyright © 2019 Martin Sorsok. All rights reserved.
 //
 
 import SystemConfiguration
