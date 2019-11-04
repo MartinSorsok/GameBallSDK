@@ -154,7 +154,7 @@ open class GameballApp: NSObject {
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ..sendAction..")
-                Helpers().dPrint(responseObject ?? "")
+//                Helpers().dPrint(responseObject)
                 completion(responseObject?.status?.message, nil)
             }
             else {
@@ -169,7 +169,7 @@ open class GameballApp: NSObject {
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ..sendAction..")
-                Helpers().dPrint(responseObject ?? "")
+//                Helpers().dPrint(responseObject)
                 completion(responseObject?.status?.message, nil)
             }
             else {
@@ -186,7 +186,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().generateOTP() { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ....")
-                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
@@ -201,7 +200,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().getPlayerBalance() { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ....")
-                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
@@ -216,7 +214,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().rewardPoints(transactionOnClientSystemId: transactionOnClientSystemId, amount: amount) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ....")
-                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
@@ -232,7 +229,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().holdPoints(OTP: OTP, amount: amount) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done holdPoints ....")
-                Helpers().dPrint(responseObject ?? "")
                 self.holdReference = responseObject?.response?.holdReference ?? ""
                 //                 self.dPrint(responseObject?.response?.holdReference as Any)
                 completion(responseObject?.response?.holdReference ?? "", nil)
@@ -250,7 +246,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().redeemPoints(transactionOnClientSystemId: transactionOnClientSystemId, holdReference: holdReference, amount: amount) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done redeemPoints ....")
-                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
@@ -266,7 +261,6 @@ open class GameballApp: NSObject {
         NetworkManager.shared().reversePoints( holdReference: holdReference) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done redeemPoints ....")
-                Helpers().dPrint(responseObject ?? "")
                 completion(true, nil)
             }
             else {
