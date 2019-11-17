@@ -323,6 +323,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             tableView.beginUpdates()
             tableView.endUpdates()
         }
+        
+
+
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -389,7 +393,6 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
         vc.isTypeEmbed = isEmbedType
         vc.challenge = challenge
         push(vc, animated: true)
-        
     }
     
     func shareText(text: String) {

@@ -286,7 +286,7 @@ class NetworkManager:NSObject {
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
-                        completion(nil, ServiceError.custom(tempObject.methodName ?? ""))
+                        completion(nil, ServiceError.custom(tempObject.errorMsg ?? ""))
                     }
                 default:
                     Helpers().dPrint("default")

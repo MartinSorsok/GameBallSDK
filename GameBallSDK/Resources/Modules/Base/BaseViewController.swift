@@ -53,6 +53,10 @@ public class BaseViewController: UIViewController {
         super.viewDidLoad()
         setupViewLanguage()
         //setupFonts()
+        if #available(iOS 13.0, *) {
+            // Always adopt a light interface style.
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     

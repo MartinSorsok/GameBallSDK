@@ -10,16 +10,16 @@ import Foundation
 
 
 struct PostActionResponse: Codable {
-//    let actionResult: ActionResult?
-    let isSucceeded: Bool?
-    let methodName: String?
-    let status: StatusResponse?
+    let response: [String:String]?
+    let success: Bool?
+    let errorMsg: String?
+    let errorCode: Int?
     
     enum CodingKeys: String, CodingKey {
-        case status = "status"
-        case isSucceeded = "isSucceeded"
-        case methodName = "methodName"
-//        case errorCode = "ErrorCode"
+        case response = "response"
+        case success = "success"
+        case errorMsg = "errorMsg"
+        case errorCode = "errorCode"
     }
 }
 

@@ -174,6 +174,13 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (tableView.cellForRow(at: indexPath) as? ReferalFriendTableViewCell) != nil {
+
+            delegate?.challengeTapped(with: challenges[indexPath.row])
+        }
+    }
     @objc func copyAction(sender: UIButton!) {
         
          Helpers().dPrint(sharingCodeText)

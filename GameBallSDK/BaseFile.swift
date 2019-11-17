@@ -149,32 +149,32 @@ open class GameballApp: NSObject {
     
     
     // Send action withMeta Data events
-    public func sendActionWithMetaData(events: [String : [String : Any]] , completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
+    public func sendActionWithMetaData(events: [String : [String : Any]] , completion: @escaping  ((_ success: Any?, _ errorDescription: Any?)->())) {
         
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ..sendAction..")
 //                Helpers().dPrint(responseObject)
-                completion(responseObject?.status?.message, nil)
+                completion(responseObject?.response, nil)
             }
             else {
                 Helpers().dPrint("failed sendAction")
-                completion(responseObject?.status?.message, error?.description)
+                completion(responseObject?.response, error?.description)
             }
         }
     }
     
-    public func sendActionWithOutMetaData(events: [String : Any] , completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
+    public func sendActionWithOutMetaData(events: [String : Any] , completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
         
         NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
             if error == nil {
                 Helpers().dPrint("done ..sendAction..")
 //                Helpers().dPrint(responseObject)
-                completion(responseObject?.status?.message, nil)
+                completion(responseObject?.success, nil)
             }
             else {
                 Helpers().dPrint("failed sendAction")
-                completion(responseObject?.status?.message, error?.description)
+                completion(responseObject?.success, "Failed to send Action")
             }
         }
     }
