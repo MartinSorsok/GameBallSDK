@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,12 +33,24 @@
                                 <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="5ez-9x-trB"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44l-pm-YXM">
+                            <rect key="frame" x="285" y="0.0" width="80" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="PZh-Vv-UGb"/>
+                                <constraint firstAttribute="width" constant="80" id="kxz-0Q-Vlt"/>
+                            </constraints>
+                            <connections>
+                                <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="URS-KA-Z1f"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="rlP-K2-L3v" firstAttribute="centerY" secondItem="DaK-eK-trC" secondAttribute="centerY" id="0Wi-xG-Ne8"/>
                         <constraint firstAttribute="height" constant="18" id="KtQ-dj-RjW"/>
+                        <constraint firstItem="44l-pm-YXM" firstAttribute="top" secondItem="DaK-eK-trC" secondAttribute="top" id="NpL-Xe-hjO"/>
                         <constraint firstAttribute="trailing" secondItem="rlP-K2-L3v" secondAttribute="trailing" constant="25" id="t4N-b8-FZF"/>
+                        <constraint firstAttribute="trailing" secondItem="44l-pm-YXM" secondAttribute="trailing" constant="10" id="xJ0-42-gKb"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIK-jr-PFm">

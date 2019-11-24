@@ -16,6 +16,29 @@ class ProfileHeaderView: UIView {
     var viewModel: PlayerDetailsViewModel = PlayerDetailsViewModel()
     var playerInfoViewModel: PlayerInfoViewModel = PlayerInfoViewModel()
     
+    @IBOutlet weak var nextTireRankPointImage: UIImageView!{
+        didSet {
+            nextTireRankPointImage.isHidden = true
+        }
+    }
+    @IBOutlet weak var singlePointsView: UIView!{
+        didSet {
+
+            singlePointsView.layer.cornerRadius = 11
+            singlePointsView.layer.masksToBounds = true
+            singlePointsView.backgroundColor = Colors.appMainColor ?? .black
+            singlePointsView.isHidden = true
+        }
+    }
+    
+    @IBOutlet weak var sepratorView: UIView!
+    @IBOutlet weak var singleViewPointsImage: UIImageView!{
+        didSet{
+        
+        }
+    }
+    @IBOutlet weak var singleViewPointsValue: UILabel!
+    
     @IBOutlet var view: UIView!{
         didSet {
             view.isHidden = true
@@ -23,7 +46,11 @@ class ProfileHeaderView: UIView {
     }
     
     @IBOutlet private weak var profileIconImageView: UIImageView!
-    @IBOutlet private weak var progressView: ProgressView!
+    @IBOutlet private weak var progressView: ProgressView!{
+        didSet {
+            progressView.isHidden = true
+        }
+    }
     weak var delegate: ProfileHeaderViewDelegate?
     @IBOutlet weak var youAreOnLevelLabel: UILabel!{
         didSet{
@@ -127,6 +154,8 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet private weak var nextTierTitleLabel: UILabel! {
         didSet {
+            
+            nextTierTitleLabel.isHidden = true
             nextTierTitleLabel.text = LocalizationsKeys.GameballScreen.nextLevelText.rawValue.localized
 //            nextTierTitleLabel.textColor = Colors.appGray173
             if Localizator.sharedInstance.language == Languages.arabic {
@@ -216,33 +245,40 @@ class ProfileHeaderView: UIView {
 //        setupViews()
         
       
-        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false && GameballApp.clientBotStyle?.isWalletPointsVisible ?? false {
+            singlePointsView.isHidden = true
+            sepratorView.isHidden = false
             frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-
-        } else {
-            frubiesTitleLabel.isHidden = true
-            frubiesValueLabel.isHidden = true
-            rankPointsImage.isHidden = true
-        }
-        
-        if GameballApp.clientBotStyle?.isWalletPointsVisible ?? false {
             pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
 
-        } else {
-            pointsTitleLabel.isHidden = true
-            walletPointsImage.isHidden = true
-            pointsValueLabel.isHidden = true
-        }
-            
-      if (!(GameballApp.clientBotStyle?.isRankPointsVisible ?? false) && !(GameballApp.clientBotStyle?.isWalletPointsVisible ?? false)){
+        } else if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+            singlePointsView.isHidden = false
+            sepratorView.isHidden = true
+
             greyBarHeightConstant.constant = 0
             frubiesTitleLabel.isHidden = true
             rankPointsImage.isHidden = true
             walletPointsImage.isHidden = true
-
-                       frubiesValueLabel.isHidden = true
+            frubiesValueLabel.isHidden = true
             pointsTitleLabel.isHidden = true
-                      pointsValueLabel.isHidden = true
+            pointsValueLabel.isHidden = true
+            singleViewPointsImage.image =   UIImage(named: "rankpoints.png")
+            singleViewPointsImage.image = singleViewPointsImage.image?.withRenderingMode(.alwaysTemplate)
+                    singleViewPointsImage.tintColor = UIColor.white
+        } else {
+            sepratorView.isHidden = true
+            singlePointsView.isHidden = false
+            greyBarHeightConstant.constant = 0
+            frubiesTitleLabel.isHidden = true
+            rankPointsImage.isHidden = true
+            walletPointsImage.isHidden = true
+            frubiesValueLabel.isHidden = true
+            pointsTitleLabel.isHidden = true
+            pointsValueLabel.isHidden = true
+            singleViewPointsImage.image =   UIImage(named: "walletpoints.png")
+            singleViewPointsImage.image = singleViewPointsImage.image?.withRenderingMode(.alwaysTemplate)
+                    singleViewPointsImage.tintColor = UIColor.white
+
         }
 
         fetchData(completion: {
@@ -324,6 +360,11 @@ class ProfileHeaderView: UIView {
         pointsValueLabel.text = String(pointsValue)
         customerTypeLabel.text = model.name ?? "Player"
         
+        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+            singleViewPointsValue.text = String(frubiesValue)
+        } else {
+            singleViewPointsValue.text = String(pointsValue)
+        }
         
         var path = model.level?.icon?.fileName ?? "assets/images/bolt.png"
         path = "/" + path
@@ -358,6 +399,11 @@ class ProfileHeaderView: UIView {
         userNameLabel.text = model.displayName ?? "Gameball Player"
         customerTypeLabel.text = model.level?.name
         
+        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+            singleViewPointsValue.text = String(frubiesValue)
+        } else {
+            singleViewPointsValue.text = String(pointsValue)
+        }
         let path = model.level?.icon?.fileName ?? "https://assets.gameball.co/sample/4.png"
         NetworkManager.shared().loadImage(path: path.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
             if let errorModel = error {
@@ -381,6 +427,10 @@ class ProfileHeaderView: UIView {
     private func setupPlayerNextLevel(playerAttributes: PlayerInfo, nextlevel: Level) {
         
         if let currentFrubies = playerAttributes.accFrubies, let targetFrubies = nextlevel.levelFrubies {
+            nextTierTitleLabel.isHidden = false
+            nextTireRankPointImage.isHidden = false
+            progressView.isHidden = false
+            
             let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
 //            let percentageFilled = Float(0.8)
             let color = Colors.appMainColor ?? .black

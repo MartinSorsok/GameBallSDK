@@ -71,8 +71,8 @@ class ProgressBarTableViewCell: UITableViewCell {
                 let targetActionsCount = (challenge?.targetActionsCount ?? 0)
                 let completionPercentage =  (challenge?.completionPercentage ?? 0)
                 
-                let leftNumber = (targetActionsCount * Int(completionPercentage)) / 100
-                
+               // let leftNumber = (targetActionsCount * Int(completionPercentage)) / 100
+              let leftNumber =  Float(targetActionsCount) - (round((completionPercentage/100) * Float(targetActionsCount)))
                 
                  proressDedailsLabel.text = "\(Int(leftNumber)) \(LocalizationsKeys.ChallengeDetails.friendsRemaining.rawValue.localized)"
                 

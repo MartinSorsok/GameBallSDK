@@ -11,6 +11,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
 
     var cellExpanded = false
     private let challengeInMissionTableViewCell = "GB_ChallengeInMissionTableViewCell"
+    weak var delegate:TabBarDelegate?
 
     @IBOutlet weak var cellHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var challengesTableViewHeightConstraint: NSLayoutConstraint!
@@ -49,7 +50,8 @@ class GB_MissionsTableViewCell: UITableViewCell {
     @IBOutlet weak var challengesTableView: UITableView!{
         didSet {
             challengesTableView.dataSource = self
-            
+            challengesTableView.delegate = self
+
             challengesTableView.register(UINib(nibName: challengeInMissionTableViewCell, bundle: nil), forCellReuseIdentifier: challengeInMissionTableViewCell)
  
             
@@ -94,7 +96,23 @@ class GB_MissionsTableViewCell: UITableViewCell {
         didSet{
             challengeTitleLabel.text = quest?.questName
             setImage(withURL: quest?.icon ?? "https://assets.gameball.co/sample/4.png" )
-            rewardLabel.text = "\(quest?.rewardFrubies ?? 0) Score | \(quest?.rewardPoints ?? 0) points"
+            
+            
+            if quest?.rewardPoints == 0 {
+                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+            } else  if quest?.rewardFrubies == 0 {
+                rewardLabel.text = "\(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+            }
+            else {
+                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }
+            
+
+            
+            
+            
+            
+        //    rewardLabel.text = "\(quest?.rewardFrubies ?? 0) Score | \(quest?.rewardPoints ?? 0) points"
             
             noOfChallengesInMission.text = "\(quest?.questChallenges?.count ?? 0) Challenges"
             let percentageFilled = quest?.completionPercentage ?? 0.0
@@ -102,7 +120,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
             if percentageFilled == 1 {
                achievedImage.image = UIImage(named: "CheckmarkNew.png")
             } else {
-                percentageOfMission.text = "\(percentageFilled * 100)"
+                percentageOfMission.text = "\(Int(percentageFilled * 100))%"
             }
             
             
@@ -151,7 +169,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
     
 }
 
-extension  GB_MissionsTableViewCell: UITableViewDataSource {
+extension  GB_MissionsTableViewCell: UITableViewDataSource , UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return quest?.questChallenges?.count ?? 0
@@ -162,9 +180,22 @@ extension  GB_MissionsTableViewCell: UITableViewDataSource {
         cell.selectionStyle = .none
          Helpers().dPrint("******** \(indexPath.row)")
         cell.challenge = quest?.questChallenges?[indexPath.row]
+        
+        if quest?.isOrdered ?? false {
+            cell.nextChallengeArrowImage.isHidden = false
+        } else {
+            cell.nextChallengeArrowImage.isHidden = true
+
+        }
         if indexPath.row == ((quest?.questChallenges?.count ?? 0) - 1)  {
             cell.nextChallengeArrowImage.isHidden = true
         }
            return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let challenge = quest?.questChallenges?[indexPath.row] else {return}
+               delegate?.challengeTapped(with: challenge)
     }
 }

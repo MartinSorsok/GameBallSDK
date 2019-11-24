@@ -70,7 +70,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
           
             
             if challenge?.rewardPoints == 0 {
-                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
             } else {
                 challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
             }

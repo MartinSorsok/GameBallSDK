@@ -1,54 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3mr-Dp-bWd" customClass="BadgeView" customModule="GameBallSDK" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="117" height="115"/>
+            <rect key="frame" x="0.0" y="0.0" width="124" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="117" height="115"/>
+                <rect key="frame" x="0.0" y="0.0" width="124" height="155"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQQ-9j-k4C">
-                        <rect key="frame" x="0.0" y="0.0" width="117" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="124" height="155"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EMz-AW-4Vz">
-                                <rect key="frame" x="22.5" y="0.0" width="72" height="72"/>
+                                <rect key="frame" x="26" y="0.0" width="72" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EMz-AW-4Vz" secondAttribute="height" multiplier="1:1" id="4Wn-lW-MdA"/>
                                     <constraint firstAttribute="width" constant="72" id="Sax-tW-MPL"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="V52-ZM-UNI">
-                                <rect key="frame" x="0.0" y="84" width="117" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="ehO-qh-DHL"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ss ssafasm as das asd ashd as d" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="V52-ZM-UNI">
+                                <rect key="frame" x="0.0" y="84" width="124" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdn-Fu-KHx">
-                                <rect key="frame" x="0.0" y="102" width="117" height="13"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="FrT-HH-f5l"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="115" width="124" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-38-SIP">
-                                <rect key="frame" x="22.5" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="26" y="0.0" width="20" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5cS-pQ-Pwu">
                                         <rect key="frame" x="6" y="5" width="8" height="10"/>
@@ -66,11 +63,30 @@
                                     <constraint firstAttribute="width" constant="20" id="xmO-0E-vkE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nj5-ga-oIT">
+                                <rect key="frame" x="78" y="0.0" width="20" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNh-Zb-3dq">
+                                        <rect key="frame" x="6.5" y="4" width="7" height="12.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="gNh-Zb-3dq" firstAttribute="centerX" secondItem="nj5-ga-oIT" secondAttribute="centerX" id="5dh-c4-Lrb"/>
+                                    <constraint firstItem="gNh-Zb-3dq" firstAttribute="centerY" secondItem="nj5-ga-oIT" secondAttribute="centerY" id="NDB-wq-IiP"/>
+                                    <constraint firstAttribute="width" secondItem="nj5-ga-oIT" secondAttribute="height" multiplier="1:1" id="jmF-8h-f8W"/>
+                                    <constraint firstAttribute="height" constant="20" id="oHD-Rg-YYb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tdn-Fu-KHx" firstAttribute="centerX" secondItem="V52-ZM-UNI" secondAttribute="centerX" id="0Ym-ld-RJf"/>
-                            <constraint firstAttribute="bottom" secondItem="tdn-Fu-KHx" secondAttribute="bottom" id="0z0-5b-GX7"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tdn-Fu-KHx" secondAttribute="bottom" id="0z0-5b-GX7"/>
+                            <constraint firstItem="nj5-ga-oIT" firstAttribute="top" secondItem="EMz-AW-4Vz" secondAttribute="top" id="3Ze-XG-mQH"/>
                             <constraint firstItem="tdn-Fu-KHx" firstAttribute="top" secondItem="V52-ZM-UNI" secondAttribute="bottom" constant="3" id="8R3-2x-Yaq"/>
                             <constraint firstItem="xIY-38-SIP" firstAttribute="leading" secondItem="EMz-AW-4Vz" secondAttribute="leading" id="HzQ-EP-g2g"/>
                             <constraint firstItem="EMz-AW-4Vz" firstAttribute="top" secondItem="eQQ-9j-k4C" secondAttribute="top" id="I9u-j3-Mgv"/>
@@ -79,6 +95,7 @@
                             <constraint firstItem="EMz-AW-4Vz" firstAttribute="centerX" secondItem="eQQ-9j-k4C" secondAttribute="centerX" id="Zky-wZ-2hx"/>
                             <constraint firstItem="V52-ZM-UNI" firstAttribute="leading" secondItem="eQQ-9j-k4C" secondAttribute="leading" id="cBG-cR-eQw"/>
                             <constraint firstAttribute="trailing" secondItem="V52-ZM-UNI" secondAttribute="trailing" id="dqy-bB-oWy"/>
+                            <constraint firstItem="nj5-ga-oIT" firstAttribute="trailing" secondItem="EMz-AW-4Vz" secondAttribute="trailing" id="jTO-70-knv"/>
                             <constraint firstItem="V52-ZM-UNI" firstAttribute="top" secondItem="EMz-AW-4Vz" secondAttribute="bottom" constant="12" id="lUm-46-gJh"/>
                             <constraint firstAttribute="trailing" secondItem="tdn-Fu-KHx" secondAttribute="trailing" id="u7Q-aG-URh"/>
                         </constraints>
@@ -86,20 +103,22 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="eQQ-9j-k4C" firstAttribute="width" secondItem="3mr-Dp-bWd" secondAttribute="width" id="6LG-cc-Abd"/>
-                <constraint firstItem="eQQ-9j-k4C" firstAttribute="centerX" secondItem="66k-ab-dHU" secondAttribute="centerX" id="DdE-xY-WdB"/>
-                <constraint firstItem="eQQ-9j-k4C" firstAttribute="height" secondItem="3mr-Dp-bWd" secondAttribute="height" id="ho3-XZ-zCz"/>
-                <constraint firstItem="eQQ-9j-k4C" firstAttribute="centerY" secondItem="66k-ab-dHU" secondAttribute="centerY" id="iWs-EE-z9Y"/>
+                <constraint firstItem="eQQ-9j-k4C" firstAttribute="trailing" secondItem="66k-ab-dHU" secondAttribute="trailing" id="dGM-hU-2lB"/>
+                <constraint firstItem="66k-ab-dHU" firstAttribute="leading" secondItem="eQQ-9j-k4C" secondAttribute="leading" id="hGR-HI-YMh"/>
+                <constraint firstItem="eQQ-9j-k4C" firstAttribute="top" secondItem="66k-ab-dHU" secondAttribute="top" id="l0J-ax-ftn"/>
+                <constraint firstItem="66k-ab-dHU" firstAttribute="bottom" secondItem="eQQ-9j-k4C" secondAttribute="bottom" id="pI9-UU-5bU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="66k-ab-dHU"/>
-            <size key="customSize" width="117" height="115"/>
+            <size key="customSize" width="124" height="121"/>
             <connections>
                 <outlet property="achievementImageView" destination="EMz-AW-4Vz" id="bHV-hO-i1k"/>
                 <outlet property="challengeNameUILabel" destination="V52-ZM-UNI" id="opp-vm-ZqS"/>
                 <outlet property="challengePointsUILabel" destination="tdn-Fu-KHx" id="Dfy-7B-mRS"/>
                 <outlet property="lockView" destination="xIY-38-SIP" id="prf-g5-qak"/>
+                <outlet property="noOfAcheivedTimesLabel" destination="gNh-Zb-3dq" id="wNb-iq-nNU"/>
+                <outlet property="noOfAcheivedtimesView" destination="nj5-ga-oIT" id="C4i-fR-BFR"/>
             </connections>
-            <point key="canvasLocation" x="10.4" y="-13.943028485757123"/>
+            <point key="canvasLocation" x="16" y="-27.436281859070466"/>
         </collectionViewCell>
     </objects>
     <resources>

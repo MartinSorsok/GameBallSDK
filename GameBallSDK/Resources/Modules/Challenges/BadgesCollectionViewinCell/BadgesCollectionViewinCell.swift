@@ -58,7 +58,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
             else {
                 // ToDo: stop animation
                 self.challenges = self.challengesViewModel.challenges
-                //self.quests = self.challengesViewModel.quests
+                self.quests = self.challengesViewModel.quests
                 
                 completion()
                 DispatchQueue.main.async {
@@ -94,7 +94,9 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     // Configure the view for the selected state
 
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1 + self.quests.count
+//        return 1 + self.quests.count
+        return 1
+
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -102,7 +104,8 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
             return self.challenges.count
         }
         else {
-            return self.quests[section-1].questChallenges?.count ?? 0
+            //return self.quests[section-1].questChallenges?.count ?? 0
+            return 0
         }
     }
     
@@ -154,7 +157,12 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath) as? HeaderCollectionReusableView
 
+            if self.challenges.count > 0 {
             headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            } else {
+               headerView?.titleLabel.text = ""
+            }
+            
             return headerView ?? UICollectionReusableView()
             
 
@@ -163,7 +171,11 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath)  as? HeaderCollectionReusableView
 
+              if self.quests.count > 0 {
               headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.missionsTitle.rawValue.localized
+              } else {
+                 headerView?.titleLabel.text = ""
+              }
               return headerView ?? UICollectionReusableView()
               
         default:

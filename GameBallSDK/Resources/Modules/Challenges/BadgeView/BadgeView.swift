@@ -31,6 +31,15 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
             }
         }
     }
+    @IBOutlet weak var noOfAcheivedtimesView: UIView!{
+        didSet {
+            noOfAcheivedtimesView.isHidden = true
+            noOfAcheivedtimesView.backgroundColor = Colors.appMainColor
+            noOfAcheivedtimesView.layer.cornerRadius = noOfAcheivedtimesView.frame.size.width/2
+            noOfAcheivedtimesView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var noOfAcheivedTimesLabel: UILabel!
     
     @IBOutlet weak var challengePointsUILabel: UILabel!{
         didSet {
@@ -84,13 +93,18 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
         else {
             achievementImageView.alpha = 0.5
         }
-        
+        if challenge.achievedCount ?? 0 > 0 {
+            noOfAcheivedtimesView.isHidden = false
+            noOfAcheivedTimesLabel.text = "\(challenge.achievedCount ?? 0)"
+        } else {
+            noOfAcheivedtimesView.isHidden = true 
+        }
         if challenge.rewardPoints == 0 {
             challengePointsUILabel.text = ""
 
         } else {
             let amount = challenge.rewardPoints ?? 5
-            let label = String(amount) + LocalizationsKeys.GameballScreen.pts.rawValue.localized
+            let label = String(amount) + " " + (GameballApp.clientBotStyle?.walletPointsName ?? LocalizationsKeys.GameballScreen.pts.rawValue.localized)
             challengePointsUILabel.text = label
         }
 

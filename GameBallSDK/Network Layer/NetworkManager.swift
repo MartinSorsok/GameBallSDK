@@ -84,7 +84,7 @@ class NetworkManager:NSObject {
     func loadDebug<T>(path: String, method: RequestMethod, params: JSON, modelType: T.Type, completion: @escaping (Any?, ServiceError?) -> ()) where T:Codable {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -123,7 +123,7 @@ class NetworkManager:NSObject {
     func load<T>(path: String, method: RequestMethod, params: JSON, modelType: T.Type, completion: @escaping (Any?, ServiceError?) -> ()) where T:Codable {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+           // completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -175,7 +175,7 @@ class NetworkManager:NSObject {
     
     func loadImage(path: String, completion: @escaping (UIImage?, ServiceError?) -> ()) {
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         var modifiedPath = path
@@ -237,7 +237,7 @@ class NetworkManager:NSObject {
     func sendAction(events: [String : Any], completion: @escaping ((_ response: PostActionResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -303,7 +303,7 @@ class NetworkManager:NSObject {
     func generateOTP(completion: @escaping ((_ response: GenerateOTPResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -365,7 +365,7 @@ class NetworkManager:NSObject {
     func getPlayerBalance(completion: @escaping ((_ response: GenerateOTPResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -423,7 +423,7 @@ class NetworkManager:NSObject {
     func rewardPoints(transactionOnClientSystemId: String = "",amount: Int = 0,completion: @escaping ((_ response: RewardPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -486,7 +486,7 @@ class NetworkManager:NSObject {
     func holdPoints(OTP: String = "",amount: Int = 0,completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -549,7 +549,7 @@ class NetworkManager:NSObject {
     func redeemPoints(transactionOnClientSystemId: String = "",holdReference: String = "",amount: Int = 0,completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -612,7 +612,7 @@ class NetworkManager:NSObject {
     func reversePoints(holdReference: String = "",completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+//            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -670,7 +670,7 @@ class NetworkManager:NSObject {
     }
     func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "",playerAttributes: [String:Any] = [:], completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+         //   completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -725,7 +725,7 @@ class NetworkManager:NSObject {
     }
     func friendReferralRequest(withReferralCode: String,playerUniqueId: String, playerAttributes: [String:Any], completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
-            completion(nil, ServiceError.noInternetConnection)
+           // completion(nil, ServiceError.noInternetConnection)
             return
         }
         

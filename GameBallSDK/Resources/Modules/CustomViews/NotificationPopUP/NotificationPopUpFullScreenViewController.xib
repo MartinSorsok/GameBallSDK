@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationPopUpFullScreenViewController" customModule="GameBallSDK" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController modalPresentationStyle="overCurrentContext" id="eYf-GU-dC5" customClass="NotificationPopUpFullScreenViewController" customModule="GameBallSDK" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="zPV-cQ-3gz">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is text, it can be 2 lines or sometimes it can be 3 lines. Image can be circle or rectangle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lme-WQ-i9w">
+                        <rect key="frame" x="25" y="441" width="325" height="62.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xm8-xp-0lC">
+                        <rect key="frame" x="87.5" y="184.5" width="200" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xm8-xp-0lC" secondAttribute="height" multiplier="1:1" id="F3i-A1-4Rg"/>
+                            <constraint firstAttribute="width" constant="200" id="UvZ-vh-59v"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lja-cd-hFf">
+                        <rect key="frame" x="0.0" y="355.5" width="375" height="0.0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67b-Ji-fgb">
+                        <rect key="frame" x="318" y="44" width="32" height="32"/>
+                        <state key="normal" image="iclose_new@2x.png">
+                            <color key="titleColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="AJ1-2t-czb"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INN-1b-0IL">
+                        <rect key="frame" x="215" y="0.0" width="150" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="215-Lt-Q2F"/>
+                            <constraint firstAttribute="height" constant="100" id="WRi-dv-7Cg"/>
+                        </constraints>
+                        <connections>
+                            <action selector="closeBtnTapped:" destination="eYf-GU-dC5" eventType="touchUpInside" id="ruW-pe-AIa"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeling generous?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhH-Qc-ziS">
+                        <rect key="frame" x="25" y="409.5" width="325" height="24.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="INN-1b-0IL" firstAttribute="top" secondItem="zPV-cQ-3gz" secondAttribute="top" id="09s-uq-8gb"/>
+                    <constraint firstItem="67b-Ji-fgb" firstAttribute="top" secondItem="EKe-bM-ct3" secondAttribute="top" id="0YU-pk-Y4C"/>
+                    <constraint firstItem="Lme-WQ-i9w" firstAttribute="leading" secondItem="uhH-Qc-ziS" secondAttribute="leading" id="5m7-09-6fG"/>
+                    <constraint firstItem="Lja-cd-hFf" firstAttribute="centerY" secondItem="EKe-bM-ct3" secondAttribute="centerY" id="C9x-7J-9Dt"/>
+                    <constraint firstItem="xm8-xp-0lC" firstAttribute="centerX" secondItem="EKe-bM-ct3" secondAttribute="centerX" id="CWd-jG-HH4"/>
+                    <constraint firstItem="EKe-bM-ct3" firstAttribute="trailing" secondItem="Lja-cd-hFf" secondAttribute="trailing" id="Czy-3i-J0G"/>
+                    <constraint firstAttribute="trailing" secondItem="67b-Ji-fgb" secondAttribute="trailing" constant="25" id="DWK-Nq-PuB"/>
+                    <constraint firstItem="EKe-bM-ct3" firstAttribute="trailing" secondItem="INN-1b-0IL" secondAttribute="trailing" constant="10" id="GdZ-ft-57r"/>
+                    <constraint firstItem="Lme-WQ-i9w" firstAttribute="trailing" secondItem="uhH-Qc-ziS" secondAttribute="trailing" id="OL2-xT-3Dh"/>
+                    <constraint firstItem="xm8-xp-0lC" firstAttribute="centerY" secondItem="EKe-bM-ct3" secondAttribute="centerY" multiplier="0.8" id="ZhU-ZO-ju2"/>
+                    <constraint firstItem="Lme-WQ-i9w" firstAttribute="top" secondItem="uhH-Qc-ziS" secondAttribute="bottom" constant="7" id="fr5-mu-46C"/>
+                    <constraint firstItem="EKe-bM-ct3" firstAttribute="trailing" secondItem="uhH-Qc-ziS" secondAttribute="trailing" constant="25" id="ie4-zS-j2s"/>
+                    <constraint firstItem="uhH-Qc-ziS" firstAttribute="top" secondItem="xm8-xp-0lC" secondAttribute="bottom" constant="25" id="ogM-ru-BL1"/>
+                    <constraint firstItem="Lja-cd-hFf" firstAttribute="leading" secondItem="EKe-bM-ct3" secondAttribute="leading" id="qDc-z4-7c0"/>
+                    <constraint firstItem="uhH-Qc-ziS" firstAttribute="leading" secondItem="EKe-bM-ct3" secondAttribute="leading" constant="25" id="uhe-VU-N4O"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="EKe-bM-ct3"/>
+            </view>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="375" height="667"/>
+            <connections>
+                <outlet property="NotificationImage" destination="xm8-xp-0lC" id="l17-xq-WOS"/>
+                <outlet property="closeBtn" destination="67b-Ji-fgb" id="Nc7-wQ-WWA"/>
+                <outlet property="mainView" destination="Lja-cd-hFf" id="x4O-mr-rlz"/>
+                <outlet property="notificationDescription" destination="Lme-WQ-i9w" id="yb5-T6-bDO"/>
+                <outlet property="notificationTitle" destination="uhH-Qc-ziS" id="v7R-Uu-wWl"/>
+            </connections>
+            <point key="canvasLocation" x="261.59420289855075" y="230.69196428571428"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="iclose_new@2x.png" width="16" height="16"/>
+    </resources>
+</document>

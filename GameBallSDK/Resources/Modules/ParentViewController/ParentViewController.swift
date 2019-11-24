@@ -30,6 +30,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     @IBOutlet weak var closeButton: UIButton!
     var isEmbedType = false
 
+    var refreshControl = UIRefreshControl()
     @IBOutlet weak var mainTableView: UITableView!{
         didSet {
             mainTableView.dataSource = self
@@ -46,7 +47,22 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             mainTableView.rowHeight = UITableView.automaticDimension
             mainTableView.estimatedRowHeight = 600
             mainTableView.tableFooterView = UIView()
+
+            
+            let attributes = [NSAttributedString.Key.foregroundColor: Colors.appMainColor ?? .black]
+            let attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: attributes)
+            refreshControl.attributedTitle = attributedTitle
+            refreshControl.tintColor = Colors.appMainColor ?? .black
+            refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+            mainTableView.addSubview(refreshControl) // not required when using UITableViewController
         }
+    }
+    @objc func refresh(sender:AnyObject) {
+       // Code to refresh table view
+        setupLogic()
+        self.endLoading()
+
+        refreshControl.endRefreshing()
     }
     @IBOutlet private weak var profileHeaderView: ProfileHeaderView!
     
@@ -114,6 +130,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLogic()
+    }
+    
+    private func setupLogic() {
         profileHeaderView.delegate = self
         self.navigationController?.navigationBar.isHidden = true
         self.startLoading()
@@ -270,7 +290,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                     let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
 
                     cell.selectionStyle = .none
-
+                    cell.delegate = self
                     cell.quest = quests[indexPath.row - 1]
                     return cell
                     

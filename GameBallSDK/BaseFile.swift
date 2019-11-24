@@ -92,22 +92,37 @@ open class GameballApp: NSObject {
         
     }
     
-    
-    public func notificationPopUP(notification: UNNotification) -> UIViewController{
+
+    public func notificationPopUP(notification: UNNotification)  {
         
-        //         self.dPrint(notification.request.content.userInfo[AnyHashable("isGB")])
         
-        //        if notification.request.content.userInfo[AnyHashable("isGB")] as? Bool ?? false{
-        // Register Nib
+        print(notification.request.content.userInfo["type"])
         
-        let myVC = Bundle.main.loadNibNamed("NotificationPopUPView", owner: self, options: nil)?[0] as? NotificationPopUPViewController
-        myVC?.notificationData = notification
-        // Present View "Modally"
-        return myVC ?? UIViewController()
-        //        }
+                if notification.request.content.userInfo["type"] as? String == "Small Toast" {
+                      guard let myView = Bundle.main.loadNibNamed("NotificationtSmallToast", owner: self, options: nil)?[0] as? GB_NotificationtSmallToast else {return}
+                    
+                    myView.notificationData = notification
+                    UIApplication.shared.keyWindow?.rootViewController?.view.showToast(myView, position: .top)
+                    
+                    
+                }
+                else if notification.request.content.userInfo["type"] as? String == "Large Toast"{
+                    guard let myVC = Bundle.main.loadNibNamed("NotificationPopUPView", owner: self, options: nil)?[0] as? NotificationPopUPViewController else {return}
+                    myVC.notificationData = notification
+                UIApplication.shared.keyWindow?.rootViewController?.present(myVC , animated: true, completion: nil)
+                    
+                }  else {
+                    guard let myVC = Bundle.main.loadNibNamed("NotificationPopUpFullScreenViewController", owner: self, options: nil)?[0] as? NotificationPopUpFullScreenViewController else {return}
+                    myVC.notificationData = notification
+                UIApplication.shared.keyWindow?.rootViewController?.present(myVC , animated: true, completion: nil)
+                    
+                }
+
+  
         
     }
     
+
     public func recievedDynamicLink(url: URL){
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = components.queryItems else { return }
         for queryItem in queryItems{
