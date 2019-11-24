@@ -779,7 +779,7 @@ class NetworkManager:NSObject {
     func adaptRequest(urlRequest: inout URLRequest) {
         if NetworkManager.shared().APIKey.count > 0 {
             urlRequest.addValue(NetworkManager.shared().APIKey, forHTTPHeaderField: "APIKey")
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 urlRequest.addValue("ar", forHTTPHeaderField: "lang")
 
             } else {
@@ -802,7 +802,7 @@ class NetworkManager:NSObject {
         setLanguage(language: language)
     }
     func setLanguage(language: Languages) {
-        Localizator.sharedInstance.language = language
+        GB_Localizator.sharedInstance.language = language
         NetworkManager.shared().currentLanguage = language
         UserDefaults.standard.set(language.rawValue, forKey: UserDefaultsKeys.LanguageKey.rawValue)
     }

@@ -22,7 +22,7 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
     @IBOutlet weak var challengeNameUILabel: UILabel!{
         didSet {
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeNameUILabel.font = Fonts.cairoRegularFont12
 
             } else {
@@ -43,7 +43,7 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
     
     @IBOutlet weak var challengePointsUILabel: UILabel!{
         didSet {
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengePointsUILabel.font = Fonts.cairoBoldFont12
 
             } else {
@@ -104,7 +104,7 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
 
         } else {
             let amount = challenge.rewardPoints ?? 5
-            let label = String(amount) + " " + (GameballApp.clientBotStyle?.walletPointsName ?? LocalizationsKeys.GameballScreen.pts.rawValue.localized)
+            let label = String(amount) + " " + (GameballApp.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.GameballScreen.pts.rawValue.localized)
             challengePointsUILabel.text = label
         }
 

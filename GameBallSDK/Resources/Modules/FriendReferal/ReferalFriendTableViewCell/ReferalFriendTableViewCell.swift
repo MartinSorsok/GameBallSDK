@@ -21,7 +21,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var challengeTitleLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeTitleLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -32,7 +32,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rewardLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 rewardLabel.font = Fonts.cairoBoldFont12
                 
             } else {
@@ -43,7 +43,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfAchievedLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 numberOfAchievedLabel.font = Fonts.cairoRegularFont12
                 
             } else {

@@ -94,10 +94,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var weRunOnLabel: UILabel!{
         didSet{
-            weRunOnLabel.text = LocalizationsKeys.General.gameballFooterText.rawValue.localized
+            weRunOnLabel.text = GB_LocalizationsKeys.General.gameballFooterText.rawValue.localized
             weRunOnLabel.textColor = Colors.appGray153
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 weRunOnLabel.font = Fonts.cairoRegularFont12
             } else {
                 weRunOnLabel.font = Fonts.montserratLightFont12
@@ -109,7 +109,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         didSet{
             gameBallLabel.text = "Gameball"
             gameBallLabel.textColor = Colors.appGray153
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 gameBallLabel.font = Fonts.cairoBoldFont12
             } else {
                 gameBallLabel.font = Fonts.montserratSemiBoldFont10

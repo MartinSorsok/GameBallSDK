@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocalizationsKeys: NSObject {
+class GB_LocalizationsKeys: NSObject {
 
     
     enum General: String {

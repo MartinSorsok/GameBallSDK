@@ -12,11 +12,11 @@ class StatusTableViewCell: UITableViewCell {
     
     @IBOutlet weak var statusLabel: UILabel!{
         didSet{
-            statusLabel.text = LocalizationsKeys.ChallengeDetails.status.rawValue.localized
+            statusLabel.text = GB_LocalizationsKeys.ChallengeDetails.status.rawValue.localized
 
             statusLabel.textColor = Colors.appMainColor
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 statusLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -31,7 +31,7 @@ class StatusTableViewCell: UITableViewCell {
         didSet{
             ststusTitleLabel.textColor = Colors.appGray128
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 ststusTitleLabel.font = Fonts.cairoBoldFont20
                 
             } else {
@@ -44,7 +44,7 @@ class StatusTableViewCell: UITableViewCell {
         didSet{
             numberOfTimesLabel.textColor = Colors.appGray170
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 numberOfTimesLabel.font = Fonts.cairoRegularFont14
                 
             } else {
@@ -67,17 +67,17 @@ class StatusTableViewCell: UITableViewCell {
                 
                 guard let highScore = challenge?.highScore else {return}
                 
-                numberOfTimesLabel.text = "\(LocalizationsKeys.ChallengeDetails.exceedMaximum.rawValue.localized) \(highScore) \(challenge?.amountUnit ?? "")"
+                numberOfTimesLabel.text = "\(GB_LocalizationsKeys.ChallengeDetails.exceedMaximum.rawValue.localized) \(highScore) \(challenge?.amountUnit ?? "")"
                 
             } else if challenge?.status == .achieved {
                 statusImage?.image = UIImage(named: "innerchallengeAchieved@2x.png")
-                numberOfTimesLabel.text = "\(challenge?.achievedCount ?? 0)" + " " + LocalizationsKeys.ChallengeDetails.times.rawValue.localized
+                numberOfTimesLabel.text = "\(challenge?.achievedCount ?? 0)" + " " + GB_LocalizationsKeys.ChallengeDetails.times.rawValue.localized
                 ststusTitleLabel.text =  challenge?.statusDescription
 
                 
             } else if challenge?.status == .locked  {
                 statusLabel.isHidden = true
-                numberOfTimesLabel.text = LocalizationsKeys.ChallengeDetails.YouNeed.rawValue.localized + " " + "\(challenge?.levelName ?? "")" + " " + LocalizationsKeys.ChallengeDetails.toUnlock.rawValue.localized
+                numberOfTimesLabel.text = GB_LocalizationsKeys.ChallengeDetails.YouNeed.rawValue.localized + " " + "\(challenge?.levelName ?? "")" + " " + GB_LocalizationsKeys.ChallengeDetails.toUnlock.rawValue.localized
                 statusImage?.image = UIImage(named: "innerchallengeLocked@2x.png")
                 ststusTitleLabel.text =  challenge?.statusDescription
 

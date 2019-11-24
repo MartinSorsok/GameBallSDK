@@ -13,7 +13,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
       
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
 
             } else {

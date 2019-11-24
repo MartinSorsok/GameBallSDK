@@ -23,7 +23,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
         didSet {
             // rankingNumberLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 rankingNumberLabel.font = Fonts.cairoBoldFont8
                 
             } else {
@@ -40,7 +40,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
         didSet {
             // rankingNumberLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 playerName.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -55,7 +55,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
         didSet {
             // rankingNumberLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 playerRank.font = Fonts.cairoBoldFont12
                 
             } else {
@@ -68,9 +68,9 @@ class LeaderBoardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var scoreLabel: UILabel!{
         didSet {
-             scoreLabel.text =  LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
+             scoreLabel.text =  GB_LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 scoreLabel.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -84,7 +84,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
         didSet {
             // rankingNumberLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 scoreValueLabel.font = Fonts.cairoBoldFont12
                 
             } else {

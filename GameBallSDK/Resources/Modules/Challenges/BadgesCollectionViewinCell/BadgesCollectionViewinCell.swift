@@ -158,7 +158,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath) as? HeaderCollectionReusableView
 
             if self.challenges.count > 0 {
-            headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+            headerView?.titleLabel.text =  GB_LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             } else {
                headerView?.titleLabel.text = ""
             }
@@ -172,7 +172,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCollectionReusableView, for: indexPath)  as? HeaderCollectionReusableView
 
               if self.quests.count > 0 {
-              headerView?.titleLabel.text =  LocalizationsKeys.GameballScreen.missionsTitle.rawValue.localized
+              headerView?.titleLabel.text =  GB_LocalizationsKeys.GameballScreen.missionsTitle.rawValue.localized
               } else {
                  headerView?.titleLabel.text = ""
               }

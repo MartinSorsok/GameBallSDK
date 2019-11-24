@@ -17,7 +17,7 @@ class GB_ChallengeInMissionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfAchievedLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 numberOfAchievedLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -30,7 +30,7 @@ class GB_ChallengeInMissionTableViewCell: UITableViewCell {
     @IBOutlet weak var challengeImage: UIImageView!
     @IBOutlet weak var challengeTitleLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeTitleLabel.font = Fonts.cairoRegularFont10
                 
             } else {

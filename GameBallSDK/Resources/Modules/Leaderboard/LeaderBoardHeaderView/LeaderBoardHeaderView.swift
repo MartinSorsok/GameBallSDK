@@ -14,9 +14,9 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-             titleLabel.text =  LocalizationsKeys.LeaderBoardScreen.leaderboardTitle.rawValue.localized
+             titleLabel.text =  GB_LocalizationsKeys.LeaderBoardScreen.leaderboardTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -28,9 +28,9 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var yourRankLabel: UILabel!{
         didSet {
-             yourRankLabel.text =  LocalizationsKeys.LeaderBoardScreen.yourRank.rawValue.localized
+             yourRankLabel.text =  GB_LocalizationsKeys.LeaderBoardScreen.yourRank.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 yourRankLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -45,7 +45,7 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
         didSet {
             // titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 yourRankValue.font = Fonts.cairoBoldFont12
                 
             } else {
@@ -59,7 +59,7 @@ class LeaderBoardHeaderView: UITableViewHeaderFooterView {
         didSet {
             // titleLabel.text =  LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 filterByLabel.font = Fonts.cairoBoldFont12
                 
             } else {

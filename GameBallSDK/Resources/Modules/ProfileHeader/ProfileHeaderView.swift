@@ -54,10 +54,10 @@ class ProfileHeaderView: UIView {
     weak var delegate: ProfileHeaderViewDelegate?
     @IBOutlet weak var youAreOnLevelLabel: UILabel!{
         didSet{
-            youAreOnLevelLabel.text = LocalizationsKeys.GameballScreen.youAreOnLevelText.rawValue.localized
+            youAreOnLevelLabel.text = GB_LocalizationsKeys.GameballScreen.youAreOnLevelText.rawValue.localized
             //                    frubiesTitleLabel.textColor = Colors.appGray173
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 youAreOnLevelLabel.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -69,10 +69,10 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet weak var welcomeLabel: UILabel!{
         didSet{
-        welcomeLabel.text = LocalizationsKeys.GameballScreen.welcomeText.rawValue.localized
+        welcomeLabel.text = GB_LocalizationsKeys.GameballScreen.welcomeText.rawValue.localized
 //                    frubiesTitleLabel.textColor = Colors.appGray173
         
-        if Localizator.sharedInstance.language == Languages.arabic {
+        if GB_Localizator.sharedInstance.language == Languages.arabic {
             welcomeLabel.font = Fonts.cairoRegularFont14
             
         } else {
@@ -86,7 +86,7 @@ class ProfileHeaderView: UIView {
         didSet{
             //                    frubiesTitleLabel.textColor = Colors.appGray173
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 userNameLabel.font = Fonts.cairoBoldFont14
                 
             } else {
@@ -99,7 +99,7 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet private weak var frubiesTitleLabel: UILabel! {
         didSet {
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 frubiesTitleLabel.font = Fonts.cairoRegularFont12
             } else {
                 frubiesTitleLabel.font = Fonts.montserratLightFont12
@@ -110,7 +110,7 @@ class ProfileHeaderView: UIView {
         didSet {
             
             frubiesValueLabel.textColor = Colors.appGray103
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 frubiesValueLabel.font = Fonts.cairoBoldFont12
 
             } else {
@@ -120,7 +120,7 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet private weak var pointsTitleLabel: UILabel! {
         didSet {
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 pointsTitleLabel.font = Fonts.cairoRegularFont12
             } else {
                 pointsTitleLabel.font = Fonts.montserratLightFont12
@@ -130,7 +130,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet private weak var pointsValueLabel: UILabel! {
         didSet {
             pointsValueLabel.textColor = Colors.appGray103
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 pointsValueLabel.font = Fonts.cairoBoldFont12
 
             } else {
@@ -143,7 +143,7 @@ class ProfileHeaderView: UIView {
         didSet {
 //            customerTypeLabel.textColor = Colors.appCustomDarkGray
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 customerTypeLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -156,9 +156,9 @@ class ProfileHeaderView: UIView {
         didSet {
             
             nextTierTitleLabel.isHidden = true
-            nextTierTitleLabel.text = LocalizationsKeys.GameballScreen.nextLevelText.rawValue.localized
+            nextTierTitleLabel.text = GB_LocalizationsKeys.GameballScreen.nextLevelText.rawValue.localized
 //            nextTierTitleLabel.textColor = Colors.appGray173
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 nextTierTitleLabel.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -170,7 +170,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet private weak var nextTierValueLabel: UILabel! {
         didSet {
 //            nextTierValueLabel.textColor = Colors.appGray173
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 nextTierValueLabel.font = Fonts.cairoRegularFont12
                 
             } else {

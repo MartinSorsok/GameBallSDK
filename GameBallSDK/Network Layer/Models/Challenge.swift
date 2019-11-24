@@ -57,11 +57,11 @@ class Challenge: Codable {
     var statusDescription: String {
         switch status {
         case .locked:
-            return LocalizationsKeys.ChallengeDetails.locked.rawValue.localized
+            return GB_LocalizationsKeys.ChallengeDetails.locked.rawValue.localized
         case .inProgress:
-            return LocalizationsKeys.ChallengeDetails.keepGoing.rawValue.localized
+            return GB_LocalizationsKeys.ChallengeDetails.keepGoing.rawValue.localized
         case .achieved:
-            return LocalizationsKeys.ChallengeDetails.achieved.rawValue.localized
+            return GB_LocalizationsKeys.ChallengeDetails.achieved.rawValue.localized
         }
     }
     

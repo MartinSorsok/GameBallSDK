@@ -12,11 +12,11 @@ class ProgressBarTableViewCell: UITableViewCell {
     
     @IBOutlet weak var progressLabel: UILabel!{
         didSet{
-            progressLabel.text = LocalizationsKeys.ChallengeDetails.progress.rawValue.localized
+            progressLabel.text = GB_LocalizationsKeys.ChallengeDetails.progress.rawValue.localized
             
             progressLabel.textColor = Colors.appMainColor
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 progressLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -30,7 +30,7 @@ class ProgressBarTableViewCell: UITableViewCell {
             
             proressDedailsLabel.textColor = Colors.appGray128
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 proressDedailsLabel.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -45,7 +45,7 @@ class ProgressBarTableViewCell: UITableViewCell {
             
             progressLeftLabel.textColor = Colors.appGray128
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 progressLeftLabel.font = Fonts.cairoBoldFont10
                 
             } else {
@@ -74,10 +74,10 @@ class ProgressBarTableViewCell: UITableViewCell {
                // let leftNumber = (targetActionsCount * Int(completionPercentage)) / 100
               let leftNumber =  Float(targetActionsCount) - (round((completionPercentage/100) * Float(targetActionsCount)))
                 
-                 proressDedailsLabel.text = "\(Int(leftNumber)) \(LocalizationsKeys.ChallengeDetails.friendsRemaining.rawValue.localized)"
+                 proressDedailsLabel.text = "\(Int(leftNumber)) \(GB_LocalizationsKeys.ChallengeDetails.friendsRemaining.rawValue.localized)"
                 
             case .EventBased:
-                proressDedailsLabel.text = LocalizationsKeys.ChallengeDetails.trackProgress.rawValue.localized
+                proressDedailsLabel.text = GB_LocalizationsKeys.ChallengeDetails.trackProgress.rawValue.localized
                 progressLeftLabel.text = ""
             default:
                  proressDedailsLabel.text = ""

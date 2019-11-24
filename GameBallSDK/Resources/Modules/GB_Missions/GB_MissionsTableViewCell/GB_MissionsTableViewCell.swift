@@ -27,7 +27,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var challengeTitleLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeTitleLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -38,7 +38,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rewardLabel: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 rewardLabel.font = Fonts.cairoBoldFont12
                 
             } else {
@@ -63,7 +63,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var noOfChallengesInMission: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 noOfChallengesInMission.font = Fonts.cairoBoldFont10
                 
             } else {
@@ -74,7 +74,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var percentageOfMission: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 percentageOfMission.font = Fonts.cairoBoldFont8
                 
             } else {

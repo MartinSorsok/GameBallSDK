@@ -12,7 +12,7 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var notificationImage: UIImageView!
     @IBOutlet weak var notificationTitle: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 notificationTitle.font = Fonts.cairoBoldFont12
                 
             } else {
@@ -22,7 +22,7 @@ class NotificationsTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var notificationBody: UILabel!{
         didSet{
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 notificationBody.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -33,7 +33,7 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var notificationDate: UILabel!{
         didSet{
             notificationDate.textColor = Colors.appGray128
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 notificationDate.font = Fonts.cairoRegularFont10
                 
             } else {

@@ -5,24 +5,24 @@
 //  Created by Martin Sorsok on 5/19/19.
 //
 
-public class Localizator {
+public class GB_Localizator {
     
-    static let sharedInstance = Localizator()
+    static let sharedInstance = GB_Localizator()
     var language: Languages = .english
     
     lazy var localizableEnglishDictionary: NSDictionary! = {
-        if let path = Bundle.main.path(forResource: "Localizable", ofType: "strings") {
+        if let path = Bundle.main.path(forResource: "GB_Localizable", ofType: "strings") {
             return NSDictionary(contentsOfFile: path)
         }
         fatalError("Localizable file NOT found")
     }()
     lazy var localizableArabicDictionary: NSDictionary! = {
-        if let path = Bundle.main.path(forResource: "LocalizableArabic", ofType: "strings") {
+        if let path = Bundle.main.path(forResource: "GB_LocalizableArabic", ofType: "strings") {
             return NSDictionary(contentsOfFile: path)
         }
         fatalError("Localizable file NOT found")
     }()
-    func localize(string: String , language: String = Localizator.sharedInstance.language.rawValue ) -> String {
+    func localize(string: String , language: String = GB_Localizator.sharedInstance.language.rawValue ) -> String {
         if language == Languages.english.rawValue {
         guard let localizedString = localizableEnglishDictionary.value(forKey: string) as? String else {
             assertionFailure("Missing translation for: \(string)")
@@ -43,7 +43,7 @@ public class Localizator {
 
 extension String {
     var localized: String {
-        return Localizator.sharedInstance.localize(string: self)
+        return GB_Localizator.sharedInstance.localize(string: self)
     }
 }
 

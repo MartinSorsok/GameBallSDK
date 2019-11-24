@@ -13,9 +13,9 @@ class NotificationHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-            titleLabel.text =  LocalizationsKeys.NotificationsScreen.notifications.rawValue.localized
+            titleLabel.text =  GB_LocalizationsKeys.NotificationsScreen.notifications.rawValue.localized
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
                 
             } else {

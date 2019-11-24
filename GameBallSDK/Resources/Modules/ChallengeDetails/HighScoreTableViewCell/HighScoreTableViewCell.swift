@@ -13,11 +13,11 @@ class HighScoreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var highScoreLabel: UILabel!{
         didSet{
-            highScoreLabel.text = LocalizationsKeys.ChallengeDetails.highScore.rawValue.localized
+            highScoreLabel.text = GB_LocalizationsKeys.ChallengeDetails.highScore.rawValue.localized
             
             highScoreLabel.textColor = Colors.appMainColor
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 highScoreLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -28,11 +28,11 @@ class HighScoreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var yourScoreLabel: UILabel!{
         didSet{
-            yourScoreLabel.text = LocalizationsKeys.ChallengeDetails.yourHighScore.rawValue.localized
+            yourScoreLabel.text = GB_LocalizationsKeys.ChallengeDetails.yourHighScore.rawValue.localized
             
             yourScoreLabel.textColor = Colors.appBlack26
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 yourScoreLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -47,7 +47,7 @@ class HighScoreTableViewCell: UITableViewCell {
             
             highScoreValueLabel.textColor = Colors.appBlack26
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 highScoreValueLabel.font = Fonts.cairoBoldFont20
                 
             } else {
@@ -58,11 +58,11 @@ class HighScoreTableViewCell: UITableViewCell {
     
     @IBOutlet weak var highScoreDescription: UILabel!{
         didSet{
-             highScoreDescription.text = LocalizationsKeys.ChallengeDetails.breakYourHighScore.rawValue.localized
+             highScoreDescription.text = GB_LocalizationsKeys.ChallengeDetails.breakYourHighScore.rawValue.localized
             
             highScoreDescription.textColor = Colors.appGray170
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 highScoreDescription.font = Fonts.cairoBoldFont14
                 
             } else {

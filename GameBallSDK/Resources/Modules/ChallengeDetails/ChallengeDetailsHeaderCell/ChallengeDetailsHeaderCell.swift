@@ -26,7 +26,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
         didSet{
             challengeName.textColor = Colors.appBlack26
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeName.font = Fonts.cairoBoldFont20
                 
             } else {
@@ -39,7 +39,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
         didSet{
             challengeDescription.textColor = Colors.appBlack26
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeDescription.font = Fonts.cairoRegularFont14
                 
             } else {
@@ -52,7 +52,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
         didSet{
             challengeScore.textColor = Colors.appBlack26
 
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 challengeScore.font = Fonts.cairoBoldFont12
                 
             } else {

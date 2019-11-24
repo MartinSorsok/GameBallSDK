@@ -14,7 +14,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
         didSet {
             titleLabel.text =  GameballApp.clientBotStyle?.referralHeadLine
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
                 
             } else {
@@ -27,7 +27,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
         didSet {
             describtionLabel.text =  GameballApp.clientBotStyle?.referralText
             
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 describtionLabel.font = Fonts.cairoRegularFont12
                 
             } else {
@@ -40,7 +40,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
         didSet{
             
             textField.text = userCache?.dynamicLink
-            if Localizator.sharedInstance.language == Languages.arabic {
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 textField.font = Fonts.cairoRegularFont10
                 
             } else {
@@ -55,7 +55,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 11, height: textField.frame.height))
             textField.leftViewMode = .always
             if #available(iOS 11.0, *) {
-                if Localizator.sharedInstance.language == Languages.arabic {
+                if GB_Localizator.sharedInstance.language == Languages.arabic {
                     textField.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
 
                 } else {
@@ -70,7 +70,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     @IBOutlet weak var copyBtn: UIButton!{
         didSet{
             if #available(iOS 11.0, *) {
-                if Localizator.sharedInstance.language == Languages.arabic {
+                if GB_Localizator.sharedInstance.language == Languages.arabic {
                     copyBtn.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
 
                 } else {
@@ -81,8 +81,8 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
                 // Fallback on earlier versions
             }
             
-            copyBtn.setTitle(LocalizationsKeys.FriendReferalScreen.copy.rawValue.localized, for: .normal)
-            if Localizator.sharedInstance.language == Languages.arabic {
+            copyBtn.setTitle(GB_LocalizationsKeys.FriendReferalScreen.copy.rawValue.localized, for: .normal)
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
                 copyBtn.titleLabel?.font = Fonts.cairoBoldFont12
                 
             } else {
