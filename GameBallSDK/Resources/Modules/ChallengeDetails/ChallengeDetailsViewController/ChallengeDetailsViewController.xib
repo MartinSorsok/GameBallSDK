@@ -28,7 +28,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSU-nB-A1Y">
                             <rect key="frame" x="318" y="-7" width="32" height="32"/>
-                            <state key="normal" image="iclose_new@2x.png"/>
+                            <state key="normal" image="icon_outline_14px_close@2x.png"/>
                             <connections>
                                 <action selector="closeBtnAction:" destination="-1" eventType="touchUpInside" id="EOa-vS-OAa"/>
                             </connections>
@@ -139,6 +139,6 @@
     <resources>
         <image name="back.png" width="14" height="14"/>
         <image name="gameballIcon.png" width="18" height="18"/>
-        <image name="iclose_new@2x.png" width="16" height="16"/>
+        <image name="icon_outline_14px_close@2x.png" width="16" height="16"/>
     </resources>
 </document>

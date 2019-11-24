@@ -61,7 +61,7 @@ class NotificationPopUPViewController: BaseViewController {
         }
         
         
-        let origImage = UIImage(named: "iclose_new@2x.png")
+        let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         closeBtn.setImage(tintedImage, for: .normal)
         closeBtn.tintColor = UIColor.init(hex: "CECECE")

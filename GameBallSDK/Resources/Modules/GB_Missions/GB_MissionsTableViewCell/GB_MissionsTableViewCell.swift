@@ -28,10 +28,10 @@ class GB_MissionsTableViewCell: UITableViewCell {
     @IBOutlet weak var challengeTitleLabel: UILabel!{
         didSet{
             if GB_Localizator.sharedInstance.language == Languages.arabic {
-                challengeTitleLabel.font = Fonts.cairoRegularFont12
+                challengeTitleLabel.font = Fonts.cairoBoldFont12
                 
             } else {
-                challengeTitleLabel.font = Fonts.montserratLightFont12
+                challengeTitleLabel.font = Fonts.montserratSemiBoldFont12
             }
         }
     }

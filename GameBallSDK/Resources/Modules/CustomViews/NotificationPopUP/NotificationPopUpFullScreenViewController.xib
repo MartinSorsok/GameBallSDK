@@ -42,7 +42,7 @@
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67b-Ji-fgb">
                         <rect key="frame" x="318" y="44" width="32" height="32"/>
-                        <state key="normal" image="iclose_new@2x.png">
+                        <state key="normal" image="icon_outline_14px_close@2x.png">
                             <color key="titleColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
@@ -99,6 +99,6 @@
         </viewController>
     </objects>
     <resources>
-        <image name="iclose_new@2x.png" width="16" height="16"/>
+        <image name="icon_outline_14px_close@2x.png" width="16" height="16"/>
     </resources>
 </document>

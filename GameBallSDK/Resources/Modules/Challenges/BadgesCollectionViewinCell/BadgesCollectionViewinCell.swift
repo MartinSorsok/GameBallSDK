@@ -184,14 +184,19 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
        return  UICollectionReusableView()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-
-        return CGSize(width: collectionView.frame.width, height: 58.0)
+        if self.challenges.count > 0 {
+            return CGSize(width: collectionView.frame.width, height: 58.0)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 0.0)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-         
+         if self.quests.count > 0 {
+             return CGSize(width: collectionView.frame.width, height: 58.0)
+         } else {
+             return CGSize(width: collectionView.frame.width, height: 0.0)
+         }
 
-         return CGSize(width: collectionView.frame.width, height: 58.0)
      }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

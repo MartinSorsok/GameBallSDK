@@ -28,7 +28,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaj-ei-9Lg">
                                 <rect key="frame" x="258" y="15" width="32" height="32"/>
-                                <state key="normal" image="iclose_new@2x.png">
+                                <state key="normal" image="icon_outline_14px_close@2x.png">
                                     <color key="titleColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -94,6 +94,6 @@
         </viewController>
     </objects>
     <resources>
-        <image name="iclose_new@2x.png" width="16" height="16"/>
+        <image name="icon_outline_14px_close@2x.png" width="16" height="16"/>
     </resources>
 </document>

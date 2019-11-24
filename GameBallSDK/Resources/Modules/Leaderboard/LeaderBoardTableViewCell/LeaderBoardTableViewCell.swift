@@ -68,7 +68,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var scoreLabel: UILabel!{
         didSet {
-             scoreLabel.text =  GB_LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
+             scoreLabel.text = GameballApp.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 scoreLabel.font = Fonts.cairoRegularFont10

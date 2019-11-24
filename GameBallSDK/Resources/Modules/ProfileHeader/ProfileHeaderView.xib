@@ -186,7 +186,7 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEi-Qf-rMz">
-                            <rect key="frame" x="398" y="18" width="60" height="22"/>
+                            <rect key="frame" x="396.5" y="18" width="61.5" height="22"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rankpoints.png" translatesAutoresizingMaskIntoConstraints="NO" id="e5a-Ry-q1b">
                                     <rect key="frame" x="8" y="4" width="14" height="14"/>
@@ -196,7 +196,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vB-v9-nXW">
-                                    <rect key="frame" x="25" y="5" width="35" height="12.5"/>
+                                    <rect key="frame" x="25" y="5" width="28.5" height="12.5"/>
                                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -208,8 +208,7 @@
                                 <constraint firstItem="e5a-Ry-q1b" firstAttribute="leading" secondItem="jEi-Qf-rMz" secondAttribute="leading" constant="8" id="FBU-ym-q3B"/>
                                 <constraint firstItem="1vB-v9-nXW" firstAttribute="leading" secondItem="e5a-Ry-q1b" secondAttribute="trailing" constant="3" id="G8i-bb-qK6"/>
                                 <constraint firstAttribute="height" constant="22" id="PWY-3m-8T7"/>
-                                <constraint firstAttribute="width" constant="60" id="QGl-pw-cEk"/>
-                                <constraint firstAttribute="trailing" secondItem="1vB-v9-nXW" secondAttribute="trailing" id="RHg-7S-Oaj"/>
+                                <constraint firstAttribute="trailing" secondItem="1vB-v9-nXW" secondAttribute="trailing" constant="8" id="RHg-7S-Oaj"/>
                                 <constraint firstItem="1vB-v9-nXW" firstAttribute="centerY" secondItem="e5a-Ry-q1b" secondAttribute="centerY" id="eM3-ex-CnX"/>
                             </constraints>
                         </view>
@@ -228,6 +227,7 @@
                         <constraint firstItem="juU-Sc-iky" firstAttribute="leading" secondItem="Ztw-xR-5Z6" secondAttribute="trailing" constant="3" id="PWX-2B-3Rs"/>
                         <constraint firstAttribute="trailing" secondItem="TC7-DI-dEi" secondAttribute="trailing" constant="25" id="Pn0-Y2-N6p"/>
                         <constraint firstItem="wLd-Fh-yW9" firstAttribute="leading" secondItem="GBl-F8-lrU" secondAttribute="leading" constant="25" id="RHf-qK-zDS"/>
+                        <constraint firstItem="jEi-Qf-rMz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JR6-W7-dBv" secondAttribute="trailing" constant="10" id="TLJ-IJ-f4P"/>
                         <constraint firstItem="2fO-vB-7zd" firstAttribute="top" secondItem="FKb-Fu-ks1" secondAttribute="bottom" constant="2" id="XKA-NO-48s"/>
                         <constraint firstItem="4kG-yl-cl8" firstAttribute="leading" secondItem="TC7-DI-dEi" secondAttribute="leading" id="XVC-RV-hvF"/>
                         <constraint firstAttribute="bottom" secondItem="j9c-dc-dFD" secondAttribute="bottom" id="XX9-eY-zX1"/>

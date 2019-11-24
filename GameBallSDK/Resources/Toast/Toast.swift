@@ -661,7 +661,7 @@ public struct ToastStyle {
     /**
      The fade in/out animation duration. Default is 0.2.
      */
-    public var fadeDuration: TimeInterval = 0.2
+    public var fadeDuration: TimeInterval = 0.6
     
     /**
      Activity indicator color. Default is `.white`.
