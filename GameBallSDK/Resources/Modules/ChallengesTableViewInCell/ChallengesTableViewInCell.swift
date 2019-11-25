@@ -20,9 +20,11 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     var notificationsTableViewCell = "NotificationsTableViewCell"
     var notificationHeaderView = "NotificationHeaderView"
     
+    var notificationsEmpltyStateTableViewCell = "GB_NotificationsEmptyStateCell"
+    var leaderBoardEmpltyStateTableViewCell = "GB_LeaderBoardEmptyStateCell"
     
     
-     var filteredString = ""
+    var filteredString = ""
     var sharingCodeText = ""
     var challenges: [Challenge] = []
     var leaderboardProfiles: [Profile] = []
@@ -38,11 +40,15 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             tableView.dataSource = self
             tableView.delegate = self
             tableView.isHidden = true
-
+            
             tableView.showsVerticalScrollIndicator = false
             tableView.register(UINib(nibName: referalFriendTableViewCell, bundle: nil), forCellReuseIdentifier: referalFriendTableViewCell)
             tableView.register(UINib(nibName: referalHeaderViewTableView, bundle: nil), forHeaderFooterViewReuseIdentifier: referalHeaderViewTableView)
             tableView.register(UINib(nibName: referalHeaderViewTableView, bundle: nil), forHeaderFooterViewReuseIdentifier: referalHeaderViewTableView)
+            
+            tableView.register(UINib(nibName: notificationsEmpltyStateTableViewCell, bundle: nil), forCellReuseIdentifier: notificationsEmpltyStateTableViewCell)
+            tableView.register(UINib(nibName: leaderBoardEmpltyStateTableViewCell, bundle: nil), forCellReuseIdentifier: leaderBoardEmpltyStateTableViewCell)
+            
             
             tableView.register(UINib(nibName: leaderBoardTableViewCell, bundle: nil), forCellReuseIdentifier: leaderBoardTableViewCell)
             tableView.register(UINib(nibName: leaderBoardHeaderView, bundle: nil), forHeaderFooterViewReuseIdentifier: leaderBoardHeaderView)
@@ -58,37 +64,37 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         super.awakeFromNib()
         // Initialization code
         nc.addObserver(self, selector: #selector(tabBarTapped), name: Notification.Name("tabBarTapped"), object: nil)
-
-
+        
+        
     }
     
-
- 
     
-   
+    
+    
+    
     @objc func tabBarTapped(_ notification:Notification) {
-       // self.delegate?.dataReady(tableview: self.tableView)
-
+        // self.delegate?.dataReady(tableview: self.tableView)
+        
         guard let featureNumber = notification.object as? Int else {
             return
         }
         delegate?.dataReady(tableview: self.tableView)
-//        switch featureNumber {
-//        case Features.LeaderBoard.rawValue:
-//            fetchLeaderBoardDate()
-//        case Features.Notifications.rawValue:
-//            fetchNotificationsData()
-//        default:
-//            fetchData()
-//        }
-     //   print(featureNumber)
+        //        switch featureNumber {
+        //        case Features.LeaderBoard.rawValue:
+        //            fetchLeaderBoardDate()
+        //        case Features.Notifications.rawValue:
+        //            fetchNotificationsData()
+        //        default:
+        //            fetchData()
+        //        }
+        //   print(featureNumber)
         
     }
-
     
-
-
-
+    
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -103,10 +109,22 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if currentFeature == Features.LeaderBoard.rawValue {
-            return self.leaderboardProfiles.count
+            
+            if self.leaderboardProfiles.count > 0 {
+                return self.leaderboardProfiles.count
+            } else {
+                return 1
+            }
+            
         } else if currentFeature == Features.Notifications.rawValue {
-            return self.notifications.count
-
+            
+            if self.notifications.count > 0 {
+                return self.notifications.count
+            } else {
+                return 1
+            }
+            
+            
         } else {
             return self.challenges.count
         }
@@ -121,16 +139,25 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             if leaderboardProfiles.count  > 0 {
                 cell.rankNumber = (indexPath.row + 1)
                 cell.profile = leaderboardProfiles[indexPath.row]
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier:leaderBoardEmpltyStateTableViewCell ) as! GB_LeaderBoardEmptyStateCell
+                cell.selectionStyle = .none
+                return cell
             }
-            return cell
         }     else    if currentFeature == Features.Notifications.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier:notificationsTableViewCell ) as! NotificationsTableViewCell
             cell.selectionStyle = .none
             
             if notifications.count  > 0 {
                 cell.notification = notifications[indexPath.row]
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier:notificationsEmpltyStateTableViewCell ) as! GB_NotificationsEmptyStateCell
+                cell.selectionStyle = .none
+                return cell
             }
-            return cell
+            
         } else  if currentFeature == Features.FriendReferal.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: referalFriendTableViewCell) as! ReferalFriendTableViewCell
             cell.selectionStyle = .none
@@ -140,7 +167,7 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
         
         return UITableViewCell()
     }
- 
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if currentFeature == Features.LeaderBoard.rawValue {
@@ -177,20 +204,20 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (tableView.cellForRow(at: indexPath) as? ReferalFriendTableViewCell) != nil {
-
+            
             delegate?.challengeTapped(with: challenges[indexPath.row])
         }
     }
     @objc func copyAction(sender: UIButton!) {
         
-         Helpers().dPrint(sharingCodeText)
+        Helpers().dPrint(sharingCodeText)
         
         self.delegate?.shareText(text: sharingCodeText)
     }
     
     @objc func tappedLeaderBoardFilter(sender: UIButton!) {
         
-         Helpers().dPrint(sharingCodeText)
+        Helpers().dPrint(sharingCodeText)
         
         self.delegate?.tappedLeaderBoardFilter()
     }
