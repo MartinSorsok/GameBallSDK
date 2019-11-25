@@ -93,7 +93,7 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
         else {
             achievementImageView.alpha = 0.5
         }
-        if challenge.achievedCount ?? 0 > 0 {
+        if challenge.achievedCount ?? 0 > 1 {
             noOfAcheivedtimesView.isHidden = false
             noOfAcheivedTimesLabel.text = "\(challenge.achievedCount ?? 0)"
         } else {

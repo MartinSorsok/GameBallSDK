@@ -227,7 +227,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
         //        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
-        if let url = NSURL(string: "https://www.gameball.co"){
+        if let url = NSURL(string: "https://www.gameball.co/landing_mobile/?utm_source=Mobile%20apps&utm_medium=Mobile%20footer&utm_campaign=Mobile%20users"){
             UIApplication.shared.openURL(url as URL)
         }
         
