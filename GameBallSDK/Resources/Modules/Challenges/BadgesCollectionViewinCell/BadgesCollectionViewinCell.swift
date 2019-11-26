@@ -22,6 +22,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        nc.addObserver(self, selector: #selector(refreshTapped), name: Notification.Name("refresh"), object: nil)
 
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -32,6 +33,10 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
                     collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerCollectionReusableView)
         collectionView.register(UINib(nibName: headerCollectionReusableView, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: headerCollectionReusableView)
 
+        fetchData()
+    }
+    
+    @objc func refreshTapped(_ notification:Notification) {
         fetchData()
     }
     

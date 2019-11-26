@@ -148,6 +148,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         }
         
         nc.addObserver(self,selector: #selector(StartCurrentFeature), name: Notification.Name("StartcurrentFeature"), object: nil)
+        nc.post(name: Notification.Name("refresh"), object: nil)
+
     }
          
        
@@ -283,7 +285,6 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 cell.collectionViewHeight.constant = collectionViewHeight;
                 cell.collectionView.reloadData()
                     cell.selectionStyle = .none
-
                 return cell
                 } else  {
                     
