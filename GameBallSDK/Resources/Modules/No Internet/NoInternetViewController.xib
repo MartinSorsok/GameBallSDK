@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoInternetViewController" customModule="GameBallSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfO-bi-dsN">
+                    <rect key="frame" x="318" y="25" width="32" height="32"/>
+                    <state key="normal" image="icon_outline_14px_close@2x.png">
+                        <color key="titleColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O43-VH-zU9">
+                    <rect key="frame" x="225" y="0.0" width="150" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="cCy-Kl-Mkp"/>
+                        <constraint firstAttribute="width" constant="150" id="k6i-7a-GnT"/>
+                    </constraints>
+                    <connections>
+                        <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="fs5-uV-aBH"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No-Internet.png" translatesAutoresizingMaskIntoConstraints="NO" id="t2T-Xb-pa5">
+                    <rect key="frame" x="120" y="266" width="135" height="135"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="t2T-Xb-pa5" secondAttribute="height" multiplier="1:1" id="Z4d-YX-1lb"/>
+                        <constraint firstAttribute="height" constant="135" id="j3u-tP-BIk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-LD-bo1">
+                    <rect key="frame" x="122" y="431" width="131.5" height="21"/>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your internet connection and try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvT-xL-807">
+                    <rect key="frame" x="60" y="457" width="255" height="34.5"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fAW-LD-bo1" firstAttribute="centerX" secondItem="t2T-Xb-pa5" secondAttribute="centerX" id="5g5-Cm-Aka"/>
+                <constraint firstItem="PvT-xL-807" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="Am8-q6-tTS"/>
+                <constraint firstItem="PvT-xL-807" firstAttribute="centerX" secondItem="fAW-LD-bo1" secondAttribute="centerX" id="E0r-sh-yy1"/>
+                <constraint firstItem="PvT-xL-807" firstAttribute="top" secondItem="fAW-LD-bo1" secondAttribute="bottom" constant="5" id="Hct-jW-Qp6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jfO-bi-dsN" secondAttribute="trailing" constant="25" id="Jbw-NJ-QCd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PvT-xL-807" secondAttribute="trailing" constant="60" id="M2g-Qd-57d"/>
+                <constraint firstItem="t2T-Xb-pa5" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="VMi-Ie-U8h"/>
+                <constraint firstItem="t2T-Xb-pa5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Z0D-uQ-6AO"/>
+                <constraint firstItem="O43-VH-zU9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jVK-pX-kaW"/>
+                <constraint firstItem="jfO-bi-dsN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="liJ-Ob-5u5"/>
+                <constraint firstItem="fAW-LD-bo1" firstAttribute="top" secondItem="t2T-Xb-pa5" secondAttribute="bottom" constant="30" id="qS9-0Y-KAO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O43-VH-zU9" secondAttribute="trailing" id="ula-A1-sJg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="109"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="No-Internet.png" width="134.5" height="134.5"/>
+        <image name="icon_outline_14px_close@2x.png" width="16" height="16"/>
+    </resources>
+</document>

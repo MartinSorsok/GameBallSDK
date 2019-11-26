@@ -67,6 +67,10 @@ open class GameballApp: NSObject {
         
     }
     public func launchGameball(isEmbed: Bool = false ) -> UIViewController? {
+       
+        guard Reachability.isConnectedToNetwork() else {
+            return NoInternetViewController()
+        }
         if NetworkManager.shared().isAPIKeySet() {
             if NetworkManager.shared().isBotSettingsSet() {
                 if NetworkManager.shared().isPlayerIdSet() {
@@ -96,7 +100,7 @@ open class GameballApp: NSObject {
     public func notificationPopUP(notification: UNNotification)  {
         
         
-        print(notification.request.content.userInfo["type"])
+//        print(notification.request.content.userInfo["type"])
         
                 if notification.request.content.userInfo["type"] as? String == "Small Toast" {
                       guard let myView = Bundle.main.loadNibNamed("NotificationtSmallToast", owner: self, options: nil)?[0] as? GB_NotificationtSmallToast else {return}
