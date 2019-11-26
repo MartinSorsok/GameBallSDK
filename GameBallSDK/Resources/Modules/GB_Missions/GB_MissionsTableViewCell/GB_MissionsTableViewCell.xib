@@ -131,6 +131,7 @@
                 <outlet property="challengesTableView" destination="IdO-Wi-JYY" id="LOo-oC-lU7"/>
                 <outlet property="challengesTableViewHeightConstraint" destination="uHs-O3-ZUI" id="Grd-7c-6wy"/>
                 <outlet property="containerView" destination="guc-B8-3jq" id="ajs-zk-DMQ"/>
+                <outlet property="giftImageScore" destination="8Sw-6z-kfa" id="lgm-2x-Mjk"/>
                 <outlet property="noOfChallengesInMission" destination="dkD-ez-hNF" id="bKh-IZ-4Ab"/>
                 <outlet property="percentageOfMission" destination="uc8-yg-9VO" id="fvu-2q-xhC"/>
                 <outlet property="progressView" destination="Vxi-3j-5uT" id="4g5-El-dJc"/>

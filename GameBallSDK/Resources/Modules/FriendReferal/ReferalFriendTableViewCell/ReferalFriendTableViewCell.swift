@@ -18,6 +18,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
         }
     }
     @IBOutlet weak var challengeImage: UIImageView!
+    @IBOutlet weak var giftImageScore: UIImageView!
     
     @IBOutlet weak var challengeTitleLabel: UILabel!{
         didSet{
@@ -71,8 +72,17 @@ class ReferalFriendTableViewCell: UITableViewCell {
                 achievedImage.image = UIImage(named: "CheckmarkNew.png")
             }
             
-            rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) Score | \(challenge?.rewardPoints ?? 0) points"
-            
+              if challenge?.rewardPoints == 0 && challenge?.rewardFrubies == 0  {
+                rewardLabel.text = ""
+                giftImageScore.isHidden = true
+                
+            } else if challenge?.rewardPoints == 0 {
+                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
+            }  else if challenge?.rewardFrubies == 0 {
+                rewardLabel.text = "\(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }  else {
+                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }
             
             let percentageFilled = Float((challenge?.actionsAndAmountCompletedPercentage ?? 0) / 100 )
             

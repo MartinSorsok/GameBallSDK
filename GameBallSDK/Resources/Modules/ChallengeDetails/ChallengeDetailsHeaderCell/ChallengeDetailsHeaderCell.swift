@@ -16,6 +16,7 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var giftImageScore: UIImageView!
     @IBOutlet weak var challengeImage: UIImageView!{
         didSet {
 //            challengeImage.layer.cornerRadius = challengeImage.layer.bounds.height / 2
@@ -69,9 +70,15 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
             setImage(withURL: challenge?.icon ?? "https://assets.gameball.co/sample/4.png" )
           
             
-            if challenge?.rewardPoints == 0 {
+            if challenge?.rewardPoints == 0 && challenge?.rewardFrubies == 0  {
+                challengeScore.text = ""
+                giftImageScore.isHidden = true
+                
+            } else if challenge?.rewardPoints == 0 {
                 challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
-            } else {
+            }  else if challenge?.rewardFrubies == 0 {
+                challengeScore.text = "\(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }  else {
                 challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
             }
 

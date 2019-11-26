@@ -94,6 +94,7 @@
                 <outlet property="challengeName" destination="6yw-lj-fJe" id="eUa-Hr-wt3"/>
                 <outlet property="challengeScore" destination="hCP-Ss-Ica" id="kXx-99-g63"/>
                 <outlet property="containerCellMainView" destination="479-xm-HcP" id="vDx-6Z-pMR"/>
+                <outlet property="giftImageScore" destination="ueM-GA-hag" id="2lp-Xe-klr"/>
             </connections>
             <point key="canvasLocation" x="-161" y="54"/>
         </tableViewCell>

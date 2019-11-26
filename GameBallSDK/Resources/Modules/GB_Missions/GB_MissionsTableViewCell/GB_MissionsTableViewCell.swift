@@ -36,6 +36,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var giftImageScore: UIImageView!
     @IBOutlet weak var rewardLabel: UILabel!{
         didSet{
             if GB_Localizator.sharedInstance.language == Languages.arabic {
@@ -98,15 +99,17 @@ class GB_MissionsTableViewCell: UITableViewCell {
             setImage(withURL: quest?.icon ?? "https://assets.gameball.co/sample/4.png" )
             
             
-            if quest?.rewardPoints == 0 {
-                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-            } else  if quest?.rewardFrubies == 0 {
-                rewardLabel.text = "\(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "") "
-            }
-            else {
+            if quest?.rewardPoints == 0 && quest?.rewardFrubies == 0  {
+                rewardLabel.text = ""
+                giftImageScore.isHidden = true
+                
+            } else if quest?.rewardPoints == 0 {
+                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
+            }  else if quest?.rewardFrubies == 0 {
+                rewardLabel.text = "\(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+            }  else {
                 rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
             }
-            
 
             
             
