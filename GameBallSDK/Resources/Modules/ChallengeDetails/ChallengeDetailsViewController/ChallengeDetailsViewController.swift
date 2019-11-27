@@ -107,7 +107,7 @@ extension ChallengeDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if !(self.challenge?.completionPercentage?.isLess(than: 1.0) ?? true) || self.challenge?.highScoreAmount ?? 0 > 0 {
+        if (!(self.challenge?.completionPercentage?.isLess(than: 1.0) ?? true) && (self.challenge?.isActive ?? false)) || self.challenge?.highScoreAmount ?? 0 > 0 {
             return 3
         } else {
             return 2
@@ -122,7 +122,7 @@ extension ChallengeDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: challengeDetailsHeaderCell) as! ChallengeDetailsHeaderCell
             cell.challenge = self.challenge
             return cell
-        } else if indexPath.row == 1 && (self.challenge?.challengeType ?? .unkown == .EventBased || self.challenge?.challengeType ?? .unkown == .FriendReferal ) && !(self.challenge?.completionPercentage?.isLess(than: 1.0) ?? true)   {
+        } else if indexPath.row == 1 && (self.challenge?.challengeType ?? .unkown == .EventBased || self.challenge?.challengeType ?? .unkown == .FriendReferal ) && !(self.challenge?.completionPercentage?.isLess(than: 1.0) ?? true) && (self.challenge?.isActive ?? false)  {
             let cell = tableView.dequeueReusableCell(withIdentifier: progressBarTableViewCell) as! ProgressBarTableViewCell
             cell.challenge = self.challenge
             return cell

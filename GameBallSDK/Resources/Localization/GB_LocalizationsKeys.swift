@@ -17,6 +17,8 @@ class GB_LocalizationsKeys: NSObject {
     
     enum GameballScreen :String{
         case achievementTitle = "AchievementTitle"
+        case achievementDescription = "achievementDescription"
+        case missionsDescription =  "missionsDescription"
         case missionsTitle =  "MissionsTitle"
         case  pts = "pts"
         case  pointsName = "pointsName"

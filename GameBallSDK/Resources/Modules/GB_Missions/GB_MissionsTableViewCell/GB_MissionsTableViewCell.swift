@@ -122,6 +122,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
             
             if percentageFilled == 1 {
                achievedImage.image = UIImage(named: "CheckmarkNew.png")
+                percentageOfMission.text = ""
             } else {
                 percentageOfMission.text = "\(Int(percentageFilled * 100))%"
             }

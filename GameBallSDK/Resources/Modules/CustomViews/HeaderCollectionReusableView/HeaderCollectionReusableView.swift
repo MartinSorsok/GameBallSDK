@@ -23,6 +23,18 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         }
     }
     
+    @IBOutlet weak var descriptionLabel: UILabel!{
+        didSet {
+      
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
+                descriptionLabel.font = Fonts.cairoRegularFont14
+
+            } else {
+                descriptionLabel.font = Fonts.montserratLightFont14
+            }
+            descriptionLabel.textColor = .black
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.purple

@@ -33,6 +33,7 @@ class Challenge: Codable {
     let actionsAndAmountCompletedPercentage: Float?
     let isRepeatable : Bool?
     let isReferral: Bool?
+    let isActive: Bool?
     let achievedCount: Int?
     let achievedActionsCount: Int?
     let currentAmount: Int?
@@ -93,6 +94,7 @@ class Challenge: Codable {
         case gameName = "gameName"
         case challengeID = "challengeId"
         case icon = "icon"
+        case isActive = "isActive"
         case description = "description"
         case isUnlocked = "isUnlocked"
         case activationCriteriaTypeID = "activationCriteriaTypeId"

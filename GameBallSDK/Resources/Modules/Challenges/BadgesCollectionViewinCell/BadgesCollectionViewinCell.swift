@@ -164,8 +164,11 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
             if self.challenges.count > 0 {
             headerView?.titleLabel.text =  GB_LocalizationsKeys.GameballScreen.achievementTitle.rawValue.localized
+                headerView?.descriptionLabel.text = GB_LocalizationsKeys.GameballScreen.achievementDescription.rawValue.localized
+
             } else {
                headerView?.titleLabel.text = ""
+                headerView?.descriptionLabel.text = ""
             }
             
             return headerView ?? UICollectionReusableView()
@@ -178,8 +181,11 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
 
               if self.quests.count > 0 {
               headerView?.titleLabel.text =  GB_LocalizationsKeys.GameballScreen.missionsTitle.rawValue.localized
+                                headerView?.descriptionLabel.text = GB_LocalizationsKeys.GameballScreen.missionsDescription.rawValue.localized
               } else {
                  headerView?.titleLabel.text = ""
+                headerView?.descriptionLabel.text = ""
+
               }
               return headerView ?? UICollectionReusableView()
               
@@ -190,14 +196,14 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if self.challenges.count > 0 {
-            return CGSize(width: collectionView.frame.width, height: 58.0)
+            return CGSize(width: collectionView.frame.width, height: 110.0)
         } else {
             return CGSize(width: collectionView.frame.width, height: 0.0)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
          if self.quests.count > 0 {
-             return CGSize(width: collectionView.frame.width, height: 58.0)
+             return CGSize(width: collectionView.frame.width, height: 100.0)
          } else {
              return CGSize(width: collectionView.frame.width, height: 0.0)
          }

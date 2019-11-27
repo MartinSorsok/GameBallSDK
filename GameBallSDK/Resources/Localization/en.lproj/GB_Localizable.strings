@@ -11,9 +11,10 @@
 "NextLevelText" = "Next level at";
 
 "LeaderboardTitle" = "Leaderboard" ;
-"AchievementTitle" = "Achievements";
+"AchievementTitle" = "Badges";
 "MissionsTitle" = "Missions";
-
+"achievementDescription" = "This is your badges board, collect badges and get their rewards.";
+"missionsDescription" = "Complete the below missions and win their rewards.";
 
 "GameballFooterText" = "we run on";
 
