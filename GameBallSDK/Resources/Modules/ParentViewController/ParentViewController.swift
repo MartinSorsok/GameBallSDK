@@ -288,12 +288,15 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 return cell
                 } else  {
                     
-                    let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
+//                    if quests.count > 0 {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
 
-                    cell.selectionStyle = .none
-                    cell.delegate = self
-                    cell.quest = quests[indexPath.row - 1]
-                    return cell
+                        cell.selectionStyle = .none
+                        cell.delegate = self
+                        cell.quest = quests[indexPath.row - 1]
+                        return cell
+//                    }
+
                     
                 }
             } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue || currentFeature == Features.Notifications.rawValue{

@@ -131,18 +131,14 @@ class GB_MissionsTableViewCell: UITableViewCell {
             
             let color = Colors.appMainColor ?? .black
             progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
+            self.challengesTableView.reloadData()
+
         }
+        
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        
-        
-        
-
-    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -180,26 +176,35 @@ extension  GB_MissionsTableViewCell: UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: challengeInMissionTableViewCell) as! GB_ChallengeInMissionTableViewCell
-        cell.selectionStyle = .none
-         Helpers().dPrint("******** \(indexPath.row)")
-        cell.challenge = quest?.questChallenges?[indexPath.row]
         
-        if quest?.isOrdered ?? false {
-            cell.nextChallengeArrowImage.isHidden = false
-        } else {
-            cell.nextChallengeArrowImage.isHidden = true
-
+        if quest?.questChallenges?.count ?? 0 > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: challengeInMissionTableViewCell) as! GB_ChallengeInMissionTableViewCell
+            cell.selectionStyle = .none
+            Helpers().dPrint("******** \(indexPath.row)")
+            cell.challenge = quest?.questChallenges?[indexPath.row]
+            
+            if quest?.isOrdered ?? false {
+                cell.nextChallengeArrowImage.isHidden = false
+            } else {
+                cell.nextChallengeArrowImage.isHidden = true
+                
+            }
+            if indexPath.row == ((quest?.questChallenges?.count ?? 0) - 1)  {
+                cell.nextChallengeArrowImage.isHidden = true
+            }
+            return cell
         }
-        if indexPath.row == ((quest?.questChallenges?.count ?? 0) - 1)  {
-            cell.nextChallengeArrowImage.isHidden = true
+        else {
+            return UITableViewCell()
         }
-           return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let challenge = quest?.questChallenges?[indexPath.row] else {return}
-               delegate?.challengeTapped(with: challenge)
+        if  quest?.questChallenges?.count ?? 0 > 0 {
+            guard let challenge = quest?.questChallenges?[indexPath.row] else {return}
+                   delegate?.challengeTapped(with: challenge)
+        }
+
     }
 }
