@@ -270,7 +270,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if indexPath.row == 0 && indexPath.section == 0 {
+        if indexPath.row == 0 && indexPath.section == 0 && (UserDefaults.standard.object(forKey: UserDefaultsKeys.APIKey.rawValue) as? String != "d58a919179834f1583b66edd1c10f9bd")  {
             let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell) as! MainTableViewCell
             cell.selectionStyle = .none
             return cell
