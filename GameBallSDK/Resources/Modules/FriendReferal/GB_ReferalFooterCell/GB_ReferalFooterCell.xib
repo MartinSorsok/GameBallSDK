@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XT2-RT-u0b" customClass="GB_ReferalFooterCell" customModule="GameBallSDK" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="180"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-7g-AGS">
+                    <rect key="frame" x="0.0" y="45" width="417" height="100"/>
+                    <subviews>
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.gameball.com/sfgG3e56Hs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rJg-7e-iVC">
+                            <rect key="frame" x="25" y="5" width="302" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="4nu-5m-djm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7Y-QB-j2i">
+                            <rect key="frame" x="327" y="5" width="65" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="pz8-LF-e3I"/>
+                            </constraints>
+                            <state key="normal" title="Copy"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="R7Y-QB-j2i" firstAttribute="leading" secondItem="rJg-7e-iVC" secondAttribute="trailing" id="0Xx-0s-xOc"/>
+                        <constraint firstAttribute="height" constant="100" id="3qk-Zd-9ri"/>
+                        <constraint firstItem="R7Y-QB-j2i" firstAttribute="centerY" secondItem="rJg-7e-iVC" secondAttribute="centerY" id="Fey-Hy-pIE"/>
+                        <constraint firstAttribute="trailing" secondItem="R7Y-QB-j2i" secondAttribute="trailing" constant="25" id="aAq-V5-iI2"/>
+                        <constraint firstItem="rJg-7e-iVC" firstAttribute="leading" secondItem="lOJ-7g-AGS" secondAttribute="leading" constant="25" id="g96-fC-3eg"/>
+                        <constraint firstItem="rJg-7e-iVC" firstAttribute="top" secondItem="lOJ-7g-AGS" secondAttribute="top" constant="5" id="ubm-ZC-YDk"/>
+                        <constraint firstItem="R7Y-QB-j2i" firstAttribute="height" secondItem="rJg-7e-iVC" secondAttribute="height" id="vho-hL-cTd"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have referred 29 friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt5-JR-Zg3">
+                    <rect key="frame" x="135.5" y="92" width="146" height="13"/>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="10"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Jt5-JR-Zg3" firstAttribute="top" secondItem="rJg-7e-iVC" secondAttribute="bottom" constant="10" id="BBv-Cy-PT1"/>
+                <constraint firstItem="Jt5-JR-Zg3" firstAttribute="centerX" secondItem="lOJ-7g-AGS" secondAttribute="centerX" id="J7i-t6-NUm"/>
+                <constraint firstItem="lOJ-7g-AGS" firstAttribute="width" secondItem="XT2-RT-u0b" secondAttribute="width" id="Sp0-QS-2DH"/>
+                <constraint firstItem="lOJ-7g-AGS" firstAttribute="centerX" secondItem="gRU-gg-bWf" secondAttribute="centerX" id="bYi-fe-hJb"/>
+                <constraint firstItem="lOJ-7g-AGS" firstAttribute="centerY" secondItem="gRU-gg-bWf" secondAttribute="centerY" id="tIe-lg-UNG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="gRU-gg-bWf"/>
+            <connections>
+                <outlet property="copyBtn" destination="R7Y-QB-j2i" id="ESP-Lo-66f"/>
+                <outlet property="noOfReferred" destination="Jt5-JR-Zg3" id="sTu-db-hj1"/>
+                <outlet property="textField" destination="rJg-7e-iVC" id="bRD-LT-KR5"/>
+            </connections>
+            <point key="canvasLocation" x="215.19999999999999" y="197.00149925037482"/>
+        </collectionReusableView>
+    </objects>
+</document>

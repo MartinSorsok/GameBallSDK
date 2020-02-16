@@ -11,10 +11,10 @@ class ReferalFriendTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!{
         didSet{
-            containerView.clipsToBounds = true
-            containerView.layer.cornerRadius = 5
-            containerView.layer.borderColor = Colors.appGray242.cgColor
-            containerView.layer.borderWidth = 1.0
+//            containerView.clipsToBounds = true
+//            containerView.layer.cornerRadius = 5
+//            containerView.layer.borderColor = Colors.appGray242.cgColor
+//            containerView.layer.borderWidth = 1.0
         }
     }
     @IBOutlet weak var challengeImage: UIImageView!
@@ -64,7 +64,7 @@ class ReferalFriendTableViewCell: UITableViewCell {
     
     var challenge :Challenge? {
         didSet{
-            challengeTitleLabel.text = challenge?.gameName
+//            challengeTitleLabel.text = challenge?.gameName
             setImage(withURL: challenge?.icon ?? "https://assets.gameball.co/sample/4.png" )
             if challenge?.achievedCount ?? 0 > 0 {
                 numberOfAchievedLabel.isHidden = false
@@ -113,10 +113,10 @@ class ReferalFriendTableViewCell: UITableViewCell {
             }
             if let result = myImage {
                 DispatchQueue.main.async {
-                    self.challengeImage.image = result
-                    self.challengeImage.alpha = 0
+                  //  self.challengeImage.image = result
+                  //  self.challengeImage.alpha = 0
                     UIView.animate(withDuration: 1.0, animations: {
-                        self.challengeImage.alpha = 1.0
+                     //   self.challengeImage.alpha = 1.0
                     })
                 }
             }

@@ -14,6 +14,8 @@ struct ClientBotStyle: Codable {
     let buttonShape, buttonDirection, offlineStatemessage, button, buttonLink: String?
     let enableLeaderboard, enableNotifications, enableAchievements, isReferralOn, enableUserProfile, isRankPointsVisible, isWalletPointsVisible: Bool?
     let rankPointsName: String?
+    let referralIcon: String?
+
     let walletPointsName: String?
     enum CodingKeys: String, CodingKey {
 //        case clientID = "clientId"
@@ -40,5 +42,7 @@ struct ClientBotStyle: Codable {
         case referralText = "referralText"
         case rankPointsName = "rankPointsName"
         case walletPointsName = "walletPointsName"
+        case referralIcon = "referralIcon"
+
     }
 }

@@ -1,15 +1,20 @@
 //
-//  ReferalHeaderViewCollectionReusableView.swift
+//  GB_ReferalFooterCell.swift
 //  GameBallSDK
 //
-//  Created by Martin Sorsok on 7/26/19.
+//  Created by Martin Sorsok on 2/16/20.
 //
 
 import UIKit
 
-class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
-    let userCache = UserProfileCache.get()
 
+class GB_ReferalFooterCell: UITableViewHeaderFooterView {
+    let userCache = UserProfileCache.get()
+    var count: Int? {
+        didSet {
+            noOfReferred.text =  "You have referred \(count ?? 0) friends"
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
             titleLabel.text =  GameballApp.clientBotStyle?.referralHeadLine
@@ -33,15 +38,10 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             } else {
                 describtionLabel.font = Fonts.montserratLightFont12
             }
-      
-        }
-    }
-    @IBOutlet weak var referalIcon: UIImageView! {
-        didSet {
-            setImage(withURL: GameballApp.clientBotStyle?.referralIcon ?? "")
             
         }
     }
+    @IBOutlet weak var noOfReferred: UILabel!
     @IBOutlet weak var textField: UITextField!{
         didSet{
             
@@ -52,10 +52,10 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             } else {
                 textField.font = Fonts.montserratLightFont10
             }
-        
-
+            
+            
             textField.textColor = Colors.appGray128
-           textField.layer.cornerRadius = 15
+            textField.layer.cornerRadius = 15
             textField.clipsToBounds = true
             textField.backgroundColor = Colors.appGray242
             textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 11, height: textField.frame.height))
@@ -63,7 +63,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             if #available(iOS 11.0, *) {
                 if GB_Localizator.sharedInstance.language == Languages.arabic {
                     textField.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
-
+                    
                 } else {
                     textField.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
                 }
@@ -78,10 +78,10 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
             if #available(iOS 11.0, *) {
                 if GB_Localizator.sharedInstance.language == Languages.arabic {
                     copyBtn.layer.maskedCorners = [ .layerMinXMinYCorner,.layerMinXMaxYCorner]
-
+                    
                 } else {
                     copyBtn.layer.maskedCorners = [ .layerMaxXMaxYCorner,.layerMaxXMinYCorner]
-
+                    
                 }
             } else {
                 // Fallback on earlier versions
@@ -112,24 +112,4 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
         
         
     }
-    func setImage(withURL: String) {
-         let path = withURL
-         NetworkManager.shared().loadImage(path: path.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
-             if let errorModel = error {
-                  Helpers().dPrint(errorModel.description)
-             }
-             else {
-             }
-             if let result = myImage {
-                 DispatchQueue.main.async {
-                     self.referalIcon.image = result
-                     self.referalIcon.alpha = 0
-                     UIView.animate(withDuration: 1.0, animations: {
-                         self.referalIcon.alpha = 1.0
-                     })
-                 }
-             }
-         }
-     }
-
 }

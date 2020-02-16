@@ -16,6 +16,11 @@ class ProfileHeaderView: UIView {
     var viewModel: PlayerDetailsViewModel = PlayerDetailsViewModel()
     var playerInfoViewModel: PlayerInfoViewModel = PlayerInfoViewModel()
     
+    @IBOutlet weak var mainViewContainer: UIView!{
+        didSet {
+            mainViewContainer.backgroundColor = Colors.appMainColor
+        }
+    }
     @IBOutlet weak var nextTireRankPointImage: UIImageView!{
         didSet {
             nextTireRankPointImage.isHidden = true
@@ -45,6 +50,18 @@ class ProfileHeaderView: UIView {
         }
     }
     
+    @IBOutlet weak var topContainerView: UIView!{
+        didSet {
+            topContainerView.layer.cornerRadius = 6
+            topContainerView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var pointsViewContainer: UIView!{
+        didSet {
+            pointsViewContainer.layer.cornerRadius = 6
+            pointsViewContainer.clipsToBounds = true
+        }
+    }
     @IBOutlet private weak var profileIconImageView: UIImageView!
     @IBOutlet private weak var progressView: ProgressView!{
         didSet {
@@ -55,7 +72,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var youAreOnLevelLabel: UILabel!{
         didSet{
             youAreOnLevelLabel.text = GB_LocalizationsKeys.GameballScreen.youAreOnLevelText.rawValue.localized
-            //                    frubiesTitleLabel.textColor = Colors.appGray173
+            youAreOnLevelLabel.textColor = Colors.appGray128
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 youAreOnLevelLabel.font = Fonts.cairoRegularFont10
@@ -99,27 +116,29 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet private weak var frubiesTitleLabel: UILabel! {
         didSet {
+            frubiesTitleLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
-                frubiesTitleLabel.font = Fonts.cairoRegularFont12
+                frubiesTitleLabel.font = Fonts.cairoBoldFont12
             } else {
-                frubiesTitleLabel.font = Fonts.montserratLightFont12
+                frubiesTitleLabel.font = Fonts.montserratSemiBoldFont12
             }
         }
     }
     @IBOutlet private weak var frubiesValueLabel: UILabel! {
         didSet {
             
-            frubiesValueLabel.textColor = Colors.appGray103
+            frubiesValueLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
-                frubiesValueLabel.font = Fonts.cairoBoldFont12
+                frubiesValueLabel.font = Fonts.cairoRegularFont28
 
             } else {
-                frubiesValueLabel.font = Fonts.montserratSemiBoldFont12
+                frubiesValueLabel.font = Fonts.montserratLightFont28
             }
         }
     }
     @IBOutlet private weak var pointsTitleLabel: UILabel! {
         didSet {
+                  pointsTitleLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 pointsTitleLabel.font = Fonts.cairoRegularFont12
             } else {
@@ -127,21 +146,31 @@ class ProfileHeaderView: UIView {
             }
         }
     }
+    @IBOutlet weak var pointsHint: UILabel!{
+        didSet {
+            pointsHint.textColor = Colors.appGray128
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
+                pointsHint.font = Fonts.cairoRegularFont10
+            } else {
+                pointsHint.font = Fonts.montserratLightFont10
+            }
+        }
+    }
     @IBOutlet private weak var pointsValueLabel: UILabel! {
         didSet {
-            pointsValueLabel.textColor = Colors.appGray103
+            pointsValueLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
-                pointsValueLabel.font = Fonts.cairoBoldFont12
+                pointsValueLabel.font = Fonts.cairoRegularFont28
 
             } else {
-                pointsValueLabel.font = Fonts.montserratSemiBoldFont12
+                pointsValueLabel.font = Fonts.montserratLightFont28
 
             }
         }
     }
     @IBOutlet private weak var customerTypeLabel: UILabel! {
         didSet {
-//            customerTypeLabel.textColor = Colors.appCustomDarkGray
+            customerTypeLabel.textColor = Colors.appBlack26
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 customerTypeLabel.font = Fonts.cairoBoldFont16
@@ -433,7 +462,7 @@ class ProfileHeaderView: UIView {
             
             let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
 //            let percentageFilled = Float(0.8)
-            let color = Colors.appMainColor ?? .black
+            let color = Colors.progressMainColor
             progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
             nextTierValueLabel.text = "\(targetFrubies)"
         }

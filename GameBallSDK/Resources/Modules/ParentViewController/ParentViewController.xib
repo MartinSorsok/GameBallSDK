@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParentViewController" customModule="GameBallSDK" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="rlP-K2-L3v" id="Xld-ED-6wb"/>
+                <outlet property="closeTopView" destination="DaK-eK-trC" id="24f-sC-S38"/>
                 <outlet property="gameBallLabel" destination="SXD-kb-a4r" id="isk-Mz-NNL"/>
                 <outlet property="mainTableView" destination="dIK-jr-PFm" id="OEn-pr-eU3"/>
                 <outlet property="profileHeaderView" destination="QWx-Vx-2Z6" id="lig-33-XdE"/>
+                <outlet property="topView" destination="3kE-pQ-5IR" id="J3l-0o-jF8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weRunOnLabel" destination="tlI-rL-wIK" id="ro7-bd-ehB"/>
             </connections>
@@ -23,6 +25,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kE-pQ-5IR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="xRT-z0-ndU"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Vx-2Z6" customClass="ProfileHeaderView" customModule="GameBallSDK" customModuleProvider="target">
+                    <rect key="frame" x="67" y="269" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaK-eK-trC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
                     <subviews>
@@ -44,7 +58,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="rlP-K2-L3v" firstAttribute="centerY" secondItem="DaK-eK-trC" secondAttribute="centerY" id="0Wi-xG-Ne8"/>
                         <constraint firstAttribute="height" constant="18" id="KtQ-dj-RjW"/>
@@ -100,11 +114,6 @@
                     <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                     <color key="backgroundColor" red="0.96079725027084351" green="0.96076112985610962" blue="0.96078556776046753" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWx-Vx-2Z6" customClass="ProfileHeaderView" customModule="GameBallSDK" customModuleProvider="target">
-                    <rect key="frame" x="67" y="269" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -112,7 +121,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uPd-Tt-sam" secondAttribute="bottom" id="8TL-gR-R8v"/>
                 <constraint firstItem="uPd-Tt-sam" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gy4-9c-qdE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DaK-eK-trC" secondAttribute="trailing" id="Hp6-AG-isN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3kE-pQ-5IR" secondAttribute="trailing" id="JAJ-1d-xvY"/>
                 <constraint firstItem="Abd-pP-ZeP" firstAttribute="width" secondItem="uPd-Tt-sam" secondAttribute="width" id="JEO-MZ-hOJ"/>
+                <constraint firstItem="3kE-pQ-5IR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PiU-bm-zlU"/>
                 <constraint firstItem="Abd-pP-ZeP" firstAttribute="centerX" secondItem="uPd-Tt-sam" secondAttribute="centerX" id="QLv-gY-PmX"/>
                 <constraint firstItem="Abd-pP-ZeP" firstAttribute="top" secondItem="uPd-Tt-sam" secondAttribute="bottom" id="Spt-Ou-v1o"/>
                 <constraint firstItem="DaK-eK-trC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UJO-d7-icH"/>
@@ -122,6 +133,7 @@
                 <constraint firstItem="uPd-Tt-sam" firstAttribute="top" secondItem="dIK-jr-PFm" secondAttribute="bottom" id="if6-bD-ibg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uPd-Tt-sam" secondAttribute="trailing" id="pK0-Jt-3gK"/>
                 <constraint firstItem="DaK-eK-trC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wIC-s1-xNW"/>
+                <constraint firstItem="3kE-pQ-5IR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yv1-W8-gVs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <variation key="default">

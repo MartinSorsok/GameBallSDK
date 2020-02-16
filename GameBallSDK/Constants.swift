@@ -79,6 +79,7 @@ struct Colors {
     static let appCustomDarkGray = UIColor(red: 68 / 255, green: 76 / 255, blue: 82 / 255, alpha: 1.0)
     static let appOrange = UIColor(red: 240 / 255, green: 90 / 255, blue: 42 / 255, alpha: 1.0)
     static let appMainColor = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+    static let progressMainColor =  UIColor(red: 100 / 255, green: 202 / 255, blue: 98 / 255, alpha: 1.0)
 
     
 }
@@ -101,7 +102,7 @@ struct Fonts {
     static let cairoRegularFont12 =  UIFont(name: "Cairo-Regular", size: 12.0)
     static let cairoRegularFont14 =  UIFont(name: "Cairo-Regular", size: 14.0)
     static let cairoRegularFont16 =  UIFont(name: "Cairo-Regular", size: 16.0)
-
+  static let cairoRegularFont28 =  UIFont(name: "Cairo-Regular", size: 28.0)
     static let cairoBoldFont8 =  UIFont(name: "Cairo-Bold", size: 8.0)
     static let cairoBoldFont10 =  UIFont(name: "Cairo-Bold", size: 10.0)
 
@@ -121,7 +122,7 @@ struct Fonts {
     static let montserratLightFont12 =  UIFont(name: "Montserrat-Light", size: 12.0)
     static let montserratLightFont14 =  UIFont(name: "Montserrat-Light", size: 14.0)
     static let montserratLightFont16 =  UIFont(name: "Montserrat-Light", size: 16.0)
-
+    static let montserratLightFont28 =  UIFont(name: "Montserrat-Light", size: 28.0)
 }
 
 enum UserDefaultsKeys: String {

@@ -22,6 +22,9 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     
     var notificationsEmpltyStateTableViewCell = "GB_NotificationsEmptyStateCell"
     var leaderBoardEmpltyStateTableViewCell = "GB_LeaderBoardEmptyStateCell"
+    var gBReferalFooterCell = "GB_ReferalFooterCell"
+
+    
     
     
     var filteredString = ""
@@ -33,7 +36,8 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
     weak var delegate:TabBarDelegate?
     private let challengesViewModel = ChallengesViewModel()
     var  currentFeature = 1
-    
+    var count = 0
+
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             tableView.separatorStyle = .none
@@ -45,6 +49,10 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             tableView.register(UINib(nibName: referalFriendTableViewCell, bundle: nil), forCellReuseIdentifier: referalFriendTableViewCell)
             tableView.register(UINib(nibName: referalHeaderViewTableView, bundle: nil), forHeaderFooterViewReuseIdentifier: referalHeaderViewTableView)
             tableView.register(UINib(nibName: referalHeaderViewTableView, bundle: nil), forHeaderFooterViewReuseIdentifier: referalHeaderViewTableView)
+            
+            
+            tableView.register(UINib(nibName: gBReferalFooterCell, bundle: nil), forHeaderFooterViewReuseIdentifier: gBReferalFooterCell)
+
             
             tableView.register(UINib(nibName: notificationsEmpltyStateTableViewCell, bundle: nil), forCellReuseIdentifier: notificationsEmpltyStateTableViewCell)
             tableView.register(UINib(nibName: leaderBoardEmpltyStateTableViewCell, bundle: nil), forCellReuseIdentifier: leaderBoardEmpltyStateTableViewCell)
@@ -182,12 +190,27 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             return  headerView
         } else {
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: referalHeaderViewTableView) as! ReferalHeaderViewTableView
-            headerView.copyBtn.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
-            self.sharingCodeText = headerView.textField.text ?? ""
+          //  headerView.copyBtn.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
+            //self.sharingCodeText = headerView.textField.text ?? ""
             return  headerView
         }
     }
-    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if currentFeature == Features.FriendReferal.rawValue {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: gBReferalFooterCell) as! GB_ReferalFooterCell
+            for item in challenges {
+                count += item.achievedActionsCount ?? 0
+            }
+                    headerView.count = count
+                    headerView.copyBtn.addTarget(self, action: #selector(copyAction), for: .touchUpInside)
+                    self.sharingCodeText = headerView.textField.text ?? ""
+                    return  headerView
+        }
+        return UIView()
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 100
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if currentFeature == Features.LeaderBoard.rawValue {
             return 94
@@ -196,7 +219,7 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             return 58
             
         } else {
-            return 172
+            return 322
             
         }
     }

@@ -104,7 +104,17 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             }
         }
     }
+    @IBOutlet weak var closeTopView: UIView!{
+        didSet {
+            closeTopView.backgroundColor = Colors.appMainColor
+        }
+    }
     
+    @IBOutlet weak var topView: UIView!{
+        didSet {
+            topView.backgroundColor = Colors.appMainColor
+        }
+    }
     @IBOutlet weak var gameBallLabel: UILabel!{
         didSet{
             gameBallLabel.text = "Gameball"
