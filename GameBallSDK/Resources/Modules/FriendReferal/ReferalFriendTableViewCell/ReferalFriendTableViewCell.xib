@@ -84,6 +84,7 @@
                             <mask key="subviews">
                                 <exclude reference="h5t-hz-8wA"/>
                                 <exclude reference="3w5-He-BXR"/>
+                                <exclude reference="3PR-Bk-Wqc"/>
                             </mask>
                         </variation>
                     </view>
@@ -103,6 +104,7 @@
                 <outlet property="numberOfAchievedLabel" destination="3w5-He-BXR" id="Mmq-EK-5jE"/>
                 <outlet property="progressView" destination="3PR-Bk-Wqc" id="fWa-dI-DZK"/>
                 <outlet property="rewardLabel" destination="DL2-7F-gKI" id="R63-Zc-Nw8"/>
+                <outlet property="sepratorView" destination="UVo-lO-wzQ" id="xIW-1S-hlo"/>
             </connections>
             <point key="canvasLocation" x="113.59999999999999" y="75.562218890554732"/>
         </tableViewCell>

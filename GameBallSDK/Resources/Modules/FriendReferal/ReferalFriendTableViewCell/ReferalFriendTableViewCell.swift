@@ -9,6 +9,7 @@ import UIKit
 
 class ReferalFriendTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var sepratorView: UIView!
     @IBOutlet weak var containerView: UIView!{
         didSet{
 //            containerView.clipsToBounds = true

@@ -168,6 +168,9 @@ class ChallengesTableViewInCell: UITableViewCell,UITableViewDelegate,UITableView
             
         } else  if currentFeature == Features.FriendReferal.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: referalFriendTableViewCell) as! ReferalFriendTableViewCell
+            if indexPath.row == challenges.count - 1 {
+                cell.sepratorView.isHidden = true
+            }
             cell.selectionStyle = .none
             cell.challenge = challenges[indexPath.row]
             return cell

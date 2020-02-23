@@ -9,7 +9,8 @@
 import UIKit
 
 public class BaseViewController: UIViewController {
-    
+    let settings = GameballApp.clientBotStyle
+
     private var activityIndicator: NVActivityIndicatorView!
     
     private var isLoading = false
@@ -69,6 +70,37 @@ public class BaseViewController: UIViewController {
             UIView.appearance().semanticContentAttribute = .forceLeftToRight
             
         }
+    }
+    
+    func isOneTabBar() -> Bool {
+        if !(settings?.enableLeaderboard ?? false)
+        && !(settings?.enableAchievements ?? false)
+        && !(settings?.enableNotifications ?? false)
+            && (settings?.isReferralOn ?? false) {
+            return true
+        }
+        if (settings?.enableLeaderboard ?? false)
+        && !(settings?.enableAchievements ?? false)
+        && !(settings?.enableNotifications ?? false)
+            && !(settings?.isReferralOn ?? false) {
+            return true
+        }
+        if !(settings?.enableLeaderboard ?? false)
+        && settings?.enableAchievements ?? false
+        && !(settings?.enableNotifications ?? false)
+            && !(settings?.isReferralOn ?? false) {
+            return true
+        }
+        
+        if !(settings?.enableLeaderboard ?? false)
+        && !(settings?.enableAchievements ?? false)
+        && settings?.enableNotifications ?? false
+        && !(settings?.isReferralOn ?? false) {
+            return true
+        }
+        
+        return false
+        
     }
 
 }

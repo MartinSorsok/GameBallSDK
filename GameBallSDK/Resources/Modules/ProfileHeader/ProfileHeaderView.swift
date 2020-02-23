@@ -16,6 +16,10 @@ class ProfileHeaderView: UIView {
     var viewModel: PlayerDetailsViewModel = PlayerDetailsViewModel()
     var playerInfoViewModel: PlayerInfoViewModel = PlayerInfoViewModel()
     
+    @IBOutlet weak var pointsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var levelViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rankLevelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rankPointsViewConstraint: UIView!
     @IBOutlet weak var mainViewContainer: UIView!{
         didSet {
             mainViewContainer.backgroundColor = Colors.appMainColor
@@ -28,7 +32,7 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet weak var singlePointsView: UIView!{
         didSet {
-
+            
             singlePointsView.layer.cornerRadius = 11
             singlePointsView.layer.masksToBounds = true
             singlePointsView.backgroundColor = Colors.appMainColor ?? .black
@@ -39,7 +43,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var sepratorView: UIView!
     @IBOutlet weak var singleViewPointsImage: UIImageView!{
         didSet{
-        
+            
         }
     }
     @IBOutlet weak var singleViewPointsValue: UILabel!
@@ -86,17 +90,17 @@ class ProfileHeaderView: UIView {
     
     @IBOutlet weak var welcomeLabel: UILabel!{
         didSet{
-        welcomeLabel.text = GB_LocalizationsKeys.GameballScreen.welcomeText.rawValue.localized
-//                    frubiesTitleLabel.textColor = Colors.appGray173
-        
-        if GB_Localizator.sharedInstance.language == Languages.arabic {
-            welcomeLabel.font = Fonts.cairoRegularFont14
+            welcomeLabel.text = GB_LocalizationsKeys.GameballScreen.welcomeText.rawValue.localized
+            //                    frubiesTitleLabel.textColor = Colors.appGray173
             
-        } else {
-            welcomeLabel.font = Fonts.montserratLightFont14
-            
+            if GB_Localizator.sharedInstance.language == Languages.arabic {
+                welcomeLabel.font = Fonts.cairoRegularFont14
+                
+            } else {
+                welcomeLabel.font = Fonts.montserratLightFont14
+                
+            }
         }
-    }
     }
     
     @IBOutlet weak var userNameLabel: UILabel!{
@@ -130,7 +134,7 @@ class ProfileHeaderView: UIView {
             frubiesValueLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 frubiesValueLabel.font = Fonts.cairoRegularFont28
-
+                
             } else {
                 frubiesValueLabel.font = Fonts.montserratLightFont28
             }
@@ -138,11 +142,11 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet private weak var pointsTitleLabel: UILabel! {
         didSet {
-                  pointsTitleLabel.textColor = .black
+            pointsTitleLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
-                pointsTitleLabel.font = Fonts.cairoRegularFont12
+                pointsTitleLabel.font = Fonts.cairoBoldFont12
             } else {
-                pointsTitleLabel.font = Fonts.montserratLightFont12
+                pointsTitleLabel.font = Fonts.montserratSemiBoldFont12
             }
         }
     }
@@ -161,10 +165,10 @@ class ProfileHeaderView: UIView {
             pointsValueLabel.textColor = .black
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 pointsValueLabel.font = Fonts.cairoRegularFont28
-
+                
             } else {
                 pointsValueLabel.font = Fonts.montserratLightFont28
-
+                
             }
         }
     }
@@ -186,7 +190,7 @@ class ProfileHeaderView: UIView {
             
             nextTierTitleLabel.isHidden = true
             nextTierTitleLabel.text = GB_LocalizationsKeys.GameballScreen.nextLevelText.rawValue.localized
-//            nextTierTitleLabel.textColor = Colors.appGray173
+            //            nextTierTitleLabel.textColor = Colors.appGray173
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 nextTierTitleLabel.font = Fonts.cairoRegularFont10
                 
@@ -198,7 +202,7 @@ class ProfileHeaderView: UIView {
     }
     @IBOutlet private weak var nextTierValueLabel: UILabel! {
         didSet {
-//            nextTierValueLabel.textColor = Colors.appGray173
+            //            nextTierValueLabel.textColor = Colors.appGray173
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 nextTierValueLabel.font = Fonts.cairoRegularFont12
                 
@@ -209,7 +213,7 @@ class ProfileHeaderView: UIView {
         }
     }
     
-  
+    
     
     
     private var playerDetails: PlayerDetails? {
@@ -223,14 +227,14 @@ class ProfileHeaderView: UIView {
     }
     
     
-//    private var playerNextLevel: PlayerNextLevel? {
-//        didSet {
-//            guard let playerNextLevel = playerNextLevel else { return }
-//            DispatchQueue.main.async {
-//                self.setupPlayerNextLevel(with: playerNextLevel)
-//            }
-//        }
-//    }
+    //    private var playerNextLevel: PlayerNextLevel? {
+    //        didSet {
+    //            guard let playerNextLevel = playerNextLevel else { return }
+    //            DispatchQueue.main.async {
+    //                self.setupPlayerNextLevel(with: playerNextLevel)
+    //            }
+    //        }
+    //    }
     
     private var playerAttributes: PlayerInfo? {
         didSet {
@@ -253,7 +257,7 @@ class ProfileHeaderView: UIView {
             }
         }
     }
-
+    
     
     
     override init(frame: CGRect) {
@@ -271,58 +275,41 @@ class ProfileHeaderView: UIView {
     }
     
     private func commonInit() {
-//        setupViews()
+        //        setupViews()
         
-      
+        frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
+        pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+        
         if GameballApp.clientBotStyle?.isRankPointsVisible ?? false && GameballApp.clientBotStyle?.isWalletPointsVisible ?? false {
             singlePointsView.isHidden = true
             sepratorView.isHidden = false
-            frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-            pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
-
-        } else if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
-            singlePointsView.isHidden = false
-            sepratorView.isHidden = true
-
-            greyBarHeightConstant.constant = 0
-            frubiesTitleLabel.isHidden = true
-            rankPointsImage.isHidden = true
-            walletPointsImage.isHidden = true
-            frubiesValueLabel.isHidden = true
-            pointsTitleLabel.isHidden = true
-            pointsValueLabel.isHidden = true
-            singleViewPointsImage.image =   UIImage(named: "rankpoints.png")
-            singleViewPointsImage.image = singleViewPointsImage.image?.withRenderingMode(.alwaysTemplate)
-                    singleViewPointsImage.tintColor = UIColor.white
+  
+            
         } else {
-            sepratorView.isHidden = true
-            singlePointsView.isHidden = false
-            greyBarHeightConstant.constant = 0
-            frubiesTitleLabel.isHidden = true
-            rankPointsImage.isHidden = true
-            walletPointsImage.isHidden = true
-            frubiesValueLabel.isHidden = true
-            pointsTitleLabel.isHidden = true
-            pointsValueLabel.isHidden = true
-            singleViewPointsImage.image =   UIImage(named: "walletpoints.png")
-            singleViewPointsImage.image = singleViewPointsImage.image?.withRenderingMode(.alwaysTemplate)
-                    singleViewPointsImage.tintColor = UIColor.white
-
+            if !(GameballApp.clientBotStyle?.isRankPointsVisible ?? false) {
+                rankPointsViewConstraint.isHidden = true
+                levelViewHeightConstraint.constant = 0
+            }
+            if  !(GameballApp.clientBotStyle?.isWalletPointsVisible ?? false)  {
+                pointsViewContainer.isHidden = true
+                pointsHeightConstraint.constant = 0
+            }
         }
-
+        
+        
         fetchData(completion: {
             self.delegate?.dataReady(view: self.view)
             DispatchQueue.main.async {
                 self.view.isHidden = false
-
+                
             }
-             Helpers().dPrint("done fetchPlayerInfo ")
+            Helpers().dPrint("done fetchPlayerInfo ")
         })
     }
     
     func fetchData(completion: @escaping () -> Void) {
         
-//        fetchPlayerDetails(completion: completion)
+        //        fetchPlayerDetails(completion: completion)
         fetchPlayerInfo(completion: completion)
         
     }
@@ -331,7 +318,7 @@ class ProfileHeaderView: UIView {
         self.playerInfoViewModel.getPlayerInfo { (error) in
             if error != nil {
                 // ToDo: Show message to user
-                 Helpers().dPrint("an error occured")
+                Helpers().dPrint("an error occured")
             }
             else {
                 // set header view vars
@@ -346,38 +333,38 @@ class ProfileHeaderView: UIView {
         }
     }
     
-//    private func fetchPlayerDetails(completion: @escaping () -> Void) {
-//        // ToDo: show loading animation
-//        self.viewModel.getPlayerDetails {
-//            [weak self] error in
-//            if error != nil {
-//                // ToDo: Show message to user
-//            }
-//            else {
-//                if let model = self?.viewModel.playerDetails {
-//                    self?.playerDetails = model
-//                }
-//                self?.fetchNextLevel(completion: completion)
-//            }
-//            // ToDo: hide loading animation
-//        }
-//    }
+    //    private func fetchPlayerDetails(completion: @escaping () -> Void) {
+    //        // ToDo: show loading animation
+    //        self.viewModel.getPlayerDetails {
+    //            [weak self] error in
+    //            if error != nil {
+    //                // ToDo: Show message to user
+    //            }
+    //            else {
+    //                if let model = self?.viewModel.playerDetails {
+    //                    self?.playerDetails = model
+    //                }
+    //                self?.fetchNextLevel(completion: completion)
+    //            }
+    //            // ToDo: hide loading animation
+    //        }
+    //    }
     
-//    private func fetchNextLevel(completion: @escaping () -> Void) {
-//        let playerNextLevelViewModel = PlayerNextLevelViewModel()
-//        playerNextLevelViewModel.getLeaderboard(completion: {
-//            [weak self] error in
-//            if error != nil {
-//                // handle error
-//                return
-//            }
-//
-//            self?.playerNextLevel = playerNextLevelViewModel.playerNextLevel
-//            completion()
-//
-//
-//        })
-//    }
+    //    private func fetchNextLevel(completion: @escaping () -> Void) {
+    //        let playerNextLevelViewModel = PlayerNextLevelViewModel()
+    //        playerNextLevelViewModel.getLeaderboard(completion: {
+    //            [weak self] error in
+    //            if error != nil {
+    //                // handle error
+    //                return
+    //            }
+    //
+    //            self?.playerNextLevel = playerNextLevelViewModel.playerNextLevel
+    //            completion()
+    //
+    //
+    //        })
+    //    }
     
     
     private func setupView(with model: PlayerDetails) {
@@ -399,7 +386,7 @@ class ProfileHeaderView: UIView {
         path = "/" + path
         NetworkManager.shared().loadImage(path: path) { (myImage, error) in
             if let errorModel = error {
-                 Helpers().dPrint(errorModel.description)
+                Helpers().dPrint(errorModel.description)
             }
             else {
             }
@@ -422,11 +409,12 @@ class ProfileHeaderView: UIView {
         
         let pointsValue = model.accPoints ?? 0
         pointsValueLabel.text = String(pointsValue)
-//        let firstName = model.firstName ?? "Gameball Player"
-//        let lastName = model.lastName ?? ""
-//        let name = firstName + lastName
+        //        let firstName = model.firstName ?? "Gameball Player"
+        //        let lastName = model.lastName ?? ""
+        //        let name = firstName + lastName
         userNameLabel.text = model.displayName ?? "Gameball Player"
         customerTypeLabel.text = model.level?.name
+        pointsHint.text = "Equals to \(String(pointsValue)) USD"
         
         if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
             singleViewPointsValue.text = String(frubiesValue)
@@ -436,7 +424,7 @@ class ProfileHeaderView: UIView {
         let path = model.level?.icon?.fileName ?? "https://assets.gameball.co/sample/4.png"
         NetworkManager.shared().loadImage(path: path.replacingOccurrences(of: " ", with: "%20")) { (myImage, error) in
             if let errorModel = error {
-                 Helpers().dPrint(errorModel.description)
+                Helpers().dPrint(errorModel.description)
             }
             else {
             }
@@ -451,7 +439,7 @@ class ProfileHeaderView: UIView {
             }
         }
     }
-
+    
     
     private func setupPlayerNextLevel(playerAttributes: PlayerInfo, nextlevel: Level) {
         
@@ -461,17 +449,17 @@ class ProfileHeaderView: UIView {
             progressView.isHidden = false
             
             let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
-//            let percentageFilled = Float(0.8)
+            //            let percentageFilled = Float(0.8)
             let color = Colors.progressMainColor
             progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color, percentageFilled: percentageFilled)
             nextTierValueLabel.text = "\(targetFrubies)"
         }
-//        if let currentFrubies = playerDetails?.accFrubies, let targetFrubies = playerNextLevel.levelFrubies {
-//            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
-//            let color = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
-//            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
-//        }
-//        nextTierValueLabel.text = "\(playerNextLevel.levelFrubies ?? 0) F"
+        //        if let currentFrubies = playerDetails?.accFrubies, let targetFrubies = playerNextLevel.levelFrubies {
+        //            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
+        //            let color = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+        //            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
+        //        }
+        //        nextTierValueLabel.text = "\(playerNextLevel.levelFrubies ?? 0) F"
     }
     
 }

@@ -27,7 +27,14 @@ protocol TabIconHeaderDelegate: AnyObject {
 }
 class ParentViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate {
     
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!{
+        didSet {
+            let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
+            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+            closeButton.setImage(tintedImage, for: .normal)
+            closeButton.tintColor = .white
+        }
+    }
     var isEmbedType = false
 
     var refreshControl = UIRefreshControl()
@@ -261,10 +268,13 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         return 2
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+        if section == 0  {
             return 0.0
+        } else if isOneTabBar() {
+            return 0.1
         } else {
             return 50.0
+
         }
     }
     
@@ -283,6 +293,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         if indexPath.row == 0 && indexPath.section == 0 && (UserDefaults.standard.object(forKey: UserDefaultsKeys.APIKey.rawValue) as? String != "d58a919179834f1583b66edd1c10f9bd")  {
             let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell) as! MainTableViewCell
             cell.selectionStyle = .none
+            
             return cell
         } else if indexPath.section == 1{
             

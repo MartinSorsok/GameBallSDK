@@ -19,17 +19,21 @@
                 <outlet property="frubiesTitleLabel" destination="sE8-ZA-b76" id="foZ-iN-YJC"/>
                 <outlet property="frubiesValueLabel" destination="eyg-MY-8RZ" id="9P0-SV-kJJ"/>
                 <outlet property="greyBarHeightConstant" destination="1q0-bI-gij" id="xhg-WL-Ka0"/>
+                <outlet property="levelViewHeightConstraint" destination="ca5-R4-ONe" id="vBW-gK-sQP"/>
                 <outlet property="mainViewContainer" destination="GBl-F8-lrU" id="w65-SA-R34"/>
                 <outlet property="nextTierTitleLabel" destination="4kG-yl-cl8" id="Bu5-eM-jkQ"/>
                 <outlet property="nextTierValueLabel" destination="Ztw-xR-5Z6" id="6wS-nO-baY"/>
                 <outlet property="nextTireRankPointImage" destination="juU-Sc-iky" id="NFU-mL-A4K"/>
+                <outlet property="pointsHeightConstraint" destination="tyC-6g-ANf" id="qfy-ui-cuC"/>
                 <outlet property="pointsHint" destination="Hve-Oh-jtc" id="pG7-a7-aNe"/>
                 <outlet property="pointsTitleLabel" destination="gp9-9c-ujW" id="i6g-7K-c8o"/>
                 <outlet property="pointsValueLabel" destination="l22-h5-Z3t" id="vma-i9-YAx"/>
                 <outlet property="pointsViewContainer" destination="8i0-S2-Uk2" id="thD-NB-izm"/>
                 <outlet property="profileIconImageView" destination="wLd-Fh-yW9" id="wyc-C5-pno"/>
                 <outlet property="progressView" destination="TC7-DI-dEi" id="552-HU-dwq"/>
+                <outlet property="rankLevelConstraint" destination="6yU-uJ-bL7" id="kOK-6t-x5H"/>
                 <outlet property="rankPointsImage" destination="yW8-To-ykB" id="yHt-a8-BvU"/>
+                <outlet property="rankPointsViewConstraint" destination="zp9-Hb-KJm" id="hNU-Ji-9e3"/>
                 <outlet property="sepratorView" destination="86a-Wi-J4S" id="M1J-tQ-lDh"/>
                 <outlet property="singlePointsView" destination="jEi-Qf-rMz" id="zRJ-a9-0LE"/>
                 <outlet property="singleViewPointsImage" destination="e5a-Ry-q1b" id="jix-dj-COF"/>
@@ -117,6 +121,7 @@
                                 <constraint firstItem="yW8-To-ykB" firstAttribute="top" secondItem="TC7-DI-dEi" secondAttribute="bottom" constant="15" id="3sI-oa-4ed"/>
                                 <constraint firstItem="Ztw-xR-5Z6" firstAttribute="centerY" secondItem="4kG-yl-cl8" secondAttribute="centerY" id="3vu-vT-YYa"/>
                                 <constraint firstItem="4kG-yl-cl8" firstAttribute="top" secondItem="sE8-ZA-b76" secondAttribute="bottom" constant="-1.5" id="4cF-DF-rpA"/>
+                                <constraint firstAttribute="bottom" secondItem="TC7-DI-dEi" secondAttribute="bottom" constant="50.5" id="6yU-uJ-bL7"/>
                                 <constraint firstItem="eyg-MY-8RZ" firstAttribute="top" secondItem="TC7-DI-dEi" secondAttribute="bottom" constant="8" id="JgY-BG-WB8"/>
                                 <constraint firstAttribute="trailing" secondItem="eyg-MY-8RZ" secondAttribute="trailing" constant="14" id="KcP-lk-RDZ"/>
                                 <constraint firstItem="TC7-DI-dEi" firstAttribute="top" secondItem="2fO-vB-7zd" secondAttribute="bottom" constant="18" id="MZ7-Nj-hej"/>

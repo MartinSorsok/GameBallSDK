@@ -38,10 +38,10 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaK-eK-trC">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlP-K2-L3v">
-                            <rect key="frame" x="318" y="-7" width="32" height="32"/>
+                            <rect key="frame" x="318" y="-1" width="32" height="32"/>
                             <state key="normal" image="icon_outline_14px_close@2x.png"/>
                             <connections>
                                 <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="5ez-9x-trB"/>
@@ -61,14 +61,14 @@
                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="rlP-K2-L3v" firstAttribute="centerY" secondItem="DaK-eK-trC" secondAttribute="centerY" id="0Wi-xG-Ne8"/>
-                        <constraint firstAttribute="height" constant="18" id="KtQ-dj-RjW"/>
+                        <constraint firstAttribute="height" constant="30" id="KtQ-dj-RjW"/>
                         <constraint firstItem="44l-pm-YXM" firstAttribute="top" secondItem="DaK-eK-trC" secondAttribute="top" id="NpL-Xe-hjO"/>
                         <constraint firstAttribute="trailing" secondItem="rlP-K2-L3v" secondAttribute="trailing" constant="25" id="t4N-b8-FZF"/>
                         <constraint firstAttribute="trailing" secondItem="44l-pm-YXM" secondAttribute="trailing" constant="10" id="xJ0-42-gKb"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIK-jr-PFm">
-                    <rect key="frame" x="0.0" y="18" width="375" height="599"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="587"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-Tt-sam">

@@ -62,7 +62,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
             }
             else {
                 // ToDo: stop animation
-                self.challenges = self.challengesViewModel.challenges
+                self.challenges = self.challengesViewModel.challenges.filter { !($0.isReferral ?? false) }
                 self.quests = self.challengesViewModel.quests
                 
                 completion()
