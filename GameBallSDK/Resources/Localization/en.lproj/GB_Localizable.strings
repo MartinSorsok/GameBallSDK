@@ -20,6 +20,9 @@
 
 "Welcome" = "Welcome ";
 "You are on level" = "You are on level";
+"Challenges" = "Challenges";
+
+
 
 "Your rank" = "Your rank";
 "Score" = "Frubies";
@@ -43,3 +46,6 @@
 "friend(s) remaining to achieve this badge" = "friend(s) remaining to achieve this badge";
 "You need to exceed the minimum record," = "You need to exceed the minimum record,";
 "Notifications" = "Notifications";
+"NoNotifications" = "No notifications";
+
+

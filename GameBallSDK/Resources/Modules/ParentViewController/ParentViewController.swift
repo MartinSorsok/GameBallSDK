@@ -14,7 +14,7 @@ protocol TabBarDelegate: AnyObject {
     func shareText(text: String)
     func challengeTapped(with challenge: Challenge)
     func tappedLeaderBoardFilter()
-
+    
     
 }
 protocol ProfileHeaderViewDelegate: AnyObject {
@@ -29,14 +29,20 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var closeButton: UIButton!{
         didSet {
-            let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
-            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-            closeButton.setImage(tintedImage, for: .normal)
-            closeButton.tintColor = .white
+            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+                  let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
+                     
+            } else {
+                let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
+                         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+                         closeButton.setImage(tintedImage, for: .normal)
+                         closeButton.tintColor = .white
+            }
+         
         }
     }
     var isEmbedType = false
-
+    
     var refreshControl = UIRefreshControl()
     @IBOutlet weak var mainTableView: UITableView!{
         didSet {
@@ -47,14 +53,14 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             mainTableView.register(UINib(nibName: badgesCollectionViewinCell, bundle: nil), forCellReuseIdentifier: badgesCollectionViewinCell)
             mainTableView.register(UINib(nibName: challengesTableViewInCell, bundle: nil), forCellReuseIdentifier: challengesTableViewInCell)
             mainTableView.register(UINib(nibName: missionsTableViewCell, bundle: nil), forCellReuseIdentifier: missionsTableViewCell)
-
+            
             
             mainTableView.register(UINib(nibName: tabIconsHeader, bundle: nil), forHeaderFooterViewReuseIdentifier: tabIconsHeader)
             
             mainTableView.rowHeight = UITableView.automaticDimension
             mainTableView.estimatedRowHeight = 600
             mainTableView.tableFooterView = UIView()
-
+            
             
             let attributes = [NSAttributedString.Key.foregroundColor: Colors.appMainColor ?? .black]
             let attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: attributes)
@@ -65,10 +71,10 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         }
     }
     @objc func refresh(sender:AnyObject) {
-       // Code to refresh table view
+        // Code to refresh table view
         setupLogic()
         self.endLoading()
-
+        
         refreshControl.endRefreshing()
     }
     @IBOutlet private weak var profileHeaderView: ProfileHeaderView!
@@ -79,7 +85,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private let tabIconsHeader = "TabIconsHeader"
     private let challengesTableViewInCell = "ChallengesTableViewInCell"
     private let missionsTableViewCell = "GB_MissionsTableViewCell"
-
+    
     private var  currentFeature = 0
     private let challengesViewModel = ChallengesViewModel()
     
@@ -87,7 +93,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     private var quests: [Quest] = []
     var leaderboardProfiles: [Profile] = []
     private var playerRank: LeaderboardPlayerRank?
-
+    
     private var notifications: [NotificationGB] = []
     private var filteredString = "All"
     private var collectionViewHeight = CGFloat(0)
@@ -113,13 +119,25 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     }
     @IBOutlet weak var closeTopView: UIView!{
         didSet {
-            closeTopView.backgroundColor = Colors.appMainColor
+            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+                closeTopView.backgroundColor = .white
+            } else {
+                closeTopView.backgroundColor = Colors.appMainColor
+                
+            }
+            
         }
     }
     
     @IBOutlet weak var topView: UIView!{
         didSet {
-            topView.backgroundColor = Colors.appMainColor
+            
+            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+                topView.backgroundColor = .white
+            } else {
+                topView.backgroundColor = Colors.appMainColor
+                
+            }
         }
     }
     @IBOutlet weak var gameBallLabel: UILabel!{
@@ -166,27 +184,27 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
         
         nc.addObserver(self,selector: #selector(StartCurrentFeature), name: Notification.Name("StartcurrentFeature"), object: nil)
         nc.post(name: Notification.Name("refresh"), object: nil)
-
-    }
-         
-       
-
-    
-       
-      
-       @objc func StartCurrentFeature(_ notification:Notification) {
-          // self.delegate?.dataReady(tableview: self.tableView)
-
-           guard let featureNumber = notification.object as? Int else {
-               return
-           }
         
-         self.startLoading()
-         nc.post(name: Notification.Name("tabBarTapped"), object: featureNumber)
-         self.currentFeature = featureNumber
-         self.mainTableView.reloadData()
-
-         
+    }
+    
+    
+    
+    
+    
+    
+    @objc func StartCurrentFeature(_ notification:Notification) {
+        // self.delegate?.dataReady(tableview: self.tableView)
+        
+        guard let featureNumber = notification.object as? Int else {
+            return
+        }
+        
+        self.startLoading()
+        nc.post(name: Notification.Name("tabBarTapped"), object: featureNumber)
+        self.currentFeature = featureNumber
+        self.mainTableView.reloadData()
+        
+        
         
     }
     
@@ -202,14 +220,14 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             }
             
             self?.notifications = viewModel.notifications
-
+            
         })
     }
     private func getChallenges() {
-    
+        
         challengesViewModel.getAllChallenges { (error) in
             if error != nil {
-                 Helpers().dPrint(error?.description as Any)
+                Helpers().dPrint(error?.description as Any)
             }
             else {
                 self.challenges = self.challengesViewModel.challenges.filter {
@@ -233,16 +251,16 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             DispatchQueue.main.async {
                 self?.mainTableView.reloadData()
             }
-
+            
             
         })
         
-    
+        
     }
     func scrollToFirstRow() {
-          let indexPath = IndexPath(row: 0, section: 0)
-          self.mainTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        }
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.mainTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
         //        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
@@ -274,7 +292,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             return 0.1
         } else {
             return 50.0
-
+            
         }
     }
     
@@ -299,25 +317,25 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             
             if currentFeature == Features.Profile.rawValue {
                 if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
-                cell.delegate = self
-                cell.frame = tableView.bounds;  // cell of myTableView
-                cell.currentFeature = self.currentFeature
-                cell.collectionViewHeight.constant = collectionViewHeight;
-                cell.collectionView.reloadData()
+                    let cell = tableView.dequeueReusableCell(withIdentifier: badgesCollectionViewinCell) as! BadgesCollectionViewinCell
+                    cell.delegate = self
+                    cell.frame = tableView.bounds;  // cell of myTableView
+                    cell.currentFeature = self.currentFeature
+                    cell.collectionViewHeight.constant = collectionViewHeight;
+                    cell.collectionView.reloadData()
                     cell.selectionStyle = .none
-                return cell
+                    return cell
                 } else  {
                     
-//                    if quests.count > 0 {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
-
-                        cell.selectionStyle = .none
-                        cell.delegate = self
-                        cell.quest = quests[indexPath.row - 1]
-                        return cell
-//                    }
-
+                    //                    if quests.count > 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: missionsTableViewCell) as! GB_MissionsTableViewCell
+                    
+                    cell.selectionStyle = .none
+                    cell.delegate = self
+                    cell.quest = quests[indexPath.row - 1]
+                    return cell
+                    //                    }
+                    
                     
                 }
             } else if currentFeature == Features.FriendReferal.rawValue || currentFeature == Features.LeaderBoard.rawValue || currentFeature == Features.Notifications.rawValue{
@@ -331,18 +349,18 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
                 cell.playerRank = self.playerRank
                 cell.filteredString = self.filteredString
                 cell.frame = tableView.bounds;  // cell of myTableView
-             
-                    cell.tableView.reloadData()
-                    cell.layoutIfNeeded()
+                
+                cell.tableView.reloadData()
+                cell.layoutIfNeeded()
                 cell.tableView.layoutIfNeeded()
-
+                
                 cell.tableView.isHidden = false
                 cell.layoutIfNeeded()
                 cell.tableViewHeightConstraint.constant = cell.tableView.contentSize.height
                 cell.layoutIfNeeded()
-
+                
                 cell.selectionStyle = .none
-
+                
                 self.endLoading()
                 return cell
             }
@@ -352,12 +370,12 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  
+        
         
         if let cell = tableView.cellForRow(at: indexPath) as? GB_MissionsTableViewCell {
-
+            
             let noOfChallenges = quests[indexPath.row - 1].questChallenges?.count ?? 0
-
+            
             if cell.cellExpanded {
                 cell.cellExpanded = false
                 cell.challengesTableViewHeightConstraint.constant = 0
@@ -369,8 +387,8 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
             tableView.endUpdates()
         }
         
-
-
+        
+        
         
     }
     
@@ -398,13 +416,13 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-
+        
+        
         self.typeValue = choices[row]
         
-         Helpers().dPrint(choices[row])
+        Helpers().dPrint(choices[row])
     }
- 
+    
     
     func tappedLeaderBoardFilter() {
         let alert = UIAlertController(title: "Filter Choices", message: "\n\n\n\n\n\n", preferredStyle: .alert)
@@ -427,7 +445,7 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
             Helpers().dPrint((self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
             
             self.fetchLeaderBoardDate(withLimit: (self.choices.firstIndex(of: self.typeValue) ?? 7) + 1)
-
+            
             
         }))
         self.present(alert,animated: true, completion: nil )
@@ -450,17 +468,17 @@ extension ParentViewController: TabBarDelegate ,UIPickerViewDelegate,UIPickerVie
     func dataReady(tableview: UITableView) {
         self.endLoading()
         
-//        DispatchQueue.main.async {
-//            self.tableViewHeight = tableview.contentSize.height
-//        tableview.isHidden = false
-
-            self.mainTableView.reloadData()
-            
+        //        DispatchQueue.main.async {
+        //            self.tableViewHeight = tableview.contentSize.height
+        //        tableview.isHidden = false
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
-//
-//
-//        })
+        self.mainTableView.reloadData()
+        
+        
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+        //
+        //
+        //        })
         
     }
     

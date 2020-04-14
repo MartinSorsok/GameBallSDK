@@ -13,6 +13,9 @@
 "LeaderboardTitle" = "قائمة المتصدرين" ;
 "AchievementTitle" = "الإنجازات";
 "MissionsTitle" = "مهمات";
+"achievementDescription" = "هذا هو لوحة الشارات الخاصة بك ، وجمع الشارات والحصول على مكافآتهم.";
+"missionsDescription" = "أكمل المهام أدناه للحصول على فرصة للفوز بمكافآتهم.";
+"Challenges" = "تحديات";
 
 "GameballFooterText" = "مقدم بواسطة";
 "Welcome" =  "مرحباً ";
@@ -35,3 +38,4 @@
 "friend(s) remaining to achieve this badge" = "الأصدقاء (الأصدقاء) المتبقين لتحقيق هذه الشارة";
 "You need to exceed the minimum record," = "تحتاج إلى تجاوز الحد الأدنى للسجل ،";
 "Notifications" = "إخطارات";
+"NoNotifications" = "لا إشعارات";

@@ -26,6 +26,7 @@ class GB_LocalizationsKeys: NSObject {
         case  nextLevelText = "NextLevelText"
         case  welcomeText = "Welcome"
         case  youAreOnLevelText = "You are on level"
+        case  challenges = "Challenges"
 
 
     }
@@ -61,6 +62,7 @@ class GB_LocalizationsKeys: NSObject {
     enum NotificationsScreen :String{
         case  notifications = "Notifications"
 
-        
+        case  noNotifications = "NoNotifications"
+
     }
 }

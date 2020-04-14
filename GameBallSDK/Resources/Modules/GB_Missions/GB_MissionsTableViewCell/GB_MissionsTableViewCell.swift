@@ -117,7 +117,7 @@ class GB_MissionsTableViewCell: UITableViewCell {
             
         //    rewardLabel.text = "\(quest?.rewardFrubies ?? 0) Score | \(quest?.rewardPoints ?? 0) points"
             
-            noOfChallengesInMission.text = "\(quest?.questChallenges?.count ?? 0) Challenges"
+            noOfChallengesInMission.text = "\(quest?.questChallenges?.count ?? 0) " + GB_LocalizationsKeys.GameballScreen.challenges.rawValue.localized
             let percentageFilled = quest?.completionPercentage ?? 0.0
             
             if percentageFilled == 1 {
