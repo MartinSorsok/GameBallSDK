@@ -106,7 +106,7 @@ open class GameballApp: NSObject {
                       guard let myView = Bundle.main.loadNibNamed("NotificationtSmallToast", owner: self, options: nil)?[0] as? GB_NotificationtSmallToast else {return}
                     
                     myView.notificationData = notification
-                    UIApplication.shared.keyWindow?.rootViewController?.view.showToast(myView, position: .top)
+                    UIApplication.shared.keyWindow?.rootViewController?.view.GB_showToast(myView, position: .top)
                     
                     
                 }
