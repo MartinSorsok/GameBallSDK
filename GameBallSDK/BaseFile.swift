@@ -17,84 +17,110 @@ open class GameballApp: NSObject {
     var holdReference: String?
     
     
-    public init(APIKey: String, playerUniqueId: String, categoryId: String = "0") {
-        super.init()
+//    public init() {
+//        super.init()
         
-        self.setupFonts()
-        self.fetchBotStyle()
+//        self.setupFonts()
+//        self.fetchBotStyle()
         
-        NetworkManager.shared().registerAPIKey(APIKey: APIKey)
+//        NetworkManager.shared().registerAPIKey(APIKey: APIKey)
         //        self.registerPlayer(withPlayerId: playerId, withCategroyId: categoryId)
         // I should return after fetching ot style
         
         
-    }
+//    }
     
     
-    public init(APIKey: String,language: String = "en") {
-        super.init()
-        self.setupFonts()
-        self.fetchBotStyle()
+//    public init(APIKey: String,language: String = "en") {
+//        super.init()
+//        self.setupFonts()
+//        self.fetchBotStyle()
+//
+//        language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
+//    }
+//
+    
+    
+    public func launchGameball(withAPIKEY: String,withPlayerUniqueId: String, withLang:String,completion:  ((_ success: UIViewController?, _ errorDescription: String?)->())? = nil) {
         
-        language == Languages.arabic.rawValue  ? NetworkManager.shared().registerAPIKey(APIKey: APIKey,language:.arabic ) : NetworkManager.shared().registerAPIKey(APIKey: APIKey)
-    }
-    
-    
-    
-    public func fetchBotStyle(completion:  ((_ success: Bool?, _ errorDescription: String?)->())? = nil) {
-        NetworkManager.shared().load(path: APIEndPoints.getBotStyle, method: RequestMethod.GET, params: [:], modelType: GetClientBotStyleResponse.self) { (data, error) in
-            guard let errorModel = error else {
-                if data != nil {
-                    GameballApp.clientBotStyle = (data as? GetClientBotStyleResponse)?.response
-                    NetworkManager.shared().clientBotSettings = true
-                    completion?(true, nil)
-                }
-                return
-            }
-            // ToDo: return the error model
-            Helpers().dPrint("Could not get client bot settings")
-            NetworkManager.shared().clientBotSettings = false
-            self.fetchBotStyle()
-            completion?(false, errorModel.description)
+        // Present View "Modally"
+        if !(Reachability.isConnectedToNetwork())  {
+            completion?(NoInternetViewController(),nil)
         }
-    }
-    
-    private func setupFonts() {
-        UIFont.registerFont(bundle: Bundle.main, fontName: "Cairo-Regular", fontExtension: ".ttf")
-        UIFont.registerFont(bundle: Bundle.main, fontName: "Cairo-Bold", fontExtension: ".ttf")
-        UIFont.registerFont(bundle: Bundle.main, fontName: "Montserrat-SemiBold", fontExtension: ".otf")
-        UIFont.registerFont(bundle: Bundle.main, fontName: "Montserrat-Light", fontExtension: ".otf")
-        
-    }
-    public func launchGameball(isEmbed: Bool = false ) -> UIViewController? {
-       
-        guard Reachability.isConnectedToNetwork() else {
-            return NoInternetViewController()
-        }
-        if NetworkManager.shared().isAPIKeySet() {
-            if NetworkManager.shared().isBotSettingsSet() {
-                if NetworkManager.shared().isPlayerIdSet() {
-                    let vc = ParentViewController()
-                    vc.isEmbedType = isEmbed
-                    let nc = UINavigationController(rootViewController: vc)
-                    return nc
-                }
-                else {
-                    Helpers().dPrint("Gameball Player Id is not set...")
-                    return nil
+        if !(withAPIKEY.isEmpty) {
+            NetworkManager.shared().APIKey = withAPIKEY
+            if !(withPlayerUniqueId.isEmpty) {
+                NetworkManager.shared().load(path: APIEndPoints.getBotStyle, method: RequestMethod.GET, params: [:], modelType: GetClientBotStyleResponse.self) { (data, error) in
+                    guard let errorModel = error else {
+                        if data != nil {
+                            GameballApp.clientBotStyle = (data as? GetClientBotStyleResponse)?.response
+                            NetworkManager.shared().clientBotSettings = true
+                            DispatchQueue.main.async {
+                                let color = GameballApp.clientBotStyle?.botMainColor ?? ""
+                                let GB_ViewController = self.prepareGBVC(withAPIKEY: withAPIKEY, withPlayerUniqueId: withPlayerUniqueId, withColor: String(color.dropFirst()), withLang: withLang)
+                                completion?(GB_ViewController, nil)
+                            }
+                        }
+                        return
+                    }
+                    // ToDo: return the error model
+                    Helpers().dPrint("Could not get client bot settings")
+                    NetworkManager.shared().clientBotSettings = false
+                    //            self.fetchBotStyle()
+                    DispatchQueue.main.async {
+                        let color = GameballApp.clientBotStyle?.botMainColor ?? ""
+                        let GB_ViewController = self.prepareGBVC(withAPIKEY: withAPIKEY, withPlayerUniqueId: withPlayerUniqueId, withColor: String(color.dropFirst()), withLang: withLang)
+                        completion?(GB_ViewController, errorModel.description)
+                    }
+                    
                 }
             } else {
-                Helpers().dPrint("Gameball BotSettings is not set...")
-                return nil
+                completion?(nil,"Gameball Player Id is not set...")
             }
+        } else {
+            completion?(nil,"Gameball API Key is not set...")
+            
         }
-        else {
-            Helpers().dPrint("Gameball API Key is not set...")
-            return nil
-        }
-        
-        
     }
+    private func prepareGBVC(withAPIKEY: String,withPlayerUniqueId: String,withColor: String, withLang:String) -> UIViewController? {
+
+            let GB_ViewController = GB_WEBVIEWWIDGETViewController(nibName: String(describing: GB_WEBVIEWWIDGETViewController.self), bundle: nil)
+            GB_ViewController.APIKEY = withAPIKEY
+            GB_ViewController.playerID = withPlayerUniqueId
+            GB_ViewController.color = withColor
+            GB_ViewController.lang = withLang
+            return GB_ViewController
+    }
+//    public func launchGameball(withAPIKEY: String,withPlayerUniqueId: String,withColor: String, withLang:String) -> UIViewController? {
+//
+//       // Present View "Modally"
+//        guard Reachability.isConnectedToNetwork() else {
+//            return NoInternetViewController()
+//        }
+//        if !(withAPIKEY.isEmpty) {
+//            NetworkManager.shared().APIKey = withAPIKEY
+//            if !(withPlayerUniqueId.isEmpty) {
+//
+//                let GB_ViewController = GB_WEBVIEWWIDGETViewController(nibName: String(describing: GB_WEBVIEWWIDGETViewController.self), bundle: nil)
+//                GB_ViewController.APIKEY = withAPIKEY
+//                GB_ViewController.playerID = withPlayerUniqueId
+//                GB_ViewController.color = withColor
+//                GB_ViewController.lang = withLang
+//                return GB_ViewController
+//                }
+//                else {
+//                    Helpers().dPrint("Gameball Player Id is not set...")
+//                    return nil
+//                }
+//
+//        }
+//        else {
+//            Helpers().dPrint("Gameball API Key is not set...")
+//            return nil
+//        }
+//
+//        return nil
+//    }
     
 
     public func notificationPopUP(notification: UNNotification)  {
@@ -168,126 +194,126 @@ open class GameballApp: NSObject {
     
     
     // Send action withMeta Data events
-    public func sendActionWithMetaData(events: [String : [String : Any]] , completion: @escaping  ((_ success: Any?, _ errorDescription: Any?)->())) {
-        
-        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done ..sendAction..")
-//                Helpers().dPrint(responseObject)
-                completion(responseObject?.response, nil)
-            }
-            else {
-                Helpers().dPrint("failed sendAction")
-                completion(responseObject?.response, error?.description)
-            }
-        }
-    }
-    
-    public func sendActionWithOutMetaData(events: [String : Any] , completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        
-        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done ..sendAction..")
-//                Helpers().dPrint(responseObject)
-                completion(responseObject?.success, nil)
-            }
-            else {
-                Helpers().dPrint("failed sendAction")
-                completion(responseObject?.success, "Failed to send Action")
-            }
-        }
-    }
+//    public func sendActionWithMetaData(events: [String : [String : Any]] , completion: @escaping  ((_ success: Any?, _ errorDescription: Any?)->())) {
+//
+//        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done ..sendAction..")
+////                Helpers().dPrint(responseObject)
+//                completion(responseObject?.response, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed sendAction")
+//                completion(responseObject?.response, error?.description)
+//            }
+//        }
+//    }
+//
+//    public func sendActionWithOutMetaData(events: [String : Any] , completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//
+//        NetworkManager.shared().sendAction(events: events) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done ..sendAction..")
+////                Helpers().dPrint(responseObject)
+//                completion(responseObject?.success, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed sendAction")
+//                completion(responseObject?.success, "Failed to send Action")
+//            }
+//        }
+//    }
     
     
     
     //4.2    Generate OTP
-    public func generateOTP(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().generateOTP() { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done ....")
-                completion(true, nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(false, error?.description)
-            }
-        }
-    }
+//    public func generateOTP(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().generateOTP() { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done ....")
+//                completion(true, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(false, error?.description)
+//            }
+//        }
+//    }
     
     //4.9   Get Player Balance
-    public func getPlayerBalance(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().getPlayerBalance() { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done ....")
-                completion(true, nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(false, error?.description)
-            }
-            
-        }
-    }
+//    public func getPlayerBalance(completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().getPlayerBalance() { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done ....")
+//                completion(true, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(false, error?.description)
+//            }
+//
+//        }
+//    }
     //4.3    Reward OTP
-    public func rewardPoints(transactionOnClientSystemId: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().rewardPoints(transactionOnClientSystemId: transactionOnClientSystemId, amount: amount) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done ....")
-                completion(true, nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(false, error?.description)
-            }
-        }
-    }
+//    public func rewardPoints(transactionOnClientSystemId: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().rewardPoints(transactionOnClientSystemId: transactionOnClientSystemId, amount: amount) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done ....")
+//                completion(true, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(false, error?.description)
+//            }
+//        }
+//    }
     
     //4.5    Hold Points
     
-    public func holdPoints(OTP: String ,amount: Int = 0,completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().holdPoints(OTP: OTP, amount: amount) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done holdPoints ....")
-                self.holdReference = responseObject?.response?.holdReference ?? ""
-                //                 self.dPrint(responseObject?.response?.holdReference as Any)
-                completion(responseObject?.response?.holdReference ?? "", nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(nil, error?.description)
-            }
-        }
-    }
+//    public func holdPoints(OTP: String ,amount: Int = 0,completion: @escaping  ((_ success: String?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().holdPoints(OTP: OTP, amount: amount) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done holdPoints ....")
+//                self.holdReference = responseObject?.response?.holdReference ?? ""
+//                //                 self.dPrint(responseObject?.response?.holdReference as Any)
+//                completion(responseObject?.response?.holdReference ?? "", nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(nil, error?.description)
+//            }
+//        }
+//    }
     
     //4.4    Redeem Points
     
-    public func redeemPoints(transactionOnClientSystemId: String ,holdReference: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().redeemPoints(transactionOnClientSystemId: transactionOnClientSystemId, holdReference: holdReference, amount: amount) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done redeemPoints ....")
-                completion(true, nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(nil, error?.description)
-            }
-        }
-    }
+//    public func redeemPoints(transactionOnClientSystemId: String ,holdReference: String ,amount: Int = 0,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().redeemPoints(transactionOnClientSystemId: transactionOnClientSystemId, holdReference: holdReference, amount: amount) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done redeemPoints ....")
+//                completion(true, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(nil, error?.description)
+//            }
+//        }
+//    }
     
     //4.6    Reverse Points
     
-    public func reversePoints(holdReference: String,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
-        NetworkManager.shared().reversePoints( holdReference: holdReference) { (responseObject, error) in
-            if error == nil {
-                Helpers().dPrint("done redeemPoints ....")
-                completion(true, nil)
-            }
-            else {
-                Helpers().dPrint("failed")
-                completion(nil, error?.description)
-            }
-        }
-    }
+//    public func reversePoints(holdReference: String,completion: @escaping  ((_ success: Bool?, _ errorDescription: String?)->())) {
+//        NetworkManager.shared().reversePoints( holdReference: holdReference) { (responseObject, error) in
+//            if error == nil {
+//                Helpers().dPrint("done redeemPoints ....")
+//                completion(true, nil)
+//            }
+//            else {
+//                Helpers().dPrint("failed")
+//                completion(nil, error?.description)
+//            }
+//        }
+//    }
     //    public func configureFireBase() {
     //        if let filePath = Bundle.init(for: type(of: self)).path(forResource: "GameBallSDK-Info", ofType: "plist") {
     //

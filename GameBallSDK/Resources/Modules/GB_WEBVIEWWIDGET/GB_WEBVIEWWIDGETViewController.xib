@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment version="4352" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GB_WEBVIEWWIDGETViewController" customModule="GameBallSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="closeBtn" destination="tM2-KC-iR4" id="OnG-9r-Ncl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="OTK-I0-JbD" id="fVu-PA-DcM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTK-I0-JbD">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM2-KC-iR4">
+                    <rect key="frame" x="352" y="59" width="32" height="32"/>
+                    <state key="normal" image="icon_outline_14px_close@2x.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6D3-ts-3tt">
+                    <rect key="frame" x="344" y="44" width="70" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="0xj-XU-fSf"/>
+                        <constraint firstAttribute="height" constant="50" id="T9S-6f-oIP"/>
+                    </constraints>
+                    <connections>
+                        <action selector="closeBtnAction:" destination="-1" eventType="touchUpInside" id="TYT-rf-FbN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OTK-I0-JbD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6Rp-B8-Nhn"/>
+                <constraint firstItem="OTK-I0-JbD" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="F19-oB-Us3"/>
+                <constraint firstItem="OTK-I0-JbD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Q4v-FI-VqS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6D3-ts-3tt" secondAttribute="trailing" id="gAs-5x-CRa"/>
+                <constraint firstItem="6D3-ts-3tt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="j2o-ZM-0b1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tM2-KC-iR4" secondAttribute="trailing" constant="30" id="o69-by-jhi"/>
+                <constraint firstItem="OTK-I0-JbD" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="xDd-lu-bml"/>
+                <constraint firstItem="tM2-KC-iR4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="zAe-bb-vCw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_outline_14px_close@2x.png" width="16" height="16"/>
+    </resources>
+</document>
