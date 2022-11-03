@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		C184E90D291155AA00896BF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C184E90C291155AA00896BF8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		84F65D96AF5649E9DF303ABA /* Pods-GameBallSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameBallSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-GameBallSDK_Example/Pods-GameBallSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B2949A7CC3D911817E82A379 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B88F5EED7A1E7B68F6A73AE8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C184E90C291155AA00896BF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		607FACD21AFB9204008FA782 /* Example for GameBallSDK */ = {
 			isa = PBXGroup;
 			children = (
+				C184E90C291155AA00896BF8 /* GoogleService-Info.plist */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -213,6 +216,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = X3DGB26Y5K;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -227,6 +231,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -248,6 +253,7 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				C184E90D291155AA00896BF8 /* GoogleService-Info.plist in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,14 +319,24 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GameBallSDK_Example/Pods-GameBallSDK_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +361,14 @@
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/ChallengeLockedImage/innerchallengeLocked@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/CloseBTN/close_new.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/CloseBTN/iclose_new@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/CloseBTN/icon_outline_14px_close.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/CloseBTN/icon_outline_14px_close@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DefaultFriendReferal/gbReferralDefaultimage.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DefaultFriendReferal/gbReferralDefaultimage@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DefaultFriendReferal/gbReferralDefaultimage@3x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DownArrow/dropArrow.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DownArrow/dropArrow@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/DownArrow/dropArrow@3x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/FriendsReferal/Referral.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/FriendsReferal/Referral@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/FriendsReferal/Referral@3x.png",
@@ -361,6 +385,9 @@
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/GreenTick/unCheckMark.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/GreenTick/unCheckMark@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/GreenTick/unCheckMark@3x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LeaderBoardEmptyState/gb-leaderboard-emptystate.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LeaderBoardEmptyState/gb-leaderboard-emptystate@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LeaderBoardEmptyState/gb-leaderboard-emptystate@3x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LockIcon/LockIcon.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LockIcon/LockIcon@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LockIcon/LockIcon@3x.png",
@@ -368,6 +395,15 @@
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LockIconLarge/LockIconLarge@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/LockIconLarge/LockIconLarge@3x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/MaskedImage/MaskedImage.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/nextChallengeDownArrow/sequenceArrow.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/nextChallengeDownArrow/sequenceArrow@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/nextChallengeDownArrow/sequenceArrow@3x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/No Network/No-Internet.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/No Network/No-Internet@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/No Network/No-Internet@3x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/NotificationsEmpty/gb-notifications-emptystate.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/NotificationsEmpty/gb-notifications-emptystate@2x.png",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/NotificationsEmpty/gb-notifications-emptystate@3x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/ProfileHeaderiCons/frubiesIcon.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/ProfileHeaderiCons/frubiesIcon@2x.png",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Assets/Images/ProfileHeaderiCons/frubiesIcon@3x.png",
@@ -391,29 +427,38 @@
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Fonts/Cairo-Regular.ttf",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Fonts/Montserrat-Light.otf",
 				"${PODS_ROOT}/../../GameBallSDK/Resources/Fonts/Montserrat-SemiBold.otf",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Localization/en.lproj/Localizable.strings",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Localization/LocalizableArabic.strings",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengeDetails/ChallengeDetailsHeaderCell/ChallengeDetailsHeaderCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengeDetails/ChallengeDetailsViewController/ChallengeDetailsViewController.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengeDetails/HighScoreTableViewCell/HighScoreTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengeDetails/ProgressBarTableViewCell/ProgressBarTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengeDetails/StatusTableViewCell/StatusTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Challenges/BadgesCollectionViewinCell/BadgesCollectionViewinCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Challenges/BadgeView/BadgeView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ChallengesTableViewInCell/ChallengesTableViewInCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/CustomViews/HeaderCollectionReusableView/HeaderCollectionReusableView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/CustomViews/NotificationPopUP/NotificationPopUPView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/CustomViews/TabbarCell/TabbarCollectionViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/CustomViews/TabIconsHeader/TabIconsHeader.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/FriendReferal/ReferalFriendTableViewCell/ReferalFriendTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/FriendReferal/ReferalHeaderView/ReferalHeaderViewTableView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Leaderboard/LeaderBoardHeaderView/LeaderBoardHeaderView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Leaderboard/LeaderBoardTableViewCell/LeaderBoardTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Notifications/NotificationsHeaderView/NotificationsTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/Notifications/NotificationsTableViewCell/NotificationHeaderView.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ParentViewController/ParentViewController.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ProfileHeader/MainTableViewCell.xib",
-				"${PODS_ROOT}/../../GameBallSDK/Resources/Modules/ProfileHeader/ProfileHeaderView.xib",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Localization/en.lproj/GB_Localizable.strings",
+				"${PODS_ROOT}/../../GameBallSDK/Resources/Localization/GB_LocalizableArabic.strings",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ChallengeDetailsHeaderCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ChallengeDetailsViewController.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/HighScoreTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ProgressBarTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/StatusTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/BadgesCollectionViewinCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/BadgeView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ChallengesTableViewInCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/HeaderCollectionReusableView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NotificationPopUpFullScreenViewController.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NotificationPopUPView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NotificationtSmallToast.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/TabbarCollectionViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/TabIconsHeader.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_LeaderBoardEmptyStateCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_NotificationsEmptyStateCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_ReferalFooterCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ReferalFriendTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ReferalHeaderViewTableView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_ChallengeInMissionTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_MissionsTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/GB_WEBVIEWWIDGETViewController.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/LeaderBoardHeaderView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/LeaderBoardTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NoInternetViewController.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NotificationsTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/NotificationHeaderView.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ParentViewController.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/MainTableViewCell.nib",
+				"${BUILT_PRODUCTS_DIR}/GameBallSDK/GameBallSDK.framework/ProfileHeaderView.nib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -427,6 +472,14 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/innerchallengeLocked@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/close_new.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/iclose_new@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon_outline_14px_close.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/icon_outline_14px_close@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gbReferralDefaultimage.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gbReferralDefaultimage@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gbReferralDefaultimage@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/dropArrow.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/dropArrow@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/dropArrow@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Referral.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Referral@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Referral@3x.png",
@@ -443,6 +496,9 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unCheckMark.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unCheckMark@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/unCheckMark@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-leaderboard-emptystate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-leaderboard-emptystate@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-leaderboard-emptystate@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LockIcon.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LockIcon@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LockIcon@3x.png",
@@ -450,6 +506,15 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LockIconLarge@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LockIconLarge@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaskedImage.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sequenceArrow.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sequenceArrow@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/sequenceArrow@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/No-Internet.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/No-Internet@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/No-Internet@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-notifications-emptystate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-notifications-emptystate@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gb-notifications-emptystate@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/frubiesIcon.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/frubiesIcon@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/frubiesIcon@3x.png",
@@ -473,8 +538,8 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Cairo-Regular.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Montserrat-Light.otf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Montserrat-SemiBold.otf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Localizable.strings",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LocalizableArabic.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_Localizable.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_LocalizableArabic.strings",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ChallengeDetailsHeaderCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ChallengeDetailsViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HighScoreTableViewCell.nib",
@@ -484,13 +549,22 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BadgeView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ChallengesTableViewInCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HeaderCollectionReusableView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NotificationPopUpFullScreenViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NotificationPopUPView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NotificationtSmallToast.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TabbarCollectionViewCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TabIconsHeader.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_LeaderBoardEmptyStateCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_NotificationsEmptyStateCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_ReferalFooterCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ReferalFriendTableViewCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ReferalHeaderViewTableView.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_ChallengeInMissionTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_MissionsTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GB_WEBVIEWWIDGETViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LeaderBoardHeaderView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LeaderBoardTableViewCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NoInternetViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NotificationsTableViewCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NotificationHeaderView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ParentViewController.nib",
@@ -656,11 +730,12 @@
 			baseConfigurationReference = 84F65D96AF5649E9DF303ABA /* Pods-GameBallSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X3DGB26Y5K;
 				INFOPLIST_FILE = GameBallSDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.GameBallSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -672,11 +747,12 @@
 			baseConfigurationReference = 1DDA3260BC36DB7A87DBD33E /* Pods-GameBallSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X3DGB26Y5K;
 				INFOPLIST_FILE = GameBallSDK/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.GameBallSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

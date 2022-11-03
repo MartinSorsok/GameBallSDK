@@ -24,8 +24,9 @@ class GB_WEBVIEWWIDGETViewController: BaseViewController, WKNavigationDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "http://gb-widget.azurewebsites.net/m/?main=\(color)&playerid=\(playerID)&lang=\(lang)&apiKey=\(APIKEY)")!
-        webView.load(URLRequest(url: url))
+        let url = "https://m.gameball.app?main=\(color)&playerid=\(playerID)&lang=\(lang)&apiKey=\(APIKEY)"
+        let GB_url = URL(string: url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "" )
+        webView.load(URLRequest(url: GB_url! ))
         webView.allowsBackForwardNavigationGestures = true
         
     }

@@ -8,26 +8,47 @@
 
 import UIKit
 import GameBallSDK
-
-class ViewController: UIViewController {
-    var gameballApp: GameballApp?
-
+import FirebaseMessaging
+class ViewController: UIViewController, MessagingDelegate {
+    let gameball =  GameballApp()
+    var FCMtoken = ""
     override func viewDidLoad() {
-        super.viewDidLoad()
-        let gameball = GameballApp.init(APIKey: "8fdfd2dffd-9mnvhu25d6c3d")
-        self.gameballApp = gameball
-        self.gameballApp?.registerPlayer(withPlayerId: "Matrix")
-        // Do any additional setup after loading the view, typically from a nib.
+        super.viewDidLoad()    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func showProfile(_ sender: Any) {
-            guard let vc = self.gameballApp?.launchGameball() else {return}
-            self.present(vc, animated: true, completion: nil)
+
+    @IBAction func showProfile(_ sender: Any)  {
+        
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+            print("FCM registration token: \(token)")
+              self.launchGameball(withDeviceToken: token)
+          }
+        }
+
     }
     
+    func launchGameball(withDeviceToken: String) {
+        //Change the APIKEY , Language , player ID , player attributes based on your references
+        let playerAttributes: [String : Any] = [
+                "displayName": "Martin spiderman",
+                "email": "example@example.com"
+            ]
+        gameball.launchGameball(
+            withAPIKEY: "5209563812d84499b8302d2eb1e107ae",
+            withPlayerUniqueId: "Martin Sorsok",
+            withPlayerAttributes: playerAttributes,
+            withDeviceToken: withDeviceToken,
+            withLang: "en") { (GBVC, error) in
+           guard let gameBallVC = GBVC else {return}
+             self.present(gameBallVC, animated: true, completion: nil)
+          }
+    }
 }
 

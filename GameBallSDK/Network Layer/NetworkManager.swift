@@ -807,12 +807,12 @@ class NetworkManager:NSObject {
         UserDefaults.standard.set(language.rawValue, forKey: UserDefaultsKeys.LanguageKey.rawValue)
     }
     
-    func registerPlayer(playerUniqueId: String, categoryId: String , playerAttributes: [String:Any]) {
+    func registerPlayer(playerUniqueId: String, categoryId: String , playerAttributes: [String:Any], withDeviceToken: String) {
         NetworkManager.shared().playerUniqueId = playerUniqueId
         NetworkManager.shared().categoryId = categoryId
         UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
         UserDefaults.standard.set(playerUniqueId, forKey: UserDefaultsKeys.playerUniqueId.rawValue)
-        self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId,playerAttributes: playerAttributes ) { (response, error) in
+        self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId,deviceToken: withDeviceToken, playerAttributes: playerAttributes  ) { (response, error) in
             if error != nil {
                 // do something
                 Helpers().dPrint("failed to register user because \(error!.description)")

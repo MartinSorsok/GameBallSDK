@@ -41,7 +41,7 @@ open class GameballApp: NSObject {
 //
     
     
-    public func launchGameball(withAPIKEY: String,withPlayerUniqueId: String, withLang:String,completion:  ((_ success: UIViewController?, _ errorDescription: String?)->())? = nil) {
+    public func launchGameball(withAPIKEY: String, withPlayerUniqueId: String, withPlayerAttributes: [String:Any],withDeviceToken: String, withLang:String, completion:  ((_ success: UIViewController?, _ errorDescription: String?)->())? = nil) {
         
         // Present View "Modally"
         if !(Reachability.isConnectedToNetwork())  {
@@ -49,6 +49,7 @@ open class GameballApp: NSObject {
         }
         if !(withAPIKEY.isEmpty) {
             NetworkManager.shared().APIKey = withAPIKEY
+            self.registerPlayer(withPlayerUniqueId: withPlayerUniqueId, withPlayerAttributes: withPlayerAttributes,withDeviceToken: withDeviceToken)
             if !(withPlayerUniqueId.isEmpty) {
                 NetworkManager.shared().load(path: APIEndPoints.getBotStyle, method: RequestMethod.GET, params: [:], modelType: GetClientBotStyleResponse.self) { (data, error) in
                     guard let errorModel = error else {
@@ -173,7 +174,7 @@ open class GameballApp: NSObject {
     
     // register with client provided player id
     public func registerPlayer(withPlayerUniqueId: String, withPlayerTypeId: String = "",withPlayerAttributes: [String: Any] = [:], withDeviceToken: String = "") {
-        NetworkManager.shared().registerPlayer(playerUniqueId: withPlayerUniqueId, categoryId: withPlayerTypeId , playerAttributes: withPlayerAttributes)
+        NetworkManager.shared().registerPlayer(playerUniqueId: withPlayerUniqueId, categoryId: withPlayerTypeId , playerAttributes: withPlayerAttributes, withDeviceToken: withDeviceToken)
     }
     
     
