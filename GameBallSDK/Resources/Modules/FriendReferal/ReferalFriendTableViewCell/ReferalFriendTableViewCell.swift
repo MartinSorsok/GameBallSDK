@@ -78,11 +78,11 @@ class ReferalFriendTableViewCell: UITableViewCell {
                 giftImageScore.isHidden = true
                 
             } else if challenge?.rewardPoints == 0 {
-                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
+                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "")"
             }  else if challenge?.rewardFrubies == 0 {
-                rewardLabel.text = "\(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                rewardLabel.text = "\(challenge?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }  else {
-                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                rewardLabel.text = "\(challenge?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }
             
             let percentageFilled = Float((challenge?.actionsAndAmountCompletedPercentage ?? 0) / 100 )

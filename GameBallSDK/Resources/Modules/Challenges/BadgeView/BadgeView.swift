@@ -104,7 +104,7 @@ class BadgeView: UICollectionViewCell, AchievementCellImageLoaderDelegate {
 
         } else {
             let amount = challenge.rewardPoints ?? 5
-            let label = String(amount) + " " + (GameballApp.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.GameballScreen.pts.rawValue.localized)
+            let label = String(amount) + " " + (Gameball.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.GameballScreen.pts.rawValue.localized)
             challengePointsUILabel.text = label
         }
 

@@ -14,7 +14,7 @@ class TabIconsHeader: UITableViewHeaderFooterView {
     
     weak var delegate: TabIconHeaderDelegate?
     private let tabbarCollectionViewCell = "TabbarCollectionViewCell"
-    let settings = GameballApp.clientBotStyle
+    let settings = Gameball.clientBotStyle
     private var featuresArray = [0]
     var featuresArrayIcons = [""]
     

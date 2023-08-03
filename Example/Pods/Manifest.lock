@@ -49,7 +49,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - GameBallSDK (1.1.5):
+  - GameBallSDK (1.1.6):
     - Firebase
     - Firebase/Analytics
     - Firebase/Core
@@ -132,7 +132,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 96d75228e10fd369564da51bd898414eb0f54df5
   FirebaseInstallations: 99d24bac0243cf8b0e96cf5426340d211f0bcc80
   FirebaseMessaging: 4487bbff9b9b927ba1dd3ea40d1ceb58e4ee3cb5
-  GameBallSDK: ef9b1b2d49a85cfbeee50f3b6f77266ae1d4f0a6
+  GameBallSDK: 684c011a2dbb27bae8e5f8bab50545512e6cce19
   GoogleAppMeasurement: e490e248af3da95afe8fa8e7baac232dc8d020b7
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7

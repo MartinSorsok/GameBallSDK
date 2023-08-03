@@ -75,11 +75,11 @@ class ChallengeDetailsHeaderCell: UITableViewCell {
                 giftImageScore.isHidden = true
                 
             } else if challenge?.rewardPoints == 0 {
-                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
+                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "")"
             }  else if challenge?.rewardFrubies == 0 {
-                challengeScore.text = "\(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                challengeScore.text = "\(challenge?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }  else {
-                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                challengeScore.text = "\(challenge?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "") | \(challenge?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }
 
                 

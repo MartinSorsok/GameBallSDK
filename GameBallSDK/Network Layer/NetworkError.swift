@@ -18,6 +18,7 @@ enum ServiceError: Error {
     case malformedResponse
     case missingAPIKey
     case invalidAPIKey
+    case invalidReferrerCode
 }
 
 
@@ -39,7 +40,8 @@ extension ServiceError {
             return "Client API key is missing"
         case .invalidAPIKey:
             return "Client API key is inavlid"
-            
+        case .invalidReferrerCode:
+            return "Referrer Code is incorrect"
         case .other:
             return "An unkown error occured"
         }

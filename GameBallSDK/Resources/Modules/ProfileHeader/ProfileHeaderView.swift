@@ -277,20 +277,20 @@ class ProfileHeaderView: UIView {
     private func commonInit() {
         //        setupViews()
         
-        frubiesTitleLabel.text = "\(GameballApp.clientBotStyle?.rankPointsName ?? "") "
-        pointsTitleLabel.text = "\(GameballApp.clientBotStyle?.walletPointsName ?? "") "
+        frubiesTitleLabel.text = "\(Gameball.clientBotStyle?.rankPointsName ?? "") "
+        pointsTitleLabel.text = "\(Gameball.clientBotStyle?.walletPointsName ?? "") "
         
-        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false && GameballApp.clientBotStyle?.isWalletPointsVisible ?? false {
+        if Gameball.clientBotStyle?.isRankPointsVisible ?? false && Gameball.clientBotStyle?.isWalletPointsVisible ?? false {
             singlePointsView.isHidden = true
             sepratorView.isHidden = false
   
             
         } else {
-            if !(GameballApp.clientBotStyle?.isRankPointsVisible ?? false) {
+            if !(Gameball.clientBotStyle?.isRankPointsVisible ?? false) {
                 rankPointsViewConstraint.isHidden = true
                 levelViewHeightConstraint.constant = 0
             }
-            if  !(GameballApp.clientBotStyle?.isWalletPointsVisible ?? false)  {
+            if  !(Gameball.clientBotStyle?.isWalletPointsVisible ?? false)  {
                 pointsViewContainer.isHidden = true
                 pointsHeightConstraint.constant = 0
             }
@@ -376,7 +376,7 @@ class ProfileHeaderView: UIView {
         pointsValueLabel.text = String(pointsValue)
         customerTypeLabel.text = model.name ?? "Player"
         
-        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+        if Gameball.clientBotStyle?.isRankPointsVisible ?? false {
             singleViewPointsValue.text = String(frubiesValue)
         } else {
             singleViewPointsValue.text = String(pointsValue)
@@ -416,7 +416,7 @@ class ProfileHeaderView: UIView {
         customerTypeLabel.text = model.level?.name
         pointsHint.text = "Equals to \(String(pointsValue)) USD"
         
-        if GameballApp.clientBotStyle?.isRankPointsVisible ?? false {
+        if Gameball.clientBotStyle?.isRankPointsVisible ?? false {
             singleViewPointsValue.text = String(frubiesValue)
         } else {
             singleViewPointsValue.text = String(pointsValue)
@@ -456,7 +456,7 @@ class ProfileHeaderView: UIView {
         }
         //        if let currentFrubies = playerDetails?.accFrubies, let targetFrubies = playerNextLevel.levelFrubies {
         //            let percentageFilled = Float(currentFrubies) / Float(targetFrubies)
-        //            let color = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+        //            let color = UIColor.init(hex: Gameball.clientBotStyle?.botMainColor ?? "#E7633F")
         //            progressView.properties = ProgressViewProperties(backgroundColor: Colors.appGray230, filledColor: color!, percentageFilled: percentageFilled)
         //        }
         //        nextTierValueLabel.text = "\(playerNextLevel.levelFrubies ?? 0) F"

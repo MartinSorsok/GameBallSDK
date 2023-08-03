@@ -104,11 +104,11 @@ class GB_MissionsTableViewCell: UITableViewCell {
                 giftImageScore.isHidden = true
                 
             } else if quest?.rewardPoints == 0 {
-                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "")"
+                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "")"
             }  else if quest?.rewardFrubies == 0 {
-                rewardLabel.text = "\(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                rewardLabel.text = "\(quest?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }  else {
-                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(GameballApp.clientBotStyle?.rankPointsName ?? "") | \(quest?.rewardPoints ?? 0) \(GameballApp.clientBotStyle?.walletPointsName ?? "")"
+                rewardLabel.text = "\(quest?.rewardFrubies ?? 0) \(Gameball.clientBotStyle?.rankPointsName ?? "") | \(quest?.rewardPoints ?? 0) \(Gameball.clientBotStyle?.walletPointsName ?? "")"
             }
 
             

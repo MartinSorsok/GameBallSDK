@@ -13,7 +13,8 @@ typealias JSON = [String: Any]
 
 class NetworkManager:NSObject {
     let userCache = UserProfileCache.get()
-
+    
+    var sdkVersion = "2.0.0"
     let urlSession: URLSession
     let connectionScheme: String
     let host: String
@@ -33,14 +34,14 @@ class NetworkManager:NSObject {
         }
         let urlSession = URLSession(configuration: sessionConfiguration)
         let baseURL = APIEndPoints.base_URL
-//        let baseURL = TestingServer.shared.base_URL
-
+        //        let baseURL = TestingServer.shared.base_URL
+        
         let scheme = "https"
         let host = APIEndPoints.base_URL
-//        let host = TestingServer.shared.base_URL
-
+        //        let host = TestingServer.shared.base_URL
         
-//        let port = APIEndPoints.appPort
+        
+        //        let port = APIEndPoints.appPort
         let APIKey = ""
         let playerUniqueId = ""
         let categoryId = ""
@@ -80,11 +81,11 @@ class NetworkManager:NSObject {
     func isPlayerIdSet() -> Bool {
         return (self.playerUniqueId.count > 0) ? true : false
     }
-
+    
     func loadDebug<T>(path: String, method: RequestMethod, params: JSON, modelType: T.Type, completion: @escaping (Any?, ServiceError?) -> ()) where T:Codable {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -98,7 +99,7 @@ class NetworkManager:NSObject {
                 case (200..<300):
                     if let data = data {
                         let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                         Helpers().dPrint(JSONString ?? "Could not print Json")
+                        Helpers().dPrint(JSONString ?? "Could not print Json")
                     }
                 case 403:
                     completion(nil, ServiceError.missingAPIKey)
@@ -118,12 +119,12 @@ class NetworkManager:NSObject {
         
         task.resume()
     }
-
+    
     
     func load<T>(path: String, method: RequestMethod, params: JSON, modelType: T.Type, completion: @escaping (Any?, ServiceError?) -> ()) where T:Codable {
         
         guard Reachability.isConnectedToNetwork() else {
-           // completion(nil, ServiceError.noInternetConnection)
+            // completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -137,22 +138,22 @@ class NetworkManager:NSObject {
                 case (200..<300):
                     // Parsing incoming data
                     //            var object: T? = nil
-
-//                    guard let data = data else { return }
-//                    do {
-//                        let decoder = JSONDecoder()
-//                        let gitData = try decoder.decode(modelType.self, from: data)
-//                        print(gitData)
-//                        object = gitData
-//                        completion(object, nil)
-//
-//                    } catch let err {
-//                        print("Err", err)
-//                    }
+                    
+                    //                    guard let data = data else { return }
+                    //                    do {
+                    //                        let decoder = JSONDecoder()
+                    //                        let gitData = try decoder.decode(modelType.self, from: data)
+                    //                        print(gitData)
+                    //                        object = gitData
+                    //                        completion(object, nil)
+                    //
+                    //                    } catch let err {
+                    //                        print("Err", err)
+                    //                    }
                     if let data = data {
                         guard let tempObject = try? JSONDecoder().decode(modelType.self, from: data) else {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                             Helpers().dPrint(JSONString ?? "Could not print Json")
+                            Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
                         }
@@ -175,21 +176,21 @@ class NetworkManager:NSObject {
     
     func loadImage(path: String, completion: @escaping (UIImage?, ServiceError?) -> ()) {
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         var modifiedPath = path
         if path.contains("~") {
             modifiedPath = path.replacingOccurrences(of: "~", with: "")
         }
-//        var request = URLRequest(path: modifiedPath)
+        //        var request = URLRequest(path: modifiedPath)
         let url = URL(string: modifiedPath)
         guard let myUrl = url else {
-             Helpers().dPrint("bad image url .......")
+            Helpers().dPrint("bad image url .......")
             return
         }
         var req = URLRequest(url: myUrl);
-//        var request = URLRequest(path: modifiedPath)
+        //        var request = URLRequest(path: modifiedPath)
         self.adaptRequest(urlRequest: &req)
         let task = URLSession.shared.dataTask(with: req) { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse, (200..<300) ~= httpResponse.statusCode {
@@ -207,54 +208,57 @@ class NetworkManager:NSObject {
             }
         }
         task.resume()
-
         
-//        if let url = url {
-//
-//        }
-//
-//        self.adaptRequest(urlRequest: &request)
-//        let task = self.urlSession.dataTask(with: request) { data, response, error in
-//            if let httpResponse = response as? HTTPURLResponse, (200..<300) ~= httpResponse.statusCode {
-//                if let imageData = data {
-//                    let image = UIImage(data: imageData)
-//                    completion(image, nil)
-//                }
-//                else {
-//                    let errorObject = ["ErrorMsg":"The image file seems to be corrupted, check the URL: \(String(describing: request.url?.absoluteString))"]
-//                    let error = ServiceError.init(json: errorObject)
-//                    completion(nil, error)
-//                }
-//            } else {
-//                completion(nil, ServiceError.serverError)
-//            }
-//        }
-//        task.resume()
+        
+        //        if let url = url {
+        //
+        //        }
+        //
+        //        self.adaptRequest(urlRequest: &request)
+        //        let task = self.urlSession.dataTask(with: request) { data, response, error in
+        //            if let httpResponse = response as? HTTPURLResponse, (200..<300) ~= httpResponse.statusCode {
+        //                if let imageData = data {
+        //                    let image = UIImage(data: imageData)
+        //                    completion(image, nil)
+        //                }
+        //                else {
+        //                    let errorObject = ["ErrorMsg":"The image file seems to be corrupted, check the URL: \(String(describing: request.url?.absoluteString))"]
+        //                    let error = ServiceError.init(json: errorObject)
+        //                    completion(nil, error)
+        //                }
+        //            } else {
+        //                completion(nil, ServiceError.serverError)
+        //            }
+        //        }
+        //        task.resume()
     }
-
+    
     
     // Get playerCategoryId from shared preferences
-    func sendAction(events: [String : Any], completion: @escaping ((_ response: PostActionResponse?, _ error: ServiceError?)->())) {
+    func sendEvent(events: [Event], completion: @escaping ((_ response: PostActionResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
         var params: JSON = [:]
-//        params["ChallengeAPIIDs"] = challengeAPIIDs
-//        params["QuestAPIID"] = questAPIID
-        params["events"] = events
+        //        params["ChallengeAPIIDs"] = challengeAPIIDs
+        //        params["QuestAPIID"] = questAPIID
         
+        var paramsEvents = [String: Any]()
         
-        params["PlayerUniqueID"] = self.playerUniqueId
-//        params["PlayerCategoryID"] = self.pla
-//        params["Amount"] = amount
-//        params["isPositive"] = isPostive
+        events.forEach { event in
+            paramsEvents[event.name] = event.params
+        }
         
-    Helpers().dPrint(params)
+        params["events"] = paramsEvents
         
-        var request = URLRequest(path: APIEndPoints.postAction, method: .POST, params: params)
+        params["playerUniqueId"] = self.playerUniqueId
+        
+        Helpers().dPrint(params)
+        
+        var request = URLRequest(path: APIEndPoints.sendEvent, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
         let task = self.urlSession.dataTask(with: request) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
@@ -262,8 +266,8 @@ class NetworkManager:NSObject {
                 case (200..<300):
                     // Parsing incoming data
                     if let data = data {
+                        let JSONString = String(data: data, encoding: String.Encoding.utf8)
                         guard let tempObject = try? JSONDecoder().decode(PostActionResponse.self, from: data) else {
-                            let JSONString = String(data: data, encoding: String.Encoding.utf8)
                             Helpers().dPrint(JSONString ?? "Could not print Json")
                             completion(nil, ServiceError.malformedResponse)
                             return
@@ -303,12 +307,12 @@ class NetworkManager:NSObject {
     func generateOTP(completion: @escaping ((_ response: GenerateOTPResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
         var params: JSON = [:]
-     
+        
         params["PlayerUniqueID"] = self.playerUniqueId
         params["TransactionTime"] = Helpers().getTransactionTime()
         params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: "")
@@ -365,7 +369,7 @@ class NetworkManager:NSObject {
     func getPlayerBalance(completion: @escaping ((_ response: GenerateOTPResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -423,7 +427,7 @@ class NetworkManager:NSObject {
     func rewardPoints(transactionOnClientSystemId: String = "",amount: Int = 0,completion: @escaping ((_ response: RewardPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -434,7 +438,7 @@ class NetworkManager:NSObject {
         params["BodyHashed"] = Helpers().getBodyHashed(playerUniqueID: self.playerUniqueId, amount: String(amount))
         params["TransactionOnClientSystemId"] = transactionOnClientSystemId
         params["Amount"] = amount
-
+        
         Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.rewardPoints, method: .POST, params: params)
@@ -486,7 +490,7 @@ class NetworkManager:NSObject {
     func holdPoints(OTP: String = "",amount: Int = 0,completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -549,7 +553,7 @@ class NetworkManager:NSObject {
     func redeemPoints(transactionOnClientSystemId: String = "",holdReference: String = "",amount: Int = 0,completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -561,7 +565,7 @@ class NetworkManager:NSObject {
         params["TransactionOnClientSystemId"] = transactionOnClientSystemId
         params["Amount"] = amount
         params["HoldReference"] = holdReference
-
+        
         Helpers().dPrint(params)
         
         var request = URLRequest(path: APIEndPoints.redeemPoints, method: .POST, params: params)
@@ -612,7 +616,7 @@ class NetworkManager:NSObject {
     func reversePoints(holdReference: String = "",completion: @escaping ((_ response: HoldPointsResponse?, _ error: ServiceError?)->())) {
         
         guard Reachability.isConnectedToNetwork() else {
-//            completion(nil, ServiceError.noInternetConnection)
+            //            completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -668,64 +672,89 @@ class NetworkManager:NSObject {
         
         task.resume()
     }
-    func registerPlayerRequest(playerUniqueId: String, playerCategroyId: String,deviceToken: String = "",playerAttributes: [String:Any] = [:], completion: @escaping ((_ response: RegisterPlayerResponse?, _ error: ServiceError?)->())) {
-        guard Reachability.isConnectedToNetwork() else {
-         //   completion(nil, ServiceError.noInternetConnection)
-            return
-        }
-        
-        var params: JSON = [:]
-        params["playerUniqueId"] = playerUniqueId
-   //     params["playerCategoryId"] = playerCategroyId
-        params["playerAttributes"] = playerAttributes
-        params["deviceToken"] = deviceToken
-        params["osType"] = "iPhone/iPad"
-        
-        var request = URLRequest(path: APIEndPoints.registerPlayer, method: .POST, params: params)
-        self.adaptRequest(urlRequest: &request)
-
-        let task = self.urlSession.dataTask(with: request) { data, response, error in
-            if let httpResponse = response as? HTTPURLResponse {
-                switch httpResponse.statusCode {
-                case (200..<300):
-                    // Parsing incoming data
-                    if let data = data {
-                        guard let tempObject = try? JSONDecoder().decode(RegisterPlayerResponse.self, from: data) else {
+    func registerPlayerRequest(
+        playerUniqueId: String,
+        playerCategroyId: String,
+        deviceToken: String = "",
+        mobile: String? = nil,
+        email: String? = nil,
+        referrerCode: String? = nil,
+        playerAttributes: [String:Any] = [:],
+        completion: @escaping ((_ response: PlayerInfo?, _ error: ServiceError?)->())) {
+            
+            guard Reachability.isConnectedToNetwork() else {
+                //   completion(nil, ServiceError.noInternetConnection)
+                return
+            }
+            
+            var params: JSON = [:]
+            var attributes = playerAttributes
+            if let mobile = mobile {
+                params["mobile"] = mobile
+                attributes["mobile"] = mobile
+            }
+            if let email = email {
+                params["email"] = email
+                attributes["email"] = email
+            }
+            if !NetworkManager.shared().referalCode.isEmpty {
+                params["referrerCode"] = NetworkManager.shared().referalCode
+            }
+            if let code = referrerCode {
+                params["referrerCode"] = code
+            }
+            params["playerUniqueId"] = playerUniqueId
+            params["playerCategoryId"] = playerCategroyId
+            params["playerAttributes"] = attributes
+            params["deviceToken"] = deviceToken
+            params["osType"] = "iPhone/iPad"
+            
+            var request = URLRequest(path: APIEndPoints.registerPlayer, method: .POST, params: params)
+            self.adaptRequest(urlRequest: &request)
+            
+            let task = self.urlSession.dataTask(with: request) { data, response, error in
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case (200..<300):
+                        // Parsing incoming data
+                        if let data = data {
                             let JSONString = String(data: data, encoding: String.Encoding.utf8)
-                            Helpers().dPrint(JSONString ?? "Could not print Json")
-                            completion(nil, ServiceError.malformedResponse)
-                            return
+                            guard let tempObject = try? JSONDecoder().decode(PlayerInfo.self, from: data) else {
+                                Helpers().dPrint(JSONString ?? "Could not print Json")
+                                completion(nil, ServiceError.malformedResponse)
+                                return
+                            }
+                            
+                            //                        let data = NSKeyedArchiver.archivedData(withRootObject: tempObject.response)
+                            //                        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.PlayerInfo.rawValue)
+                            UserProfileCache.save(tempObject)
+                            completion(tempObject, nil)
+                            
                         }
-
-//                        let data = NSKeyedArchiver.archivedData(withRootObject: tempObject.response)
-//                        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.PlayerInfo.rawValue)
-
-                        UserProfileCache.save(tempObject.response)
-                        completion(tempObject, nil)
-
+                        
+                        
+                    case 403:
+                        Helpers().dPrint("403")
+                        completion(nil, ServiceError.missingAPIKey)
+                    case 401:
+                        Helpers().dPrint("401")
+                        completion(nil, ServiceError.invalidAPIKey)
+                    case 402:
+                        completion(nil, ServiceError.invalidReferrerCode)
+                    default:
+                        Helpers().dPrint("default")
+                        completion(nil, ServiceError.serverError)
                     }
-                    
-
-                case 403:
-                    Helpers().dPrint("403")
-                    completion(nil, ServiceError.missingAPIKey)
-                case 401:
-                    Helpers().dPrint("401")
-                    completion(nil, ServiceError.invalidAPIKey)
-                default:
-                    Helpers().dPrint("default")
-                    completion(nil, ServiceError.serverError)
                 }
             }
+            
+            task.resume()
+            
+            
         }
-        
-        task.resume()
-
-
-    }
     func friendReferralRequest(withReferralCode: String,playerUniqueId: String, playerAttributes: [String:Any], completion: @escaping ((_ response: FriendReferralResponse?, _ error: ServiceError?)->())) {
         guard Reachability.isConnectedToNetwork() else {
-           // completion(nil, ServiceError.noInternetConnection)
+            // completion(nil, ServiceError.noInternetConnection)
             return
         }
         
@@ -733,7 +762,7 @@ class NetworkManager:NSObject {
         params["playerCode"] = withReferralCode
         params["playerUniqueId"] = playerUniqueId
         params["playerAttributes"] = playerAttributes
-
+        
         
         var request = URLRequest(path: APIEndPoints.friendReferral, method: .POST, params: params)
         self.adaptRequest(urlRequest: &request)
@@ -751,7 +780,7 @@ class NetworkManager:NSObject {
                             return
                         }
                         
-
+                        
                         
                         completion(tempObject, nil)
                         
@@ -774,19 +803,21 @@ class NetworkManager:NSObject {
         
         
     }
-
+    
     
     func adaptRequest(urlRequest: inout URLRequest) {
         if NetworkManager.shared().APIKey.count > 0 {
             urlRequest.addValue(NetworkManager.shared().APIKey, forHTTPHeaderField: "APIKey")
+            urlRequest.addValue("GB" + "\\" + "iOS" + NetworkManager.shared().sdkVersion, forHTTPHeaderField: "x-gb-agent")
+        
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 urlRequest.addValue("ar", forHTTPHeaderField: "lang")
-
+                
             } else {
                 urlRequest.addValue("en", forHTTPHeaderField: "lang")
-
+                
             }
-
+            
         }
     }
     
@@ -807,38 +838,53 @@ class NetworkManager:NSObject {
         UserDefaults.standard.set(language.rawValue, forKey: UserDefaultsKeys.LanguageKey.rawValue)
     }
     
-    func registerPlayer(playerUniqueId: String, categoryId: String , playerAttributes: [String:Any], withDeviceToken: String) {
-        NetworkManager.shared().playerUniqueId = playerUniqueId
-        NetworkManager.shared().categoryId = categoryId
-        UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
-        UserDefaults.standard.set(playerUniqueId, forKey: UserDefaultsKeys.playerUniqueId.rawValue)
-        self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId,deviceToken: withDeviceToken, playerAttributes: playerAttributes  ) { (response, error) in
-            if error != nil {
-                // do something
-                Helpers().dPrint("failed to register user because \(error!.description)")
-            }
-            else {
-                Helpers().dPrint("Player registered using  \(response)")
-            }
+    func registerPlayer(
+        playerUniqueId: String,
+        categoryId: String,
+        playerAttributes: [String:Any],
+        withDeviceToken: String,
+        mobile: String? = nil,
+        email: String? = nil,
+        referrerCode: String? = nil,
+        completion: ((_ gameballId: Int?, _ error: String?) -> Void)?
+    ) {
+            NetworkManager.shared().playerUniqueId = playerUniqueId
+            NetworkManager.shared().categoryId = categoryId
+            UserDefaults.standard.set(categoryId, forKey: UserDefaultsKeys.playerCategoryId.rawValue)
+            UserDefaults.standard.set(playerUniqueId, forKey: UserDefaultsKeys.playerUniqueId.rawValue)
+            self.registerPlayerRequest(
+                playerUniqueId: playerUniqueId,
+                playerCategroyId: categoryId,
+                deviceToken: withDeviceToken,
+                mobile: mobile,
+                email: email,
+                referrerCode: referrerCode,
+                playerAttributes: playerAttributes) { (response, error) in
+                    if error != nil {
+                        completion?(nil, error?.description)
+                        Helpers().dPrint("failed to register user because \(error?.description ?? "")")
+                    } else {
+                        completion?(response?.gameballId, nil)
+                    }
+                }
         }
-    }
     
     
     func friendReferral(playerUniqueId: String,playerAttributes: [String:Any] = [:],completion: @escaping (String) -> Void) {
         if isDynamicSet(){
             self.friendReferralRequest(withReferralCode: referalCode,playerUniqueId: playerUniqueId, playerAttributes: playerAttributes) { (response, error) in
-            
-            if (response?.success ?? false) {
-                completion("Succeded to Refer a friend")
-            } else {
-                completion("Failed to Refer a friend  because \(response?.errorMsg ?? "")")
+                
+                if (response?.success ?? false) {
+                    completion("Succeded to Refer a friend")
+                } else {
+                    completion("Failed to Refer a friend  because \(response?.errorMsg ?? "")")
+                }
             }
-        }
         }
     }
     
     func registerDevice(withToken: String) {
-
+        
         self.registerPlayerRequest(playerUniqueId: playerUniqueId, playerCategroyId: categoryId, deviceToken: withToken) { (response, error) in
             if error != nil {
                 // do something
@@ -865,7 +911,7 @@ class NetworkManager:NSObject {
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.playerCategoryId.rawValue)
     }
     
- 
+    
     
     
 }
@@ -876,7 +922,7 @@ extension URL {
         var components = URLComponents()
         components.scheme = NetworkManager.shared().connectionScheme
         components.host = NetworkManager.shared().host
-//        components.port = NetworkManager.shared().port
+        //        components.port = NetworkManager.shared().port
         components.path += path
         if params.count > 0 {
             switch method {
@@ -902,7 +948,7 @@ extension URLRequest {
         case .POST, .PUT:
             httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])
             setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+            
         default:
             break
         }

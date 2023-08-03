@@ -30,7 +30,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
                 rankingNumberLabel.font = Fonts.montserratSemiBoldFont8
             }
             rankingNumberLabel.textColor = .white
-                //UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+                //UIColor.init(hex: Gameball.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
         }
     }
     
@@ -47,7 +47,7 @@ class LeaderBoardTableViewCell: UITableViewCell {
                 playerName.font = Fonts.montserratLightFont12
             }
 //            rankingNumberLabel.textColor = .white
-            //UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            //UIColor.init(hex: Gameball.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
         }
     }
     
@@ -62,13 +62,13 @@ class LeaderBoardTableViewCell: UITableViewCell {
                 playerRank.font = Fonts.montserratSemiBoldFont12
             }
 //            rankingNumberLabel.textColor = .white
-            //UIColor.init(hex: GameballApp.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
+            //UIColor.init(hex: Gameball.clientBotStyle?.buttonBackgroundColor ?? "#E7633F")
         }
     }
     
     @IBOutlet weak var scoreLabel: UILabel!{
         didSet {
-             scoreLabel.text = GameballApp.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
+             scoreLabel.text = Gameball.clientBotStyle?.walletPointsName ?? GB_LocalizationsKeys.LeaderBoardScreen.score.rawValue.localized
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 scoreLabel.font = Fonts.cairoRegularFont10

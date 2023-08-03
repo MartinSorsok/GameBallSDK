@@ -86,7 +86,7 @@ class BadgesCollectionViewinCell: UITableViewCell , UICollectionViewDelegate, UI
                 // handle error
             }
             else {
-                GameballApp.clientBotStyle = settingsViewModel.botStyle
+                Gameball.clientBotStyle = settingsViewModel.botStyle
                 completion()
             }
         })

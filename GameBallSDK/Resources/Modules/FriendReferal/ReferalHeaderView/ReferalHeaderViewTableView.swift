@@ -12,7 +12,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-            titleLabel.text =  GameballApp.clientBotStyle?.referralHeadLine
+            titleLabel.text =  Gameball.clientBotStyle?.referralHeadLine
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 titleLabel.font = Fonts.cairoBoldFont16
@@ -25,7 +25,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     }
     @IBOutlet weak var describtionLabel: UILabel!{
         didSet {
-            describtionLabel.text =  GameballApp.clientBotStyle?.referralText
+            describtionLabel.text =  Gameball.clientBotStyle?.referralText
             
             if GB_Localizator.sharedInstance.language == Languages.arabic {
                 describtionLabel.font = Fonts.cairoRegularFont12
@@ -38,7 +38,7 @@ class ReferalHeaderViewTableView: UITableViewHeaderFooterView {
     }
     @IBOutlet weak var referalIcon: UIImageView! {
         didSet {
-            setImage(withURL: GameballApp.clientBotStyle?.referralIcon ?? "")
+            setImage(withURL: Gameball.clientBotStyle?.referralIcon ?? "")
             
         }
     }

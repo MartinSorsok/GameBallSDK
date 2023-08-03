@@ -9,7 +9,7 @@
 import UIKit
 
 public class BaseViewController: UIViewController {
-    let settings = GameballApp.clientBotStyle
+    let settings = Gameball.clientBotStyle
 
     private var activityIndicator: NVActivityIndicatorView!
     

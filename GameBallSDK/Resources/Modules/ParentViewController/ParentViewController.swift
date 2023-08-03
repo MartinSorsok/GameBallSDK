@@ -29,7 +29,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     
     @IBOutlet weak var closeButton: UIButton!{
         didSet {
-            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+            if Gameball.clientBotStyle?.isRankPointsVisible == false  && Gameball.clientBotStyle?.isWalletPointsVisible == false  {
                   let origImage = UIImage(named: "icon_outline_14px_close@2x.png")
                      
             } else {
@@ -119,7 +119,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     }
     @IBOutlet weak var closeTopView: UIView!{
         didSet {
-            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+            if Gameball.clientBotStyle?.isRankPointsVisible == false  && Gameball.clientBotStyle?.isWalletPointsVisible == false  {
                 closeTopView.backgroundColor = .white
             } else {
                 closeTopView.backgroundColor = Colors.appMainColor
@@ -132,7 +132,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     @IBOutlet weak var topView: UIView!{
         didSet {
             
-            if GameballApp.clientBotStyle?.isRankPointsVisible == false  && GameballApp.clientBotStyle?.isWalletPointsVisible == false  {
+            if Gameball.clientBotStyle?.isRankPointsVisible == false  && Gameball.clientBotStyle?.isWalletPointsVisible == false  {
                 topView.backgroundColor = .white
             } else {
                 topView.backgroundColor = Colors.appMainColor
@@ -263,7 +263,7 @@ class ParentViewController: BaseViewController,UITableViewDataSource,UITableView
     }
     @IBAction func gameBallTapped(_ sender: UITapGestureRecognizer) {
         //
-        //        if let url = NSURL(string: GameballApp.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
+        //        if let url = NSURL(string: Gameball.clientBotStyle?.buttonLink ?? "https://www.gameball.co"){
         if let url = NSURL(string: "https://www.gameball.co/landing_mobile/?utm_source=Mobile%20apps&utm_medium=Mobile%20footer&utm_campaign=Mobile%20users"){
             UIApplication.shared.openURL(url as URL)
         }

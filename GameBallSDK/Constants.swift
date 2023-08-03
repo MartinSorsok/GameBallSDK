@@ -40,10 +40,10 @@ class APIEndPoints {
     static let getChallengesWithUnlocks = "/api/v1.0/Bots/challenges"
     static let getLeaderboards = "/api/v1.0/Bots/LeaderboardWithRank"
     static let getPlayerInfo = "/api/v1.0/Bots/PlayerInfo"
-    static let postAction = "/api/v1.0/Integrations/Action"
+    static let sendEvent = "/api/v3.0/integrations/event"
     static let getNotifications = "/api/v1.0/Bots/notifications"
 
-    static let registerPlayer = "/api/v1.0/Integrations/InitializePlayer"
+    static let registerPlayer = "/api/v3.0/integrations/player"
 
     static let friendReferral = "/api/v1.0/Integrations/Referral"
 
@@ -78,7 +78,7 @@ struct Colors {
     static let appGray130 = UIColor(white: 130 / 255, alpha: 1)
     static let appCustomDarkGray = UIColor(red: 68 / 255, green: 76 / 255, blue: 82 / 255, alpha: 1.0)
     static let appOrange = UIColor(red: 240 / 255, green: 90 / 255, blue: 42 / 255, alpha: 1.0)
-    static let appMainColor = UIColor.init(hex: GameballApp.clientBotStyle?.botMainColor ?? "#E7633F")
+    static let appMainColor = UIColor.init(hex: Gameball.clientBotStyle?.botMainColor ?? "#E7633F")
     static let progressMainColor =  UIColor(red: 100 / 255, green: 202 / 255, blue: 98 / 255, alpha: 1.0)
 
     
